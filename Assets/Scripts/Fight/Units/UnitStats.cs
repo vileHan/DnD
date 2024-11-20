@@ -23,13 +23,12 @@ public class UnitStats : MonoBehaviour
     {
         GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
     }
-    private void GameManagerOnGameStateChanged(GameState state)
+    private void GameManagerOnGameStateChanged(GameState state) //put able to attack somewhere here
     {
         if (isTurn && state == GameState.ExecuteUnitTurn)
         {
             if (gameObject.tag == "Player")
             {
-
                 HeroBehaviour heroBehaviour = gameObject.GetComponent<HeroBehaviour>();
                 heroBehaviour.ChooseAction();
             }

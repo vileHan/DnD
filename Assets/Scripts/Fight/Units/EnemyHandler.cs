@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
-    private int enemyAmount = 4;
+    private float enemyAmount = 4;
+    private float spawnDelay = 0.1f;
     public GameObject[] enemyPrefabs;
+    public bool enemiesSpawned;
     [SerializeField]private Vector3[] spawnPositions;
 
     void Start()
-    {
-        for(int i = 0; i < enemyAmount; i++)
-        {
-            GameObject enemy = Instantiate(enemyPrefabs[i], spawnPositions[i], Quaternion.identity);
-            UnitManager.Instance.RegisterUnit(enemy);
-        }
-        
+    { 
+        StartCoroutine(Spawn());             
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator Spawn()
+    {
+        for(int i = 0; i < enemyAmount; i++)
+        {
+            Debug.Log("test");
+            yield return new WaitForSeconds(spawnDelay);
+            GameObject enemy = Instantiate(enemyPrefabs[i], spawnPositions[i], Quaternion.identity);
+            UnitManager.Instance.RegisterUnit(enemy);
+        }
+        enemiesSpawned = true;
     }
 }

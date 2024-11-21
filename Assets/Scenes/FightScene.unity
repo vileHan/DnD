@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1179985099}
   m_Layer: 0
   m_Name: Hero Handler
-  m_TagString: Untagged
+  m_TagString: HeroHandler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -738,6 +738,7 @@ MonoBehaviour:
   - {x: 1, y: 1, z: -0.5}
   - {x: 2.5, y: 1, z: 3.5}
   - {x: 3.3, y: 1, z: -0.3}
+  heroesSpawned: 0
 --- !u!1 &1240651703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1450,7 @@ GameObject:
   - component: {fileID: 1827179168}
   m_Layer: 0
   m_Name: Enemy Handler
-  m_TagString: Untagged
+  m_TagString: EnemyHandler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1471,6 +1472,7 @@ MonoBehaviour:
   - {fileID: 1630687460934488006, guid: a0e16409e3c0f6d47a411b268e2fef3c, type: 3}
   - {fileID: 1630687460934488006, guid: 27004f423d3b56c4a9a20cfe511e9742, type: 3}
   - {fileID: 1630687460934488006, guid: e3f43d6197b82274a9315400ea37bf86, type: 3}
+  enemiesSpawned: 0
   spawnPositions:
   - {x: 9, y: 0.5, z: 5}
   - {x: 9, y: 0.5, z: 1}
@@ -1795,9 +1797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChooseActionPanel: {fileID: 1686088838}
-  ableToBeAttacked: 0
-  attackingUnitStats: {fileID: 0}
-  attackingUnitDamage: 0
+  heroAttacking: 0
 --- !u!4 &2088052281
 Transform:
   m_ObjectHideFlags: 0

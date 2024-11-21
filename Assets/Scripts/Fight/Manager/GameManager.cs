@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        UpdateGameState(GameState.SetOrder);
+        UpdateGameState(GameState.BattleSetUp);
     }
 
     // Update is called once per frame
@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 
         switch(newState)
         {
+            case GameState.BattleSetUp:
+                HandleBattleSetUp();
+                break;
             case GameState.SetOrder:
                 HandleSetOrder();
                 break;
@@ -52,13 +55,22 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
     
+    async void HandleBattleSetUp()
+    {
+        EnemyHandler enemyHandler = GameObject.FindGameObjectWithTag("EnemyHandler").GetComponent<EnemyHandler>();
+        HeroHandler heroHandler = GameObject.FindGameObjectWithTag("HeroHandler").GetComponent<HeroHandler>();
+        await Task.Delay(1000);
+        if (heroHandler.heroesSpawned && enemyHandler.enemiesSpawned)
+        {
+            UpdateGameState(GameState.SetOrder);
+        }
+    }
     void HandleChooseAction()
     {
 
     }
-    async void HandleSetOrder()
+    void HandleSetOrder()
     {
-        await Task.Delay(100);
         SetOrder();
         UpdateGameState(GameState.SelectUnitTurn);
     }
@@ -95,6 +107,7 @@ public class GameManager : MonoBehaviour
 }
     public enum GameState
     {
+        BattleSetUp,
         SetOrder,
         ChooseAction,
         SelectUnitTurn,

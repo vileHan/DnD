@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public MeshRenderer Renderer;
     [SerializeField] private UnitStats unitStats;
+    private UnitStats attackingUnitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
     private FightUIManager fightUIManager;
     private HeroBehaviour heroBehaviour;
@@ -35,7 +36,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void MouseLogic()
     {
-        if(mouseOverEnemy && fightUIManager.attackingUnitStats.ableToAttack)
+        if(mouseOverEnemy && fightUIManager.heroAttacking)
         {
             //Renderer.material.color = new Color(1f, 0f, 0f, 1f);
             if (Input.GetMouseButtonDown(0))
@@ -64,12 +65,13 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void LoseHealth()
     {
-        unitStats.TakeDamage(fightUIManager.attackingUnitDamage);
+        attackingUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();
+        unitStats.TakeDamage(attackingUnitStats.damage);
     }
     private void EndTurn()
     {
         GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
-        fightUIManager.ableToBeAttacked = false;
+        fightUIManager.heroAttacking = false;
     }
 
 }

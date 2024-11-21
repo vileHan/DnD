@@ -7,6 +7,7 @@ public class HeroHandler : MonoBehaviour
     private int heroAmount = 4;
     public GameObject[] heroPrefabs;
     [SerializeField]private Vector3[] spawnPositions;
+    public bool heroesSpawned;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class HeroHandler : MonoBehaviour
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);
             UnitManager.Instance.RegisterUnit(hero);
         }
-        
+        heroesSpawned = true;
     }
 
     // Update is called once per frame

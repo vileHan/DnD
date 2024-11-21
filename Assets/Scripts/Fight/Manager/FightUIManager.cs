@@ -6,12 +6,8 @@ using System.Linq;
 public class FightUIManager : MonoBehaviour
 {
     public GameObject ChooseActionPanel;
-    //private EnemyBehaviour enemyBehaviour;
-    private HeroBehaviour heroBehaviour;
-
-    public bool ableToBeAttacked;
-    public UnitStats attackingUnitStats;
-    public float attackingUnitDamage;
+    
+    public bool heroAttacking;
 
     void Awake()
     {
@@ -23,12 +19,7 @@ public class FightUIManager : MonoBehaviour
     }
     private void GameManagerOnGameStateChanged(GameState state)
     {
-        ChooseActionPanel.SetActive(state == GameState.ChooseAction);
-        if (state == GameState.ChooseAction)
-        {
-            GetAttackValueFromAttackingUnit();
-        }
-        
+        ChooseActionPanel.SetActive(state == GameState.ChooseAction);        
     }
     void Start()
     {
@@ -42,12 +33,6 @@ public class FightUIManager : MonoBehaviour
     }
     public void Attack()
     {        
-        attackingUnitStats.ableToAttack = true;  
-    }
-    public void GetAttackValueFromAttackingUnit()
-    {
-        GameObject attackingUnit = UnitManager.Instance.unitToAct;
-        attackingUnitStats = attackingUnit.GetComponent<UnitStats>();  
-        attackingUnitDamage = attackingUnitStats.damage;
+        heroAttacking = true; 
     }
 }

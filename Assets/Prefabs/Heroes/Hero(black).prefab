@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 1225737636573229646}
   - component: {fileID: -8234640966500835559}
   - component: {fileID: -1180084212531554634}
+  - component: {fileID: -2639053243159495139}
   m_Layer: 0
   m_Name: Hero(black)
   m_TagString: Player
@@ -444,6 +445,8 @@ MonoBehaviour:
   damage: 4
   initiative: 0
   spellSlots: 0
+  isTurn: 0
+  ableToAttack: 0
 --- !u!114 &-1180084212531554634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +461,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitStats: {fileID: -8234640966500835559}
   healthbarHandler: {fileID: 4088872561836032422}
+  outline: {fileID: 0}
+--- !u!114 &-2639053243159495139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0.0020303726, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8098936622051482784
 GameObject:
   m_ObjectHideFlags: 0

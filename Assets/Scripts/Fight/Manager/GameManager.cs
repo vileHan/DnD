@@ -31,10 +31,12 @@ public class GameManager : MonoBehaviour
     {
         State = newState;
 
+        OnGameStateChanged?.Invoke(newState);
+
         switch(newState)
         {
             case GameState.BattleSetUp:
-                HandleBattleSetUp();
+                StartCoroutine(HandleBattleSetUp());
                 break;
             case GameState.SetOrder:
                 HandleSetOrder();
@@ -51,33 +53,30 @@ public class GameManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-
-        OnGameStateChanged?.Invoke(newState);
     }
     
-    async void HandleBattleSetUp()
+    IEnumerator HandleBattleSetUp()
     {
         EnemyHandler enemyHandler = GameObject.FindGameObjectWithTag("EnemyHandler").GetComponent<EnemyHandler>();
         HeroHandler heroHandler = GameObject.FindGameObjectWithTag("HeroHandler").GetComponent<HeroHandler>();
-        await Task.Delay(1000);
-        if (heroHandler.heroesSpawned && enemyHandler.enemiesSpawned)
+        while (!heroHandler.heroesSpawned || !enemyHandler.enemiesSpawned)
         {
-            UpdateGameState(GameState.SetOrder);
+            yield return null;
         }
+
+        UpdateGameState(GameState.SetOrder);       
     }
     void HandleChooseAction()
     {
-
+        
     }
     void HandleSetOrder()
     {
         SetOrder();
         UpdateGameState(GameState.SelectUnitTurn);
     }
-    async void HandleSelectUnitTurn()
+    void HandleSelectUnitTurn()
     {             
-        await Task.Delay(500);
-
         SelectUnitTurn(); 
         UpdateGameState(GameState.ExecuteUnitTurn);       
     }
@@ -95,7 +94,6 @@ public class GameManager : MonoBehaviour
         UnitManager.Instance.unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
         activeUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();  
         activeUnitStats.isTurn = true;
-
 
         dictionaryIndex++;
     }

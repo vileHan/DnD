@@ -35,7 +35,7 @@ public class UnitStats : MonoBehaviour
             else if (gameObject.tag == "Enemy")
             {
                 EnemyBehaviour enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
-                enemyBehaviour.Attack();
+                StartCoroutine(enemyBehaviour.Attack());
             }
             
         }

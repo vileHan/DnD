@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public MeshRenderer Renderer;
     [SerializeField] private UnitStats unitStats;
+    [SerializeField] private Outline outline;
     private UnitStats attackingUnitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
     private FightUIManager fightUIManager;
@@ -17,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         fightUIManager = GameObject.FindGameObjectWithTag("FightUIManager").GetComponent<FightUIManager>();
+        outline = gameObject.GetComponent<Outline>();
     }
 
     // Update is called once per frame
@@ -28,10 +30,12 @@ public class EnemyBehaviour : MonoBehaviour
     private void OnMouseEnter() 
     {
         mouseOverEnemy = true;
+        outline.enabled = true;
     }
     private void OnMouseExit()
     {
         mouseOverEnemy = false;
+        outline.enabled = false;
     }
 
     private void MouseLogic()
@@ -51,8 +55,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public IEnumerator Attack()
     {
+        yield return new WaitForSeconds(0.5f);
         GameObject[] heroes = GameObject.FindGameObjectsWithTag("Player");
         
         GameObject targetedHero = heroes[Random.Range(0, heroes.Length)]; // random right now -> later maybe look for target with lowest health
@@ -67,6 +72,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         attackingUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();
         unitStats.TakeDamage(attackingUnitStats.damage);
+        attackingUnitStats.isTurn = false;
     }
     private void EndTurn()
     {

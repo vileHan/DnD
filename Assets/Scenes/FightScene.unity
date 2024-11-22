@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 362939800}
   - component: {fileID: 362939799}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: UseItem Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,9 +205,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1475502544}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: SortDicionary
+      - m_Target: {fileID: 2088052280}
+        m_TargetAssemblyTypeName: FightUIManager, Assembly-CSharp
+        m_MethodName: UseItemPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -432,7 +432,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2088052280}
         m_TargetAssemblyTypeName: FightUIManager, Assembly-CSharp
-        m_MethodName: Attack
+        m_MethodName: AttackPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -480,6 +480,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623080650}
   m_CullTransparentMesh: 1
+--- !u!1 &768736723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 768736724}
+  m_Layer: 0
+  m_Name: HEADER - CLEAN UP CODE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &768736724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768736723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 867.4664, y: 513.4462, z: -6.6425796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157250215
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,9 +568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Display
-
-'
+  m_text: Heal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -739,37 +768,6 @@ MonoBehaviour:
   - {x: 2.5, y: 1, z: 3.5}
   - {x: 3.3, y: 1, z: -0.3}
   heroesSpawned: 0
---- !u!1 &1209220045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1209220046}
-  m_Layer: 0
-  m_Name: DMG NUMBERS + PANEL
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1209220046
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209220045}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3153334, y: -4.205779, z: 6.1620364}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1240651703
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +875,7 @@ GameObject:
   - component: {fileID: 1307887086}
   - component: {fileID: 1307887085}
   m_Layer: 5
-  m_Name: Decide Turn Button
+  m_Name: Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,9 +945,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1475502544}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DisplayDicionary
+      - m_Target: {fileID: 2088052280}
+        m_TargetAssemblyTypeName: FightUIManager, Assembly-CSharp
+        m_MethodName: HealPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1102,7 +1100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sort
+  m_text: Use Item
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1359,6 +1357,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686088838}
   m_CullTransparentMesh: 1
+--- !u!1 &1706142375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706142376}
+  m_Layer: 0
+  m_Name: dmg number position lower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1706142376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706142375}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 867.4664, y: 513.4462, z: -6.6425796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1753572151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1826,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChooseActionPanel: {fileID: 1686088838}
+  attackButton: {fileID: 623080652}
+  healButton: {fileID: 1307887085}
+  useItemButton: {fileID: 362939799}
+  unitToActStats: {fileID: 0}
   heroAttacking: 0
+  damageNumberPrefab: {fileID: 6136087786575034926, guid: e80efed5d9d187945b823c2223f36c7e, type: 3}
+  worldCanvas: {fileID: 1641599551}
 --- !u!4 &2088052281
 Transform:
   m_ObjectHideFlags: 0
@@ -1823,4 +1858,5 @@ SceneRoots:
   - {fileID: 1641599552}
   - {fileID: 1162910140}
   - {fileID: 1858196247}
-  - {fileID: 1209220046}
+  - {fileID: 768736724}
+  - {fileID: 1706142376}

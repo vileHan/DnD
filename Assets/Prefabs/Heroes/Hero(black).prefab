@@ -444,9 +444,10 @@ MonoBehaviour:
   currentHealth: 0
   damage: 4
   initiative: 0
-  spellSlots: 0
+  spellSlots: 1
   isTurn: 0
   ableToAttack: 0
+  healModifier: 5
 --- !u!114 &-1180084212531554634
 MonoBehaviour:
   m_ObjectHideFlags: 0

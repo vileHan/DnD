@@ -86,6 +86,11 @@ public class GameManager : MonoBehaviour
     }
     void SelectUnitTurn()
     {
+        if (activeUnitStats != null)
+        {
+            activeUnitStats.isTurn = false;
+        }
+        
         if (dictionaryIndex > (UnitManager.Instance.unitDictionary.Count-1)) // if end of dictionary go to start
         {
             dictionaryIndex = 0;

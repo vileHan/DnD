@@ -14,6 +14,7 @@ public class UnitStats : MonoBehaviour
     public int spellSlots;
     public bool isTurn; 
     public bool ableToAttack;
+    public float healModifier;
 
     void Awake()
     {
@@ -68,6 +69,16 @@ public class UnitStats : MonoBehaviour
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
         Destroy(gameObject);
     }
-
+    public void Heal()
+    {
+        spellSlots--;
+        currentHealth += healModifier;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        Debug.Log(currentHealth);
+        healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
+    }
         
 }

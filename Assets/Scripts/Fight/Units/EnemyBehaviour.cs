@@ -63,8 +63,6 @@ public class EnemyBehaviour : MonoBehaviour
         GameObject targetedHero = heroes[Random.Range(0, heroes.Length)]; // random right now -> later maybe look for target with lowest health
         UnitStats targetUnitStats = targetedHero.GetComponent<UnitStats>();  
         targetUnitStats.TakeDamage(unitStats.damage);
-        //Debug.Log(UnitManager.Instance.unitToAct.name+" dealt "+ unitStats.damage + " damage to " + targetedHero.name);
-        unitStats.isTurn = false;
 
         GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
@@ -72,7 +70,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         attackingUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();
         unitStats.TakeDamage(attackingUnitStats.damage);
-        attackingUnitStats.isTurn = false;
+        fightUIManager.ShowDamageNumber(gameObject, attackingUnitStats.damage);
     }
     private void EndTurn()
     {

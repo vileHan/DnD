@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class FightUIManager : MonoBehaviour
 {
+    public static FightUIManager Instance;
+    
     public GameObject ChooseActionPanel;
     [SerializeField] private Button attackButton, healButton, useItemButton;
 
@@ -21,6 +23,7 @@ public class FightUIManager : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
     void OnDestroy() 
@@ -101,7 +104,7 @@ public class FightUIManager : MonoBehaviour
         }
     }
 
-    public void ShowDamageNumber(GameObject unit, float damageAmount)
+    public void ShowDamageNumber(Vector3 unit, float damageAmount)
     {
         // Instantiate a damage number prefab
         GameObject damageNumberObject = Instantiate(damageNumberPrefab, worldCanvas.transform);
@@ -110,8 +113,8 @@ public class FightUIManager : MonoBehaviour
         DamageNumber damageNumber = damageNumberObject.GetComponent<DamageNumber>();
         damageNumber.SetDamageText(damageAmount);
 
-        // Position the damage number above the unit
-        Vector3 worldPosition = unit.transform.position + Vector3.up; // Adjust position above the unit
+        // Position the damage number on the unit
+        Vector3 worldPosition = unit; // Adjust position above the unit (unit.transform.position+Vector.up) to show number above unit
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
         damageNumberObject.transform.position = screenPosition;
 

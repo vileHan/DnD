@@ -9,7 +9,6 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private Outline outline;
     private UnitStats attackingUnitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
-    private FightUIManager fightUIManager;
     private HeroBehaviour heroBehaviour;
 
     private Color baseColor = new Color(1f, 1f, 1f, 1f);
@@ -17,7 +16,6 @@ public class EnemyBehaviour : MonoBehaviour
     
     void Start()
     {
-        fightUIManager = GameObject.FindGameObjectWithTag("FightUIManager").GetComponent<FightUIManager>();
         outline = gameObject.GetComponent<Outline>();
     }
 
@@ -40,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void MouseLogic()
     {
-        if(mouseOverEnemy && fightUIManager.heroAttacking)
+        if(mouseOverEnemy && FightUIManager.Instance.heroAttacking)
         {
             //Renderer.material.color = new Color(1f, 0f, 0f, 1f);
             if (Input.GetMouseButtonDown(0))
@@ -70,12 +68,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         attackingUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();
         unitStats.TakeDamage(attackingUnitStats.damage);
-        fightUIManager.ShowDamageNumber(gameObject, attackingUnitStats.damage);
+        FightUIManager.Instance.ShowDamageNumber(unitStats.damageNumber.position, attackingUnitStats.damage);
     }
     private void EndTurn()
     {
         GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
-        fightUIManager.heroAttacking = false;
+        FightUIManager.Instance.heroAttacking = false;
     }
 
 }

@@ -6,6 +6,7 @@ public class UnitStats : MonoBehaviour
 {
 
     [SerializeField]private HealthbarHandler healthbarHandler;
+    public Transform damageNumber;
 
     public float maxHealth;
     public float currentHealth;
@@ -58,7 +59,7 @@ public class UnitStats : MonoBehaviour
     {
         currentHealth -= damage;
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
-
+        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, damage);
         if (currentHealth <= 0)
         {
             Die();
@@ -77,8 +78,8 @@ public class UnitStats : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        Debug.Log(currentHealth);
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
+        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, healModifier);
     }
         
 }

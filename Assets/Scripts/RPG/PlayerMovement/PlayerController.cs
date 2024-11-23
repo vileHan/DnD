@@ -6,6 +6,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+    private ThirdPersonCameraController cameraController;
     [Header("UI")]
 
     [Header("Movement")]
@@ -65,8 +66,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //rb.freezeRotation = true;
-
+        rb.freezeRotation = true;
+        cameraController = FindObjectOfType<ThirdPersonCameraController>();
         startYScale = transform.localScale.y;
     }
 
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+        
 
         // handle drag
         if (grounded)
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         MovePlayer();
+        RotateCharacter();
     }
 
     private void MyInput()
@@ -165,33 +168,43 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        // calculate movement
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+    // Use input direction from the camera
+    moveDirection = cameraController.InputDirection;
 
-        // on slope
-        if (OnSlope() && !exitingSlope)
-        {
-            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 2f, ForceMode.Force);
+    Debug.Log("Move Direction in MovePlayer: " + moveDirection);
 
-            // if (rb.velocity.y > 0)
-            // {
-            //     rb.AddForce(Vector3.down * 100f, ForceMode.Force);
-            // }
-        }
-
-        // on ground
-        else if(grounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
-        // in air
-        } else if(!grounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * airMultiplier, ForceMode.Force);
-        } 
-
-        // turn gravity off while on slope
-        rb.useGravity = !OnSlope();
+    if (OnSlope() && !exitingSlope)
+    {
+        rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 2f, ForceMode.Force);
     }
+    else if (grounded)
+    {
+        rb.AddForce(moveDirection * moveSpeed, ForceMode.Force);
+    }
+    else if (!grounded)
+    {
+        rb.AddForce(moveDirection * moveSpeed * airMultiplier, ForceMode.Force);
+    }
+
+    rb.useGravity = !OnSlope();
+    }
+
+    private void RotateCharacter()
+{
+    if (moveDirection.magnitude > 0.1f) // Avoid jitter when there's no significant movement
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+
+        Debug.Log("Target Rotation: " + targetRotation.eulerAngles);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
+    }
+    else
+    {
+        Debug.Log("No movement detected, not rotating.");
+    }
+}
+
     private void SpeedControl()
     {
         // limit speed on slope

@@ -13,6 +13,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     public float rotationSpeed;
 
+    public Vector3 InputDirection { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        InputDirection = inputDirection.normalized;
 
         if (inputDirection != Vector3.zero)
             {

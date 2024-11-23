@@ -73,13 +73,23 @@ public class UnitStats : MonoBehaviour
     public void Heal()
     {
         spellSlots--;
+        float healthHealed = currentHealth + healModifier;
+        if (healthHealed > maxHealth)
+        {
+            healthHealed -= maxHealth;
+            healthHealed = healModifier - healthHealed;
+        }
+        else 
+        {
+            healthHealed = healModifier;
+        }
         currentHealth += healModifier;
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
-        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, healModifier);
+        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, healthHealed);
     }
         
 }

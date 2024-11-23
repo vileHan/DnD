@@ -1367,7 +1367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1706142376}
   m_Layer: 0
-  m_Name: dmg number position lower
+  m_Name: NEW PREFAB FOR HEALING(GREEN)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

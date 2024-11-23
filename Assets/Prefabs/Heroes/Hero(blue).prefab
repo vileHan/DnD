@@ -476,7 +476,7 @@ MonoBehaviour:
   currentHealth: 0
   damage: 2
   initiative: 0
-  spellSlots: 1
+  spellSlots: 5
   isTurn: 0
   ableToAttack: 0
   healModifier: 5

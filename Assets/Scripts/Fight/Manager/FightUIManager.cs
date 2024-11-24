@@ -9,7 +9,7 @@ public class FightUIManager : MonoBehaviour
 {
     public static FightUIManager Instance;
     
-    public GameObject ChooseActionPanel;
+    public GameObject ChooseActionPanel, LostPanel, WonPanel;
     [SerializeField] private Button attackButton, healButton, useItemButton;
 
     public UnitStats unitToActStats;
@@ -37,6 +37,8 @@ public class FightUIManager : MonoBehaviour
         {
             unitToActStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();
         }
+        WonPanel.SetActive(state == GameState.FightWon);
+        LostPanel.SetActive(state == GameState.FightLost);
     }
     void Start()
     {

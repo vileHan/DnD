@@ -202,7 +202,7 @@ MonoBehaviour:
   damageNumber: {fileID: 968776570488943889}
   maxHealth: 10
   currentHealth: 0
-  damage: 2
+  damage: 4
   initiative: 0
   spellSlots: 0
   isTurn: 0

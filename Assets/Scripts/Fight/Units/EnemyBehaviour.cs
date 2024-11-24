@@ -56,9 +56,8 @@ public class EnemyBehaviour : MonoBehaviour
     public IEnumerator Attack()
     {
         yield return new WaitForSeconds(0.5f);
-        GameObject[] heroes = GameObject.FindGameObjectsWithTag("Player");
-        
-        GameObject targetedHero = heroes[Random.Range(0, heroes.Length)]; // random right now -> later maybe look for target with lowest health
+
+        GameObject targetedHero = UnitManager.Instance.heroesAlive[Random.Range(0, UnitManager.Instance.heroesAlive.Count)]; // random right now -> later maybe look for target with lowest health
         UnitStats targetUnitStats = targetedHero.GetComponent<UnitStats>();  
         targetUnitStats.TakeDamage(unitStats.damage);
 

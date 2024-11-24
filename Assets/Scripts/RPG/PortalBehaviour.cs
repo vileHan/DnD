@@ -16,18 +16,24 @@ public class PortalBehaviour : MonoBehaviour
     {
         if (isPortalEntered)
         {
-            //isPortalEntered = false;
-            SceneManager.LoadScene(1, LoadSceneMode.Single); // for future -> change gamestate in (general)gamemanager to whatever loads the fight scene
-            //SceneManager.LoadScene(1, LoadSceneMode.Additive);
-            
+            LoadFightScene();
+            Destroy(gameObject);  
         }    
     }
     public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("collision");
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("collision");
-            if (other.gameObject.tag == "Player")
-            {
-                isPortalEntered = true;
-            }
-        } 
+            isPortalEntered = true;
+        }
+    } 
+
+    public void LoadFightScene()
+    {
+        isPortalEntered = false;
+        GeneralGameManager.Instance.DisableRPGScene();
+        SceneManager.LoadScene(1, LoadSceneMode.Additive); // for future -> change gamestate in (general)gamemanager to whatever loads the fight scene
+        //SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
 }

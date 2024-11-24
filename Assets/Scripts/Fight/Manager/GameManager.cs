@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        //DontDestroyOnLoad(gameObject); -> make generalgamemanager communicate
     }
 
     void Start()
@@ -50,6 +52,12 @@ public class GameManager : MonoBehaviour
             case GameState.ChooseAction:
                 HandleChooseAction();
                 break;
+            case GameState.FightWon:
+                HandleFightWon();
+                break;
+            case GameState.FightLost:
+                HandleFightLost();
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
@@ -79,13 +87,35 @@ public class GameManager : MonoBehaviour
     }
     void HandleSelectUnitTurn()
     {       
-        // check if all heroes or all enemies are dead -> winscreen/losescreen      
+        if (UnitManager.Instance.heroesAlive.Count == 0)
+        {
+            Debug.Log("No Heroes left!");
+            UpdateGameState(GameState.FightLost);
+        }
+        else if (UnitManager.Instance.enemiesAlive.Count == 0)
+        {
+            Debug.Log("No Enemies left!");
+            UpdateGameState(GameState.FightWon);
+        }
+        else
+        {
         SelectUnitTurn(); 
-        UpdateGameState(GameState.ExecuteUnitTurn);       
+        UpdateGameState(GameState.ExecuteUnitTurn);   
+        }    
     }
     void HandleExecuteUnitTurn()
     {
 
+    }
+    void HandleFightWon()
+    {
+        StartCoroutine(EndScreenTransition());
+        Debug.Log("Win!");
+    }
+    void HandleFightLost()
+    {
+        StartCoroutine(EndScreenTransition());
+        Debug.Log("Defeat!");
     }
     void SelectUnitTurn()
     {
@@ -93,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             activeUnitStats.isTurn = false;
         }
-        
+            
         if (dictionaryIndex > (UnitManager.Instance.unitDictionary.Count-1)) // if end of dictionary go to start
         {
             dictionaryIndex = 0;
@@ -103,12 +133,20 @@ public class GameManager : MonoBehaviour
         activeUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();  
         activeUnitStats.isTurn = true;
 
-        dictionaryIndex++;
+        dictionaryIndex++;        
     }
     void SetOrder()
     {
         UnitManager.Instance.AssignInitiative();
         UnitManager.Instance.SortDicionary();
+    }
+
+    IEnumerator EndScreenTransition()
+    {
+        Debug.Log("Endscreen transition");
+        yield return new WaitForSecondsRealtime(1);
+        //GeneralGameManger.Instance.EnableRPGScene();
+        SceneManager.UnloadSceneAsync(1);
     }
 }
     public enum GameState
@@ -117,5 +155,7 @@ public class GameManager : MonoBehaviour
         SetOrder,
         ChooseAction,
         SelectUnitTurn,
-        ExecuteUnitTurn
+        ExecuteUnitTurn,
+        FightWon,
+        FightLost
     }

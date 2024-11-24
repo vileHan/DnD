@@ -25,10 +25,9 @@ public class EnemyHandler : MonoBehaviour
     {
         for(int i = 0; i < enemyAmount; i++)
         {
-            Debug.Log("test");
             yield return new WaitForSeconds(spawnDelay);
             GameObject enemy = Instantiate(enemyPrefabs[i], spawnPositions[i], Quaternion.identity);
-            UnitManager.Instance.RegisterUnit(enemy);
+            UnitManager.Instance.RegisterEnemy(enemy);
         }
         enemiesSpawned = true;
     }

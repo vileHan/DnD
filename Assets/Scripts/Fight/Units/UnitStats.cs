@@ -67,6 +67,7 @@ public class UnitStats : MonoBehaviour
     }
     public void Die()
     {
+        UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
         Destroy(gameObject);
     }

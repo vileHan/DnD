@@ -14,7 +14,7 @@ public class HeroHandler : MonoBehaviour
         for(int i = 0; i < heroAmount; i++)
         {
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);
-            UnitManager.Instance.RegisterUnit(hero);
+            UnitManager.Instance.RegisterHero(hero);
         }
         heroesSpawned = true;
     }

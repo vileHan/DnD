@@ -171,7 +171,6 @@ public class PlayerController : MonoBehaviour
     // Use input direction from the camera
     moveDirection = cameraController.InputDirection;
 
-    Debug.Log("Move Direction in MovePlayer: " + moveDirection);
 
     if (OnSlope() && !exitingSlope)
     {
@@ -195,13 +194,7 @@ public class PlayerController : MonoBehaviour
     {
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
-        Debug.Log("Target Rotation: " + targetRotation.eulerAngles);
-
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
-    }
-    else
-    {
-        Debug.Log("No movement detected, not rotating.");
     }
 }
 

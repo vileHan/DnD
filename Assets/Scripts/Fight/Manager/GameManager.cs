@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     
     IEnumerator HandleBattleSetUp()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         EnemyHandler enemyHandler = GameObject.FindGameObjectWithTag("EnemyHandler").GetComponent<EnemyHandler>();
         HeroHandler heroHandler = GameObject.FindGameObjectWithTag("HeroHandler").GetComponent<HeroHandler>();
         while (!heroHandler.heroesSpawned || !enemyHandler.enemiesSpawned)
@@ -76,7 +78,8 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.SelectUnitTurn);
     }
     void HandleSelectUnitTurn()
-    {             
+    {       
+        // check if all heroes or all enemies are dead -> winscreen/losescreen      
         SelectUnitTurn(); 
         UpdateGameState(GameState.ExecuteUnitTurn);       
     }

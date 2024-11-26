@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        //DontDestroyOnLoad(gameObject); -> make generalgamemanager communicate
     }
 
     void Start()
@@ -145,8 +144,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Endscreen transition");
         yield return new WaitForSecondsRealtime(1);
-        //GeneralGameManger.Instance.EnableRPGScene();
         SceneManager.UnloadSceneAsync(1);
+        UnitManager.Instance.DeleteAllUnitsLeft();
+        GeneralGameManager.Instance.EnableRPGScene();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 }
     public enum GameState

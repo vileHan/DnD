@@ -65,6 +65,13 @@ public class UnitManager : MonoBehaviour
             unitDictionary.Remove(unit);
         }
     }
+    public void DeleteAllUnitsLeft()
+    {
+        for (int i = 0; i < unitsAlive.Count; i++)
+        {
+            Destroy(unitsAlive[i]);
+        }
+    }
 
     public void AssignInitiative()
     {

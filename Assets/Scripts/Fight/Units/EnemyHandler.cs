@@ -31,4 +31,8 @@ public class EnemyHandler : MonoBehaviour
         }
         enemiesSpawned = true;
     }
+    void SetEnemyStats()
+    {
+        
+    }
 }

@@ -53,15 +53,20 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public IEnumerator Attack()
+    public IEnumerator Action()
     {
         yield return new WaitForSeconds(0.5f);
 
+        DecideAction();
+
+        GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+    }
+
+    public void Attack()
+    {
         GameObject targetedHero = UnitManager.Instance.heroesAlive[Random.Range(0, UnitManager.Instance.heroesAlive.Count)]; // random right now -> later maybe look for target with lowest health
         UnitStats targetUnitStats = targetedHero.GetComponent<UnitStats>();  
         targetUnitStats.TakeDamage(unitStats.damage);
-
-        GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
     private void LoseHealth()
     {
@@ -73,6 +78,19 @@ public class EnemyBehaviour : MonoBehaviour
     {
         GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
         FightUIManager.Instance.heroAttacking = false;
+    }
+    public void DecideAction() // later stages make this switch case for differnt actions? or make enemy look if hp is low etc.
+    {
+        int actionIndex = Random.Range(0,6);
+        Debug.Log(actionIndex);
+        if (actionIndex == 0)
+        {
+            unitStats.Heal();
+        }
+        else
+        {
+            Attack();
+        }
     }
 
 }

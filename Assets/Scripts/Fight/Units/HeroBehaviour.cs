@@ -5,15 +5,12 @@ using UnityEngine;
 public class HeroBehaviour : MonoBehaviour
 {
     [SerializeField] private UnitStats unitStats;
-    [SerializeField] private HealthbarHandler healthbarHandler;
-    private FightUIManager fightUIManager;
 
     [SerializeField] private Outline outline;
 
     
     void Start()
     {
-        fightUIManager = GameObject.FindGameObjectWithTag("FightUIManager").GetComponent<FightUIManager>();
         outline = gameObject.GetComponent<Outline>();
     }
 

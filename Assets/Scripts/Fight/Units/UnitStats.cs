@@ -37,7 +37,7 @@ public class UnitStats : MonoBehaviour
             else if (gameObject.tag == "Enemy")
             {
                 EnemyBehaviour enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
-                StartCoroutine(enemyBehaviour.Attack());
+                StartCoroutine(enemyBehaviour.Action());
             }
             
         }
@@ -73,7 +73,6 @@ public class UnitStats : MonoBehaviour
     }
     public void Heal()
     {
-        spellSlots--;
         float healthHealed = currentHealth + healModifier;
         if (healthHealed > maxHealth)
         {

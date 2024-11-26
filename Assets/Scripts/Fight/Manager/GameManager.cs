@@ -88,12 +88,10 @@ public class GameManager : MonoBehaviour
     {       
         if (UnitManager.Instance.heroesAlive.Count == 0)
         {
-            Debug.Log("No Heroes left!");
             UpdateGameState(GameState.FightLost);
         }
         else if (UnitManager.Instance.enemiesAlive.Count == 0)
         {
-            Debug.Log("No Enemies left!");
             UpdateGameState(GameState.FightWon);
         }
         else
@@ -109,12 +107,10 @@ public class GameManager : MonoBehaviour
     void HandleFightWon()
     {
         StartCoroutine(EndScreenTransition());
-        Debug.Log("Win!");
     }
     void HandleFightLost()
     {
         StartCoroutine(EndScreenTransition());
-        Debug.Log("Defeat!");
     }
     void SelectUnitTurn()
     {
@@ -142,7 +138,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndScreenTransition()
     {
-        Debug.Log("Endscreen transition");
         yield return new WaitForSecondsRealtime(1);
         SceneManager.UnloadSceneAsync(1);
         UnitManager.Instance.DeleteAllUnitsLeft();

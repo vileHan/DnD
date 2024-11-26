@@ -207,7 +207,7 @@ MonoBehaviour:
   spellSlots: 0
   isTurn: 0
   ableToAttack: 0
-  healModifier: 0
+  healModifier: 2
 --- !u!114 &8007012558261916210
 MonoBehaviour:
   m_ObjectHideFlags: 0

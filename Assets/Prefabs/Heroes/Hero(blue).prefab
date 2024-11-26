@@ -476,7 +476,7 @@ MonoBehaviour:
   currentHealth: 0
   damage: 2
   initiative: 0
-  spellSlots: 5
+  spellSlots: 1
   isTurn: 0
   ableToAttack: 0
   healModifier: 5
@@ -493,7 +493,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitStats: {fileID: 1060697298687153341}
-  healthbarHandler: {fileID: 4837993779882536630}
   outline: {fileID: 0}
 --- !u!114 &7968626551505285878
 MonoBehaviour:

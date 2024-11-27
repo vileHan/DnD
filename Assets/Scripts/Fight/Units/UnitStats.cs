@@ -33,27 +33,19 @@ public class UnitStats : MonoBehaviour
         {
             if (gameObject.tag == "Player")
             {
-                HeroBehaviour heroBehaviour = gameObject.GetComponent<HeroBehaviour>();
-                heroBehaviour.ChooseAction();
+                GameManager.Instance.UpdateGameState(GameState.ChooseAction);
             }
             else if (gameObject.tag == "Enemy")
             {
                 EnemyBehaviour enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
                 StartCoroutine(enemyBehaviour.Action());
             }
-            
         }
     }
 
     void Start()
-    {
-        if (gameObject.tag == "Enemy")
-        {
-            currentHealth = maxHealth;
-            currentSpellSlots = maxSpellSlots;
-        }
-        
-        healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
+    {        
+        healthbarHandler.SetHealthbar(maxHealth, currentHealth);
         initiative = Random.Range(1, 21);
     }
 

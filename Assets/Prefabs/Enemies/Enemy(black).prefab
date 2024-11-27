@@ -88,8 +88,8 @@ GameObject:
   - component: {fileID: 8854323469977457133}
   - component: {fileID: 7602886781770976699}
   - component: {fileID: 8928262618044108644}
-  - component: {fileID: 7500590939087225329}
   - component: {fileID: 8007012558261916210}
+  - component: {fileID: 7500590939087225329}
   - component: {fileID: -6374287108664459971}
   m_Layer: 0
   m_Name: Enemy(black)
@@ -186,6 +186,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8007012558261916210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630687460934488006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c359d30191c78a4b8a76a34cfb45db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 7602886781770976699}
+  unitStats: {fileID: 7500590939087225329}
+  outline: {fileID: -6374287108664459971}
+  healthbarHandler: {fileID: 2627603546658982722}
+  mouseOverEnemy: 0
 --- !u!114 &7500590939087225329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,23 +226,6 @@ MonoBehaviour:
   ableToAttack: 0
   healModifier: 0
   initiative: 0
---- !u!114 &8007012558261916210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630687460934488006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c359d30191c78a4b8a76a34cfb45db6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Renderer: {fileID: 7602886781770976699}
-  unitStats: {fileID: 7500590939087225329}
-  outline: {fileID: -6374287108664459971}
-  healthbarHandler: {fileID: 2627603546658982722}
-  mouseOverEnemy: 0
 --- !u!114 &-6374287108664459971
 MonoBehaviour:
   m_ObjectHideFlags: 0

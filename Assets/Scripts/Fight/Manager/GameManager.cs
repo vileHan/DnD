@@ -106,7 +106,6 @@ public class GameManager : MonoBehaviour
     }
     void HandleFightWon()
     {
-        SaveHeroStats();
         StartCoroutine(EndScreenTransition());
     }
     void HandleFightLost()
@@ -145,17 +144,6 @@ public class GameManager : MonoBehaviour
         GeneralGameManager.Instance.EnableRPGScene();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    void SaveHeroStats() // maxStats evtl überflüssig
-    {
-        for (int i = 0; i < UnitManager.Instance.heroesInTeam.Count; i++)
-        {
-            // TEST WITH OTHER CLASSES PROB OVERWRITES RIGHT NOW
-            UnitStats test = UnitManager.Instance.heroesInTeam[i].GetComponent<UnitStats>(); 
-            WizardStats.Instance.currentHealth = test.currentHealth;   
-            WizardStats.Instance.currentSpellSlots = test.currentSpellSlots;  
-        }
     }
 }
     public enum GameState

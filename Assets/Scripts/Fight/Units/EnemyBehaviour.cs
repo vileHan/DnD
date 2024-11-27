@@ -17,6 +17,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         outline = gameObject.GetComponent<Outline>();
+        unitStats.currentHealth = unitStats.maxHealth;
+        unitStats.currentSpellSlots = unitStats.maxSpellSlots;
     }
 
     // Update is called once per frame
@@ -82,7 +84,6 @@ public class EnemyBehaviour : MonoBehaviour
     public void DecideAction() // later stages make this switch case for differnt actions? or make enemy look if hp is low etc.
     {
         int actionIndex = Random.Range(0,6);
-        Debug.Log(actionIndex);
         if (actionIndex == 0)
         {
             unitStats.Heal();

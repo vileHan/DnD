@@ -16,6 +16,8 @@ public class RogueStats : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        currentHealth = maxHealth;
+        currentSpellSlots = maxSpellSlots;
     }
 
     // Update is called once per frame

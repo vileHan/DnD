@@ -40,11 +40,49 @@ public class RogueBehaviour : MonoBehaviour
         if (unitStats.isTurn)
         {
             outline.enabled = true;
+            if (Input.GetMouseButtonDown(0) && FightUIManager.Instance.heroAttacking)
+            {
+                HandleAttack();
+            }
         }
         else
         {
             outline.enabled = false;
         }
+    }
+
+    void HandleAttack()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Check if the raycast hits an enemy
+            EnemyBehaviour targetEnemy = hit.collider.GetComponent<EnemyBehaviour>();
+            if (targetEnemy != null)
+            {
+                AttackEnemy(targetEnemy);
+            }
+            else
+            {
+                Debug.Log("no enemy selected");
+            }
+        }
+    }
+    void AttackEnemy(EnemyBehaviour enemy)
+    {
+        Debug.Log(enemy.name);
+
+        // Deal damage to the enemy
+        enemy.unitStats.TakeDamage(unitStats.damage);
+        
+        EndTurn();
+    }
+    void EndTurn()
+    {
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        FightUIManager.Instance.heroAttacking = false;
     }
 
     void SetStats() // make this a list or something

@@ -11,13 +11,13 @@ public class RogueBehaviour : MonoBehaviour
     void Awake()
     {
         SetStats();
-        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     void OnDestroy() 
     {
-        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
     }
-    private void GameManagerOnGameStateChanged(GameState state)
+    private void FightManagerOnGameStateChanged(GameState state)
     {
         if (state == GameState.FightWon)
         {

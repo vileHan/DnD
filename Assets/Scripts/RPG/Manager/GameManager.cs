@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneralGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static GeneralGameManager Instance;
+    public static GameManager Instance;
 
     [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player;
 

@@ -224,7 +224,8 @@ MonoBehaviour:
   currentSpellSlots: 2
   isTurn: 0
   ableToAttack: 0
-  healModifier: 0
+  healModifier: 2
+  isAlive: 0
   initiative: 0
 --- !u!114 &-6374287108664459971
 MonoBehaviour:

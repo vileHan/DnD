@@ -24,13 +24,13 @@ public class FightUIManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     void OnDestroy() 
     {
-        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
     }
-    private void GameManagerOnGameStateChanged(GameState state)
+    private void FightManagerOnGameStateChanged(GameState state)
     {
         ChooseActionPanel.SetActive(state == GameState.ChooseAction);
         if (state == GameState.ChooseAction)        
@@ -66,7 +66,7 @@ public class FightUIManager : MonoBehaviour
             unitToActStats.currentSpellSlots--;
             unitToActStats.Heal();
             ChooseActionPanel.SetActive(false);
-            GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+            FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
         }
         else
         {
@@ -80,7 +80,7 @@ public class FightUIManager : MonoBehaviour
     public void HandleUseItem()
     {
         Debug.Log("Choose Item!");
-        GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
     public void UseItemPressed()
     {

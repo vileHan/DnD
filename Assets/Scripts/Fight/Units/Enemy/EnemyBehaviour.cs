@@ -60,7 +60,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         DecideAction();
 
-        GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
 
     public void Attack()
@@ -77,7 +77,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void EndTurn()
     {
-        GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
         FightUIManager.Instance.heroAttacking = false;
     }
     public void DecideAction() // later stages make this switch case for differnt actions? or make enemy look if hp is low etc.

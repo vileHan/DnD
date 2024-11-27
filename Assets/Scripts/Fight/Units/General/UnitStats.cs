@@ -22,19 +22,19 @@ public class UnitStats : MonoBehaviour
 
     void Awake()
     {
-        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     void OnDestroy() 
     {
-        GameManager.OnGameStateChanged -= GameManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
     }
-    private void GameManagerOnGameStateChanged(GameState state) //put able to attack somewhere here
+    private void FightManagerOnGameStateChanged(GameState state) //put able to attack somewhere here
     {
         if (isTurn && state == GameState.ExecuteUnitTurn)
         {
             if (gameObject.tag == "Player")
             {
-                GameManager.Instance.UpdateGameState(GameState.ChooseAction);
+                FightManager.Instance.UpdateGameState(GameState.ChooseAction);
             }
             else if (gameObject.tag == "Enemy")
             {

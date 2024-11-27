@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class FightManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static FightManager Instance;
     public GameState State;
 
     private int dictionaryIndex = 0;
@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
 
     public UnitStats activeUnitStats;
     public float attackingUnitDamage;
+
+    private EnemyHandler enemyHandler;
+    private HeroHandler heroHandler;
     void Awake()
     {
         Instance = this;
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        enemyHandler = GameObject.FindGameObjectWithTag("EnemyHandler").GetComponent<EnemyHandler>();
+        heroHandler = GameObject.FindGameObjectWithTag("HeroHandler").GetComponent<HeroHandler>();
         UpdateGameState(GameState.BattleSetUp);
     }
 
@@ -67,8 +72,7 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        EnemyHandler enemyHandler = GameObject.FindGameObjectWithTag("EnemyHandler").GetComponent<EnemyHandler>();
-        HeroHandler heroHandler = GameObject.FindGameObjectWithTag("HeroHandler").GetComponent<HeroHandler>();
+        
         while (!heroHandler.heroesSpawned || !enemyHandler.enemiesSpawned)
         {
             yield return null;
@@ -148,7 +152,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        GeneralGameManager.Instance.EnableRPGScene();
+        GameManager.Instance.EnableRPGScene();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

@@ -31,7 +31,7 @@ public class PortalBehaviour : MonoBehaviour
     public void LoadFightScene()
     {
         isPortalEntered = false;
-        GeneralGameManager.Instance.DisableRPGScene();
+        GameManager.Instance.DisableRPGScene();
         SceneManager.LoadScene(1, LoadSceneMode.Additive); // for future -> change gamestate in (general)gamemanager to whatever loads the fight scene
         //SceneManager.LoadScene(1, LoadSceneMode.Single);
     }

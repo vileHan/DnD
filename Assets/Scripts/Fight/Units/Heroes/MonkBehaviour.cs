@@ -10,6 +10,7 @@ public class MonkBehaviour : MonoBehaviour
 
     void Awake()
     {
+        SetStats();
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
     void OnDestroy() 
@@ -30,7 +31,6 @@ public class MonkBehaviour : MonoBehaviour
 
     void Start()
     {
-        SetStats();
         outline = gameObject.GetComponent<Outline>();
     }
 
@@ -55,10 +55,12 @@ public class MonkBehaviour : MonoBehaviour
         unitStats.maxSpellSlots = MonkStats.Instance.maxSpellSlots;
         unitStats.currentSpellSlots = MonkStats.Instance.currentSpellSlots;
         unitStats.healModifier = MonkStats.Instance.healModifier;
+        unitStats.isAlive = MonkStats.Instance.isAlive;
     }
     public void SaveStats() // make this a list or something
     {
         MonkStats.Instance.currentHealth = unitStats.currentHealth;   
         MonkStats.Instance.currentSpellSlots = unitStats.currentSpellSlots;  
+        MonkStats.Instance.isAlive = unitStats.isAlive;
     }
 }

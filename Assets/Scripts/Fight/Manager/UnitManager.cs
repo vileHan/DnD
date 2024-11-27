@@ -9,7 +9,6 @@ public class UnitManager : MonoBehaviour
     public Dictionary<GameObject, int> sortedUnitDictionary = new Dictionary<GameObject, int>();
     public List<GameObject> unitsAlive = new List<GameObject>();
     public List<GameObject> heroesAlive = new List<GameObject>();
-    public List<GameObject> heroesInTeam = new List<GameObject>();
     public List<GameObject> enemiesAlive = new List<GameObject>();
 
     public GameObject unitToAct;
@@ -33,16 +32,15 @@ public class UnitManager : MonoBehaviour
     
     public void RegisterHero(GameObject unit)
     {
-        if (!unitsAlive.Contains(unit)) // Avoid duplicates
+        if (!unitsAlive.Contains(unit)) // Avoid duplicates -> dpesnt work if only checks for 1
         {
-            heroesAlive.Add(unit);
-            unitsAlive.Add(unit);
-            heroesInTeam.Add(unit);
+            heroesAlive.Add(unit); // list of heroes alive in fight
+            unitsAlive.Add(unit); // list of all units alive in fight
         }
     }
     public void RegisterEnemy(GameObject unit)
     {
-        if (!unitsAlive.Contains(unit)) // Avoid duplicates
+        if (!unitsAlive.Contains(unit)) // Avoid duplicates -> dpesnt work if only checks for 1
         {
             enemiesAlive.Add(unit);
             unitsAlive.Add(unit);

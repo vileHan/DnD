@@ -9,7 +9,6 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private Outline outline;
     private UnitStats attackingUnitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
-    private HeroBehaviour heroBehaviour;
 
     private Color baseColor = new Color(1f, 1f, 1f, 1f);
     public bool mouseOverEnemy;

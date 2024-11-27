@@ -1925,11 +1925,11 @@ Transform:
   m_GameObject: {fileID: 1753572151}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0494075, y: 2.6891844, z: -3.8818486}
+  m_LocalPosition: {x: 8.974526, y: 0.017442942, z: 3.011881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1858196247}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774580357
 GameObject:
@@ -1997,6 +1997,7 @@ MonoBehaviour:
   - {fileID: 1630687460934488006, guid: a0e16409e3c0f6d47a411b268e2fef3c, type: 3}
   - {fileID: 1630687460934488006, guid: 27004f423d3b56c4a9a20cfe511e9742, type: 3}
   - {fileID: 1630687460934488006, guid: e3f43d6197b82274a9315400ea37bf86, type: 3}
+  enemyIndex: 0
   enemiesSpawned: 0
   spawnPositions:
   - {x: 9, y: 0.5, z: 5}
@@ -2049,7 +2050,6 @@ Transform:
   m_Children:
   - {fileID: 1475502543}
   - {fileID: 2088052281}
-  - {fileID: 1753572153}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1858745491
@@ -2464,6 +2464,7 @@ MonoBehaviour:
   unitToActStats: {fileID: 0}
   heroAttacking: 0
   damageNumberPrefab: {fileID: 6136087786575034926, guid: e80efed5d9d187945b823c2223f36c7e, type: 3}
+  healingNumberPrefab: {fileID: 6136087786575034926, guid: b42162df4e330dc4295b393bfa914049, type: 3}
   worldCanvas: {fileID: 1641599551}
 --- !u!4 &2088052281
 Transform:
@@ -2490,3 +2491,4 @@ SceneRoots:
   - {fileID: 1641599552}
   - {fileID: 1162910140}
   - {fileID: 1858196247}
+  - {fileID: 1753572153}

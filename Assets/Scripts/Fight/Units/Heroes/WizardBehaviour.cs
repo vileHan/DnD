@@ -10,6 +10,7 @@ public class WizardBehaviour : MonoBehaviour
 
     void Awake()
     {
+        SetStats();
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
     void OnDestroy() 
@@ -30,7 +31,6 @@ public class WizardBehaviour : MonoBehaviour
 
     void Start()
     {
-        SetStats();
         outline = gameObject.GetComponent<Outline>();
     }
 
@@ -55,10 +55,12 @@ public class WizardBehaviour : MonoBehaviour
         unitStats.maxSpellSlots = WizardStats.Instance.maxSpellSlots;
         unitStats.currentSpellSlots = WizardStats.Instance.currentSpellSlots;
         unitStats.healModifier = WizardStats.Instance.healModifier;
+        unitStats.isAlive = WizardStats.Instance.isAlive;
     }
     public void SaveStats() // make this a list or something
     {
         WizardStats.Instance.currentHealth = unitStats.currentHealth;   
         WizardStats.Instance.currentSpellSlots = unitStats.currentSpellSlots;  
+        WizardStats.Instance.isAlive = unitStats.isAlive;
     }
 }

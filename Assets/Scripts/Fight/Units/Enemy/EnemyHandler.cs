@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
-    private float enemyAmount = 1;
+    private float enemyAmount = 4;
     private float spawnDelay = 0.1f;
     public GameObject[] enemyPrefabs;
     //public List<GameObject> enemiesToSpawn = new List<GameObject>();

@@ -18,7 +18,7 @@ public class FightUIManager : MonoBehaviour
     public static event Action<ActionState> OnActionState;
     public bool heroAttacking;
 
-    public GameObject damageNumberPrefab;
+    public GameObject damageNumberPrefab, healingNumberPrefab;
     public Canvas worldCanvas;
 
     void Awake()
@@ -120,6 +120,23 @@ public class FightUIManager : MonoBehaviour
         Vector3 worldPosition = unit; // Adjust position above the unit (unit.transform.position+Vector.up) to show number above unit
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
         damageNumberObject.transform.position = screenPosition;
+
+        // Optional: Add animations, e.g., fading out or moving upward
+        damageNumber.Animate();
+    }
+    public void ShowHealingNumber(Vector3 unit, float damageAmount)
+    {
+        // Instantiate a damage number prefab
+        GameObject healingNumberObject = Instantiate(healingNumberPrefab, worldCanvas.transform);
+
+        // Set the text to display the damage amount
+        DamageNumber damageNumber = healingNumberObject.GetComponent<DamageNumber>();
+        damageNumber.SetDamageText(damageAmount);
+
+        // Position the damage number on the unit
+        Vector3 worldPosition = unit; // Adjust position above the unit (unit.transform.position+Vector.up) to show number above unit
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
+        healingNumberObject.transform.position = screenPosition;
 
         // Optional: Add animations, e.g., fading out or moving upward
         damageNumber.Animate();

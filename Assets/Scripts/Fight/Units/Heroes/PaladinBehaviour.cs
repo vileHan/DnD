@@ -10,6 +10,7 @@ public class PaladinBehaviour : MonoBehaviour
 
     void Awake()
     {
+        SetStats();
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
     void OnDestroy() 
@@ -30,7 +31,6 @@ public class PaladinBehaviour : MonoBehaviour
 
     void Start()
     {
-        SetStats();
         outline = gameObject.GetComponent<Outline>();
     }
 
@@ -55,10 +55,12 @@ public class PaladinBehaviour : MonoBehaviour
         unitStats.maxSpellSlots = PaladinStats.Instance.maxSpellSlots;
         unitStats.currentSpellSlots = PaladinStats.Instance.currentSpellSlots;
         unitStats.healModifier = PaladinStats.Instance.healModifier;
+        unitStats.isAlive = PaladinStats.Instance.isAlive;
     }
     public void SaveStats() // make this a list or something
     {
         PaladinStats.Instance.currentHealth = unitStats.currentHealth;   
         PaladinStats.Instance.currentSpellSlots = unitStats.currentSpellSlots;  
+        PaladinStats.Instance.isAlive = unitStats.isAlive;
     }
 }

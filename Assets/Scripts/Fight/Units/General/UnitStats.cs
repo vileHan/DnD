@@ -16,6 +16,7 @@ public class UnitStats : MonoBehaviour
     public bool isTurn; 
     public bool ableToAttack;
     public float healModifier;
+    public bool isAlive;
 
     public int initiative;
 
@@ -71,6 +72,7 @@ public class UnitStats : MonoBehaviour
         if (gameObject.tag == "Player")
         {
             gameObject.SetActive(false);
+            isAlive = false;
         }
         else
         {
@@ -96,6 +98,6 @@ public class UnitStats : MonoBehaviour
             currentHealth = maxHealth;
         }
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
-        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, healthHealed);
+        FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
     }
 }

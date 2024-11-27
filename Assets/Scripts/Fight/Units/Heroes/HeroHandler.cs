@@ -14,7 +14,15 @@ public class HeroHandler : MonoBehaviour
         for(int i = 0; i < heroAmount; i++)
         {
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);
-            UnitManager.Instance.RegisterHero(hero);
+            UnitStats unitStats = hero.GetComponent<UnitStats>();      
+            if (!unitStats.isAlive)
+            {
+                hero.SetActive(false);
+            }      
+            else
+            {
+                UnitManager.Instance.RegisterHero(hero); 
+            }
         }
         heroesSpawned = true;
     }
@@ -23,13 +31,5 @@ public class HeroHandler : MonoBehaviour
     void Update()
     {
         
-    }
-    public void SpawnTest()
-    {
-        foreach (GameObject unit in UnitManager.Instance.unitsAlive)
-        {   
-            Debug.Log("Unit in scene: " + unit.name);
-        }
-
     }
 }

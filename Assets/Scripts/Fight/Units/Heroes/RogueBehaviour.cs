@@ -10,6 +10,7 @@ public class RogueBehaviour : MonoBehaviour
 
     void Awake()
     {
+        SetStats();
         GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
     }
     void OnDestroy() 
@@ -30,7 +31,6 @@ public class RogueBehaviour : MonoBehaviour
 
     void Start()
     {
-        SetStats();
         outline = gameObject.GetComponent<Outline>();
     }
 
@@ -55,10 +55,12 @@ public class RogueBehaviour : MonoBehaviour
         unitStats.maxSpellSlots = RogueStats.Instance.maxSpellSlots;
         unitStats.currentSpellSlots = RogueStats.Instance.currentSpellSlots;
         unitStats.healModifier = RogueStats.Instance.healModifier;
+        unitStats.isAlive = RogueStats.Instance.isAlive;
     }
     public void SaveStats() // make this a list or something
     {
         RogueStats.Instance.currentHealth = unitStats.currentHealth;   
-        RogueStats.Instance.currentSpellSlots = unitStats.currentSpellSlots;  
+        RogueStats.Instance.currentSpellSlots = unitStats.currentSpellSlots; 
+        RogueStats.Instance.isAlive = unitStats.isAlive; 
     }
 }

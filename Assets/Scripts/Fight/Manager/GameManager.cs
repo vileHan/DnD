@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -139,8 +140,14 @@ public class GameManager : MonoBehaviour
     IEnumerator EndScreenTransition()
     {
         yield return new WaitForSecondsRealtime(1);
-        SceneManager.UnloadSceneAsync(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
+
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
+        while (!unloadOperation.isDone)
+        {
+            yield return null;
+        }
+
         GeneralGameManager.Instance.EnableRPGScene();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

@@ -131,30 +131,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 69926443}
-  - component: {fileID: 69926442}
+  - component: {fileID: 69926444}
   m_Layer: 0
-  m_Name: General Game Manager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &69926442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69926441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66ef45051245904eb58937e861ea08f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thirdPersonCamera: {fileID: 583398699}
-  eventSystem: {fileID: 1928292498}
-  cameraHolder: {fileID: 917750671}
-  player: {fileID: 327306141}
 --- !u!4 &69926443
 Transform:
   m_ObjectHideFlags: 0
@@ -170,6 +154,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1219485776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69926444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69926441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c71cccc3e16f4a4193c227bf313106d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thirdPersonCamera: {fileID: 583398699}
+  eventSystem: {fileID: 1928292498}
+  cameraHolder: {fileID: 917750671}
+  player: {fileID: 327306141}
 --- !u!1 &95635471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1806,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005684707}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1140734641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140734642}
+  m_Layer: 0
+  m_Name: PUT HANDLEATTACK ETC IN UNITSTATS MAYBE MAKE HEROSTATS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140734642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140734641}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1500, y: 60, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1219485775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3410,3 +3441,4 @@ SceneRoots:
   - {fileID: 1928292501}
   - {fileID: 583398701}
   - {fileID: 1219485776}
+  - {fileID: 1140734642}

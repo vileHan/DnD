@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RogueBehaviour : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class RogueBehaviour : MonoBehaviour
     void Awake()
     {
         SetStats();
+        FightUIManager.OnActionStateChanged += FightUIManagerOnActionStateChanged;
         FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     void OnDestroy() 
     {
-        FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
+        FightUIManager.OnActionStateChanged -= FightUIManagerOnActionStateChanged;
+        FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     private void FightManagerOnGameStateChanged(GameState state)
     {
@@ -26,6 +29,17 @@ public class RogueBehaviour : MonoBehaviour
         if (state == GameState.FightLost)
         {
             //pokecenter
+        }
+    }
+    private void FightUIManagerOnActionStateChanged(ActionState state)
+    {
+        if (state == ActionState.Attack)
+        {
+            FightManager.Instance.heroAttackingIndex = 1;
+        }
+        if (state == ActionState.Skill_2)
+        {
+            FightManager.Instance.heroAttackingIndex = 4;
         }
     }
 
@@ -40,7 +54,7 @@ public class RogueBehaviour : MonoBehaviour
         if (unitStats.isTurn)
         {
             outline.enabled = true;
-            if (Input.GetMouseButtonDown(0) && FightUIManager.Instance.heroAttacking)
+            if (Input.GetMouseButtonDown(0))
             {
                 HandleAttack();
             }
@@ -62,27 +76,46 @@ public class RogueBehaviour : MonoBehaviour
             EnemyBehaviour targetEnemy = hit.collider.GetComponent<EnemyBehaviour>();
             if (targetEnemy != null)
             {
-                AttackEnemy(targetEnemy);
+                switch(FightManager.Instance.heroAttackingIndex)
+                {
+                    case 0:
+                        Debug.Log("no action selected");
+                        break;
+                    case 1:
+                        Debug.Log("attack1 " + FightManager.Instance.heroAttackingIndex);
+                        AttackEnemy(targetEnemy);
+                        break;
+                    case 2:
+                        Debug.Log("attack2");
+                        break;
+                    case 3:
+                        Debug.Log("skill1");
+                        break;
+                    case 4:
+                        Skill_2AgainstEnemy(targetEnemy);
+                        Debug.Log("skill2");
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(FightManager.Instance.heroAttackingIndex), FightManager.Instance.heroAttackingIndex, null);
+                }
             }
             else
             {
                 Debug.Log("no enemy selected");
             }
+            Debug.Log("after attack");
         }
     }
     void AttackEnemy(EnemyBehaviour enemy)
     {
-        Debug.Log(enemy.name);
-
         // Deal damage to the enemy
         enemy.unitStats.TakeDamage(unitStats.damage);
         
-        EndTurn();
+        FightUIManager.Instance.HeroEndTurn();
     }
-    void EndTurn()
+    void Skill_2AgainstEnemy(EnemyBehaviour enemy)
     {
-        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
-        FightUIManager.Instance.heroAttacking = false;
+        enemy.unitStats.TakeDamage((unitStats.damage*2));
     }
 
     void SetStats() // make this a list or something

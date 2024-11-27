@@ -10,13 +10,14 @@ public class FightUIManager : MonoBehaviour
     public static FightUIManager Instance;
     
     public GameObject ChooseActionPanel, LostPanel, WonPanel;
-    [SerializeField] private Button attackButton, healButton, useItemButton;
+    [SerializeField] private Button attackButton, healButton, useItemButton, Skill_2Button;
 
     public UnitStats unitToActStats;
     
 //    public ActionChosen ActionChosen;
-    public static event Action<ActionState> OnActionState;
+    public static event Action<ActionState> OnActionStateChanged;
     public bool heroAttacking;
+    
 
     public GameObject damageNumberPrefab, healingNumberPrefab;
     public Canvas worldCanvas;
@@ -50,63 +51,7 @@ public class FightUIManager : MonoBehaviour
     {
         
     }
-    public void HandleAttack()
-    {        
-        heroAttacking = true; 
-        ChooseActionPanel.SetActive(false);
-    }
-    public void AttackPressed()
-    {
-        UpdateAction(ActionState.Attack);
-    }
-    public void HandleHeal()
-    {
-        if (unitToActStats.currentSpellSlots > 0)
-        {
-            unitToActStats.currentSpellSlots--;
-            unitToActStats.Heal();
-            ChooseActionPanel.SetActive(false);
-            FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
-        }
-        else
-        {
-            Debug.Log("Out of Spellslots!");
-        }
-    }
-    public void HealPressed()
-    {
-        UpdateAction(ActionState.Heal);
-    }
-    public void HandleUseItem()
-    {
-        Debug.Log("Choose Item!");
-        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
-    }
-    public void UseItemPressed()
-    {
-        UpdateAction(ActionState.UseItem);
-    }
-
-    public void UpdateAction(ActionState newAction)
-    {
-        OnActionState?.Invoke(newAction);
-
-        switch(newAction)
-        {
-            case ActionState.Attack:
-                HandleAttack();
-                break;
-            case ActionState.Heal:
-                HandleHeal();
-                break;
-            case ActionState.UseItem:
-                HandleUseItem();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(newAction), newAction, null);
-        }
-    }
-
+    
     public void ShowDamageNumber(Vector3 unit, float damageAmount)
     {
         // Instantiate a damage number prefab
@@ -141,11 +86,90 @@ public class FightUIManager : MonoBehaviour
         // Optional: Add animations, e.g., fading out or moving upward
         damageNumber.Animate();
     }
+
+    public void UpdateAction(ActionState newAction)
+    {
+        OnActionStateChanged?.Invoke(newAction);
+
+        switch(newAction)
+        {
+            case ActionState.Attack:
+                HandleAttack();
+                break;
+            case ActionState.Heal:
+                HandleHeal();
+                break;
+            case ActionState.Skill_2:
+                HandleSkill_2();
+                break;
+            case ActionState.UseItem:
+                HandleUseItem();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newAction), newAction, null);
+        }
+    }
+
+    public void AttackPressed()
+    {
+        UpdateAction(ActionState.Attack);
+    }
+    public void HandleAttack()
+    {        
+        ChooseActionPanel.SetActive(false);
+    }
+
+    public void HealPressed()
+    {
+        UpdateAction(ActionState.Heal);
+    }
+    public void HandleHeal()
+    {
+        if (unitToActStats.currentSpellSlots > 0)
+        {
+            unitToActStats.currentSpellSlots--;
+            unitToActStats.Heal();
+            ChooseActionPanel.SetActive(false);
+            FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+
+    public void Skill_2Pressed()
+    {
+        UpdateAction(ActionState.Skill_2);
+    }
+    public void HandleSkill_2()
+    {
+
+    }
+
+    public void UseItemPressed()
+    {
+        UpdateAction(ActionState.UseItem);
+    }
+    public void HandleUseItem()
+    {
+        Debug.Log("Choose Item!");
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+    }
+    
+
+    
+    public void HeroEndTurn()
+    {
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        
+    }
 }
     public enum ActionState
     {
         Attack,
         Heal,
+        Skill_2,
         UseItem
     }
     

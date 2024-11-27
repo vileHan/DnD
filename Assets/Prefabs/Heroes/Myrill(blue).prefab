@@ -401,11 +401,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6854552551087730524}
   - component: {fileID: 1225737636573229646}
-  - component: {fileID: 1060697298687153341}
   - component: {fileID: 7195766334972467136}
+  - component: {fileID: 1060697298687153341}
   - component: {fileID: 7968626551505285878}
   m_Layer: 0
-  m_Name: Hero(blue)
+  m_Name: Myrill(blue)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,6 +458,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &7195766334972467136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c497efead62772541a9580e08047529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitStats: {fileID: 1060697298687153341}
+  outline: {fileID: 0}
 --- !u!114 &1060697298687153341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,25 +489,12 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   damage: 2
-  initiative: 0
-  spellSlots: 1
+  maxSpellSlots: 0
+  currentSpellSlots: 0
   isTurn: 0
   ableToAttack: 0
   healModifier: 5
---- !u!114 &7195766334972467136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063272253184979719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c497efead62772541a9580e08047529c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitStats: {fileID: 1060697298687153341}
-  outline: {fileID: 0}
+  initiative: 0
 --- !u!114 &7968626551505285878
 MonoBehaviour:
   m_ObjectHideFlags: 0

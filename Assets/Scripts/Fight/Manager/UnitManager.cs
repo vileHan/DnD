@@ -9,6 +9,7 @@ public class UnitManager : MonoBehaviour
     public Dictionary<GameObject, int> sortedUnitDictionary = new Dictionary<GameObject, int>();
     public List<GameObject> unitsAlive = new List<GameObject>();
     public List<GameObject> heroesAlive = new List<GameObject>();
+    public List<GameObject> heroesInTeam = new List<GameObject>();
     public List<GameObject> enemiesAlive = new List<GameObject>();
 
     public GameObject unitToAct;
@@ -36,6 +37,7 @@ public class UnitManager : MonoBehaviour
         {
             heroesAlive.Add(unit);
             unitsAlive.Add(unit);
+            heroesInTeam.Add(unit);
         }
     }
     public void RegisterEnemy(GameObject unit)

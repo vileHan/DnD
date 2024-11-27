@@ -61,9 +61,9 @@ public class FightUIManager : MonoBehaviour
     }
     public void HandleHeal()
     {
-        if (unitToActStats.spellSlots > 0)
+        if (unitToActStats.currentSpellSlots > 0)
         {
-            unitToActStats.spellSlots--;
+            unitToActStats.currentSpellSlots--;
             unitToActStats.Heal();
             ChooseActionPanel.SetActive(false);
             GameManager.Instance.UpdateGameState(GameState.SelectUnitTurn);

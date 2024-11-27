@@ -22,7 +22,6 @@ public class PortalBehaviour : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision");
         if (other.gameObject.tag == "Player")
         {
             isPortalEntered = true;

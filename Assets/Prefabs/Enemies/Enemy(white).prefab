@@ -202,12 +202,13 @@ MonoBehaviour:
   damageNumber: {fileID: 5684510391089789081}
   maxHealth: 10
   currentHealth: 0
-  damage: 4
-  initiative: 0
-  spellSlots: 0
+  damage: 1
+  maxSpellSlots: 0
+  currentSpellSlots: 0
   isTurn: 0
   ableToAttack: 0
   healModifier: 2
+  initiative: 0
 --- !u!114 &8007012558261916210
 MonoBehaviour:
   m_ObjectHideFlags: 0

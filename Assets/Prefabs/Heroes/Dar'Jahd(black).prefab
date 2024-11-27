@@ -371,11 +371,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6854552551087730524}
   - component: {fileID: 1225737636573229646}
-  - component: {fileID: -8234640966500835559}
   - component: {fileID: -1180084212531554634}
+  - component: {fileID: -8234640966500835559}
   - component: {fileID: -2639053243159495139}
   m_Layer: 0
-  m_Name: Hero(black)
+  m_Name: Dar'Jahd(black)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,28 +428,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &-8234640966500835559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063272253184979719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d59cf691e8f8c448a2d8b20d5317e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbarHandler: {fileID: 4088872561836032422}
-  damageNumber: {fileID: 1210785580219563149}
-  maxHealth: 10
-  currentHealth: 0
-  damage: 4
-  initiative: 0
-  spellSlots: 1
-  isTurn: 0
-  ableToAttack: 0
-  healModifier: 5
 --- !u!114 &-1180084212531554634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +442,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitStats: {fileID: -8234640966500835559}
   outline: {fileID: 0}
+--- !u!114 &-8234640966500835559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d59cf691e8f8c448a2d8b20d5317e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbarHandler: {fileID: 4088872561836032422}
+  damageNumber: {fileID: 1210785580219563149}
+  maxHealth: 11
+  currentHealth: 0
+  damage: 4
+  maxSpellSlots: 0
+  currentSpellSlots: 0
+  isTurn: 0
+  ableToAttack: 0
+  healModifier: 5
+  initiative: 0
 --- !u!114 &-2639053243159495139
 MonoBehaviour:
   m_ObjectHideFlags: 0

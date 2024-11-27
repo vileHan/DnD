@@ -11,11 +11,13 @@ public class UnitStats : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float damage;
-    public int initiative;
-    public int spellSlots;
+    public int maxSpellSlots;
+    public int currentSpellSlots;
     public bool isTurn; 
     public bool ableToAttack;
     public float healModifier;
+
+    public int initiative;
 
     void Awake()
     {
@@ -45,7 +47,12 @@ public class UnitStats : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        if (gameObject.tag == "Enemy")
+        {
+            currentHealth = maxHealth;
+            currentSpellSlots = maxSpellSlots;
+        }
+        
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
         initiative = Random.Range(1, 21);
     }
@@ -69,7 +76,15 @@ public class UnitStats : MonoBehaviour
     {
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
-        Destroy(gameObject);
+        if (gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
     public void Heal()
     {
@@ -91,5 +106,4 @@ public class UnitStats : MonoBehaviour
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
         FightUIManager.Instance.ShowDamageNumber(damageNumber.position, healthHealed);
     }
-        
 }

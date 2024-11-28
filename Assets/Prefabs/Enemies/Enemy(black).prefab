@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarHandler: {fileID: 2627603546658982722}
+  behaviour: {fileID: 8007012558261916210}
   damageNumber: {fileID: 341355489138686338}
   maxHealth: 7
   currentHealth: 0

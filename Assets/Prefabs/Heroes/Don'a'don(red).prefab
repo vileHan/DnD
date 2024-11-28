@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarHandler: {fileID: 4802376778634274114}
+  behaviour: {fileID: 428041191016797720}
   damageNumber: {fileID: 7148065346450064423}
   maxHealth: 10
   currentHealth: 0
@@ -495,6 +496,7 @@ MonoBehaviour:
   isTurn: 0
   ableToAttack: 0
   healModifier: 5
+  isAlive: 0
   initiative: 0
 --- !u!114 &7388004715140180007
 MonoBehaviour:

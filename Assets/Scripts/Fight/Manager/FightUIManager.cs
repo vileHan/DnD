@@ -162,7 +162,6 @@ public class FightUIManager : MonoBehaviour
     public void HeroEndTurn()
     {
         FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
-        
     }
 }
     public enum ActionState

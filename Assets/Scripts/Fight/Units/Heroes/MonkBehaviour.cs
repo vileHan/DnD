@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonkBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private UnitStats unitStats;
-
+    private int timesAttacked = 1;
     void Awake()
     {
         SetStats();
@@ -52,15 +52,20 @@ public class MonkBehaviour : BaseHeroBehaviour
     public override void Spell_1AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
-
+        
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2AgainstEnemy(EnemyBehaviour enemy)
-    {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
-        unitStats.currentSpellSlots -= 1;
+    {        
+        int attackPerTurn = 2;
+        if (timesAttacked == attackPerTurn)
+        {
+            unitStats.currentSpellSlots -= 1;
 
-        FightManager.Instance.HeroEndTurn();
+            FightManager.Instance.HeroEndTurn();
+        }
+        enemy.unitStats.TakeDamage((unitStats.damage));
+        timesAttacked++;
     }
     public override void Spell_3AgainstEnemy(EnemyBehaviour enemy)
     {

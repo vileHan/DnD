@@ -57,7 +57,11 @@ public class WizardBehaviour : BaseHeroBehaviour
     }
     public override void Spell_2AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        for (int i = 0; i < UnitManager.Instance.enemiesAlive.Count; i++)
+        {
+            UnitStats targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<UnitStats>();
+            targetStats.TakeDamage((int)(unitStats.damage/2));
+        }
         unitStats.currentSpellSlots -= 1;
 
         FightManager.Instance.HeroEndTurn();

@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonkStats : MonoBehaviour
+public abstract class BaseHeroStats : MonoBehaviour
 {
-    public static MonkStats Instance;
+    public static BaseHeroStats Instance;
+
     public float maxHealth;
     public float currentHealth;
     public float damage;

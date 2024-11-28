@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c359d30191c78a4b8a76a34cfb45db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroAttackingIndex: 0
   Renderer: {fileID: 7602886781770976699}
   unitStats: {fileID: 7500590939087225329}
   outline: {fileID: 0}
@@ -217,12 +218,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarHandler: {fileID: 2627603546658982722}
   behaviour: {fileID: 8007012558261916210}
+  outline: {fileID: 0}
   damageNumber: {fileID: 5684510391089789081}
-  maxHealth: 10
+  maxHealth: 100
   currentHealth: 0
-  damage: 1
+  damage: 10
   maxSpellSlots: 0
   currentSpellSlots: 0
+  spellCost: 0
   isTurn: 0
   ableToAttack: 0
   healModifier: 2

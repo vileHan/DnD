@@ -13,8 +13,6 @@ public class FightManager : MonoBehaviour
 
     private int dictionaryIndex = 0;
 
-    public int heroAttackingIndex;
-
     public static event Action<GameState> OnGameStateChanged;
 
     public UnitStats activeUnitStats;
@@ -121,7 +119,6 @@ public class FightManager : MonoBehaviour
     }
     void SelectUnitTurn()
     {
-        heroAttackingIndex = 0;
         if (activeUnitStats != null)
         {
             activeUnitStats.isTurn = false;
@@ -158,6 +155,11 @@ public class FightManager : MonoBehaviour
         GameManager.Instance.EnableRPGScene();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void HeroEndTurn()
+    {
+        UpdateGameState(GameState.SelectUnitTurn);
     }
 }
     public enum GameState

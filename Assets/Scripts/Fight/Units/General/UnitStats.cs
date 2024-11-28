@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class UnitStats : MonoBehaviour
+public class UnitStats: MonoBehaviour
 {
 
     [SerializeField]private HealthbarHandler healthbarHandler;
     [SerializeField]private BaseHeroBehaviour behaviour;
+
+    [SerializeField] private Outline outline;
+
     public Transform damageNumber;
 
     public float maxHealth;
@@ -15,6 +18,7 @@ public class UnitStats : MonoBehaviour
     public float damage;
     public int maxSpellSlots;
     public int currentSpellSlots;
+    public int spellCost;
     public bool isTurn; 
     public bool ableToAttack;
     public float healModifier;
@@ -25,13 +29,23 @@ public class UnitStats : MonoBehaviour
     void Awake()
     {
         FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
+        FightUIManager.OnActionStateChanged += FightUIManagerOnActionStateChanged;
     }
     void OnDestroy() 
     {
         FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
+        FightUIManager.OnActionStateChanged -= FightUIManagerOnActionStateChanged;
     }
     private void FightManagerOnGameStateChanged(GameState state) //put able to attack somewhere here
     {
+        if (state == GameState.FightLost)
+        {
+            //pokecenter
+        }
+        if (isTurn && state == GameState.SelectUnitTurn)
+        {
+            behaviour.ResetAttackIndex();
+        }
         if (isTurn && state == GameState.ExecuteUnitTurn)
         {
             if (gameObject.tag == "Player")
@@ -46,21 +60,39 @@ public class UnitStats : MonoBehaviour
         }
     }
 
+    private void FightUIManagerOnActionStateChanged(ActionState state)
+    {
+        if (isTurn && state == ActionState.PrimaryAttack)
+        {
+            behaviour.SetAttackIndex(1);
+        }
+        if (isTurn && state == ActionState.Spell_2)
+        {
+            behaviour.SetAttackIndex(4);
+        }
+    }
+
     void Start()
     {        
+        outline = gameObject.GetComponent<Outline>();
         healthbarHandler.SetHealthbar(maxHealth, currentHealth);
         initiative = UnityEngine.Random.Range(1, 21);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (isTurn)
+    {        
+        if (isTurn && gameObject.tag == "Player")
         {
+            outline.enabled = true;
             if (Input.GetMouseButtonDown(0))
             {
                 HandleAttack();
             }
+        }
+        else if (!isTurn && gameObject.tag == "Player")
+        {
+            outline.enabled = false;
         }
     }
 
@@ -75,45 +107,45 @@ public class UnitStats : MonoBehaviour
             EnemyBehaviour targetEnemy = hit.collider.GetComponent<EnemyBehaviour>();
             if (targetEnemy != null)
             {
-                switch(FightManager.Instance.heroAttackingIndex)
+                switch(behaviour.heroAttackingIndex)
                 {
                     case 0:
                         Debug.Log("no action selected");
                         break;
                     case 1:
-                        Debug.Log("attack1 " + FightManager.Instance.heroAttackingIndex);
+                        Debug.Log("attack1");
                         behaviour.PrimaryAttackEnemy(targetEnemy);
                         break;
                     case 2:
                         Debug.Log("attack2");
                         break;
                     case 3:
-                        Debug.Log("skill1");
+                        Debug.Log("Spell1");
                         break;
                     case 4:
-                        behaviour.Skill_2AgainstEnemy(targetEnemy);
-                        Debug.Log("skill2");
+                        behaviour.Spell_2AgainstEnemy(targetEnemy);
+                        Debug.Log("Spell2");
                         break;
                     case 5:
-                        Debug.Log("skill3");
+                        Debug.Log("Spell3");
                         break;
                     case 6:
-                        Debug.Log("skill4");
+                        Debug.Log("Spell4");
                         break;
                     case 7:
-                        Debug.Log("skill5");
+                        Debug.Log("Spell5");
                         break;
                     case 8:
-                        Debug.Log("skill6");
+                        Debug.Log("Spell6");
                         break;
                     case 9:
-                        Debug.Log("skill7");
+                        Debug.Log("Spell7");
                         break;
                     case 10:
-                        Debug.Log("skill8");
+                        Debug.Log("Spell8");
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException(nameof(FightManager.Instance.heroAttackingIndex), FightManager.Instance.heroAttackingIndex, null);
+                        throw new ArgumentOutOfRangeException(nameof(behaviour.heroAttackingIndex), behaviour.heroAttackingIndex, null);
                 }
             }
             else
@@ -167,5 +199,31 @@ public class UnitStats : MonoBehaviour
         }
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
         FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
+    }
+    public void HealTest()
+    {
+        float healthHealed = currentHealth + healModifier;
+        if (healthHealed > maxHealth)
+        {
+            healthHealed -= maxHealth;
+            healthHealed = healModifier - healthHealed;
+        }
+        else 
+        {
+            healthHealed = healModifier;
+        }
+        currentHealth += healModifier;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
+        FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
+    }
+
+    public int SpellCostCalculator()
+    {
+        spellCost = 2;
+        return spellCost;
     }
 }

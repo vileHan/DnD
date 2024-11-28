@@ -10,7 +10,7 @@ public class FightUIManager : MonoBehaviour
     public static FightUIManager Instance;
     
     public GameObject ChooseActionPanel, LostPanel, WonPanel;
-    [SerializeField] private Button attackButton, healButton, useItemButton, Skill_2Button;
+    [SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
 
     public UnitStats unitToActStats;
     
@@ -93,14 +93,14 @@ public class FightUIManager : MonoBehaviour
 
         switch(newAction)
         {
-            case ActionState.Attack:
-                HandleAttack();
+            case ActionState.PrimaryAttack:
+                HandlePrimaryAttack();
                 break;
             case ActionState.Heal:
                 HandleHeal();
                 break;
-            case ActionState.Skill_2:
-                HandleSkill_2();
+            case ActionState.Spell_2:
+                HandleSpell_2();
                 break;
             case ActionState.UseItem:
                 HandleUseItem();
@@ -110,41 +110,48 @@ public class FightUIManager : MonoBehaviour
         }
     }
 
-    public void AttackPressed()
+    public void PrimaryAttackPressed()
     {
-        UpdateAction(ActionState.Attack);
+        UpdateAction(ActionState.PrimaryAttack);
     }
-    public void HandleAttack()
+    public void HandlePrimaryAttack()
     {        
         ChooseActionPanel.SetActive(false);
     }
 
     public void HealPressed()
     {
-        UpdateAction(ActionState.Heal);
-    }
-    public void HandleHeal()
-    {
         if (unitToActStats.currentSpellSlots > 0)
         {
-            unitToActStats.currentSpellSlots--;
-            unitToActStats.Heal();
-            ChooseActionPanel.SetActive(false);
-            FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+            unitToActStats.currentSpellSlots -= 1;
+            UpdateAction(ActionState.Heal);
         }
         else
         {
             Debug.Log("Out of Spellslots!");
         }
     }
-
-    public void Skill_2Pressed()
+    public void HandleHeal()
     {
-        UpdateAction(ActionState.Skill_2);
+        unitToActStats.Heal();
+        ChooseActionPanel.SetActive(false);
+        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);        
     }
-    public void HandleSkill_2()
-    {
 
+    public void Spell_2Pressed()
+    {
+        if (HasSpellslots(unitToActStats.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_2);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_2()
+    {
+        ChooseActionPanel.SetActive(false);
     }
 
     public void UseItemPressed()
@@ -156,19 +163,24 @@ public class FightUIManager : MonoBehaviour
         Debug.Log("Choose Item!");
         FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
-    
 
-    
-    public void HeroEndTurn()
+    public bool HasSpellslots(int spellCost)
     {
-        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
+        if (unitToActStats.currentSpellSlots >= spellCost)
+        {
+            return true;
+        } 
+        else 
+        {
+            return false;
+        }
     }
 }
     public enum ActionState
     {
-        Attack,
+        PrimaryAttack,
         Heal,
-        Skill_2,
+        Spell_2,
         UseItem
     }
     

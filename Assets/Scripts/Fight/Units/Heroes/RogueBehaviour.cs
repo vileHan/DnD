@@ -7,58 +7,33 @@ public class RogueBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private UnitStats unitStats;
 
-    [SerializeField] private Outline outline;
-
     void Awake()
     {
         SetStats();
-        FightUIManager.OnActionStateChanged += FightUIManagerOnActionStateChanged;
         FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     void OnDestroy() 
     {
-        FightUIManager.OnActionStateChanged -= FightUIManagerOnActionStateChanged;
-        FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
+        FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
     }
+
     private void FightManagerOnGameStateChanged(GameState state)
     {
         if (state == GameState.FightWon)
         {
             SaveStats();
         }
-        if (state == GameState.FightLost)
-        {
-            //pokecenter
-        }
-    }
-    private void FightUIManagerOnActionStateChanged(ActionState state)
-    {
-        if (state == ActionState.Attack)
-        {
-            FightManager.Instance.heroAttackingIndex = 1;
-        }
-        if (state == ActionState.Skill_2)
-        {
-            FightManager.Instance.heroAttackingIndex = 4;
-        }
     }
 
     void Start()
     {
-        outline = gameObject.GetComponent<Outline>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (unitStats.isTurn)
-        {
-            outline.enabled = true;
-        }
-        else
-        {
-            outline.enabled = false;
-        }
+
     }
 
     public override void PrimaryAttackEnemy(EnemyBehaviour enemy)
@@ -66,62 +41,63 @@ public class RogueBehaviour : BaseHeroBehaviour
         // Deal damage to the enemy
         enemy.unitStats.TakeDamage(unitStats.damage);
 
-        FightUIManager.Instance.HeroEndTurn();        
+        FightManager.Instance.HeroEndTurn();        
     }
     public override void SecondaryAttackEnemy(EnemyBehaviour enemy)
     {
         // Deal damage to the enemy
         enemy.unitStats.TakeDamage(unitStats.damage);
 
-        FightUIManager.Instance.HeroEndTurn();        
+        FightManager.Instance.HeroEndTurn();        
     }
-    public override void Skill_1AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_1AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
-    public override void Skill_2AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_2AgainstEnemy(EnemyBehaviour enemy)
+    {
+        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        unitStats.currentSpellSlots -= 1;
+
+        FightManager.Instance.HeroEndTurn();
+    }
+    public override void Spell_3AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
-    public override void Skill_3AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_4AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
-    public override void Skill_4AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_5AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
-    public override void Skill_5AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_6AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
-    public override void Skill_6AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_7AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
-    public override void Skill_7AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_8AgainstEnemy(EnemyBehaviour enemy)
     {
         enemy.unitStats.TakeDamage((unitStats.damage*2));
 
-        FightUIManager.Instance.HeroEndTurn();
-    }
-    public override void Skill_8AgainstEnemy(EnemyBehaviour enemy)
-    {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
-
-        FightUIManager.Instance.HeroEndTurn();
+        FightManager.Instance.HeroEndTurn();
     }
 
     void SetStats() // make this a list or something

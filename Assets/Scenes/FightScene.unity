@@ -1486,7 +1486,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2088052280}
         m_TargetAssemblyTypeName: FightUIManager, Assembly-CSharp
-        m_MethodName: Skill_2Pressed
+        m_MethodName: Spell_2Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1787,7 +1787,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2088052280}
         m_TargetAssemblyTypeName: FightUIManager, Assembly-CSharp
-        m_MethodName: AttackPressed
+        m_MethodName: PrimaryAttackPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2690,6 +2690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5519b469f22f1dd45b1f4b8fb0f3de6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroAmount: 4
   heroPrefabs:
   - {fileID: 6063272253184979719, guid: bce385e7daf604b4d9ab96531b49d5ce, type: 3}
   - {fileID: 6063272253184979719, guid: 151e27a8ef0ca744e98773b7f89757f9, type: 3}
@@ -4003,7 +4004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  heroAttackingIndex: 0
   activeUnitStats: {fileID: 0}
   attackingUnitDamage: 0
 --- !u!4 &1753572153
@@ -4082,6 +4082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86db85866cc7d842b7c780888643fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAmount: 4
   enemyPrefabs:
   - {fileID: 1630687460934488006, guid: 51a9162b06eb4194585058649418661d, type: 3}
   - {fileID: 1630687460934488006, guid: a0e16409e3c0f6d47a411b268e2fef3c, type: 3}
@@ -4814,10 +4815,10 @@ MonoBehaviour:
   ChooseActionPanel: {fileID: 1686088838}
   LostPanel: {fileID: 306829555}
   WonPanel: {fileID: 528264767}
-  attackButton: {fileID: 623080652}
+  primaryAttackButton: {fileID: 0}
   healButton: {fileID: 1307887085}
   useItemButton: {fileID: 362939799}
-  Skill_2Button: {fileID: 0}
+  Spell_2Button: {fileID: 0}
   unitToActStats: {fileID: 0}
   heroAttacking: 0
   damageNumberPrefab: {fileID: 6136087786575034926, guid: e80efed5d9d187945b823c2223f36c7e, type: 3}

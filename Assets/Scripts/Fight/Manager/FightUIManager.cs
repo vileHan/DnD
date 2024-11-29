@@ -12,7 +12,7 @@ public class FightUIManager : MonoBehaviour
     public GameObject ChooseActionPanel, LostPanel, WonPanel;
     [SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
 
-    public UnitStats unitToActStats;
+    public HeroStats heroToAct;
     
 //    public ActionChosen ActionChosen;
     public static event Action<ActionState> OnActionStateChanged;
@@ -36,7 +36,7 @@ public class FightUIManager : MonoBehaviour
         ChooseActionPanel.SetActive(state == GameState.ChooseAction);
         if (state == GameState.ChooseAction)        
         {
-            unitToActStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();
+            heroToAct = FightManager.Instance.unitToAct.GetComponent<HeroStats>();
         }
         WonPanel.SetActive(state == GameState.FightWon);
         LostPanel.SetActive(state == GameState.FightLost);
@@ -121,9 +121,9 @@ public class FightUIManager : MonoBehaviour
 
     public void HealPressed()
     {
-        if (unitToActStats.currentSpellSlots > 0)
+        if (heroToAct.currentSpellSlots > 0)
         {
-            unitToActStats.currentSpellSlots -= 1;
+            heroToAct.currentSpellSlots -= 1;
             UpdateAction(ActionState.Heal);
         }
         else
@@ -133,14 +133,14 @@ public class FightUIManager : MonoBehaviour
     }
     public void HandleHeal()
     {
-        unitToActStats.Heal();
+        heroToAct.Heal();
         ChooseActionPanel.SetActive(false);
         FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);        
     }
 
     public void Spell_2Pressed()
     {
-        if (HasSpellslots(unitToActStats.SpellCostCalculator()))
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
         {
             UpdateAction(ActionState.Spell_2);
         }
@@ -166,7 +166,7 @@ public class FightUIManager : MonoBehaviour
 
     public bool HasSpellslots(int spellCost)
     {
-        if (unitToActStats.currentSpellSlots >= spellCost)
+        if (heroToAct.currentSpellSlots >= spellCost)
         {
             return true;
         } 

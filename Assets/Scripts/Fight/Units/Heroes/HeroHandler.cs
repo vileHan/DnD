@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeroHandler : MonoBehaviour
 {
-    [SerializeField]private int heroAmount = 1;
+    private int heroAmount = 4;
     public GameObject[] heroPrefabs;
     [SerializeField]private Vector3[] spawnPositions;
     public bool heroesSpawned;
@@ -14,8 +14,9 @@ public class HeroHandler : MonoBehaviour
         for(int i = 0; i < heroAmount; i++)
         {
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);
-            UnitStats unitStats = hero.GetComponent<UnitStats>();      
-            if (!unitStats.isAlive)
+            Debug.Log(hero.name);
+            HeroStats heroStats = hero.GetComponent<HeroStats>();      
+            if (!heroStats.isAlive)
             {
                 hero.SetActive(false);
             }      

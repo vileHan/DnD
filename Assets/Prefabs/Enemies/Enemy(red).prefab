@@ -217,8 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarHandler: {fileID: 2627603546658982722}
-  behaviour: {fileID: 8007012558261916210}
-  outline: {fileID: 0}
   damageNumber: {fileID: 5875083682632670730}
   maxHealth: 80
   currentHealth: 0
@@ -228,7 +226,7 @@ MonoBehaviour:
   spellCost: 0
   isTurn: 0
   ableToAttack: 0
-  healModifier: 2
+  healModifier: 20
   isAlive: 0
   initiative: 0
 --- !u!114 &-1471927178564525681

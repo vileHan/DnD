@@ -402,8 +402,8 @@ GameObject:
   - component: {fileID: 6854552551087730524}
   - component: {fileID: 1225737636573229646}
   - component: {fileID: 1077670136456510925}
-  - component: {fileID: 1060697298687153341}
   - component: {fileID: 7968626551505285878}
+  - component: {fileID: -2790246407801934295}
   m_Layer: 0
   m_Name: Myrill(blue)
   m_TagString: Player
@@ -470,33 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081ec379fb62a4e9e201476ac07bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStats: {fileID: 1060697298687153341}
-  outline: {fileID: 0}
---- !u!114 &1060697298687153341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063272253184979719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d59cf691e8f8c448a2d8b20d5317e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbarHandler: {fileID: 4837993779882536630}
-  behaviour: {fileID: 1077670136456510925}
-  damageNumber: {fileID: 1235231043331081285}
-  maxHealth: 10
-  currentHealth: 0
-  damage: 2
-  maxSpellSlots: 0
-  currentSpellSlots: 0
-  isTurn: 0
-  ableToAttack: 0
-  healModifier: 5
-  isAlive: 0
-  initiative: 0
+  heroAttackingIndex: 0
+  heroStats: {fileID: -2790246407801934295}
 --- !u!114 &7968626551505285878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +490,33 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-2790246407801934295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbarHandler: {fileID: 4837993779882536630}
+  behaviour: {fileID: 1077670136456510925}
+  outline: {fileID: 0}
+  damageNumber: {fileID: 1235231043331081285}
+  maxHealth: 0
+  currentHealth: 0
+  damage: 0
+  maxSpellSlots: 0
+  currentSpellSlots: 0
+  spellCost: 0
+  isTurn: 0
+  ableToAttack: 0
+  healModifier: 0
+  isAlive: 0
+  initiative: 0
 --- !u!1 &6237127175292526706
 GameObject:
   m_ObjectHideFlags: 0

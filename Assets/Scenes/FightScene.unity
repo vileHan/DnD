@@ -2690,7 +2690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5519b469f22f1dd45b1f4b8fb0f3de6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroAmount: 4
   heroPrefabs:
   - {fileID: 6063272253184979719, guid: bce385e7daf604b4d9ab96531b49d5ce, type: 3}
   - {fileID: 6063272253184979719, guid: 151e27a8ef0ca744e98773b7f89757f9, type: 3}
@@ -3379,7 +3378,7 @@ MonoBehaviour:
   unitsAlive: []
   heroesAlive: []
   enemiesAlive: []
-  unitToAct: {fileID: 0}
+  heroToAct: {fileID: 0}
 --- !u!1 &1593091211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4004,8 +4003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  activeUnitStats: {fileID: 0}
-  attackingUnitDamage: 0
+  activeHeroStats: {fileID: 0}
 --- !u!4 &1753572153
 Transform:
   m_ObjectHideFlags: 0
@@ -4601,7 +4599,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1475502544}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DeleteAllUnitsLeft
+        m_MethodName: DisplayDicionary
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4819,7 +4817,7 @@ MonoBehaviour:
   healButton: {fileID: 1307887085}
   useItemButton: {fileID: 362939799}
   Spell_2Button: {fileID: 0}
-  unitToActStats: {fileID: 0}
+  heroToAct: {fileID: 0}
   heroAttacking: 0
   damageNumberPrefab: {fileID: 6136087786575034926, guid: e80efed5d9d187945b823c2223f36c7e, type: 3}
   healingNumberPrefab: {fileID: 6136087786575034926, guid: b42162df4e330dc4295b393bfa914049, type: 3}

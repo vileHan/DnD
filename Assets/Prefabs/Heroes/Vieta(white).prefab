@@ -362,8 +362,8 @@ GameObject:
   - component: {fileID: 6854552551087730524}
   - component: {fileID: 1225737636573229646}
   - component: {fileID: -5539893767524381855}
-  - component: {fileID: 8539907821363412148}
   - component: {fileID: 8407723632709683945}
+  - component: {fileID: -7918679939910750252}
   m_Layer: 0
   m_Name: Vieta(white)
   m_TagString: Player
@@ -430,33 +430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01778830eada0f74195d540b439005df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitStats: {fileID: 8539907821363412148}
-  outline: {fileID: 0}
---- !u!114 &8539907821363412148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063272253184979719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d59cf691e8f8c448a2d8b20d5317e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbarHandler: {fileID: 6124859309311616676}
-  behaviour: {fileID: -5539893767524381855}
-  damageNumber: {fileID: 8196629711034460508}
-  maxHealth: 10
-  currentHealth: 0
-  damage: 1
-  maxSpellSlots: 0
-  currentSpellSlots: 0
-  isTurn: 0
-  ableToAttack: 0
-  healModifier: 5
-  isAlive: 0
-  initiative: 0
+  heroAttackingIndex: 0
+  heroStats: {fileID: -7918679939910750252}
 --- !u!114 &8407723632709683945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +450,33 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-7918679939910750252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbarHandler: {fileID: 6124859309311616676}
+  behaviour: {fileID: -5539893767524381855}
+  outline: {fileID: 0}
+  damageNumber: {fileID: 8196629711034460508}
+  maxHealth: 0
+  currentHealth: 0
+  damage: 0
+  maxSpellSlots: 0
+  currentSpellSlots: 0
+  spellCost: 0
+  isTurn: 0
+  ableToAttack: 0
+  healModifier: 0
+  isAlive: 0
+  initiative: 0
 --- !u!1 &8726741512485210667
 GameObject:
   m_ObjectHideFlags: 0

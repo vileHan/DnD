@@ -11,8 +11,6 @@ public class UnitManager : MonoBehaviour
     public List<GameObject> heroesAlive = new List<GameObject>();
     public List<GameObject> enemiesAlive = new List<GameObject>();
 
-    public GameObject unitToAct;
-
     public static UnitManager Instance;
     
     void Awake()
@@ -73,30 +71,35 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void AssignInitiative()
+    public void AssignInitiative() // !!
     {
         for (int i = 0; i < unitsAlive.Count; i++)
         {
             GameObject unit = unitsAlive[i];
-            UnitStats unitStats = unit.GetComponent<UnitStats>();
-            unitDictionary.Add(unitsAlive[i], unitStats.initiative);
-        }        
+            if (unit.tag == "Player")
+            {
+                HeroStats unitStats = unit.GetComponent<HeroStats>();
+                unitDictionary.Add(unitsAlive[i], unitStats.initiative);
+            }
+            if (unit.tag != "Player")
+            {
+                UnitStats unitStats = unit.GetComponent<UnitStats>();
+                unitDictionary.Add(unitsAlive[i], unitStats.initiative);
+            }
+        } 
+        SortDicionary();
+        DisplayDicionary();
     }
 
     public void SortDicionary()
     {
         unitDictionary = unitDictionary.OrderByDescending(key => key.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
-
-        // foreach (KeyValuePair<GameObject, int> sortedUnit in unitDictionary)
-        // {
-        //     Debug.Log(sortedUnit.Value + " " + sortedUnit.Key.name);            
-        // }
     }
     public void DisplayDicionary()
     {
         foreach (KeyValuePair<GameObject, int> sortedUnit in unitDictionary)
         {
-            Debug.Log(sortedUnit.Value + " " + sortedUnit.Key.name);            
+            Debug.Log("Dictionary: " + sortedUnit.Value + " " + sortedUnit.Key.name);            
         }
     }
 }

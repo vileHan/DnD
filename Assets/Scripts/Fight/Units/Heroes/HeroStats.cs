@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class UnitStats: MonoBehaviour
+public class HeroStats: MonoBehaviour
 {
 
     [SerializeField]private HealthbarHandler healthbarHandler;
@@ -46,17 +46,9 @@ public class UnitStats: MonoBehaviour
         {
             behaviour.ResetAttackIndex();
         }
-        if (isTurn && state == GameState.ExecuteUnitTurn)
+        if (isTurn && state == GameState.ExecuteHeroTurn)
         {
-            if (gameObject.tag == "Player")
-            {
-                FightManager.Instance.UpdateGameState(GameState.ChooseAction);
-            }
-            else if (gameObject.tag == "Enemy")
-            {
-                EnemyBehaviour enemyBehaviour = gameObject.GetComponent<EnemyBehaviour>();
-                StartCoroutine(enemyBehaviour.Action());
-            }
+            FightManager.Instance.UpdateGameState(GameState.ChooseAction);            
         }
     }
 
@@ -82,7 +74,7 @@ public class UnitStats: MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (isTurn && gameObject.tag == "Player")
+        if (isTurn)
         {
             outline.enabled = true;
             if (Input.GetMouseButtonDown(0))
@@ -90,7 +82,7 @@ public class UnitStats: MonoBehaviour
                 HandleAttack();
             }
         }
-        else if (!isTurn && gameObject.tag == "Player")
+        else
         {
             outline.enabled = false;
         }
@@ -170,16 +162,8 @@ public class UnitStats: MonoBehaviour
     {
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
-        if (gameObject.tag == "Player")
-        {
-            gameObject.SetActive(false);
-            isAlive = false;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        gameObject.SetActive(false);
+        isAlive = false;
     }
     public void Heal()
     {

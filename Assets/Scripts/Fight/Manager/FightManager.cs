@@ -15,8 +15,10 @@ public class FightManager : MonoBehaviour
 
     public static event Action<GameState> OnGameStateChanged;
 
-    public UnitStats activeUnitStats;
-    public float attackingUnitDamage;
+    public HeroStats activeHeroStats;
+    public UnitStats activeEnemyStats;
+    public GameObject unitToAct;
+//    public float attackingUnitDamage; -> maybe used by other script
 
     private EnemyHandler enemyHandler;
     private HeroHandler heroHandler;
@@ -51,8 +53,8 @@ public class FightManager : MonoBehaviour
             case GameState.SelectUnitTurn:
                 HandleSelectUnitTurn();
                 break;
-            case GameState.ExecuteUnitTurn:
-                HandleExecuteUnitTurn();
+            case GameState.ExecuteHeroTurn:
+                HandleExecuteHeroTurn();
                 break;
             case GameState.ChooseAction:
                 HandleChooseAction();
@@ -102,10 +104,10 @@ public class FightManager : MonoBehaviour
         else
         {
         SelectUnitTurn(); 
-        UpdateGameState(GameState.ExecuteUnitTurn);   
+        UpdateGameState(GameState.ExecuteHeroTurn);   
         }    
     }
-    void HandleExecuteUnitTurn()
+    void HandleExecuteHeroTurn()
     {
 
     }
@@ -119,19 +121,32 @@ public class FightManager : MonoBehaviour
     }
     void SelectUnitTurn()
     {
-        if (activeUnitStats != null)
+        if (activeHeroStats != null)
         {
-            activeUnitStats.isTurn = false;
+            activeHeroStats.isTurn = false;
         }
-            
+        if (activeEnemyStats != null)
+        {
+            activeEnemyStats.isTurn = false;
+        }   
+
         if (dictionaryIndex > (UnitManager.Instance.unitDictionary.Count-1)) // if end of dictionary go to start
         {
             dictionaryIndex = 0;
         }
 
-        UnitManager.Instance.unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
-        activeUnitStats = UnitManager.Instance.unitToAct.GetComponent<UnitStats>();  
-        activeUnitStats.isTurn = true;
+        unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
+        if (unitToAct.tag == "Player")
+        {
+            activeHeroStats = unitToAct.GetComponent<HeroStats>();  
+            activeHeroStats.isTurn = true;
+        }
+        if (unitToAct.tag == "Enemy")
+        {
+            activeEnemyStats = unitToAct.GetComponent<UnitStats>();  
+            activeEnemyStats.isTurn = true;
+        }
+        
 
         dictionaryIndex++;        
     }
@@ -168,7 +183,7 @@ public class FightManager : MonoBehaviour
         SetOrder,
         ChooseAction,
         SelectUnitTurn,
-        ExecuteUnitTurn,
+        ExecuteHeroTurn,
         FightWon,
         FightLost
     }

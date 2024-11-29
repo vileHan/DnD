@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonkBehaviour : BaseHeroBehaviour
 {
-    [SerializeField] private UnitStats unitStats;
+    [SerializeField] private HeroStats heroStats;
     private int timesAttacked = 1;
     void Awake()
     {
@@ -38,20 +38,20 @@ public class MonkBehaviour : BaseHeroBehaviour
     public override void PrimaryAttackEnemy(EnemyBehaviour enemy)
     {
         // Deal damage to the enemy
-        enemy.unitStats.TakeDamage(unitStats.damage);
+        enemy.unitStats.TakeDamage(heroStats.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void SecondaryAttackEnemy(EnemyBehaviour enemy)
     {
         // Deal damage to the enemy
-        enemy.unitStats.TakeDamage(unitStats.damage);
+        enemy.unitStats.TakeDamage(heroStats.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void Spell_1AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
         
         FightManager.Instance.HeroEndTurn();
     }
@@ -60,64 +60,64 @@ public class MonkBehaviour : BaseHeroBehaviour
         int attackPerTurn = 2;
         if (timesAttacked == attackPerTurn)
         {
-            unitStats.currentSpellSlots -= 1;
+            heroStats.currentSpellSlots -= 1;
 
             FightManager.Instance.HeroEndTurn();
         }
-        enemy.unitStats.TakeDamage((unitStats.damage));
+        enemy.unitStats.TakeDamage((heroStats.damage));
         timesAttacked++;
     }
     public override void Spell_3AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_4AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_5AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_6AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_7AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_8AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
 
     void SetStats() // make this a list or something
     {
-        unitStats.maxHealth = MonkStats.Instance.maxHealth;
-        unitStats.currentHealth = MonkStats.Instance.currentHealth;
-        unitStats.damage = MonkStats.Instance.damage;
-        unitStats.maxSpellSlots = MonkStats.Instance.maxSpellSlots;
-        unitStats.currentSpellSlots = MonkStats.Instance.currentSpellSlots;
-        unitStats.healModifier = MonkStats.Instance.healModifier;
-        unitStats.isAlive = MonkStats.Instance.isAlive;
+        heroStats.maxHealth = MonkStats.Instance.maxHealth;
+        heroStats.currentHealth = MonkStats.Instance.currentHealth;
+        heroStats.damage = MonkStats.Instance.damage;
+        heroStats.maxSpellSlots = MonkStats.Instance.maxSpellSlots;
+        heroStats.currentSpellSlots = MonkStats.Instance.currentSpellSlots;
+        heroStats.healModifier = MonkStats.Instance.healModifier;
+        heroStats.isAlive = MonkStats.Instance.isAlive;
     }
     public void SaveStats() // make this a list or something
     {
-        MonkStats.Instance.currentHealth = unitStats.currentHealth;   
-        MonkStats.Instance.currentSpellSlots = unitStats.currentSpellSlots;  
-        MonkStats.Instance.isAlive = unitStats.isAlive;
+        MonkStats.Instance.currentHealth = heroStats.currentHealth;   
+        MonkStats.Instance.currentSpellSlots = heroStats.currentSpellSlots;  
+        MonkStats.Instance.isAlive = heroStats.isAlive;
     }
 }

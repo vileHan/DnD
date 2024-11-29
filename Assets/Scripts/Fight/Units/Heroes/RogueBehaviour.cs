@@ -5,8 +5,7 @@ using System;
 
 public class RogueBehaviour : BaseHeroBehaviour
 {
-    [SerializeField] private UnitStats unitStats;
-
+    [SerializeField] private HeroStats heroStats;
     void Awake()
     {
         SetStats();
@@ -39,81 +38,81 @@ public class RogueBehaviour : BaseHeroBehaviour
     public override void PrimaryAttackEnemy(EnemyBehaviour enemy)
     {
         // Deal damage to the enemy
-        enemy.unitStats.TakeDamage(unitStats.damage);
+        enemy.unitStats.TakeDamage(heroStats.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void SecondaryAttackEnemy(EnemyBehaviour enemy)
     {
         // Deal damage to the enemy
-        enemy.unitStats.TakeDamage(unitStats.damage);
+        enemy.unitStats.TakeDamage(heroStats.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void Spell_1AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
-
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
-        unitStats.currentSpellSlots -= 1;
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        heroStats.currentSpellSlots -= 1;
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_3AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_4AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_5AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_6AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_7AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_8AgainstEnemy(EnemyBehaviour enemy)
     {
-        enemy.unitStats.TakeDamage((unitStats.damage*2));
+        enemy.unitStats.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
 
     void SetStats() // make this a list or something
     {
-        unitStats.maxHealth = RogueStats.Instance.maxHealth;
-        unitStats.currentHealth = RogueStats.Instance.currentHealth;
-        unitStats.damage = RogueStats.Instance.damage;
-        unitStats.maxSpellSlots = RogueStats.Instance.maxSpellSlots;
-        unitStats.currentSpellSlots = RogueStats.Instance.currentSpellSlots;
-        unitStats.healModifier = RogueStats.Instance.healModifier;
-        unitStats.isAlive = RogueStats.Instance.isAlive;
+        heroStats.maxHealth = RogueStats.Instance.maxHealth;
+        heroStats.currentHealth = RogueStats.Instance.currentHealth;
+        heroStats.damage = RogueStats.Instance.damage;
+        heroStats.maxSpellSlots = RogueStats.Instance.maxSpellSlots;
+        heroStats.currentSpellSlots = RogueStats.Instance.currentSpellSlots;
+        heroStats.healModifier = RogueStats.Instance.healModifier;
+        heroStats.isAlive = RogueStats.Instance.isAlive;
     }
     public void SaveStats() // make this a list or something
     {
-        RogueStats.Instance.currentHealth = unitStats.currentHealth;   
-        RogueStats.Instance.currentSpellSlots = unitStats.currentSpellSlots; 
-        RogueStats.Instance.isAlive = unitStats.isAlive; 
+        RogueStats.Instance.currentHealth = heroStats.currentHealth;   
+        RogueStats.Instance.currentSpellSlots = heroStats.currentSpellSlots; 
+        RogueStats.Instance.isAlive = heroStats.isAlive; 
     }
 }

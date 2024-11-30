@@ -14,7 +14,6 @@ public class HeroHandler : MonoBehaviour
         for(int i = 0; i < heroAmount; i++)
         {
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);
-            Debug.Log(hero.name);
             HeroStats heroStats = hero.GetComponent<HeroStats>();      
             if (!heroStats.isAlive)
             {

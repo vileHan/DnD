@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
 
 public class FightUIManager : MonoBehaviour
 {
     public static FightUIManager Instance;
     
-    public GameObject ChooseActionPanel, LostPanel, WonPanel;
-    [SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
+    public GameObject LostPanel, WonPanel, UnitStatsPanel;
+    public GameObject[] heroActionPanels;
+    [HideInInspector] public GameObject chooseActionPanel;
+    //[SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
+    
+    public TMP_Text unitHealthText, testText_1, testText_2;
 
     public HeroStats heroToAct;
     
@@ -32,18 +37,19 @@ public class FightUIManager : MonoBehaviour
         FightManager.OnGameStateChanged -= FightManagerOnGameStateChanged;
     }
     private void FightManagerOnGameStateChanged(GameState state)
-    {
-        ChooseActionPanel.SetActive(state == GameState.ChooseAction);
+    { 
         if (state == GameState.ChooseAction)        
         {
             heroToAct = FightManager.Instance.unitToAct.GetComponent<HeroStats>();
+            chooseActionPanel = heroActionPanels[heroToAct.panelIndex];
+            chooseActionPanel.SetActive(state == GameState.ChooseAction);
         }
         WonPanel.SetActive(state == GameState.FightWon);
         LostPanel.SetActive(state == GameState.FightLost);
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -96,11 +102,32 @@ public class FightUIManager : MonoBehaviour
             case ActionState.PrimaryAttack:
                 HandlePrimaryAttack();
                 break;
-            case ActionState.Heal:
-                HandleHeal();
+            case ActionState.SecondaryAttack:
+                HandleSecondaryAttack();
+                break;
+            case ActionState.Spell_1:
+                HandleSpell_1();
                 break;
             case ActionState.Spell_2:
                 HandleSpell_2();
+                break;
+            case ActionState.Spell_3:
+                HandleSpell_3();
+                break;
+            case ActionState.Spell_4:
+                HandleSpell_4();
+                break;
+            case ActionState.Spell_5:
+                HandleSpell_5();
+                break;
+            case ActionState.Spell_6:
+                HandleSpell_6();
+                break;
+            case ActionState.Spell_7:
+                HandleSpell_7();
+                break;
+            case ActionState.Spell_8:
+                HandleSpell_8();
                 break;
             case ActionState.UseItem:
                 HandleUseItem();
@@ -116,28 +143,32 @@ public class FightUIManager : MonoBehaviour
     }
     public void HandlePrimaryAttack()
     {        
-        ChooseActionPanel.SetActive(false);
+        chooseActionPanel.SetActive(false);
+    }
+    public void SecondaryAttackPressed()
+    {
+        UpdateAction(ActionState.SecondaryAttack);
+    }
+    public void HandleSecondaryAttack()
+    {        
+        chooseActionPanel.SetActive(false);
     }
 
-    public void HealPressed()
+    public void Spell_1Pressed()
     {
-        if (heroToAct.currentSpellSlots > 0)
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
         {
-            heroToAct.currentSpellSlots -= 1;
-            UpdateAction(ActionState.Heal);
+            UpdateAction(ActionState.Spell_1);
         }
         else
         {
             Debug.Log("Out of Spellslots!");
         }
     }
-    public void HandleHeal()
+    public void HandleSpell_1()
     {
-        heroToAct.Heal();
-        ChooseActionPanel.SetActive(false);
-        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);        
+        chooseActionPanel.SetActive(false);         
     }
-
     public void Spell_2Pressed()
     {
         if (HasSpellslots(heroToAct.SpellCostCalculator()))
@@ -151,7 +182,97 @@ public class FightUIManager : MonoBehaviour
     }
     public void HandleSpell_2()
     {
-        ChooseActionPanel.SetActive(false);
+        chooseActionPanel.SetActive(false);
+    }
+    public void Spell_3Pressed()
+    {
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_3);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_3()
+    {
+        chooseActionPanel.SetActive(false);
+    }
+    public void Spell_4Pressed()
+    {
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_4);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_4()
+    {
+        chooseActionPanel.SetActive(false);
+    }
+    public void Spell_5Pressed()
+    {
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_5);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_5()
+    {
+        chooseActionPanel.SetActive(false);
+    }
+    public void Spell_6Pressed()
+    {
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_6);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_6()
+    {
+        chooseActionPanel.SetActive(false);
+    }
+    public void Spell_7Pressed()
+    {
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_7);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_7()
+    {
+        chooseActionPanel.SetActive(false);
+    }
+    public void Spell_8Pressed()
+    {
+        if (HasSpellslots(heroToAct.SpellCostCalculator()))
+        {
+            UpdateAction(ActionState.Spell_8);
+        }
+        else
+        {
+            Debug.Log("Out of Spellslots!");
+        }
+    }
+    public void HandleSpell_8()
+    {
+        chooseActionPanel.SetActive(false);
     }
 
     public void UseItemPressed()
@@ -161,6 +282,7 @@ public class FightUIManager : MonoBehaviour
     public void HandleUseItem()
     {
         Debug.Log("Choose Item!");
+        chooseActionPanel.SetActive(false);
         FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
 
@@ -175,12 +297,28 @@ public class FightUIManager : MonoBehaviour
             return false;
         }
     }
+
+    public void EnableUnitStatsDisplay()
+    {
+        UnitStatsPanel.SetActive(true);
+    }
+    public void DisableUnitStatsDisplay()
+    {
+        UnitStatsPanel.SetActive(false);
+    }
 }
     public enum ActionState
     {
         PrimaryAttack,
-        Heal,
+        SecondaryAttack,
+        Spell_1,
         Spell_2,
+        Spell_3,
+        Spell_4,
+        Spell_5,
+        Spell_6,
+        Spell_7,
+        Spell_8,
         UseItem
     }
     

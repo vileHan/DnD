@@ -87,8 +87,6 @@ public class UnitManager : MonoBehaviour
                 unitDictionary.Add(unitsAlive[i], unitStats.initiative);
             }
         } 
-        SortDicionary();
-        DisplayDicionary();
     }
 
     public void SortDicionary()

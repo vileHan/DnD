@@ -16,43 +16,43 @@ public abstract class BaseHeroBehaviour : MonoBehaviour
         heroAttackingIndex = 0;
     }
 
-    public virtual void PrimaryAttackEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void PrimaryAttack(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void SecondaryAttackEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void SecondaryAttack(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_1AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_1Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_2AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_2Against(TargetableUnit target) // abstract instead of virtual
     {
 
     }
-    public virtual void Spell_3AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_3Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_4AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_4Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_5AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_5Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_6AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_6Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_7AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_7Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }
-    public virtual void Spell_8AgainstEnemy(EnemyBehaviour enemy) // abstract instead of virtual
+    public virtual void Spell_8Against(TargetableUnit target) // abstract instead of virtual
     {
         
     }

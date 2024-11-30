@@ -14,6 +14,7 @@ public class WizardStats : MonoBehaviour
     public float healModifier;
     public bool isAlive;
     
+    public int panelIndex;
     // Start is called before the first frame update
     void Awake()
     {

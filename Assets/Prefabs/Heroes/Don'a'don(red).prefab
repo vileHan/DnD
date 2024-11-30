@@ -405,6 +405,8 @@ GameObject:
   - component: {fileID: 428041191016797720}
   - component: {fileID: 7388004715140180007}
   - component: {fileID: 3068958732659073862}
+  - component: {fileID: 7237781167102289453}
+  - component: {fileID: 4821340591623077280}
   m_Layer: 0
   m_Name: Don'a'don(red)
   m_TagString: Player
@@ -503,9 +505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMouseOverUnit: 0
   healthbarHandler: {fileID: 4802376778634274114}
   behaviour: {fileID: 428041191016797720}
-  outline: {fileID: 0}
+  outline: {fileID: 7388004715140180007}
+  hoverOutline: {fileID: 0}
   damageNumber: {fileID: 7148065346450064423}
   maxHealth: 0
   currentHealth: 0
@@ -513,11 +517,48 @@ MonoBehaviour:
   maxSpellSlots: 0
   currentSpellSlots: 0
   spellCost: 0
-  isTurn: 0
   ableToAttack: 0
   healModifier: 0
+  isTurn: 0
   isAlive: 0
   initiative: 0
+  panelIndex: 0
+--- !u!114 &7237781167102289453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMouseOverUnit: 0
+--- !u!136 &4821340591623077280
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.57330894
+  m_Height: 2.1021013
+  m_Direction: 1
+  m_Center: {x: -0.003113091, y: -0.0127129555, z: -0.008872986}
 --- !u!1 &7943427746813253121
 GameObject:
   m_ObjectHideFlags: 0

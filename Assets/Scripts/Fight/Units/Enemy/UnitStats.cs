@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class UnitStats: MonoBehaviour
+public class UnitStats: TargetableUnit
 {
-
+    [SerializeField] private Outline outline;
     [SerializeField]private HealthbarHandler healthbarHandler;
 
     public Transform damageNumber;
@@ -16,11 +16,11 @@ public class UnitStats: MonoBehaviour
     public int maxSpellSlots;
     public int currentSpellSlots;
     public int spellCost;
-    public bool isTurn; 
     public bool ableToAttack;
     public float healModifier;
-    public bool isAlive;
 
+    public bool isTurn; 
+    public bool isAlive;
     public int initiative;
 
     void Awake()
@@ -42,6 +42,7 @@ public class UnitStats: MonoBehaviour
 
     void Start()
     {        
+        outline = gameObject.GetComponent<Outline>();
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth); // maybe put healthbar in enemybehaviour
         initiative = UnityEngine.Random.Range(1, 21);
     }
@@ -52,7 +53,16 @@ public class UnitStats: MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage)
+    private void OnMouseEnter() 
+    {
+        MouseEnterUnit();
+    }
+    private void OnMouseExit()
+    {
+        MouseExitUnit();
+    }
+
+    public override void TakeDamage(float damage)
     {
         currentHealth -= damage;
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
@@ -62,7 +72,7 @@ public class UnitStats: MonoBehaviour
             Die();
         }
     }
-    public void Die()
+    public override void Die()
     {
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
@@ -77,7 +87,7 @@ public class UnitStats: MonoBehaviour
         }
 
     }
-    public void Heal()
+    public override void Heal(float healModifier)
     {
         float healthHealed = currentHealth + healModifier;
         if (healthHealed > maxHealth)
@@ -96,5 +106,24 @@ public class UnitStats: MonoBehaviour
         }
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
         FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
+    }
+
+    public override void MouseEnterUnit()
+    {
+        SetStatsToDisplay();
+        FightUIManager.Instance.EnableUnitStatsDisplay();
+        outline.enabled = true;
+    }
+    public override void MouseExitUnit()
+    {
+        FightUIManager.Instance.DisableUnitStatsDisplay();
+        outline.enabled = false;
+
+    }
+    public override void SetStatsToDisplay()
+    {
+        FightUIManager.Instance.unitHealthText.text = currentHealth+ "/" + maxHealth;
+        FightUIManager.Instance.testText_1.text = "???";
+        FightUIManager.Instance.testText_2.text = "??";
     }
 }

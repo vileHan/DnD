@@ -34,66 +34,67 @@ public class PaladinBehaviour : BaseHeroBehaviour
 
     }
 
-    public override void PrimaryAttackEnemy(EnemyBehaviour enemy)
+    public override void PrimaryAttack(TargetableUnit target)
     {
-        // Deal damage to the enemy
-        enemy.unitStats.TakeDamage(heroStats.damage);
+        // Deal damage to the 
+        target.TakeDamage(heroStats.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
-    public override void SecondaryAttackEnemy(EnemyBehaviour enemy)
+    public override void SecondaryAttack(TargetableUnit target)
     {
-        // Deal damage to the enemy
-        enemy.unitStats.TakeDamage(heroStats.damage);
+        // Deal damage to the 
+        target.TakeDamage(heroStats.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
-    public override void Spell_1AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_1Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
         
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_2AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_2Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.Heal((heroStats.healModifier));
+        heroStats.Heal(heroStats.healModifier);
         heroStats.currentSpellSlots -= 1;
 
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_3AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_3Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_4AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_4Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_5AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_5Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_6AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_6Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_7AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_7Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
-    public override void Spell_8AgainstEnemy(EnemyBehaviour enemy)
+    public override void Spell_8Against(TargetableUnit target)
     {
-        enemy.unitStats.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
@@ -107,6 +108,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
         heroStats.currentSpellSlots = PaladinStats.Instance.currentSpellSlots;
         heroStats.healModifier = PaladinStats.Instance.healModifier;
         heroStats.isAlive = PaladinStats.Instance.isAlive;
+        heroStats.panelIndex = PaladinStats.Instance.panelIndex;
     }
     public void SaveStats() // make this a list or something
     {

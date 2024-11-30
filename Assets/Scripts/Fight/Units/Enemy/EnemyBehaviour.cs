@@ -6,15 +6,12 @@ public class EnemyBehaviour : BaseHeroBehaviour
 {
     public MeshRenderer Renderer;
     public UnitStats unitStats;
-    [SerializeField] private Outline outline;
     [SerializeField] private HealthbarHandler healthbarHandler;
 
     private Color baseColor = new Color(1f, 1f, 1f, 1f);
-    public bool mouseOverEnemy;
     
     void Start()
     {
-        outline = gameObject.GetComponent<Outline>();
         unitStats.currentHealth = unitStats.maxHealth;
         unitStats.currentSpellSlots = unitStats.maxSpellSlots;
     }
@@ -23,17 +20,6 @@ public class EnemyBehaviour : BaseHeroBehaviour
     void Update()
     {
       
-    }
-
-    private void OnMouseEnter() 
-    {
-        mouseOverEnemy = true;
-        outline.enabled = true;
-    }
-    private void OnMouseExit()
-    {
-        mouseOverEnemy = false;
-        outline.enabled = false;
     }
 
     public IEnumerator Action()
@@ -57,12 +43,11 @@ public class EnemyBehaviour : BaseHeroBehaviour
         int actionIndex = Random.Range(0,6);
         if (actionIndex == 0)
         {
-            unitStats.Heal();
+            unitStats.Heal(unitStats.healModifier);
         }
         else
         {
             Attack();
         }
     }
-
 }

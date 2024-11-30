@@ -404,6 +404,8 @@ GameObject:
   - component: {fileID: 1077670136456510925}
   - component: {fileID: 7968626551505285878}
   - component: {fileID: -2790246407801934295}
+  - component: {fileID: -9067166931838882377}
+  - component: {fileID: 7918570831361267976}
   m_Layer: 0
   m_Name: Myrill(blue)
   m_TagString: Player
@@ -502,9 +504,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMouseOverUnit: 0
   healthbarHandler: {fileID: 4837993779882536630}
   behaviour: {fileID: 1077670136456510925}
-  outline: {fileID: 0}
+  outline: {fileID: 7968626551505285878}
+  hoverOutline: {fileID: 0}
   damageNumber: {fileID: 1235231043331081285}
   maxHealth: 0
   currentHealth: 0
@@ -512,11 +516,48 @@ MonoBehaviour:
   maxSpellSlots: 0
   currentSpellSlots: 0
   spellCost: 0
-  isTurn: 0
   ableToAttack: 0
   healModifier: 0
+  isTurn: 0
   isAlive: 0
   initiative: 0
+  panelIndex: 0
+--- !u!114 &-9067166931838882377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMouseOverUnit: 0
+--- !u!136 &7918570831361267976
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.57330894
+  m_Height: 2.1021013
+  m_Direction: 1
+  m_Center: {x: -0.003113091, y: -0.0127129555, z: -0.008872986}
 --- !u!1 &6237127175292526706
 GameObject:
   m_ObjectHideFlags: 0

@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 8007012558261916210}
   - component: {fileID: 7500590939087225329}
   - component: {fileID: -5141046403782819534}
+  - component: {fileID: -1284585712641051444}
   m_Layer: 0
   m_Name: Enemy(blue)
   m_TagString: Enemy
@@ -201,9 +202,7 @@ MonoBehaviour:
   heroAttackingIndex: 0
   Renderer: {fileID: 7602886781770976699}
   unitStats: {fileID: 7500590939087225329}
-  outline: {fileID: 0}
   healthbarHandler: {fileID: 2627603546658982722}
-  mouseOverEnemy: 0
 --- !u!114 &7500590939087225329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,17 +215,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d59cf691e8f8c448a2d8b20d5317e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outline: {fileID: -5141046403782819534}
   healthbarHandler: {fileID: 2627603546658982722}
   damageNumber: {fileID: 968776570488943889}
-  maxHealth: 90
+  maxHealth: 80
   currentHealth: 0
-  damage: 20
+  damage: 30
   maxSpellSlots: 0
   currentSpellSlots: 0
   spellCost: 0
-  isTurn: 0
   ableToAttack: 0
-  healModifier: 20
+  healModifier: 25
+  isTurn: 0
   isAlive: 0
   initiative: 0
 --- !u!114 &-5141046403782819534
@@ -247,6 +247,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-1284585712641051444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630687460934488006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3675313807557061997
 GameObject:
   m_ObjectHideFlags: 0

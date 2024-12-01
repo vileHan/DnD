@@ -305,5 +305,6 @@ public class Outline : MonoBehaviour {
         outlineFillMaterial.SetFloat("_OutlineWidth", 0f);
         break;
     }
+    outlineMaskMaterial.renderQueue = 2500;
   }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class MonkBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private HeroStats heroStats;
+    [SerializeField] private SpellSlotHandler spellslotHandler;
+
     private int timesAttacked = 1;
     void Awake()
     {
@@ -61,6 +63,7 @@ public class MonkBehaviour : BaseHeroBehaviour
         if (timesAttacked == attackPerTurn)
         {
             heroStats.currentSpellSlots -= 1;
+            spellslotHandler.UpdateSpellslots();
 
             FightManager.Instance.HeroEndTurn();
         }

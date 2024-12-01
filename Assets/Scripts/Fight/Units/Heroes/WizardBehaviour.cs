@@ -5,6 +5,9 @@ using UnityEngine;
 public class WizardBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private HeroStats heroStats;
+    [SerializeField] private SpellSlotHandler spellslotHandler;
+
+
     void Awake()
     {
         SetStats();
@@ -62,6 +65,7 @@ public class WizardBehaviour : BaseHeroBehaviour
             targetStats.TakeDamage((heroStats.damage/2));
         }
         heroStats.currentSpellSlots -= 1;
+        spellslotHandler.UpdateSpellslots();
 
         FightManager.Instance.HeroEndTurn();
     }

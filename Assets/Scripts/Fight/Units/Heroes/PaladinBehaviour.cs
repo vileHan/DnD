@@ -5,6 +5,8 @@ using UnityEngine;
 public class PaladinBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private HeroStats heroStats;
+    [SerializeField] private SpellSlotHandler spellslotHandler;
+
     void Awake()
     {
         SetStats();
@@ -59,6 +61,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
         target.Heal((heroStats.healModifier));
         heroStats.Heal(heroStats.healModifier);
         heroStats.currentSpellSlots -= 1;
+        spellslotHandler.UpdateSpellslots();
 
         FightManager.Instance.HeroEndTurn();
     }

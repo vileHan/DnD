@@ -19,6 +19,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        valueText.text = "Speed: "+ (int)playerController.rb.velocity.magnitude;
+        //valueText.text = "Speed: "+ (int)playerController.rb.velocity.magnitude;
     }
 }

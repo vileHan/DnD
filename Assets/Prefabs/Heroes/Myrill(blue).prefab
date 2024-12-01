@@ -144,7 +144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.1630001}
+  m_AnchoredPosition: {x: 0, y: 1.5}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2988622578701696768
@@ -504,11 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMouseOverUnit: 0
   healthbarHandler: {fileID: 4837993779882536630}
   behaviour: {fileID: 1077670136456510925}
   outline: {fileID: 7968626551505285878}
-  hoverOutline: {fileID: 0}
   damageNumber: {fileID: 1235231043331081285}
   maxHealth: 0
   currentHealth: 0
@@ -534,7 +532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMouseOverUnit: 0
 --- !u!136 &7918570831361267976
 CapsuleCollider:
   m_ObjectHideFlags: 0

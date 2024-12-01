@@ -14,7 +14,7 @@ public class FightUIManager : MonoBehaviour
     public GameObject[] heroActionPanels;
     [HideInInspector] public GameObject chooseActionPanel;
     //[SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
-    
+
     public TMP_Text unitHealthText, testText_1, testText_2;
 
     public HeroStats heroToAct;
@@ -305,6 +305,11 @@ public class FightUIManager : MonoBehaviour
     public void DisableUnitStatsDisplay()
     {
         UnitStatsPanel.SetActive(false);
+    }
+
+    public void DisplaySkill()
+    {
+        Debug.Log("hover over button");
     }
 }
     public enum ActionState

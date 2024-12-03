@@ -311,6 +311,11 @@ public class FightUIManager : MonoBehaviour
     {
         Debug.Log("hover over button");
     }
+
+    public void DisplayTurnOrder()
+    {
+        
+    }
 }
     public enum ActionState
     {

@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImage: {fileID: 6947747645686348647, guid: ff097286a09cd014c926ed923bd720a5, type: 3}
   healthbarHandler: {fileID: 4088872561836032422}
   behaviour: {fileID: -4979554075088316759}
   outline: {fileID: -2639053243159495139}
@@ -1166,6 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterImage: {fileID: 6947747645686348647, guid: ff097286a09cd014c926ed923bd720a5, type: 3}
 --- !u!136 &18421883413716073
 CapsuleCollider:
   m_ObjectHideFlags: 0

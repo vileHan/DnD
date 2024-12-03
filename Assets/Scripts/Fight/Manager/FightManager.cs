@@ -18,7 +18,6 @@ public class FightManager : MonoBehaviour
     public HeroStats activeHeroStats;
     public UnitStats activeEnemyStats;
     public GameObject unitToAct;
-//    public float attackingUnitDamage; -> maybe used by other script
 
     private EnemyHandler enemyHandler;
     private HeroHandler heroHandler;
@@ -146,8 +145,6 @@ public class FightManager : MonoBehaviour
             activeEnemyStats = unitToAct.GetComponent<UnitStats>();  
             activeEnemyStats.isTurn = true;
         }
-        
-
         dictionaryIndex++;        
     }
     void SetOrder()

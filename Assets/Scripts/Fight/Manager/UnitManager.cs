@@ -6,7 +6,6 @@ using System.Linq;
 public class UnitManager : MonoBehaviour
 {
     public Dictionary<GameObject, int> unitDictionary = new Dictionary<GameObject, int>();
-    public Dictionary<GameObject, int> sortedUnitDictionary = new Dictionary<GameObject, int>();
     public List<GameObject> unitsAlive = new List<GameObject>();
     public List<GameObject> heroesAlive = new List<GameObject>();
     public List<GameObject> enemiesAlive = new List<GameObject>();
@@ -71,7 +70,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void AssignInitiative() // !!
+    public void AssignInitiative() 
     {
         for (int i = 0; i < unitsAlive.Count; i++)
         {

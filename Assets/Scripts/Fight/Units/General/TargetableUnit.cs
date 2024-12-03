@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public  class TargetableUnit : MonoBehaviour
+public class TargetableUnit : MonoBehaviour
 {
+    [SerializeField] public GameObject characterImage;
+    void Start()
+    {
+
+    }
     public virtual void TakeDamage(float damage)
     {
         

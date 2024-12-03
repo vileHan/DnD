@@ -8,11 +8,9 @@ public abstract class BaseHeroBehaviour : MonoBehaviour
     public void SetAttackIndex(int index)
     {
         heroAttackingIndex = index;
-        Debug.Log("set index: " + heroAttackingIndex);
     }
     public void ResetAttackIndex()
     {
-        Debug.Log("reset Index");
         heroAttackingIndex = 0;
     }
 

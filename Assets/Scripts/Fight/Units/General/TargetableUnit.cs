@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TargetableUnit : MonoBehaviour
 {
-    [SerializeField] public GameObject characterImage;
     void Start()
     {
 

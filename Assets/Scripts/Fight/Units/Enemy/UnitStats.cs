@@ -6,6 +6,8 @@ using System;
 public class UnitStats: TargetableUnit
 {
     [SerializeField] private Outline outline;
+    [SerializeField] public GameObject characterImage;
+
     [SerializeField]private HealthbarHandler healthbarHandler;
 
     public Transform damageNumber;
@@ -45,6 +47,7 @@ public class UnitStats: TargetableUnit
         outline = gameObject.GetComponent<Outline>();
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth); // maybe put healthbar in enemybehaviour
         initiative = UnityEngine.Random.Range(1, 21);
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -74,18 +77,11 @@ public class UnitStats: TargetableUnit
     }
     public override void Die()
     {
+        isAlive = false;
+        TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
-        if (gameObject.tag == "Player")
-        {
-            gameObject.SetActive(false);
-            isAlive = false;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        gameObject.SetActive(false);
     }
     public override void Heal(float healModifier)
     {

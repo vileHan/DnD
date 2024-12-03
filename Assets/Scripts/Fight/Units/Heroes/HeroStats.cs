@@ -8,6 +8,7 @@ public class HeroStats: TargetableUnit
 
     [SerializeField]private HealthbarHandler healthbarHandler;
     [SerializeField]private BaseHeroBehaviour behaviour;
+    [SerializeField] public GameObject characterImage;
 
     [SerializeField] private Outline outline;
 
@@ -78,15 +79,10 @@ public class HeroStats: TargetableUnit
     {        
         if (isTurn)
         {
-            outline.enabled = true;
             if (Input.GetMouseButtonDown(0))
             {
                 HandleAttack();
             }
-        }
-        else
-        {
-            outline.enabled = false;
         }
     }
 
@@ -116,36 +112,26 @@ public class HeroStats: TargetableUnit
                         Debug.Log("no action selected");
                         break;
                     case 1:
-                        Debug.Log("attack1");
                         behaviour.PrimaryAttack(target);
                         break;
                     case 2:
-                        Debug.Log("attack2");
                         break;
                     case 3:
-                        Debug.Log("Spell1");
                         break;
                     case 4:
                         behaviour.Spell_2Against(target);
-                        Debug.Log("Spell2");
                         break;
                     case 5:
-                        Debug.Log("Spell3");
                         break;
                     case 6:
-                        Debug.Log("Spell4");
                         break;
                     case 7:
-                        Debug.Log("Spell5");
                         break;
                     case 8:
-                        Debug.Log("Spell6");
                         break;
                     case 9:
-                        Debug.Log("Spell7");
                         break;
                     case 10:
-                        Debug.Log("Spell8");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(behaviour.heroAttackingIndex), behaviour.heroAttackingIndex, null);
@@ -170,10 +156,11 @@ public class HeroStats: TargetableUnit
     }
     public override void Die()
     {
+        isAlive = false;
+        TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
         gameObject.SetActive(false);
-        isAlive = false;
     }
     public override void Heal(float healModifier)
     {

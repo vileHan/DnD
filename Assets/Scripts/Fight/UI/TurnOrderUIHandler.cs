@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TurnOrderUIHandler : MonoBehaviour
 {
+    public static TurnOrderUIHandler Instance;
     private Image[] characterImages;
     public Canvas worldCanvas; // Assign the Canvas in the inspector
     private bool isTurnOrderSetUp;
@@ -16,6 +17,7 @@ public class TurnOrderUIHandler : MonoBehaviour
     
     void Awake()
     {
+        Instance = this;
         FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
     }
     void OnDestroy() 
@@ -36,7 +38,6 @@ public class TurnOrderUIHandler : MonoBehaviour
                 if (stats.isTurn)
                 {
                     outline = characterImageInstances[turnOrderIndex].GetComponent<UnityEngine.UI.Outline>();
-                    //outline.effectDistance = new Vector2(0,0);
                     outline.effectColor = Color.red;
                 }
             }
@@ -46,12 +47,12 @@ public class TurnOrderUIHandler : MonoBehaviour
                 if (stats.isTurn)
                 {
                     outline = characterImageInstances[turnOrderIndex].GetComponent<UnityEngine.UI.Outline>();
-                    //outline.effectDistance = new Vector2(0,0);
                     outline.effectColor = Color.red;
                 }
             }
-        turnOrderIndex++;
-        }
+            turnOrderIndex++;
+        }        
+        
 
         if (state == GameState.SelectUnitTurn) // turn off outline when next unit turn
         {
@@ -64,26 +65,30 @@ public class TurnOrderUIHandler : MonoBehaviour
         if (state == GameState.SelectUnitTurn && !isTurnOrderSetUp)
         {
             int i = -350;
-            int j = 0; // not needed
             isTurnOrderSetUp = true;
             foreach (KeyValuePair<GameObject, int> unit in UnitManager.Instance.unitDictionary) // iterate through sorted dictionary
             { 
-                TargetableUnit turnOrderUnit = unit.Key.GetComponent<TargetableUnit>();
+                if (unit.Key.tag == "Player")
+                {
+                    HeroStats turnOrderUnit = unit.Key.GetComponent<HeroStats>();
+                    characterImageInstance = Instantiate(turnOrderUnit.characterImage);
+                    characterImageInstances.Add(characterImageInstance);
+                }
+                if (unit.Key.tag == "Enemy")
+                {
+                    UnitStats turnOrderUnit = unit.Key.GetComponent<UnitStats>();
+                    characterImageInstance = Instantiate(turnOrderUnit.characterImage);
+                    characterImageInstances.Add(characterImageInstance);
+                }
                 
-                // make characterImageInstances List contain the images to display and display the image
-                characterImageInstance = Instantiate(turnOrderUnit.characterImage);
+                characterImageInstance.transform.SetParent(worldCanvas.transform, false);
                 outline = characterImageInstance.GetComponent<UnityEngine.UI.Outline>();
                 outline.effectColor = Color.clear;
-                characterImageInstances.Add(characterImageInstance);
-
-                // Set it as a child of the Canvas
-                characterImageInstance.transform.SetParent(worldCanvas.transform, false);
-
-                // Adjust its RectTransform position for layout
+                
+                // Should just set spawnpositions list so there are no spaces in between if a unit dies
                 RectTransform rectTransform = characterImageInstance.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(i, 465); // Adjust X position (spread images horizontally
-                i += 100;
-                j++;
+                i += 103; // 100 = width of image 3 = space for the outline
             }
         }
     }
@@ -93,8 +98,46 @@ public class TurnOrderUIHandler : MonoBehaviour
         {
             Debug.LogError("Canvas is not assigned!");
             return;
+        } 
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DeleteTurnImage();
         }
+    }
 
-        
+    public void DeleteTurnImage()
+    {
+        int temp = 0;
+        foreach (KeyValuePair<GameObject, int> unit in UnitManager.Instance.unitDictionary)
+        {         
+            if (unit.Key.tag == "Player")
+            {
+                HeroStats heroStats = unit.Key.GetComponent<HeroStats>();
+                if (!heroStats.isAlive)
+                {
+                    Debug.Log("remove: " + characterImageInstances[temp]);
+                    GameObject tempGameObject = characterImageInstances[temp];
+                    characterImageInstances.Remove(characterImageInstances[temp]);
+                    
+                    Destroy(tempGameObject);
+                }
+            }
+            if (unit.Key.tag == "Enemy")
+            {
+                UnitStats unitStats = unit.Key.GetComponent<UnitStats>();
+                if (!unitStats.isAlive)
+                {
+                    Debug.Log("remove: " + characterImageInstances[temp]);
+                    GameObject tempGameObject = characterImageInstances[temp];
+                    characterImageInstances.Remove(characterImageInstances[temp]);
+                    
+                    Destroy(tempGameObject);
+                }
+            }
+            temp++;
+        }
     }
 }

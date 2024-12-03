@@ -9,6 +9,7 @@ public class UnitManager : MonoBehaviour
     public List<GameObject> unitsAlive = new List<GameObject>();
     public List<GameObject> heroesAlive = new List<GameObject>();
     public List<GameObject> enemiesAlive = new List<GameObject>();
+    public List<GameObject> unitsInSceneOrder = new List<GameObject>();
 
     public static UnitManager Instance;
     
@@ -91,6 +92,14 @@ public class UnitManager : MonoBehaviour
     public void SortDicionary()
     {
         unitDictionary = unitDictionary.OrderByDescending(key => key.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+    }
+
+    public void AssignUnitsInScene()
+    {
+        foreach (KeyValuePair<GameObject, int> sortedUnit in unitDictionary)
+        {
+            unitsInSceneOrder.Add(sortedUnit.Key);           
+        }
     }
     public void DisplayDicionary()
     {

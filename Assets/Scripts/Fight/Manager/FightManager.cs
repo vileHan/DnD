@@ -132,6 +132,7 @@ public class FightManager : MonoBehaviour
         if (dictionaryIndex > (UnitManager.Instance.unitDictionary.Count-1)) // if end of dictionary go to start
         {
             dictionaryIndex = 0;
+            FightUIManager.Instance.UpdateRoundCounter();
         }
 
         unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
@@ -151,6 +152,7 @@ public class FightManager : MonoBehaviour
     {
         UnitManager.Instance.AssignInitiative();
         UnitManager.Instance.SortDicionary();
+        UnitManager.Instance.AssignUnitsInScene();
     }
 
     IEnumerator EndScreenTransition()

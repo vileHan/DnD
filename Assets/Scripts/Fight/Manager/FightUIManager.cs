@@ -15,7 +15,7 @@ public class FightUIManager : MonoBehaviour
     [HideInInspector] public GameObject chooseActionPanel;
     //[SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
 
-    public TMP_Text unitHealthText, testText_1, testText_2;
+    public TMP_Text unitHealthText, testText_1, testText_2, roundCounterText;
 
     public HeroStats heroToAct;
     
@@ -27,10 +27,12 @@ public class FightUIManager : MonoBehaviour
     public GameObject damageNumberPrefab, healingNumberPrefab;
     public Canvas worldCanvas;
 
+    public int roundCounter = 1;
     void Awake()
     {
         Instance = this;
         FightManager.OnGameStateChanged += FightManagerOnGameStateChanged;
+        roundCounterText.text = roundCounter.ToString();
     }
     void OnDestroy() 
     {
@@ -315,6 +317,12 @@ public class FightUIManager : MonoBehaviour
     public void DisplayTurnOrder()
     {
         
+    }
+    
+    public void UpdateRoundCounter()
+    {
+        roundCounter++;
+        roundCounterText.text = roundCounter.ToString();
     }
 }
     public enum ActionState

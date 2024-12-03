@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6063272253184979719}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -1044,9 +1044,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
   healthbarHandler: {fileID: 4837993779882536630}
   behaviour: {fileID: 1077670136456510925}
+  characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
   outline: {fileID: 7968626551505285878}
   damageNumber: {fileID: 1235231043331081285}
   maxHealth: 0
@@ -1073,7 +1073,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
 --- !u!136 &7918570831361267976
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -634,6 +634,7 @@ MonoBehaviour:
   maxHealth: 80
   currentHealth: 0
   damage: 30
+  armor: 0
   maxSpellSlots: 3
   currentSpellSlots: 0
   healModifier: 20
@@ -654,6 +655,7 @@ MonoBehaviour:
   maxHealth: 70
   currentHealth: 0
   damage: 40
+  armor: 0
   maxSpellSlots: 1
   currentSpellSlots: 0
   healModifier: 20
@@ -674,6 +676,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   damage: 10
+  armor: 5
   maxSpellSlots: 2
   currentSpellSlots: 0
   healModifier: 40
@@ -694,6 +697,7 @@ MonoBehaviour:
   maxHealth: 90
   currentHealth: 0
   damage: 20
+  armor: 5
   maxSpellSlots: 1
   currentSpellSlots: 0
   healModifier: 30
@@ -3317,6 +3321,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2007449607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007449608}
+  m_Layer: 0
+  m_Name: TARGETABLE HERO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2007449608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007449607}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 963.3318, y: 922.1783, z: -14.257744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2044387201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,3 +3481,4 @@ SceneRoots:
   - {fileID: 583398701}
   - {fileID: 1219485776}
   - {fileID: 633474180}
+  - {fileID: 2007449608}

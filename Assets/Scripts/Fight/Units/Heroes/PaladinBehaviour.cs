@@ -5,6 +5,7 @@ using UnityEngine;
 public class PaladinBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private HeroStats heroStats;
+    [SerializeField] private TargetableUnit targetableUnit;
     [SerializeField] private SpellSlotHandler spellslotHandler;
 
     void Awake()
@@ -39,90 +40,90 @@ public class PaladinBehaviour : BaseHeroBehaviour
     public override void PrimaryAttack(TargetableUnit target)
     {
         // Deal damage to the 
-        target.TakeDamage(heroStats.damage);
+        target.TakeDamage(targetableUnit.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void SecondaryAttack(TargetableUnit target)
     {
         // Deal damage to the 
-        target.TakeDamage(heroStats.damage);
+        target.TakeDamage(targetableUnit.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void Spell_1Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage));
-        heroStats.armor += 5;
+        target.TakeDamage((targetableUnit.damage));
+        targetableUnit.armor += 5;
 
-        heroStats.currentSpellSlots -= 1;
+        targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
         
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
     {
-        target.Heal((heroStats.healModifier));
-        heroStats.Heal(heroStats.healModifier);
+        target.Heal((targetableUnit.healModifier));
+        targetableUnit.Heal(targetableUnit.healModifier);
 
-        heroStats.currentSpellSlots -= 1;
+        targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_3Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_4Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_5Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_6Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_7Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_8Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
 
     void SetStats() // make this a list or something
     {
-        heroStats.maxHealth = PaladinStats.Instance.maxHealth;
-        heroStats.currentHealth = PaladinStats.Instance.currentHealth;
-        heroStats.damage = PaladinStats.Instance.damage;
-        heroStats.maxSpellSlots = PaladinStats.Instance.maxSpellSlots;
-        heroStats.currentSpellSlots = PaladinStats.Instance.currentSpellSlots;
-        heroStats.healModifier = PaladinStats.Instance.healModifier;
-        heroStats.isAlive = PaladinStats.Instance.isAlive;
-        heroStats.panelIndex = PaladinStats.Instance.panelIndex;
-        heroStats.armor = PaladinStats.Instance.armor;
+        targetableUnit.maxHealth = PaladinStats.Instance.maxHealth;
+        targetableUnit.currentHealth = PaladinStats.Instance.currentHealth;
+        targetableUnit.damage = PaladinStats.Instance.damage;
+        targetableUnit.maxSpellSlots = PaladinStats.Instance.maxSpellSlots;
+        targetableUnit.currentSpellSlots = PaladinStats.Instance.currentSpellSlots;
+        targetableUnit.healModifier = PaladinStats.Instance.healModifier;
+        targetableUnit.isAlive = PaladinStats.Instance.isAlive;
+        targetableUnit.panelIndex = PaladinStats.Instance.panelIndex;
+        targetableUnit.armor = PaladinStats.Instance.armor;
     }
     public void SaveStats() // make this a list or something
     {
-        PaladinStats.Instance.currentHealth = heroStats.currentHealth;   
-        PaladinStats.Instance.currentSpellSlots = heroStats.currentSpellSlots;  
-        PaladinStats.Instance.isAlive = heroStats.isAlive;
+        PaladinStats.Instance.currentHealth = targetableUnit.currentHealth;   
+        PaladinStats.Instance.currentSpellSlots = targetableUnit.currentSpellSlots;  
+        PaladinStats.Instance.isAlive = targetableUnit.isAlive;
     }
 }

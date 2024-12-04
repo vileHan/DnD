@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : BaseHeroBehaviour
 {
     public MeshRenderer Renderer;
-    public UnitStats unitStats;
+    public TargetableUnit unitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
 
     private Color baseColor = new Color(1f, 1f, 1f, 1f);
@@ -34,7 +34,7 @@ public class EnemyBehaviour : BaseHeroBehaviour
     public void Attack()
     {
         GameObject targetedHero = UnitManager.Instance.heroesAlive[Random.Range(0, UnitManager.Instance.heroesAlive.Count)]; // random right now -> later maybe look for target with lowest health
-        HeroStats targetHeroStats = targetedHero.GetComponent<HeroStats>();  
+        TargetableUnit targetHeroStats = targetedHero.GetComponent<TargetableUnit>();  
         targetHeroStats.TakeDamage(unitStats.damage);
     }
 

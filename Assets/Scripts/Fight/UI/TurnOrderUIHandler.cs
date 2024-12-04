@@ -32,24 +32,13 @@ public class TurnOrderUIHandler : MonoBehaviour
             {
                 turnOrderIndex = 0;
             }
-            if (FightManager.Instance.unitToAct.tag == "Player")
+            TargetableUnit stats = FightManager.Instance.unitToAct.GetComponent<TargetableUnit>();
+            if (stats.isTurn)
             {
-                HeroStats stats = FightManager.Instance.unitToAct.GetComponent<HeroStats>();
-                if (stats.isTurn)
-                {
-                    outline = characterImageInstances[turnOrderIndex].GetComponent<UnityEngine.UI.Outline>();
-                    outline.effectColor = Color.red;
-                }
+                outline = characterImageInstances[turnOrderIndex].GetComponent<UnityEngine.UI.Outline>();
+                outline.effectColor = Color.red;
             }
-            if (FightManager.Instance.unitToAct.tag == "Enemy")
-            {
-                UnitStats stats = FightManager.Instance.unitToAct.GetComponent<UnitStats>();
-                if (stats.isTurn)
-                {
-                    outline = characterImageInstances[turnOrderIndex].GetComponent<UnityEngine.UI.Outline>();
-                    outline.effectColor = Color.red;
-                }
-            }
+
             turnOrderIndex++;
         }        
         
@@ -68,18 +57,10 @@ public class TurnOrderUIHandler : MonoBehaviour
             isTurnOrderSetUp = true;
             foreach (KeyValuePair<GameObject, int> unit in UnitManager.Instance.unitDictionary) // iterate through sorted dictionary
             { 
-                if (unit.Key.tag == "Player")
-                {
-                    HeroStats turnOrderUnit = unit.Key.GetComponent<HeroStats>();
-                    characterImageInstance = Instantiate(turnOrderUnit.characterImage);
-                    characterImageInstances.Add(characterImageInstance);
-                }
-                if (unit.Key.tag == "Enemy")
-                {
-                    UnitStats turnOrderUnit = unit.Key.GetComponent<UnitStats>();
-                    characterImageInstance = Instantiate(turnOrderUnit.characterImage);
-                    characterImageInstances.Add(characterImageInstance);
-                }
+
+                TargetableUnit turnOrderUnit = unit.Key.GetComponent<TargetableUnit>();
+                characterImageInstance = Instantiate(turnOrderUnit.characterImage);
+                characterImageInstances.Add(characterImageInstance);
                 
                 characterImageInstance.transform.SetParent(worldCanvas.transform, false);
                 outline = characterImageInstance.GetComponent<UnityEngine.UI.Outline>();
@@ -113,31 +94,15 @@ public class TurnOrderUIHandler : MonoBehaviour
         int temp = 0;
         foreach (KeyValuePair<GameObject, int> unit in UnitManager.Instance.unitDictionary)
         {         
-            if (unit.Key.tag == "Player")
+            TargetableUnit heroStats = unit.Key.GetComponent<TargetableUnit>();
+            if (!heroStats.isAlive)
             {
-                HeroStats heroStats = unit.Key.GetComponent<HeroStats>();
-                if (!heroStats.isAlive)
-                {
-                    Debug.Log("remove: " + characterImageInstances[temp]);
-                    GameObject tempGameObject = characterImageInstances[temp];
-                    characterImageInstances.Remove(characterImageInstances[temp]);
-                    
-                    Destroy(tempGameObject);
-                }
+                GameObject tempGameObject = characterImageInstances[temp];
+                characterImageInstances.Remove(characterImageInstances[temp]);
+                
+                Destroy(tempGameObject);
             }
-            if (unit.Key.tag == "Enemy")
-            {
-                UnitStats unitStats = unit.Key.GetComponent<UnitStats>();
-                if (!unitStats.isAlive)
-                {
-                    Debug.Log("remove: " + characterImageInstances[temp]);
-                    GameObject tempGameObject = characterImageInstances[temp];
-                    characterImageInstances.Remove(characterImageInstances[temp]);
-                    
-                    Destroy(tempGameObject);
-                }
-            }
-            temp++;
+        temp++;
         }
     }
 }

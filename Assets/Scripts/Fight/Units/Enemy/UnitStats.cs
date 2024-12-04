@@ -6,25 +6,24 @@ using System;
 public class UnitStats: TargetableUnit
 {
     [SerializeField] private Outline outline;
-    [SerializeField] public GameObject characterImage;
 
     [SerializeField]private HealthbarHandler healthbarHandler;
 
     public Transform damageNumber;
 
-    public float maxHealth;
-    public float currentHealth;
-    public float damage;
-    public float armor;
-    public int maxSpellSlots;
-    public int currentSpellSlots;
+    // public float maxHealth;
+    // public float currentHealth;
+    // public float damage;
+    // public float armor;
+    // public int maxSpellSlots;
+    // public int currentSpellSlots;
     public int spellCost;
     public bool ableToAttack;
-    public float healModifier;
+    // public float healModifier;
 
-    public bool isTurn; 
-    public bool isAlive;
-    public int initiative;
+    // public bool isTurn; 
+    // public bool isAlive;
+    // public int initiative;
 
     void Awake()
     {

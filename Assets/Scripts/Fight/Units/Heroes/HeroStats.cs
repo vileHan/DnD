@@ -8,27 +8,26 @@ public class HeroStats: TargetableUnit
 
     [SerializeField]private HealthbarHandler healthbarHandler;
     [SerializeField]private BaseHeroBehaviour behaviour;
-    [SerializeField] public GameObject characterImage;
 
     [SerializeField] private Outline outline;
 
     public Transform damageNumber;
 
-    public float maxHealth;
-    public float currentHealth;
-    public float damage;
-    public float armor;
-    public int maxSpellSlots;
-    public int currentSpellSlots;
+    // public float maxHealth;
+    // public float currentHealth;
+    // public float damage;
+    // public float armor;
+    // public int maxSpellSlots;
+    // public int currentSpellSlots;
     public int spellCost; 
     public bool ableToAttack;
-    public float healModifier;
+    // public float healModifier;
 
-    public bool isTurn;
-    public bool isAlive;
-    public int initiative;
+    // public bool isTurn;
+    // public bool isAlive;
+    // public int initiative;
 
-    public int panelIndex;
+    // public int panelIndex;
 
     void Awake()
     {
@@ -101,7 +100,7 @@ public class HeroStats: TargetableUnit
     }
 
     void Start()
-    {        
+    {     
         outline = gameObject.GetComponent<Outline>();
         healthbarHandler.SetHealthbar(maxHealth, currentHealth);
         initiative = UnityEngine.Random.Range(1, 21);
@@ -230,7 +229,7 @@ public class HeroStats: TargetableUnit
         FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
     }
 
-    public int SpellCostCalculator()
+    public override int SpellCostCalculator()
     {
         // maybe different calculation for a later stage gl future me :)
         spellCost = 1;

@@ -5,6 +5,24 @@ using UnityEngine.UI;
 
 public class TargetableUnit : MonoBehaviour
 {
+
+    [SerializeField] public GameObject characterImage;
+    public float test = 101;
+
+    public float maxHealth;
+    public float currentHealth;
+    public float damage;
+    public float armor;
+    public int maxSpellSlots;
+    public int currentSpellSlots; 
+    public float healModifier;
+
+    public bool isTurn;
+    public bool isAlive;
+
+    public int initiative;
+    public int panelIndex;
+
     void Start()
     {
 
@@ -33,5 +51,9 @@ public class TargetableUnit : MonoBehaviour
     public virtual void SetStatsToDisplay()
     {
         
+    }
+    public virtual int SpellCostCalculator()
+    {
+        return initiative;
     }
 }

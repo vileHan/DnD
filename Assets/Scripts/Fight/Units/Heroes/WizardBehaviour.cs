@@ -5,6 +5,8 @@ using UnityEngine;
 public class WizardBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private HeroStats heroStats;
+    [SerializeField] private TargetableUnit targetableUnit;
+
     [SerializeField] private SpellSlotHandler spellslotHandler;
 
 
@@ -40,22 +42,22 @@ public class WizardBehaviour : BaseHeroBehaviour
     public override void PrimaryAttack(TargetableUnit target)
     {
         // Deal damage to the 
-        target.TakeDamage(heroStats.damage);
+        target.TakeDamage(targetableUnit.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void SecondaryAttack(TargetableUnit target)
     {
         // Deal damage to the 
-        target.TakeDamage(heroStats.damage);
+        target.TakeDamage(targetableUnit.damage);
 
         FightManager.Instance.HeroEndTurn();        
     }
     public override void Spell_1Against(TargetableUnit target) // targetable unit.currentspellslots! when implemented
     {
-        target.TakeDamage((heroStats.damage));
+        target.TakeDamage((targetableUnit.damage));
 
-        heroStats.currentSpellSlots += 1;
+        targetableUnit.currentSpellSlots += 1;
         spellslotHandler.UpdateSpellslots();
 
         FightManager.Instance.HeroEndTurn();
@@ -64,67 +66,67 @@ public class WizardBehaviour : BaseHeroBehaviour
     {
         for (int i = 0; i < UnitManager.Instance.enemiesAlive.Count; i++)
         {
-            UnitStats targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<UnitStats>();
-            targetStats.TakeDamage((heroStats.damage/2));
+            TargetableUnit targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<TargetableUnit>();
+            targetStats.TakeDamage((targetableUnit.damage/2));
         }
-        heroStats.currentSpellSlots -= 1;
+        targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_3Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_4Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_5Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_6Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_7Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_8Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((targetableUnit.damage*2));
 
         FightManager.Instance.HeroEndTurn();
     }
 
     void SetStats() // make this a list or something
     {
-        heroStats.maxHealth = WizardStats.Instance.maxHealth;
-        heroStats.currentHealth = WizardStats.Instance.currentHealth;
-        heroStats.damage = WizardStats.Instance.damage;
-        heroStats.maxSpellSlots = WizardStats.Instance.maxSpellSlots;
-        heroStats.currentSpellSlots = WizardStats.Instance.currentSpellSlots;
-        heroStats.healModifier = WizardStats.Instance.healModifier;
-        heroStats.isAlive = WizardStats.Instance.isAlive;
-        heroStats.panelIndex = WizardStats.Instance.panelIndex;
-        heroStats.armor = WizardStats.Instance.armor;
+        targetableUnit.maxHealth = WizardStats.Instance.maxHealth;
+        targetableUnit.currentHealth = WizardStats.Instance.currentHealth;
+        targetableUnit.damage = WizardStats.Instance.damage;
+        targetableUnit.maxSpellSlots = WizardStats.Instance.maxSpellSlots;
+        targetableUnit.currentSpellSlots = WizardStats.Instance.currentSpellSlots;
+        targetableUnit.healModifier = WizardStats.Instance.healModifier;
+        targetableUnit.isAlive = WizardStats.Instance.isAlive;
+        targetableUnit.panelIndex = WizardStats.Instance.panelIndex;
+        targetableUnit.armor = WizardStats.Instance.armor;
     }
     public void SaveStats() // make this a list or something
     {
-        WizardStats.Instance.currentHealth = heroStats.currentHealth;   
-        WizardStats.Instance.currentSpellSlots = heroStats.currentSpellSlots;  
-        WizardStats.Instance.isAlive = heroStats.isAlive;
+        WizardStats.Instance.currentHealth = targetableUnit.currentHealth;   
+        WizardStats.Instance.currentSpellSlots = targetableUnit.currentSpellSlots;  
+        WizardStats.Instance.isAlive = targetableUnit.isAlive;
     }
 }

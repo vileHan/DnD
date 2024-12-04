@@ -216,20 +216,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 8418470696962446567, guid: 903b9e40029b90a4b88027cb855b8295, type: 3}
-  outline: {fileID: -6374287108664459971}
-  healthbarHandler: {fileID: 2627603546658982722}
-  damageNumber: {fileID: 341355489138686338}
+  test: 101
   maxHealth: 70
   currentHealth: 0
   damage: 40
+  armor: 0
   maxSpellSlots: 0
   currentSpellSlots: 0
+  healModifier: 20
+  isTurn: 0
+  isAlive: 1
+  initiative: 0
+  panelIndex: 0
+  outline: {fileID: -6374287108664459971}
+  healthbarHandler: {fileID: 2627603546658982722}
+  damageNumber: {fileID: 341355489138686338}
   spellCost: 0
   ableToAttack: 0
-  healModifier: 25
-  isTurn: 0
-  isAlive: 0
-  initiative: 0
 --- !u!114 &-6374287108664459971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +264,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 8418470696962446567, guid: 903b9e40029b90a4b88027cb855b8295, type: 3}
+  test: 101
+  maxHealth: 70
+  currentHealth: 0
+  damage: 40
+  armor: 0
+  maxSpellSlots: 0
+  currentSpellSlots: 0
+  healModifier: 20
+  isTurn: 0
+  isAlive: 1
+  initiative: 0
+  panelIndex: 0
 --- !u!1 &3675313807557061997
 GameObject:
   m_ObjectHideFlags: 0

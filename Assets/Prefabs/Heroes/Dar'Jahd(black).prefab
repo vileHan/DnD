@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroAttackingIndex: 0
-  heroStats: {fileID: 8575168236686836914}
+  targetableUnit: {fileID: 8575168236686836914}
   spellslotHandler: {fileID: 9001587586961052398}
 --- !u!114 &8575168236686836914
 MonoBehaviour:
@@ -1139,22 +1139,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 6947747645686348647, guid: ff097286a09cd014c926ed923bd720a5, type: 3}
+  test: 101
+  maxHealth: 0
+  currentHealth: 0
+  damage: 0
+  armor: 0
+  maxSpellSlots: 0
+  currentSpellSlots: 0
+  healModifier: 0
+  isTurn: 0
+  isAlive: 1
+  initiative: 0
+  panelIndex: 0
   healthbarHandler: {fileID: 4088872561836032422}
   behaviour: {fileID: -4979554075088316759}
   outline: {fileID: -2639053243159495139}
   damageNumber: {fileID: 1210785580219563149}
-  maxHealth: 0
-  currentHealth: 0
-  damage: 0
-  maxSpellSlots: 0
-  currentSpellSlots: 0
   spellCost: 0
   ableToAttack: 0
-  healModifier: 0
-  isTurn: 0
-  isAlive: 0
-  initiative: 0
-  panelIndex: 0
 --- !u!114 &6004616261404736771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,6 +1170,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 6947747645686348647, guid: ff097286a09cd014c926ed923bd720a5, type: 3}
+  test: 101
+  maxHealth: 70
+  currentHealth: 0
+  damage: 40
+  armor: 0
+  maxSpellSlots: 1
+  currentSpellSlots: 0
+  healModifier: 10
+  isTurn: 0
+  isAlive: 1
+  initiative: 0
+  panelIndex: 0
 --- !u!136 &18421883413716073
 CapsuleCollider:
   m_ObjectHideFlags: 0

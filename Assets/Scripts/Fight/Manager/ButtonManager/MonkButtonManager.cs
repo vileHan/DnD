@@ -16,7 +16,7 @@ public class MonkButtonManager : MonoBehaviour
     [SerializeField] private TMP_Text actionDescriptionHeaderText, actionDescriptionDescriptionText;
 
 
-    public HeroStats heroToAct;
+    public TargetableUnit heroToAct;
 
     void Awake()
     {
@@ -31,7 +31,7 @@ public class MonkButtonManager : MonoBehaviour
     {
         if (state == GameState.ChooseAction)        
         {
-            heroToAct = FightManager.Instance.unitToAct.GetComponent<HeroStats>();
+            heroToAct = FightManager.Instance.unitToAct.GetComponent<TargetableUnit>();
         } 
     }
 

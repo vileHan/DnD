@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class SpellSlotHandler : MonoBehaviour
 {
-    private HeroStats heroStats;
+    private TargetableUnit targetableUnit;
     [SerializeField] private GameObject[] emptySpellslotObjects;
     [SerializeField] private GameObject[] fullSpellslotObjects;
 
     void Awake()
     {
-        heroStats = gameObject.GetComponent<HeroStats>();
+        targetableUnit = gameObject.GetComponent<TargetableUnit>();
     }
 
     void Start()
@@ -27,7 +27,7 @@ public class SpellSlotHandler : MonoBehaviour
 
     public void UpdateSpellslots() // there has to be a better way but im dumb :( (could count from .Length down)
     {
-        for (int i = 0; i < heroStats.currentSpellSlots; i++)
+        for (int i = 0; i < targetableUnit.currentSpellSlots; i++)
         {
             emptySpellslotObjects[i].SetActive(true);
         }
@@ -35,18 +35,18 @@ public class SpellSlotHandler : MonoBehaviour
         {
             fullSpellslotObjects[i].SetActive(false);
         }
-        for (int i = 0; i < heroStats.currentSpellSlots; i++)
+        for (int i = 0; i < targetableUnit.currentSpellSlots; i++)
         {
             fullSpellslotObjects[i].SetActive(true);
         }
     }
     void SetSpellslots()
     {
-        for (int i = 0; i < heroStats.maxSpellSlots; i++)
+        for (int i = 0; i < targetableUnit.maxSpellSlots; i++)
         {
             emptySpellslotObjects[i].SetActive(true);
         }
-        for (int i = 0; i < heroStats.currentSpellSlots; i++)
+        for (int i = 0; i < targetableUnit.currentSpellSlots; i++)
         {
             fullSpellslotObjects[i].SetActive(true);
         }

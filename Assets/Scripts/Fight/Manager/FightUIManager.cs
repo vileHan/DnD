@@ -17,7 +17,7 @@ public class FightUIManager : MonoBehaviour
 
     public TMP_Text unitHealthText, testText_1, testText_2, roundCounterText;
 
-    public HeroStats heroToAct;
+    public TargetableUnit heroToAct;
     
 //    public ActionChosen ActionChosen;
     public static event Action<ActionState> OnActionStateChanged;
@@ -42,7 +42,7 @@ public class FightUIManager : MonoBehaviour
     { 
         if (state == GameState.ChooseAction)        
         {
-            heroToAct = FightManager.Instance.unitToAct.GetComponent<HeroStats>();
+            heroToAct = FightManager.Instance.unitToAct.GetComponent<TargetableUnit>();
             chooseActionPanel = heroActionPanels[heroToAct.panelIndex];
             chooseActionPanel.SetActive(state == GameState.ChooseAction);
         }

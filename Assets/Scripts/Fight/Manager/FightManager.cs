@@ -15,8 +15,7 @@ public class FightManager : MonoBehaviour
 
     public static event Action<GameState> OnGameStateChanged;
 
-    public HeroStats activeHeroStats;
-    public UnitStats activeEnemyStats;
+    public TargetableUnit unitStats;
     public GameObject unitToAct;
 
     private EnemyHandler enemyHandler;
@@ -120,14 +119,10 @@ public class FightManager : MonoBehaviour
     }
     void SelectUnitTurn()
     {
-        if (activeHeroStats != null)
+        if (unitStats != null)
         {
-            activeHeroStats.isTurn = false;
+            unitStats.isTurn = false;
         }
-        if (activeEnemyStats != null)
-        {
-            activeEnemyStats.isTurn = false;
-        }   
 
         if (dictionaryIndex > (UnitManager.Instance.unitDictionary.Count-1)) // if end of dictionary go to start
         {
@@ -136,16 +131,10 @@ public class FightManager : MonoBehaviour
         }
 
         unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
-        if (unitToAct.tag == "Player")
-        {
-            activeHeroStats = unitToAct.GetComponent<HeroStats>();  
-            activeHeroStats.isTurn = true;
-        }
-        if (unitToAct.tag == "Enemy")
-        {
-            activeEnemyStats = unitToAct.GetComponent<UnitStats>();  
-            activeEnemyStats.isTurn = true;
-        }
+
+        unitStats = unitToAct.GetComponent<TargetableUnit>();  
+        unitStats.isTurn = true;
+
         dictionaryIndex++;        
     }
     void SetOrder()

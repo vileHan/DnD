@@ -76,16 +76,9 @@ public class UnitManager : MonoBehaviour
         for (int i = 0; i < unitsAlive.Count; i++)
         {
             GameObject unit = unitsAlive[i];
-            if (unit.tag == "Player")
-            {
-                HeroStats unitStats = unit.GetComponent<HeroStats>();
-                unitDictionary.Add(unitsAlive[i], unitStats.initiative);
-            }
-            if (unit.tag != "Player")
-            {
-                UnitStats unitStats = unit.GetComponent<UnitStats>();
-                unitDictionary.Add(unitsAlive[i], unitStats.initiative);
-            }
+
+            TargetableUnit unitStats = unit.GetComponent<TargetableUnit>();
+            unitDictionary.Add(unitsAlive[i], unitStats.initiative);
         } 
     }
 

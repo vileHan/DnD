@@ -14,12 +14,12 @@ public class HeroHandler : MonoBehaviour
         for(int i = 0; i < heroAmount; i++)
         {
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);
-            HeroStats heroStats = hero.GetComponent<HeroStats>();      
+            TargetableUnit heroStats = hero.GetComponent<TargetableUnit>();    
             if (!heroStats.isAlive)
             {
                 hero.SetActive(false);
             }      
-            else
+            else // has to be registered when dead as well? to get deleted when round is over
             {
                 UnitManager.Instance.RegisterHero(hero); 
             }

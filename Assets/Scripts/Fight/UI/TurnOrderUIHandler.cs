@@ -58,13 +58,13 @@ public class TurnOrderUIHandler : MonoBehaviour
         {
             if (outline != null)
             {
-                outline.effectColor = Color.clear;
+                outline.effectColor = Color.yellow;
             }
         }
 
         if (state == GameState.SelectUnitTurn && !isTurnOrderSetUp)
         {
-            int i = -350;
+            int i = -392;
             isTurnOrderSetUp = true;
             foreach (KeyValuePair<GameObject, int> unit in UnitManager.Instance.unitDictionary) // iterate through sorted dictionary
             { 
@@ -83,12 +83,12 @@ public class TurnOrderUIHandler : MonoBehaviour
                 
                 characterImageInstance.transform.SetParent(worldCanvas.transform, false);
                 outline = characterImageInstance.GetComponent<UnityEngine.UI.Outline>();
-                outline.effectColor = Color.clear;
+                outline.effectColor = Color.yellow;
                 
                 // Should just set spawnpositions list so there are no spaces in between if a unit dies
                 RectTransform rectTransform = characterImageInstance.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(i, 465); // Adjust X position (spread images horizontally
-                i += 103; // 100 = width of image 3 = space for the outline
+                i += 106; // 100 = width of image 3 = space for the outline
             }
         }
     }

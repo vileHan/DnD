@@ -9,6 +9,7 @@ public class PaladinStats : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float damage;
+    public float armor;
     public int maxSpellSlots;
     public int currentSpellSlots;
     public float healModifier;

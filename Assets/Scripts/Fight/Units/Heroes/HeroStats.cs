@@ -17,6 +17,7 @@ public class HeroStats: TargetableUnit
     public float maxHealth;
     public float currentHealth;
     public float damage;
+    public float armor;
     public int maxSpellSlots;
     public int currentSpellSlots;
     public int spellCost; 
@@ -61,9 +62,41 @@ public class HeroStats: TargetableUnit
         {
             behaviour.SetAttackIndex(1);
         }
+        if (isTurn && state == ActionState.SecondaryAttack)
+        {
+            behaviour.SetAttackIndex(2);
+        }
+        if (isTurn && state == ActionState.Spell_1)
+        {
+            behaviour.SetAttackIndex(3);
+        }
         if (isTurn && state == ActionState.Spell_2)
         {
             behaviour.SetAttackIndex(4);
+        }
+        if (isTurn && state == ActionState.Spell_3)
+        {
+            behaviour.SetAttackIndex(5);
+        }
+        if (isTurn && state == ActionState.Spell_4)
+        {
+            behaviour.SetAttackIndex(6);
+        }
+        if (isTurn && state == ActionState.Spell_5)
+        {
+            behaviour.SetAttackIndex(7);
+        }
+        if (isTurn && state == ActionState.Spell_6)
+        {
+            behaviour.SetAttackIndex(8);
+        }
+        if (isTurn && state == ActionState.Spell_7)
+        {
+            behaviour.SetAttackIndex(9);
+        }
+        if (isTurn && state == ActionState.Spell_8)
+        {
+            behaviour.SetAttackIndex(10);
         }
     }
 
@@ -115,23 +148,31 @@ public class HeroStats: TargetableUnit
                         behaviour.PrimaryAttack(target);
                         break;
                     case 2:
+                        behaviour.SecondaryAttack(target);
                         break;
                     case 3:
+                        behaviour.Spell_1Against(target);
                         break;
                     case 4:
                         behaviour.Spell_2Against(target);
                         break;
                     case 5:
+                        behaviour.Spell_3Against(target);
                         break;
                     case 6:
+                        behaviour.Spell_4Against(target);
                         break;
                     case 7:
+                        behaviour.Spell_5Against(target);
                         break;
                     case 8:
+                        behaviour.Spell_6Against(target);
                         break;
                     case 9:
+                        behaviour.Spell_7Against(target);
                         break;
                     case 10:
+                        behaviour.Spell_8Against(target);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(behaviour.heroAttackingIndex), behaviour.heroAttackingIndex, null);
@@ -146,9 +187,15 @@ public class HeroStats: TargetableUnit
 
     public override void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        Debug.Log(damage + " - " + armor);
+        float actualDamage = damage - armor;
+        if (actualDamage < 0)
+        {
+            actualDamage = 0;
+        }
+        currentHealth -= actualDamage;
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
-        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, damage);
+        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, actualDamage);
         if (currentHealth <= 0)
         {
             Die();

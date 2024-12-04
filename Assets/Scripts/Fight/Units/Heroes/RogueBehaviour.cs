@@ -53,13 +53,17 @@ public class RogueBehaviour : BaseHeroBehaviour
     }
     public override void Spell_1Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        heroStats.damage += 20;
+
+        heroStats.currentSpellSlots -= 1;
+        spellslotHandler.UpdateSpellslots();
         
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
     {
         target.TakeDamage((heroStats.damage*2));
+
         heroStats.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
@@ -112,6 +116,7 @@ public class RogueBehaviour : BaseHeroBehaviour
         heroStats.healModifier = RogueStats.Instance.healModifier;
         heroStats.isAlive = RogueStats.Instance.isAlive;
         heroStats.panelIndex = RogueStats.Instance.panelIndex;
+        heroStats.armor = RogueStats.Instance.armor;
     }
     public void SaveStats() // make this a list or something
     {

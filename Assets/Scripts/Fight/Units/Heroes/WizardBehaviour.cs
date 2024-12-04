@@ -51,17 +51,20 @@ public class WizardBehaviour : BaseHeroBehaviour
 
         FightManager.Instance.HeroEndTurn();        
     }
-    public override void Spell_1Against(TargetableUnit target)
+    public override void Spell_1Against(TargetableUnit target) // targetable unit.currentspellslots! when implemented
     {
-        target.TakeDamage((heroStats.damage*2));
-        
+        target.TakeDamage((heroStats.damage));
+
+        heroStats.currentSpellSlots += 1;
+        spellslotHandler.UpdateSpellslots();
+
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
     {
         for (int i = 0; i < UnitManager.Instance.enemiesAlive.Count; i++)
         {
-        UnitStats targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<UnitStats>();
+            UnitStats targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<UnitStats>();
             targetStats.TakeDamage((heroStats.damage/2));
         }
         heroStats.currentSpellSlots -= 1;
@@ -116,6 +119,7 @@ public class WizardBehaviour : BaseHeroBehaviour
         heroStats.healModifier = WizardStats.Instance.healModifier;
         heroStats.isAlive = WizardStats.Instance.isAlive;
         heroStats.panelIndex = WizardStats.Instance.panelIndex;
+        heroStats.armor = WizardStats.Instance.armor;
     }
     public void SaveStats() // make this a list or something
     {

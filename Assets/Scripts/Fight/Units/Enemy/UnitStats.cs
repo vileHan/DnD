@@ -15,6 +15,7 @@ public class UnitStats: TargetableUnit
     public float maxHealth;
     public float currentHealth;
     public float damage;
+    public float armor;
     public int maxSpellSlots;
     public int currentSpellSlots;
     public int spellCost;
@@ -67,9 +68,14 @@ public class UnitStats: TargetableUnit
 
     public override void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        float actualDamage = damage - armor;
+        if (actualDamage < 0)
+        {
+            actualDamage = 0;
+        }
+        currentHealth -= actualDamage;
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
-        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, damage);
+        FightUIManager.Instance.ShowDamageNumber(damageNumber.position, actualDamage);
         if (currentHealth <= 0)
         {
             Die();

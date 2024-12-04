@@ -27,6 +27,10 @@ public class SpellSlotHandler : MonoBehaviour
 
     public void UpdateSpellslots() // there has to be a better way but im dumb :( (could count from .Length down)
     {
+        for (int i = 0; i < heroStats.currentSpellSlots; i++)
+        {
+            emptySpellslotObjects[i].SetActive(true);
+        }
         for (int i = 0; i < fullSpellslotObjects.Length; i++)
         {
             fullSpellslotObjects[i].SetActive(false);

@@ -106,7 +106,7 @@ public class MonkButtonManager : MonoBehaviour
     {
         ActionDescriptionPanel.transform.position = DescriptionPanelPosition_2;
         actionDescriptionHeaderText.text = "Spell_1";
-        actionDescriptionDescriptionText.text = "Description";
+        actionDescriptionDescriptionText.text = "Heal all allies for " + heroToAct.healModifier + " health";
     }
     private void SetSpell_2Text()
     {

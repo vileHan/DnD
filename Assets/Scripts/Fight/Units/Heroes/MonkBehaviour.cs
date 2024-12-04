@@ -53,8 +53,14 @@ public class MonkBehaviour : BaseHeroBehaviour
     }
     public override void Spell_1Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
-        
+        for (int i = 0; i < UnitManager.Instance.heroesAlive.Count; i++)
+        {
+            HeroStats targetStats = UnitManager.Instance.heroesAlive[i].GetComponent<HeroStats>();
+            targetStats.Heal((heroStats.healModifier));
+        }
+        heroStats.currentSpellSlots -= 1;
+        spellslotHandler.UpdateSpellslots();
+
         FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
@@ -117,6 +123,7 @@ public class MonkBehaviour : BaseHeroBehaviour
         heroStats.healModifier = MonkStats.Instance.healModifier;
         heroStats.isAlive = MonkStats.Instance.isAlive;
         heroStats.panelIndex = MonkStats.Instance.panelIndex;
+        heroStats.armor = MonkStats.Instance.armor;
     }
     public void SaveStats() // make this a list or something
     {

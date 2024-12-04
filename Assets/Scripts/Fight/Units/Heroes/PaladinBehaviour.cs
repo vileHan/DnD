@@ -52,7 +52,11 @@ public class PaladinBehaviour : BaseHeroBehaviour
     }
     public override void Spell_1Against(TargetableUnit target)
     {
-        target.TakeDamage((heroStats.damage*2));
+        target.TakeDamage((heroStats.damage));
+        heroStats.armor += 5;
+
+        heroStats.currentSpellSlots -= 1;
+        spellslotHandler.UpdateSpellslots();
         
         FightManager.Instance.HeroEndTurn();
     }
@@ -60,6 +64,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
     {
         target.Heal((heroStats.healModifier));
         heroStats.Heal(heroStats.healModifier);
+
         heroStats.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
@@ -112,6 +117,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
         heroStats.healModifier = PaladinStats.Instance.healModifier;
         heroStats.isAlive = PaladinStats.Instance.isAlive;
         heroStats.panelIndex = PaladinStats.Instance.panelIndex;
+        heroStats.armor = PaladinStats.Instance.armor;
     }
     public void SaveStats() // make this a list or something
     {

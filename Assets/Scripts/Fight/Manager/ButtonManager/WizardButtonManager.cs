@@ -106,7 +106,7 @@ public class WizardButtonManager : MonoBehaviour
     {
         ActionDescriptionPanel.transform.position = DescriptionPanelPosition_2;
         actionDescriptionHeaderText.text = "Spell_1";
-        actionDescriptionDescriptionText.text = "Description";
+        actionDescriptionDescriptionText.text = "Deal " + heroToAct.damage + " damage to 1 enemy and gain a Spellslot";
     }
     private void SetSpell_2Text()
     {

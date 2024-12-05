@@ -108,7 +108,6 @@ public class RogueBehaviour : BaseHeroBehaviour
 
     void SetStats() // make this a list or something
     {
-        Debug.Log("set stats" + targetableUnit.isAlive);
         targetableUnit.maxHealth = RogueStats.Instance.maxHealth;
         targetableUnit.currentHealth = RogueStats.Instance.currentHealth;
         targetableUnit.damage = RogueStats.Instance.damage;

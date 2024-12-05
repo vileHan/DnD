@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehaviour : MonoBehaviour
 {
-    public bool isPortalEntered;
+    [SerializeField] private int difficulty; 
     void Start()
     {
         
@@ -14,23 +14,20 @@ public class PortalBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPortalEntered)
-        {
-            LoadFightScene();
-            gameObject.SetActive(false);  
-        }    
+   
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            isPortalEntered = true;
+            GameManager.Instance.difficulty = difficulty;
+            LoadFightScene();
+            gameObject.SetActive(false);  
         }
     } 
 
     public void LoadFightScene()
     {
-        isPortalEntered = false;
         GameManager.Instance.DisableRPGScene();
         SceneManager.LoadScene(1, LoadSceneMode.Additive); // for future -> change gamestate in (general)gamemanager to whatever loads the fight scene
         //SceneManager.LoadScene(1, LoadSceneMode.Single);

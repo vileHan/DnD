@@ -9,6 +9,12 @@ public class HeroHandler : MonoBehaviour
     [SerializeField]private Vector3[] spawnPositions;
     public bool heroesSpawned;
 
+    void Awake()
+    {
+        //heroAmount = GameManager.Instance.difficulty;
+    }
+
+    
     void Start()
     {
         for(int i = 0; i < heroAmount; i++)

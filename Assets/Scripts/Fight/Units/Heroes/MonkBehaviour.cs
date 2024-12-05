@@ -67,7 +67,6 @@ public class MonkBehaviour : BaseHeroBehaviour
     public override void Spell_2Against(TargetableUnit target)
     {        
         int attackPerTurn = 2;
-        Debug.Log("times:" + timesAttacked);
         if (timesAttacked == attackPerTurn)
         {
             targetableUnit.currentSpellSlots -= 1;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
-    [SerializeField]private float enemyAmount = 4;
+    private float enemyAmount;
     private float spawnDelay = 0.1f;
     public GameObject[] enemyPrefabs;
     //public List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -12,6 +12,10 @@ public class EnemyHandler : MonoBehaviour
     public bool enemiesSpawned;
     [SerializeField]private Vector3[] spawnPositions;
 
+    void Awake()
+    {
+        enemyAmount = GameManager.Instance.difficulty;
+    }
     void Start()
     { 
         StartCoroutine(Spawn());             

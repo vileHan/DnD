@@ -141,7 +141,7 @@ public class HeroStats: TargetableUnit
                 switch(behaviour.heroAttackingIndex)
                 {
                     case 0:
-                        Debug.Log("no action selected");
+                        //Debug.Log("no action selected");
                         break;
                     case 1:
                         behaviour.PrimaryAttack(target);
@@ -179,14 +179,13 @@ public class HeroStats: TargetableUnit
             }
             else
             {
-                Debug.Log("no enemy selected");
+                //Debug.Log("no enemy selected");
             }            
         }
     }
 
     public override void TakeDamage(float damage)
     {
-        Debug.Log(damage + " - " + armor);
         float actualDamage = damage - armor;
         if (actualDamage < 0)
         {

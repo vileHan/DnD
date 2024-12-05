@@ -132,8 +132,10 @@ public class FightManager : MonoBehaviour
 
         unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
 
-        unitStats = unitToAct.GetComponent<TargetableUnit>();  
+        unitStats = unitToAct.GetComponent<TargetableUnit>();
+        Debug.Log("turn: " + unitStats.name);  
         unitStats.isTurn = true;
+
 
         dictionaryIndex++;        
     }
@@ -164,15 +166,16 @@ public class FightManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
 
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
-        while (!unloadOperation.isDone)
-        {
-            yield return null;
-        }
+        SceneManager.LoadScene(2,  LoadSceneMode.Single);
+        // AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
+        // while (!unloadOperation.isDone)
+        // {
+        //     yield return null;
+        // }
 
-        GameManager.Instance.ResetRPGScene();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // GameManager.Instance.ResetRPGScene();
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     public void HeroEndTurn()

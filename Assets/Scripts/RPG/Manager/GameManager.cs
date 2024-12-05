@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public EventTriggerHandler eventTriggerHandler;
-
+    public int difficulty;
     [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player;
 
     public GameObject HeroStatManager;

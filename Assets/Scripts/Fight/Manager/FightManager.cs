@@ -115,7 +115,7 @@ public class FightManager : MonoBehaviour
     }
     void HandleFightLost()
     {
-        StartCoroutine(EndScreenTransition());
+        StartCoroutine(LoseScreenTransition());
     }
     void SelectUnitTurn()
     {
@@ -156,6 +156,21 @@ public class FightManager : MonoBehaviour
         }
 
         GameManager.Instance.EnableRPGScene();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    IEnumerator LoseScreenTransition()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        UnitManager.Instance.DeleteAllUnitsLeft();
+
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
+        while (!unloadOperation.isDone)
+        {
+            yield return null;
+        }
+
+        GameManager.Instance.ResetRPGScene();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

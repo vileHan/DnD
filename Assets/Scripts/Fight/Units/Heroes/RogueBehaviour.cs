@@ -62,7 +62,7 @@ public class RogueBehaviour : BaseHeroBehaviour
     }
     public override void Spell_2Against(TargetableUnit target)
     {
-        target.TakeDamage((targetableUnit.damage*2));
+        target.TakeDamage((targetableUnit.damage*1.5f));
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
@@ -121,8 +121,7 @@ public class RogueBehaviour : BaseHeroBehaviour
     }
     public void SaveStats() // make this a list or something
     {
-        RogueStats.Instance.currentHealth = targetableUnit.currentHealth;   
-        RogueStats.Instance.currentSpellSlots = targetableUnit.currentSpellSlots; 
+        RogueStats.Instance.currentHealth = targetableUnit.currentHealth;    
         RogueStats.Instance.isAlive = targetableUnit.isAlive; 
     }
 }

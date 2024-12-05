@@ -28,4 +28,10 @@ public class MonkStats : MonoBehaviour
     {
         
     }
+
+    public void ResetStats()
+    {
+        currentHealth = maxHealth;
+        isAlive = true;
+    }
 }

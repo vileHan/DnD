@@ -9,7 +9,6 @@ public class ThirdPersonCameraController : MonoBehaviour
     public Transform orientation;
     public Transform player;
     public Transform playerObject;
-    public Rigidbody rb;
 
     public float rotationSpeed;
 

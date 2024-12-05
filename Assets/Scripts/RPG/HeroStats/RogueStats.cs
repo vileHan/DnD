@@ -29,4 +29,9 @@ public class RogueStats : MonoBehaviour
     {
         
     }
+    public void ResetStats()
+    {
+        currentHealth = maxHealth;
+        isAlive = true;
+    }
 }

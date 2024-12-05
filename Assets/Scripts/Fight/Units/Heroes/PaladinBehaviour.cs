@@ -122,8 +122,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
     }
     public void SaveStats() // make this a list or something
     {
-        PaladinStats.Instance.currentHealth = targetableUnit.currentHealth;   
-        PaladinStats.Instance.currentSpellSlots = targetableUnit.currentSpellSlots;  
+        PaladinStats.Instance.currentHealth = targetableUnit.currentHealth;    
         PaladinStats.Instance.isAlive = targetableUnit.isAlive;
     }
 }

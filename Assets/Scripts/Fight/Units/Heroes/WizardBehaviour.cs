@@ -125,8 +125,7 @@ public class WizardBehaviour : BaseHeroBehaviour
     }
     public void SaveStats() // make this a list or something
     {
-        WizardStats.Instance.currentHealth = targetableUnit.currentHealth;   
-        WizardStats.Instance.currentSpellSlots = targetableUnit.currentSpellSlots;  
+        WizardStats.Instance.currentHealth = targetableUnit.currentHealth;     
         WizardStats.Instance.isAlive = targetableUnit.isAlive;
     }
 }

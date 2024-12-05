@@ -29,4 +29,9 @@ public class WizardStats : MonoBehaviour
     {
         
     }
+    public void ResetStats()
+    {
+        currentHealth = maxHealth;
+        isAlive = true;
+    }
 }

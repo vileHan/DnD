@@ -67,10 +67,12 @@ public class MonkBehaviour : BaseHeroBehaviour
     public override void Spell_2Against(TargetableUnit target)
     {        
         int attackPerTurn = 2;
+        Debug.Log("times:" + timesAttacked);
         if (timesAttacked == attackPerTurn)
         {
             targetableUnit.currentSpellSlots -= 1;
             spellslotHandler.UpdateSpellslots();
+            timesAttacked = 0;
 
             FightManager.Instance.HeroEndTurn();
         }
@@ -129,8 +131,7 @@ public class MonkBehaviour : BaseHeroBehaviour
     }
     public void SaveStats() // make this a list or something
     {
-        MonkStats.Instance.currentHealth = targetableUnit.currentHealth;   
-        MonkStats.Instance.currentSpellSlots = targetableUnit.currentSpellSlots;  
+        MonkStats.Instance.currentHealth = targetableUnit.currentHealth;     
         MonkStats.Instance.isAlive = targetableUnit.isAlive;
     }
 }

@@ -97,6 +97,17 @@ public class FightManager : MonoBehaviour
         }
         else if (UnitManager.Instance.enemiesAlive.Count == 0)
         {
+            for (int i = 0; i < GameManager.Instance.difficulty; i ++)
+            {
+                int reward = UnityEngine.Random.Range(2,6);
+                Debug.Log("Enemy " + (i+1) + " dropped " + reward + " gold!");
+                PlayerStats.Instance.gold += reward;
+                int randomRoll = UnityEngine.Random.Range(0,10);
+                if (randomRoll < 1)
+                {
+                    Debug.Log("Rare Loot!");
+                }
+            }
             UpdateGameState(GameState.FightWon);
         }
         else
@@ -111,7 +122,7 @@ public class FightManager : MonoBehaviour
     }
     void HandleFightWon()
     {
-        StartCoroutine(EndScreenTransition());
+        StartCoroutine(WinScreenTransition());
     }
     void HandleFightLost()
     {
@@ -146,7 +157,7 @@ public class FightManager : MonoBehaviour
         UnitManager.Instance.AssignUnitsInScene();
     }
 
-    IEnumerator EndScreenTransition()
+    IEnumerator WinScreenTransition()
     {
         yield return new WaitForSecondsRealtime(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
@@ -158,6 +169,7 @@ public class FightManager : MonoBehaviour
         }
 
         GameManager.Instance.EnableRPGScene();
+        Debug.Log("Player Gold: " + PlayerStats.Instance.gold + "g");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

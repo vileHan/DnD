@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 971922290054417074}
   - component: {fileID: 7935244103024827290}
   m_Layer: 0
-  m_Name: Portal(2)
+  m_Name: TriggerPortal(3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPortalEntered: 0
-  difficulty: 2
+  difficulty: 3
 --- !u!65 &7935244103024827290
 BoxCollider:
   m_ObjectHideFlags: 0

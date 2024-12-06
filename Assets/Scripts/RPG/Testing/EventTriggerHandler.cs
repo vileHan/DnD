@@ -12,7 +12,7 @@ public class EventTriggerHandler : MonoBehaviour
     {
         for (int i = 0; i < level; i++)
         {
-            GameObject temp = Instantiate(portal[i], new Vector3(0f, 2.5f, spawnZ + (i * 15)), Quaternion.identity);
+            GameObject temp = Instantiate(portal[Random.Range(0, portal.Length)], new Vector3(0f, 2.5f, spawnZ + (i * 15)), Quaternion.identity);
             trigger.Add(temp);
             trigger[i].transform.SetParent(this.transform, true);
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 971922290054417074}
   - component: {fileID: 7935244103024827290}
   m_Layer: 0
-  m_Name: Portal(1)
+  m_Name: TriggerPortal(4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8288e18523a4484685174440e6e4732, type: 2}
+  - {fileID: -1580535799172915004, guid: 2b0c4bbc795c1cd458a0e991993226f3, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952defadf5f093349a528c5cb6d671dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPortalEntered: 0
-  difficulty: 1
+  difficulty: 4
 --- !u!65 &7935244103024827290
 BoxCollider:
   m_ObjectHideFlags: 0

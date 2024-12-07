@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public EventTriggerHandler eventTriggerHandler;
+    public EventTriggerManager eventTriggerManager;
     public int difficulty;
     [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player;
 
@@ -60,6 +60,6 @@ public class GameManager : MonoBehaviour
         rogueStats.ResetStats();
         wizardStats.ResetStats();
 
-        eventTriggerHandler.ResetPortals();
+        eventTriggerManager.ResetPortals();
     }
 }

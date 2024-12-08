@@ -11226,9 +11226,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroPrefabs:
   - {fileID: 6063272253184979719, guid: bce385e7daf604b4d9ab96531b49d5ce, type: 3}
+  - {fileID: 6063272253184979719, guid: 7a53fe67fb72255438d9b9acd11ac7ff, type: 3}
   - {fileID: 6063272253184979719, guid: 151e27a8ef0ca744e98773b7f89757f9, type: 3}
   - {fileID: 6063272253184979719, guid: f4930e7c43700c946a2df645a8062987, type: 3}
-  - {fileID: 6063272253184979719, guid: 7a53fe67fb72255438d9b9acd11ac7ff, type: 3}
   spawnPositions:
   - {x: -100.5, y: 1, z: -97}
   - {x: -99, y: 1, z: -100.5}

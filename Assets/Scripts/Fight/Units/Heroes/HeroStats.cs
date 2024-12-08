@@ -9,25 +9,13 @@ public class HeroStats: TargetableUnit
     [SerializeField]private HealthbarHandler healthbarHandler;
     [SerializeField]private BaseHeroBehaviour behaviour;
 
+    public AnimationTestScript animationTestScript;
     [SerializeField] private Outline outline;
 
     public Transform damageNumber;
 
-    // public float maxHealth;
-    // public float currentHealth;
-    // public float damage;
-    // public float armor;
-    // public int maxSpellSlots;
-    // public int currentSpellSlots;
     public int spellCost; 
     public bool ableToAttack;
-    // public float healModifier;
-
-    // public bool isTurn;
-    // public bool isAlive;
-    // public int initiative;
-
-    // public int panelIndex;
 
     void Awake()
     {
@@ -191,21 +179,29 @@ public class HeroStats: TargetableUnit
         {
             actualDamage = 0;
         }
+        
         currentHealth -= actualDamage;
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
         FightUIManager.Instance.ShowDamageNumber(damageNumber.position, actualDamage);
         if (currentHealth <= 0)
         {
+            
             Die();
         }
+        else
+        {
+            animationTestScript.GotHitAnimation();
+        }
+        
     }
     public override void Die()
     {
+        animationTestScript.DeathAnimation();
         isAlive = false;
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
     public override void Heal(float healModifier)
     {

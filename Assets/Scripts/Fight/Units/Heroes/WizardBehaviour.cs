@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WizardBehaviour : BaseHeroBehaviour
-{
-    [SerializeField] private HeroStats heroStats;
-    [SerializeField] private TargetableUnit targetableUnit;
-
+{    [SerializeField] private TargetableUnit targetableUnit;
     [SerializeField] private SpellSlotHandler spellslotHandler;
+    [SerializeField] private AnimationTestScript animationTestScript;
 
 
     void Awake()
@@ -43,6 +41,7 @@ public class WizardBehaviour : BaseHeroBehaviour
     {
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
+        animationTestScript.Attack1Animation();
 
         FightManager.Instance.HeroEndTurn();        
     }
@@ -56,6 +55,7 @@ public class WizardBehaviour : BaseHeroBehaviour
     public override void Spell_1Against(TargetableUnit target) // targetable unit.currentspellslots! when implemented
     {
         target.TakeDamage((targetableUnit.damage));
+        animationTestScript.Attack3Animation();
 
         targetableUnit.currentSpellSlots += 1;
         spellslotHandler.UpdateSpellslots();
@@ -74,6 +74,7 @@ public class WizardBehaviour : BaseHeroBehaviour
             TargetableUnit targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<TargetableUnit>();
 
             targetStats.TakeDamage((targetableUnit.damage/2));
+            animationTestScript.Cast2Animation();
             
         }
         targetableUnit.currentSpellSlots -= 1;

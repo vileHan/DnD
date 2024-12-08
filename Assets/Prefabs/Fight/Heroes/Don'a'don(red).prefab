@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5534668044169976022
 Transform:
   m_ObjectHideFlags: 0
@@ -1472,6 +1472,7 @@ GameObject:
   - component: {fileID: 7237781167102289453}
   - component: {fileID: 4821340591623077280}
   - component: {fileID: 71838708190505014}
+  - component: {fileID: 1861939584337322445}
   m_Layer: 0
   m_Name: Don'a'don(red)
   m_TagString: Player
@@ -1488,10 +1489,11 @@ Transform:
   m_GameObject: {fileID: 6063272253184979719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7816204838595494089}
   - {fileID: 7148065346450064423}
   - {fileID: 5534668044169976022}
   - {fileID: 6364380079246370856}
@@ -1539,9 +1541,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroAttackingIndex: 0
-  heroStats: {fileID: 3068958732659073862}
   targetableUnit: {fileID: 3068958732659073862}
   spellslotHandler: {fileID: 71838708190505014}
+  animationTestScript: {fileID: 1861939584337322445}
 --- !u!114 &7388004715140180007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,6 +1589,7 @@ MonoBehaviour:
   panelIndex: 0
   healthbarHandler: {fileID: 4802376778634274114}
   behaviour: {fileID: 428041191016797720}
+  animationTestScript: {fileID: 1861939584337322445}
   outline: {fileID: 7388004715140180007}
   damageNumber: {fileID: 7148065346450064423}
   spellCost: 0
@@ -1669,6 +1672,19 @@ MonoBehaviour:
   - {fileID: 2894248038333722312}
   - {fileID: 3018836553005327013}
   - {fileID: 5927856077853378275}
+--- !u!114 &1861939584337322445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063272253184979719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322340f7d5be3f54589243bba87e184c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7816204838604795573}
 --- !u!1 &7243180028101872903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,3 +1988,79 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &1216001308834172409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6854552551087730524}
+    m_Modifications:
+    - target: {fileID: 8978108775178408208, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_Name
+      value: TinKnight_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978108775181524360, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe3e3ef1ec46e4346b8069540008993b, type: 2}
+    - target: {fileID: 8978108775181524362, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe3e3ef1ec46e4346b8069540008993b, type: 2}
+    m_RemovedComponents:
+    - {fileID: 3472298095487010307, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+--- !u!4 &7816204838595494089 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+  m_PrefabInstance: {fileID: 1216001308834172409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7816204838604795573 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8978108775185703756, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+  m_PrefabInstance: {fileID: 1216001308834172409}
+  m_PrefabAsset: {fileID: 0}

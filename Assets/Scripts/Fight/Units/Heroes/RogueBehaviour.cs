@@ -7,6 +7,7 @@ public class RogueBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private TargetableUnit targetableUnit;
     [SerializeField] private SpellSlotHandler spellslotHandler;
+    [SerializeField] private AnimationTestScript animationTestScript;
     
     void Awake()
     {
@@ -41,6 +42,7 @@ public class RogueBehaviour : BaseHeroBehaviour
     {
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
+        animationTestScript.Attack1Animation();
 
         FightManager.Instance.HeroEndTurn();        
     }
@@ -54,6 +56,7 @@ public class RogueBehaviour : BaseHeroBehaviour
     public override void Spell_1Against(TargetableUnit target)
     {
         targetableUnit.damage += 20;
+        animationTestScript.BuffAnimation();
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
@@ -63,6 +66,7 @@ public class RogueBehaviour : BaseHeroBehaviour
     public override void Spell_2Against(TargetableUnit target)
     {
         target.TakeDamage((targetableUnit.damage*1.5f));
+        animationTestScript.Attack2Animation();
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();

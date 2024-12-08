@@ -11,7 +11,7 @@ public class EventTriggerManager : MonoBehaviour
 {
     public static EventTriggerManager Instance;
     int level = 6;
-    public GameObject[] portal; //(eventtrigger)
+    public GameObject[] portal; 
     public GameObject lootPanel, lootOrNotPanel, fightOrNotPanel, chanceOrNotPanel;
     public List<GameObject> trigger;
     private float spawnZ = -30;
@@ -109,7 +109,6 @@ public class EventTriggerManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-
     public void TriggerFightEvent(int difficulty)
     {
         GameManager.Instance.DisableRPGScene();
@@ -129,7 +128,7 @@ public class EventTriggerManager : MonoBehaviour
     {
         float reward = UnityEngine.Random.Range(min, max);
         PlayerStats.Instance.gold += (int)reward;
-        Debug.Log("You received " + reward + "g");
+        Debug.Log("You found " + reward + "g");
     }
 }
 

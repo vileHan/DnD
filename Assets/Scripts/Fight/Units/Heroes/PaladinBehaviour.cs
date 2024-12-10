@@ -6,7 +6,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private TargetableUnit targetableUnit;
     [SerializeField] private SpellSlotHandler spellslotHandler;
-    [SerializeField] private AnimationTestScript animationTestScript;
+    [SerializeField] private KnightAnimationScript knightAnimationScript;
 
     void Awake()
     {
@@ -41,7 +41,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
     {
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
-        animationTestScript.Attack1Animation();
+        knightAnimationScript.Attack1Animation();
 
         FightManager.Instance.HeroEndTurn();        
     }
@@ -55,7 +55,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
     public override void Spell_1Against(TargetableUnit target)
     {
         target.TakeDamage((targetableUnit.damage));
-        animationTestScript.Attack3Animation();
+        knightAnimationScript.Attack3Animation();
         targetableUnit.armor += 5;
 
         targetableUnit.currentSpellSlots -= 1;
@@ -67,7 +67,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
     {
         target.Heal((targetableUnit.healModifier));
         targetableUnit.Heal(targetableUnit.healModifier);
-        animationTestScript.BlockAnimation();
+        knightAnimationScript.BlockAnimation();
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();

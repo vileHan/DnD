@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : BaseHeroBehaviour
 {
-    public MeshRenderer Renderer;
     public TargetableUnit unitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
+    public DemonAnimationScript demonAnimationScript;
 
     private Color baseColor = new Color(1f, 1f, 1f, 1f);
     
@@ -36,6 +36,24 @@ public class EnemyBehaviour : BaseHeroBehaviour
         GameObject targetedHero = UnitManager.Instance.heroesAlive[Random.Range(0, UnitManager.Instance.heroesAlive.Count)]; // random right now -> later maybe look for target with lowest health
         TargetableUnit targetHeroStats = targetedHero.GetComponent<TargetableUnit>();  
         targetHeroStats.TakeDamage(unitStats.damage);
+        int chance = Random.Range(1, 5);
+        if (chance == 1)
+        {
+            demonAnimationScript.Attack1Animation();
+        }
+        if (chance == 2)
+        {
+            demonAnimationScript.Attack2Animation();
+        }
+        if (chance == 3)
+        {
+            demonAnimationScript.Attack3Animation();
+        }
+        if (chance == 4)
+        {
+            demonAnimationScript.Attack4Animation();
+        }
+        
     }
 
     public void DecideAction() // later stages make th switch case for differnt actions? or make enemy look if hp is low etc.

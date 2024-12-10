@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 /*
  * These are static methods used in the editor scripts from Infinity PBR
@@ -9,16 +11,17 @@ using UnityEngine;
 
 namespace InfinityPBR
 {
-    [System.Serializable]
+    [Serializable]
     public static class InfinityStatic
     {
-#if UNITY_EDITOR
-        public static string[] AllPrefabGuids => AssetDatabase.FindAssets("t:Prefab");
-        public static string[] AllPrefabPaths => AllPrefabGuids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
-#endif
         
         public static Vector3 WorldPositionOf(Transform transform, Vector3 positionOffset) => transform.TransformPoint(positionOffset);
         
+        
+#if UNITY_EDITOR
+        public static string[] AllPrefabGuids => AssetDatabase.FindAssets("t:Prefab");
+        public static string[] AllPrefabPaths => AllPrefabGuids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
+
         public static Object[] FindAssetsByLabel(string label, bool sortAlpha = true)
         {
             var guids = AssetDatabase.FindAssets($"l:{label}");
@@ -32,16 +35,24 @@ namespace InfinityPBR
             return sortAlpha ? objects.OrderBy(o => o.name).ToArray() : objects;
         }
         
-        public static List<string> GetAllLabels()
+        private static List<string> _cachedLabels;
+        
+        public static List<string> GetAllLabels(bool cache = false, string folderLimitation = "")
         {
-            var guids = AssetDatabase.FindAssets("l:Infinity");
+            if (_cachedLabels != null && !cache) return _cachedLabels;
+
+            string[] guids;
+            if (string.IsNullOrWhiteSpace(folderLimitation))
+                guids = AssetDatabase.FindAssets("l:Infinity");
+            else
+                guids = AssetDatabase.FindAssets("l:Infinity", new [] {folderLimitation});
 
             // Extract labels from guids
             var allLabels = new List<string>();
             foreach (var guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                var labels = AssetDatabase.GetLabels(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path));
+                var labels = AssetDatabase.GetLabels(AssetDatabase.LoadAssetAtPath<Object>(path));
                 allLabels.AddRange(labels);
             }
 
@@ -52,25 +63,14 @@ namespace InfinityPBR
             if (!allLabels.Contains("Infinity"))
                 allLabels.Insert(0, "Infinity");
 
-            return allLabels;
+            _cachedLabels = allLabels.ToList(); //Cache the labels, ensuring a clean copy, not allLabels which is on the stack.
+            return _cachedLabels;
         }
-        
+
         public static Object[] FindAssetsByLabel(int labelMask, string searchString = "", bool requireAll = true, bool sortAlpha = true)
         {
             var allLabels = GetAllLabels(); // Implement this function as per your needs
 
-            
-            // Convert the mask to a list of selected labels
-            /*
-            var labels = new List<string>();
-            for (var i = 0; i < allLabels.Count; i++)
-            {
-                if ((labelMask & (1 << i)) != 0)
-                {
-                    labels.Add(allLabels[i]);
-                }
-            }
-            */
             // Convert the mask to a list of selected labels
             var selectedLabels = new List<string>();
             for (int i = 0; i < allLabels.Count; i++)
@@ -106,21 +106,6 @@ namespace InfinityPBR
 
             // Remove duplicates
             objects = objects.Distinct().ToList();
-            
-            /*
-            var searchFilter = requireAll ? "l:" + string.Join(" l:", labels) : "l:" + string.Join(" ", labels);
-
-            var guids = AssetDatabase.FindAssets(searchFilter);
-            foreach (var guid in guids)
-            {
-                var assetPath = AssetDatabase.GUIDToAssetPath(guid);
-                var asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
-                if (asset == null || (string.IsNullOrWhiteSpace(searchString) == false && asset.name.Contains(searchString) == false))
-                    continue;
-        
-                objects.Add(asset);
-            }
-            */
 
             return sortAlpha ? objects.OrderBy(o => o.name).ToArray() : objects.ToArray();
         }
@@ -144,7 +129,7 @@ namespace InfinityPBR
             return sortAlpha ? objects.OrderBy(o => o.name).ToArray() : objects.ToArray();
         }
 
-        public static void AddLabel(this UnityEngine.Object obj, string label)
+        public static void AddLabel(this Object obj, string label)
         {
             var currentLabels = AssetDatabase.GetLabels(obj);
         
@@ -154,5 +139,6 @@ namespace InfinityPBR
                 AssetDatabase.SetLabels(obj, labelList.ToArray());
             }
         }
+#endif
     }
 }

@@ -246,6 +246,7 @@ namespace InfinityPBR
                     AddNewPresetGroup(Manager);
             }
             ResetColor();
+            
 
             BackgroundColorIf(Manager.shapeList.Count == 0, Color.green, Color.white);
             if (GUILayout.Button($"Reload Blendshape List [{Manager.shapeList.Count}]"))
@@ -339,13 +340,16 @@ namespace InfinityPBR
             {
                 if (preset.presetValues.FirstOrDefault(x => x.objectName == shape.obj.gameObjectName && x.valueTriggerName == shape.value.triggerName) != null) continue;
                 
-                BlendShapePresetValue newValue = new BlendShapePresetValue();
-                newValue.objectName = shape.obj.gameObjectName;
-                newValue.valueTriggerName = shape.value.triggerName;
-                newValue.limitMin = shape.value.limitMin;
-                newValue.limitMax = shape.value.limitMax;
-                newValue.min = shape.value.min;
-                newValue.max = shape.value.max;
+                var newValue = new BlendShapePresetValue
+                {
+                    objectName = shape.obj.gameObjectName,
+                    valueTriggerName = shape.value.triggerName,
+                    limitMin = shape.value.limitMin,
+                    limitMax = shape.value.limitMax,
+                    min = shape.value.min,
+                    max = shape.value.max,
+                    shapeValue = shape.value.value
+                };
                 preset.presetValues.Add(newValue);
             }
             EditorUtility.SetDirty(Manager);
@@ -355,9 +359,9 @@ namespace InfinityPBR
         private void AddNewPresetValue(BlendShapesPresetManager presetManager, BlendShapePreset preset)
         {
             preset.presetValues.Add(new BlendShapePresetValue());
-            BlendShapePresetValue newValue = preset.presetValues[preset.presetValues.Count - 1];
+            var newValue = preset.presetValues[preset.presetValues.Count - 1];
 
-            Shape shape = presetManager.shapeList[presetManager.shapeListIndex];
+            var shape = presetManager.shapeList[presetManager.shapeListIndex];
 
             newValue.objectName = shape.obj.gameObjectName;
             newValue.valueTriggerName = shape.value.triggerName;
@@ -365,13 +369,38 @@ namespace InfinityPBR
             newValue.limitMax = shape.value.limitMax;
             newValue.min = shape.value.min;
             newValue.max = shape.value.max;
+            newValue.shapeValue = shape.value.value;
             EditorUtility.SetDirty(presetManager);
             //SomethingChanged();
         }
 
+        private void AddAllPresetValues(BlendShapesPresetManager presetManager, BlendShapePreset preset)
+        {
+            preset.presetValues.Add(new BlendShapePresetValue());
+            var newValue = preset.presetValues[preset.presetValues.Count - 1];
+
+            foreach (var shape in presetManager.shapeList)
+            {
+                newValue.objectName = shape.obj.gameObjectName;
+                newValue.valueTriggerName = shape.value.triggerName;
+                newValue.limitMin = shape.value.limitMin;
+                newValue.limitMax = shape.value.limitMax;
+                newValue.min = shape.value.min;
+                newValue.max = shape.value.max;
+            }
+            EditorUtility.SetDirty(presetManager);
+        }
+
         private void AddNewPresetGroup(BlendShapesPresetManager presetManager)
         {
-            presetManager.presets.Add(new BlendShapePreset());
+            var newPreset = new BlendShapePreset
+            {
+                name = "New Preset Group"
+            };
+
+            //AddAllPresetValues(Manager, newPreset);
+            
+            presetManager.presets.Add(newPreset);
             //SomethingChanged();
             EditorUtility.SetDirty(presetManager);
         }

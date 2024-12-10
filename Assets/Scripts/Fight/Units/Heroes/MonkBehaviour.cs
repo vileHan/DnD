@@ -6,7 +6,7 @@ public class MonkBehaviour : BaseHeroBehaviour
 {
     [SerializeField] private TargetableUnit targetableUnit;
     [SerializeField] private SpellSlotHandler spellslotHandler;
-    [SerializeField] private AnimationTestScript animationTestScript;
+    [SerializeField] private KnightAnimationScript knightAnimationScript;
 
     private int timesAttacked = 1;
     void Awake()
@@ -42,7 +42,7 @@ public class MonkBehaviour : BaseHeroBehaviour
     {
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
-        animationTestScript.Attack1Animation();
+        knightAnimationScript.Attack1Animation();
 
         FightManager.Instance.HeroEndTurn();        
     }
@@ -59,7 +59,7 @@ public class MonkBehaviour : BaseHeroBehaviour
         {
             TargetableUnit targetStats = UnitManager.Instance.heroesAlive[i].GetComponent<TargetableUnit>();
             targetStats.Heal((targetableUnit.healModifier));
-            animationTestScript.Cast2Animation();
+            knightAnimationScript.Cast2Animation();
         }
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
@@ -78,7 +78,7 @@ public class MonkBehaviour : BaseHeroBehaviour
             FightManager.Instance.HeroEndTurn();
         }
         target.TakeDamage((targetableUnit.damage));
-        animationTestScript.Attack1Animation();
+        knightAnimationScript.Attack1Animation();
         timesAttacked++;
     }
     public override void Spell_3Against(TargetableUnit target)

@@ -1128,7 +1128,7 @@ MonoBehaviour:
   heroAttackingIndex: 0
   targetableUnit: {fileID: 8575168236686836914}
   spellslotHandler: {fileID: 9001587586961052398}
-  animationTestScript: {fileID: 2627157530036770802}
+  knightAnimationScript: {fileID: 2627157530036770802}
 --- !u!114 &8575168236686836914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   panelIndex: 0
   healthbarHandler: {fileID: 4088872561836032422}
   behaviour: {fileID: -4979554075088316759}
-  animationTestScript: {fileID: 2627157530036770802}
+  knightAnimationScript: {fileID: 2627157530036770802}
   outline: {fileID: -2639053243159495139}
   damageNumber: {fileID: 1210785580219563149}
   spellCost: 0

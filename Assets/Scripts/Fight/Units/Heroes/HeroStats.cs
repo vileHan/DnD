@@ -9,7 +9,7 @@ public class HeroStats: TargetableUnit
     [SerializeField]private HealthbarHandler healthbarHandler;
     [SerializeField]private BaseHeroBehaviour behaviour;
 
-    public AnimationTestScript animationTestScript;
+    public KnightAnimationScript knightAnimationScript;
     [SerializeField] private Outline outline;
 
     public Transform damageNumber;
@@ -190,13 +190,13 @@ public class HeroStats: TargetableUnit
         }
         else
         {
-            animationTestScript.GotHitAnimation();
+            knightAnimationScript.GotHitAnimation();
         }
         
     }
     public override void Die()
     {
-        animationTestScript.DeathAnimation();
+        knightAnimationScript.DeathAnimation();
         isAlive = false;
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);

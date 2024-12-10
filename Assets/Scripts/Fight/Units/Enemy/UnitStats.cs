@@ -8,6 +8,7 @@ public class UnitStats: TargetableUnit
     [SerializeField] private Outline outline;
 
     [SerializeField]private HealthbarHandler healthbarHandler;
+    public DemonAnimationScript demonAnimationScript;
 
     public Transform damageNumber;
 
@@ -73,20 +74,25 @@ public class UnitStats: TargetableUnit
             actualDamage = 0;
         }
         currentHealth -= actualDamage;
+        
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
         FightUIManager.Instance.ShowDamageNumber(damageNumber.position, actualDamage);
         if (currentHealth <= 0)
         {
             Die();
         }
+        else 
+        {
+            demonAnimationScript.GotHitAnimation();
+        }
     }
     public override void Die()
     {
+        demonAnimationScript.DeathAnimation();
         isAlive = false;
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
-        gameObject.SetActive(false);
     }
     public override void Heal(float healModifier)
     {
@@ -105,6 +111,7 @@ public class UnitStats: TargetableUnit
         {
             currentHealth = maxHealth;
         }
+        demonAnimationScript.TauntAnimation();
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
         FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
     }

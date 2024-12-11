@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d59cf691e8f8c448a2d8b20d5317e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbar: {fileID: 4228959010081802294}
   characterImage: {fileID: 8418470696962446567, guid: 9aea14ae2764a334ea34a529f8ff61e2, type: 3}
   test: 101
   maxHealth: 90
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbar: {fileID: 0}
   characterImage: {fileID: 0}
   test: 101
   maxHealth: 90

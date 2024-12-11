@@ -89,6 +89,7 @@ public class UnitStats: TargetableUnit
     public override void Die()
     {
         demonAnimationScript.DeathAnimation();
+        DisableHealthbar();
         isAlive = false;
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);

@@ -112,7 +112,7 @@ public class RogueButtonManager : MonoBehaviour
     {
         ActionDescriptionPanel.transform.position = DescriptionPanelPosition_2;
         actionDescriptionHeaderText.text = "Spell_2";
-        actionDescriptionDescriptionText.text = "Deal " + (heroToAct.damage)*2 + " damage to 1 enemies";
+        actionDescriptionDescriptionText.text = "Deal " + (heroToAct.damage)*1.5f + " damage to 1 enemies";
     }
     private void SetSpell_3Text()
     {

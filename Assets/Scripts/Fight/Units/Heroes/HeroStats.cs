@@ -197,6 +197,7 @@ public class HeroStats: TargetableUnit
     public override void Die()
     {
         knightAnimationScript.DeathAnimation();
+        DisableHealthbar();
         isAlive = false;
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);

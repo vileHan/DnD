@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TargetableUnit : MonoBehaviour
 {
-
+    [SerializeField] private GameObject healthbar;
     [SerializeField] public GameObject characterImage;
     public float test = 101;
 
@@ -55,5 +55,9 @@ public class TargetableUnit : MonoBehaviour
     public virtual int SpellCostCalculator()
     {
         return initiative;
+    }
+    public virtual void DisableHealthbar()
+    {
+        healthbar.SetActive(false);
     }
 }

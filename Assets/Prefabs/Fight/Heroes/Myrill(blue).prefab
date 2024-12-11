@@ -1047,6 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7decedd2a566fb642b75ff138ed9864d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbar: {fileID: 1976007685619355729}
   characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
   test: 101
   maxHealth: 0
@@ -1079,6 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3e860ac9fb254baf5c4d67474bdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbar: {fileID: 1976007685619355729}
   characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
   test: 101
   maxHealth: 0

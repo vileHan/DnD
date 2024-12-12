@@ -6,6 +6,7 @@ public abstract class BaseHeroBehaviour : MonoBehaviour
 {
     [HideInInspector] public TargetableUnit target;
     public int heroAttackingIndex = 0;
+    public bool isInAnimation;
     public void SetAttackIndex(int index)
     {
         heroAttackingIndex = index;

@@ -27,15 +27,10 @@ public class EnemyBehaviour : BaseHeroBehaviour
         yield return new WaitForSeconds(0.5f);
 
         DecideAction();
-
-        FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
     }
 
     public void Attack()
     {
-        GameObject targetedHero = UnitManager.Instance.heroesAlive[Random.Range(0, UnitManager.Instance.heroesAlive.Count)]; // random right now -> later maybe look for target with lowest health
-        TargetableUnit targetHeroStats = targetedHero.GetComponent<TargetableUnit>();  
-        targetHeroStats.TakeDamage(unitStats.damage);
         int chance = Random.Range(1, 5);
         if (chance == 1)
         {

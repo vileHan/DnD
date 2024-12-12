@@ -19,11 +19,7 @@ public class KnightAnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Debug.Log("Tab");
-            animator.SetTrigger("Attack1");
-        }
+      
     }
 
     public void Attack1Animation()

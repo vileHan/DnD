@@ -79,7 +79,7 @@ public class MonkBehaviour : BaseHeroBehaviour
             targetableUnit.currentSpellSlots -= 1;
             spellslotHandler.UpdateSpellslots();
             knightAnimationScript.Attack1Animation();
-            timesAttacked = 0;
+            timesAttacked = 1;
         }
         else 
         {

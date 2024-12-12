@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationDamageTestScript : MonoBehaviour
+public class HeroAnimationEvents : MonoBehaviour
 {
     private BaseHeroBehaviour baseHeroBehaviour;
     private TargetableUnit targetableUnit;
@@ -37,9 +37,18 @@ public class AnimationDamageTestScript : MonoBehaviour
     {
         
     }
+    public void AnimationStarted()
+    {
+        baseHeroBehaviour.isInAnimation = true;
+    }
     public void AnimationFinished()
     {
-        Debug.Log("animation finished");
+        baseHeroBehaviour.isInAnimation = false;
         FightManager.Instance.HeroEndTurn();
     }
+    public void HalfAnimationFinished()
+    {
+        baseHeroBehaviour.isInAnimation = false;
+    }
+    
 }

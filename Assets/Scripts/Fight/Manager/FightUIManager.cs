@@ -18,6 +18,7 @@ public class FightUIManager : MonoBehaviour
     public TMP_Text unitHealthText, testText_1, testText_2, roundCounterText;
 
     public TargetableUnit heroToAct;
+    private BaseHeroBehaviour baseHeroBehaviour;
     
 //    public ActionChosen ActionChosen;
     public static event Action<ActionState> OnActionStateChanged;
@@ -43,8 +44,9 @@ public class FightUIManager : MonoBehaviour
         if (state == GameState.ChooseAction)        
         {
             heroToAct = FightManager.Instance.unitToAct.GetComponent<TargetableUnit>();
+            baseHeroBehaviour = FightManager.Instance.unitToAct.GetComponent<BaseHeroBehaviour>();
             chooseActionPanel = heroActionPanels[heroToAct.panelIndex];
-            chooseActionPanel.SetActive(state == GameState.ChooseAction);
+            chooseActionPanel.SetActive(true);
         }
         WonPanel.SetActive(state == GameState.FightWon);
         LostPanel.SetActive(state == GameState.FightLost);
@@ -57,7 +59,12 @@ public class FightUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1) && !baseHeroBehaviour.isInAnimation) // needs conditioning
+        {
+            Debug.Log("rightclick!");
+            chooseActionPanel.SetActive(false);
+            UpdateAction(ActionState.NoAttack);
+        }          
     }
     
     public void ShowDamageNumber(Vector3 unit, float damageAmount)
@@ -101,6 +108,9 @@ public class FightUIManager : MonoBehaviour
 
         switch(newAction)
         {
+            case ActionState.NoAttack:
+                HandleNoAttack();
+                break;
             case ActionState.PrimaryAttack:
                 HandlePrimaryAttack();
                 break;
@@ -139,6 +149,10 @@ public class FightUIManager : MonoBehaviour
         }
     }
 
+    public void HandleNoAttack()
+    {
+        chooseActionPanel.SetActive(true);
+    }
     public void PrimaryAttackPressed()
     {
         UpdateAction(ActionState.PrimaryAttack);
@@ -327,6 +341,7 @@ public class FightUIManager : MonoBehaviour
 }
     public enum ActionState
     {
+        NoAttack,
         PrimaryAttack,
         SecondaryAttack,
         Spell_1,

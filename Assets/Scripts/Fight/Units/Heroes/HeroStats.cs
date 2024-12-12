@@ -45,6 +45,10 @@ public class HeroStats: TargetableUnit
 
     private void FightUIManagerOnActionStateChanged(ActionState state)
     {
+        if (isTurn && state == ActionState.NoAttack)
+        {
+            behaviour.SetAttackIndex(0);
+        }
         if (isTurn && state == ActionState.PrimaryAttack)
         {
             behaviour.SetAttackIndex(1);
@@ -97,7 +101,7 @@ public class HeroStats: TargetableUnit
     // Update is called once per frame
     void Update()
     {        
-        if (isTurn)
+        if (isTurn && !behaviour.isInAnimation)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -129,7 +133,7 @@ public class HeroStats: TargetableUnit
                 switch(behaviour.heroAttackingIndex)
                 {
                     case 0:
-                        //Debug.Log("no action selected");
+                        Debug.Log("no action selected");
                         break;
                     case 1:
                         behaviour.PrimaryAttack(target);

@@ -41,10 +41,8 @@ public class PaladinBehaviour : BaseHeroBehaviour
     {
         this.target = target;
         
-        target.TakeDamage(targetableUnit.damage);
         knightAnimationScript.Attack1Animation();
-
-        FightManager.Instance.HeroEndTurn();        
+       
     }
     public override void SecondaryAttack(TargetableUnit target)
     {

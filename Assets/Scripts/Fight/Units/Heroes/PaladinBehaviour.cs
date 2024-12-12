@@ -39,7 +39,8 @@ public class PaladinBehaviour : BaseHeroBehaviour
 
     public override void PrimaryAttack(TargetableUnit target)
     {
-        // Deal damage to the 
+        this.target = target;
+        
         target.TakeDamage(targetableUnit.damage);
         knightAnimationScript.Attack1Animation();
 
@@ -47,6 +48,8 @@ public class PaladinBehaviour : BaseHeroBehaviour
     }
     public override void SecondaryAttack(TargetableUnit target)
     {
+        this.target = target;
+
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
 
@@ -54,17 +57,18 @@ public class PaladinBehaviour : BaseHeroBehaviour
     }
     public override void Spell_1Against(TargetableUnit target)
     {
-        target.TakeDamage((targetableUnit.damage));
+        this.target = target;
+
         knightAnimationScript.Attack3Animation();
         targetableUnit.armor += 5;
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
-        
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
     {
+        this.target = target;
+
         target.Heal((targetableUnit.healModifier));
         targetableUnit.Heal(targetableUnit.healModifier);
         knightAnimationScript.BlockAnimation();
@@ -72,7 +76,6 @@ public class PaladinBehaviour : BaseHeroBehaviour
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_3Against(TargetableUnit target)
     {

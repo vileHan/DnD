@@ -30,6 +30,10 @@ public class KnightAnimationScript : MonoBehaviour
     {
         animator.SetTrigger("Attack1");
     }
+    public void HalfAttackAnimation()
+    {
+        animator.SetTrigger("HalfAttack");
+    }
     public void Attack2Animation()
     {
         animator.SetTrigger("Attack2");
@@ -38,14 +42,14 @@ public class KnightAnimationScript : MonoBehaviour
     {
         animator.SetTrigger("Attack3");
     }
-    public void BuffAnimation()
+    public void TauntAnimation()
     {
         animator.SetTrigger("Taunt");
     }
-    // public void Cast1Animation() buggy cause missing component i cant find
-    // {
-    //     animator.SetTrigger("Cast1");
-    // }
+    public void Cast1Animation() 
+    {
+        animator.SetTrigger("Cast1");
+    }
     public void Cast2Animation()
     {
         animator.SetTrigger("Cast2");

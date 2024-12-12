@@ -1540,6 +1540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf7e0b6df7048b498efe4c77ba8cffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   heroAttackingIndex: 0
   targetableUnit: {fileID: 3068958732659073862}
   spellslotHandler: {fileID: 71838708190505014}
@@ -2050,12 +2051,36 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fe3e3ef1ec46e4346b8069540008993b, type: 2}
+    - target: {fileID: 8978108775185703756, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f2fc8fee414d98c48a62b1961a7674fe, type: 2}
     m_RemovedComponents:
     - {fileID: 3472298095487010307, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8978108775178408208, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4171306582105114951}
   m_SourcePrefab: {fileID: 100100000, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+--- !u!1 &7816204838595402985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8978108775178408208, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+  m_PrefabInstance: {fileID: 1216001308834172409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4171306582105114951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7816204838595402985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e890bbbe7d0f4734993815e9836a4db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7816204838595494089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8978108775178439984, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}

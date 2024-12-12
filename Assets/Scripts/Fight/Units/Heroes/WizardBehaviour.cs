@@ -39,14 +39,14 @@ public class WizardBehaviour : BaseHeroBehaviour
 
     public override void PrimaryAttack(TargetableUnit target)
     {
-        // Deal damage to the 
-        target.TakeDamage(targetableUnit.damage);
-        knightAnimationScript.Attack1Animation();
+        this.target = target;
 
-        FightManager.Instance.HeroEndTurn();        
+        knightAnimationScript.Attack1Animation();
     }
     public override void SecondaryAttack(TargetableUnit target)
     {
+        this.target = target;
+
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
 
@@ -54,33 +54,21 @@ public class WizardBehaviour : BaseHeroBehaviour
     }
     public override void Spell_1Against(TargetableUnit target) // targetable unit.currentspellslots! when implemented
     {
-        target.TakeDamage((targetableUnit.damage));
+        this.target = target;
+
         knightAnimationScript.Attack3Animation();
 
         targetableUnit.currentSpellSlots += 1;
         spellslotHandler.UpdateSpellslots();
-
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
     {
-        int initialEnemyCount = UnitManager.Instance.enemiesAlive.Count;
-        for (int i = 0; i < initialEnemyCount; i++)
-        {
-            if (i >= UnitManager.Instance.enemiesAlive.Count)
-            {
-                break;
-            }
-            TargetableUnit targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<TargetableUnit>();
+        this.target = target;
 
-            targetStats.TakeDamage((targetableUnit.damage/2));
-            knightAnimationScript.Cast2Animation();
-            
-        }
+        knightAnimationScript.Cast2Animation();
+        
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
-
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_3Against(TargetableUnit target)
     {

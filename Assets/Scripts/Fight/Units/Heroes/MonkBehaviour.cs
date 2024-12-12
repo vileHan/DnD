@@ -40,14 +40,14 @@ public class MonkBehaviour : BaseHeroBehaviour
 
     public override void PrimaryAttack(TargetableUnit target)
     {
-        // Deal damage to the 
-        target.TakeDamage(targetableUnit.damage);
-        knightAnimationScript.Attack1Animation();
+        this.target = target;
 
-        FightManager.Instance.HeroEndTurn();        
+        knightAnimationScript.Attack1Animation();       
     }
     public override void SecondaryAttack(TargetableUnit target)
     {
+        this.target = target;
+
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
 
@@ -55,31 +55,38 @@ public class MonkBehaviour : BaseHeroBehaviour
     }
     public override void Spell_1Against(TargetableUnit target) // MAYBE WEIRD AFTER CHANGES
     {
+        this.target = target;
+
         for (int i = 0; i < UnitManager.Instance.heroesAlive.Count; i++)
         {
             TargetableUnit targetStats = UnitManager.Instance.heroesAlive[i].GetComponent<TargetableUnit>();
             targetStats.Heal((targetableUnit.healModifier));
-            knightAnimationScript.Cast2Animation();
+            knightAnimationScript.BlockAnimation(); // maybe make half cast so player does not have to wait for animation to finish
         }
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
-    {        
+    {       
+        this.target = target;
+
         int attackPerTurn = 2;
+        Debug.Log("times attacked: " + timesAttacked);
         if (timesAttacked == attackPerTurn)
         {
+            Debug.Log("Attack end");
             targetableUnit.currentSpellSlots -= 1;
             spellslotHandler.UpdateSpellslots();
+            knightAnimationScript.Attack1Animation();
             timesAttacked = 0;
-
-            FightManager.Instance.HeroEndTurn();
         }
-        target.TakeDamage((targetableUnit.damage));
-        knightAnimationScript.Attack1Animation();
-        timesAttacked++;
+        else 
+        {
+            Debug.Log("halfAttack");
+            knightAnimationScript.HalfAttackAnimation();
+            timesAttacked++;
+        }
     }
     public override void Spell_3Against(TargetableUnit target)
     {

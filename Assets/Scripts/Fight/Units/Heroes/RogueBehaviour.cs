@@ -9,6 +9,10 @@ public class RogueBehaviour : BaseHeroBehaviour
     [SerializeField] private SpellSlotHandler spellslotHandler;
     [SerializeField] private KnightAnimationScript knightAnimationScript;
     
+
+    private int timesAttacked = 1;
+
+
     void Awake()
     {
         SetStats();
@@ -40,38 +44,38 @@ public class RogueBehaviour : BaseHeroBehaviour
 
     public override void PrimaryAttack(TargetableUnit target)
     {
-        // Deal damage to the 
-        target.TakeDamage(targetableUnit.damage);
-        knightAnimationScript.Attack1Animation();
+        this.target = target;
 
-        FightManager.Instance.HeroEndTurn();        
+        knightAnimationScript.Attack1Animation();
+       
     }
     public override void SecondaryAttack(TargetableUnit target)
     {
+        this.target = target;
         // Deal damage to the 
         target.TakeDamage(targetableUnit.damage);
-
-        FightManager.Instance.HeroEndTurn();        
+                
     }
     public override void Spell_1Against(TargetableUnit target)
     {
+        this.target = target;
+
         targetableUnit.damage += 20;
-        knightAnimationScript.BuffAnimation();
+        knightAnimationScript.Cast1Animation();
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
         
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_2Against(TargetableUnit target)
     {
-        target.TakeDamage((targetableUnit.damage*1.5f));
+        this.target = target;
+
         knightAnimationScript.Attack2Animation();
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();
 
-        FightManager.Instance.HeroEndTurn();
     }
     public override void Spell_3Against(TargetableUnit target)
     {

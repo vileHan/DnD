@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c359d30191c78a4b8a76a34cfb45db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   heroAttackingIndex: 0
   unitStats: {fileID: 7500590939087225329}
   healthbarHandler: {fileID: 2627603546658982722}
@@ -496,6 +497,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8272482737430902359, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ecb18e18e82cbf8409516454f292bdb7, type: 2}
     - target: {fileID: 8272482737435043523, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

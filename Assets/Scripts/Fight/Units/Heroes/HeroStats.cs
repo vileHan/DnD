@@ -183,7 +183,7 @@ public class HeroStats: TargetableUnit
         {
             actualDamage = 0;
         }
-        
+        HitFeedback?.PlayFeedbacks();
         currentHealth -= actualDamage;
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
         FightUIManager.Instance.ShowDamageNumber(damageNumber.position, actualDamage);

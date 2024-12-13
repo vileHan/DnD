@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MoreMountains.Feedbacks;
 
 public class TargetableUnit : MonoBehaviour
 {
+    public MMFeedbacks HitFeedback;
     [SerializeField] private GameObject healthbar;
     [SerializeField] public GameObject characterImage;
     public float test = 101;

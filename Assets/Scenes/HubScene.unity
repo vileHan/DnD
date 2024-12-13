@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 100279245}
   - component: {fileID: 100279244}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: FPS Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 192853528}
   m_Layer: 0
-  m_Name: UNDERSTANDING SHAKERS
+  m_Name: UNDERSTANDING SHAKERS 16:00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 304162875}
   - component: {fileID: 304162874}
   - component: {fileID: 304162873}
+  - component: {fileID: 304162877}
   m_Layer: 0
   m_Name: Third Person Camera
   m_TagString: Untagged
@@ -684,6 +685,29 @@ Transform:
   - {fileID: 1789937547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &304162877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304162872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!4 &454390065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8314430610408684262, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
@@ -4282,7 +4306,7 @@ SceneRoots:
   - {fileID: 304162876}
   - {fileID: 1671010740}
   - {fileID: 1250665693}
+  - {fileID: 2048740513}
   - {fileID: 626267487}
   - {fileID: 533169050}
   - {fileID: 192853528}
-  - {fileID: 2048740513}

@@ -6,7 +6,9 @@ using MoreMountains.Feedbacks;
 
 public class TargetableUnit : MonoBehaviour
 {
-    public MMFeedbacks HitFeedback;
+    public MMFeedbacks SmallHitFeedback;
+    public MMFeedbacks MediumHitFeedback;
+    public MMFeedbacks LargeHitFeedback;
     [SerializeField] private GameObject healthbar;
     [SerializeField] public GameObject characterImage;
     public float test = 101;

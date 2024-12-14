@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeroHandler : MonoBehaviour
 {
-    private int heroAmount = 1;
+    private int heroAmount = 4;
     public GameObject[] heroPrefabs;
     [SerializeField]private Vector3[] spawnPositions;
     public bool heroesSpawned;

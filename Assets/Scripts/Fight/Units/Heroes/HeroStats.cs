@@ -183,12 +183,12 @@ public class HeroStats: TargetableUnit
         {
             actualDamage = 0;
         }
-        else if (actualDamage < 20)
+        else if (actualDamage < 40)
         {
             Debug.Log("smalldamage");
             SmallHitFeedback?.PlayFeedbacks();
         }
-        else if (actualDamage < 40)
+        else if (actualDamage < 80)
         {
             Debug.Log("meddamage");
             MediumHitFeedback?.PlayFeedbacks();

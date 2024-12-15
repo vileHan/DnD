@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroAnimationEvents : MonoBehaviour
+public class KnightAnimationEvents : MonoBehaviour
 {
     private BaseHeroBehaviour baseHeroBehaviour;
     private TargetableUnit targetableUnit;
@@ -49,6 +49,5 @@ public class HeroAnimationEvents : MonoBehaviour
     public void HalfAnimationFinished()
     {
         baseHeroBehaviour.isInAnimation = false;
-    }
-    
+    }    
 }

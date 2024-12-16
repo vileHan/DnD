@@ -57,7 +57,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
     {
         this.target = target;
 
-        knightAnimationScript.Attack3Animation();
+        knightAnimationScript.ArmorAttackAnimation();
         targetableUnit.armor += 5;
 
         targetableUnit.currentSpellSlots -= 1;

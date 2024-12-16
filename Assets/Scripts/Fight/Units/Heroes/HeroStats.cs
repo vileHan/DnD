@@ -12,7 +12,6 @@ public class HeroStats: TargetableUnit
     public KnightAnimationScript knightAnimationScript;
     [SerializeField] private Outline outline;
 
-
     public int spellCost; 
     public bool ableToAttack;
 
@@ -199,6 +198,7 @@ public class HeroStats: TargetableUnit
         }
         
         currentHealth -= actualDamage;
+        
         healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);
         FightUIManager.Instance.ShowDamageNumber(damageNumber.position, actualDamage);
         if (currentHealth <= 0)
@@ -220,27 +220,30 @@ public class HeroStats: TargetableUnit
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
-        //gameObject.SetActive(false);
     }
     public override void Heal(float healModifier)
     {
-        float healthHealed = currentHealth + healModifier;
-        if (healthHealed > maxHealth)
+        // float healthHealed = currentHealth + healModifier;
+        // if (healthHealed > maxHealth)
+        // {
+        //     healthHealed -= maxHealth;
+        //     healthHealed = healModifier - healthHealed;
+        // }
+        // else 
+        // {
+        //     healthHealed = healModifier;
+        // }
+        // currentHealth += healModifier;
+        // if (currentHealth > maxHealth)
+        // {
+        //     currentHealth = maxHealth;
+        // }
+        if (!isTurn)
         {
-            healthHealed -= maxHealth;
-            healthHealed = healModifier - healthHealed;
+            knightAnimationScript.Cast1Animation();
         }
-        else 
-        {
-            healthHealed = healModifier;
-        }
-        currentHealth += healModifier;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-        healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
-        FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
+        // healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
+        // FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
     }
 
     public override int SpellCostCalculator()

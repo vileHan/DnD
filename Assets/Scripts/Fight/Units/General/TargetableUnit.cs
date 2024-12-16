@@ -38,7 +38,7 @@ public class TargetableUnit : MonoBehaviour
     }
     public virtual void Heal(float healModifier)
     {
-
+        
     }
     public virtual void Die()
     {

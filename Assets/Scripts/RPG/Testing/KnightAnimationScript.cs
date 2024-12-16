@@ -38,6 +38,10 @@ public class KnightAnimationScript : MonoBehaviour
     {
         animator.SetTrigger("Attack3");
     }
+    public void ArmorAttackAnimation()
+    {
+        animator.SetTrigger("ArmorAttack");
+    }
     public void TauntAnimation()
     {
         animator.SetTrigger("Taunt");

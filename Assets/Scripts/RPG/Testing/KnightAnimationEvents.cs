@@ -6,6 +6,10 @@ public class KnightAnimationEvents : MonoBehaviour
 {
     private BaseHeroBehaviour baseHeroBehaviour;
     private TargetableUnit targetableUnit;
+    [SerializeField]private HealthbarHandler healthbarHandler;
+    public GameObject[] effects;
+    public GameObject effectsObject;
+
     void Awake()
     {
         baseHeroBehaviour = GetComponentInParent<BaseHeroBehaviour>();
@@ -35,7 +39,56 @@ public class KnightAnimationEvents : MonoBehaviour
     }
     public void HealAnimationEvent()
     {
-        
+        GameObject effect = Instantiate(effects[0], effectsObject.transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+
+        float healthHealed = targetableUnit.currentHealth + targetableUnit.healModifier;
+        if (healthHealed > targetableUnit.maxHealth)
+        {
+            healthHealed -= targetableUnit.maxHealth;
+            healthHealed = targetableUnit.healModifier - healthHealed;
+        }
+        else 
+        {
+            healthHealed = targetableUnit.healModifier;
+        }
+        targetableUnit.currentHealth += targetableUnit.healModifier;
+        if (targetableUnit.currentHealth > targetableUnit.maxHealth)
+        {
+            targetableUnit.currentHealth = targetableUnit.maxHealth;
+        }   
+
+        healthbarHandler.UpdateHealthbar(targetableUnit.maxHealth, targetableUnit.currentHealth);      
+        FightUIManager.Instance.ShowHealingNumber(targetableUnit.damageNumber.position, healthHealed);
+    }
+    public void GetHealAnimationEvent()
+    {
+        GameObject effect = Instantiate(effects[0], effectsObject.transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+
+        float healthHealed = targetableUnit.currentHealth + targetableUnit.healModifier;
+        if (healthHealed > targetableUnit.maxHealth)
+        {
+            healthHealed -= targetableUnit.maxHealth;
+            healthHealed = targetableUnit.healModifier - healthHealed;
+        }
+        else 
+        {
+            healthHealed = targetableUnit.healModifier;
+        }
+        targetableUnit.currentHealth += targetableUnit.healModifier;
+        if (targetableUnit.currentHealth > targetableUnit.maxHealth)
+        {
+            targetableUnit.currentHealth = targetableUnit.maxHealth;
+        }   
+
+        healthbarHandler.UpdateHealthbar(targetableUnit.maxHealth, targetableUnit.currentHealth);      
+        FightUIManager.Instance.ShowHealingNumber(targetableUnit.damageNumber.position, healthHealed);
+    }
+    public void ArmorAnimationEvent()
+    {
+        GameObject effect = Instantiate(effects[1], effectsObject.transform.position, Quaternion.identity);
+        Destroy(effect, 1f);
     }
     public void AnimationStarted()
     {

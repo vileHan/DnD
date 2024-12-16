@@ -19,7 +19,7 @@ public class KnightAnimationSounds : MonoBehaviour
     }
     public void HealSound()
     {
-        audio.volume = 0.3f;
+        audio.volume = 0.1f;
         audio.clip = heal;
         audio.Play();
     }

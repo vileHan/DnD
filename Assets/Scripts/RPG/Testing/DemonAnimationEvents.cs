@@ -6,7 +6,6 @@ public class DemonAnimationEvents : MonoBehaviour
 {
     private TargetableUnit targetableUnit;
     [SerializeField]private HealthbarHandler healthbarHandler;
-    public  float healthHealed;
 
     void Awake()
     {
@@ -20,7 +19,7 @@ public class DemonAnimationEvents : MonoBehaviour
     }
     public void DemonHealAnimationEvent()
     {
-        healthHealed = targetableUnit.currentHealth + targetableUnit.healModifier;
+        float healthHealed = targetableUnit.currentHealth + targetableUnit.healModifier;
         if (healthHealed > targetableUnit.maxHealth)
         {
             healthHealed -= targetableUnit.maxHealth;

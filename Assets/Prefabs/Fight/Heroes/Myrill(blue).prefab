@@ -2109,6 +2109,37 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
+--- !u!1 &5974205448621401209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6596161890239956773}
+  m_Layer: 0
+  m_Name: Effects Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6596161890239956773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5974205448621401209}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6854552551087730524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6063272253184979719
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,6 +2184,7 @@ Transform:
   - {fileID: 898691415895211027}
   - {fileID: 5019367647220096010}
   - {fileID: 624129547543527279}
+  - {fileID: 6596161890239956773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1225737636573229646
@@ -2235,6 +2267,7 @@ MonoBehaviour:
   LargeHitFeedback: {fileID: 7461856347428244035}
   healthbar: {fileID: 1976007685619355729}
   characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
+  damageNumber: {fileID: 1235231043331081285}
   test: 101
   maxHealth: 0
   currentHealth: 0
@@ -2251,7 +2284,6 @@ MonoBehaviour:
   behaviour: {fileID: 1077670136456510925}
   knightAnimationScript: {fileID: 2355460089718892906}
   outline: {fileID: 7968626551505285878}
-  damageNumber: {fileID: 1235231043331081285}
   spellCost: 0
   ableToAttack: 0
 --- !u!114 &-9067166931838882377
@@ -2271,6 +2303,7 @@ MonoBehaviour:
   LargeHitFeedback: {fileID: 0}
   healthbar: {fileID: 1976007685619355729}
   characterImage: {fileID: 8418470696962446567, guid: 099be95a57807d94da9aad1740f123ec, type: 3}
+  damageNumber: {fileID: 0}
   test: 101
   maxHealth: 0
   currentHealth: 0
@@ -3281,6 +3314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e890bbbe7d0f4734993815e9836a4db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbarHandler: {fileID: 4837993779882536630}
+  effects:
+  - {fileID: 8593464584776411535, guid: 04283c2de3bce1441a2c720d05c4726d, type: 3}
+  - {fileID: 7314526620251459061, guid: 0bc779cbb76137241a27191131d835ba, type: 3}
+  effectsObject: {fileID: 5974205448621401209}
 --- !u!82 &7341342093316278403
 AudioSource:
   m_ObjectHideFlags: 0

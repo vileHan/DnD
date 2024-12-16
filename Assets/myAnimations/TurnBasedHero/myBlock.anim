@@ -69113,7 +69113,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 0.033333335
+    functionName: HealSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.9
     functionName: AnimationFinished
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -12,7 +12,6 @@ public class HeroStats: TargetableUnit
     public KnightAnimationScript knightAnimationScript;
     [SerializeField] private Outline outline;
 
-    public Transform damageNumber;
 
     public int spellCost; 
     public bool ableToAttack;

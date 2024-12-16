@@ -3391,3 +3391,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 7341342093316278403}
   swordSwing: {fileID: 8300000, guid: 77a858e26345486478fcf667cbd5918a, type: 3}
+  heal: {fileID: 8300000, guid: 86b89ce539682a94794d9bbc3c311fe1, type: 3}
+  cast: {fileID: 8300000, guid: 220dd163951b43b4dad8d23d43d77e8b, type: 3}
+  buff: {fileID: 8300000, guid: 1d3a19fea6842df4da791ad2fd120877, type: 3}

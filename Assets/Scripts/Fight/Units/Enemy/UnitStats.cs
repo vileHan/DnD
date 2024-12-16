@@ -10,7 +10,6 @@ public class UnitStats: TargetableUnit
     [SerializeField]private HealthbarHandler healthbarHandler;
     public DemonAnimationScript demonAnimationScript;
 
-    public Transform damageNumber;
 
     // public float maxHealth;
     // public float currentHealth;
@@ -112,24 +111,23 @@ public class UnitStats: TargetableUnit
     }
     public override void Heal(float healModifier)
     {
-        float healthHealed = currentHealth + healModifier;
-        if (healthHealed > maxHealth)
-        {
-            healthHealed -= maxHealth;
-            healthHealed = healModifier - healthHealed;
-        }
-        else 
-        {
-            healthHealed = healModifier;
-        }
-        currentHealth += healModifier;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        // float healthHealed = currentHealth + healModifier;
+        // if (healthHealed > maxHealth)
+        // {
+        //     healthHealed -= maxHealth;
+        //     healthHealed = healModifier - healthHealed;
+        // }
+        // else 
+        // {
+        //     healthHealed = healModifier;
+        // }
+        // currentHealth += healModifier;
+        // if (currentHealth > maxHealth)
+        // {
+        //     currentHealth = maxHealth;
+        // }
         demonAnimationScript.TauntAnimation();
-        healthbarHandler.UpdateHealthbar(maxHealth, currentHealth);      
-        FightUIManager.Instance.ShowHealingNumber(damageNumber.position, healthHealed);
+        
     }
 
     public override void MouseEnterUnit()

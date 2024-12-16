@@ -61,7 +61,7 @@ public class RogueBehaviour : BaseHeroBehaviour
         this.target = target;
 
         targetableUnit.damage += 20;
-        knightAnimationScript.Cast1Animation();
+        knightAnimationScript.TauntAnimation();
 
         targetableUnit.currentSpellSlots -= 1;
         spellslotHandler.UpdateSpellslots();

@@ -207,6 +207,7 @@ MonoBehaviour:
   LargeHitFeedback: {fileID: 7586137455999098091}
   healthbar: {fileID: 4228959010081802294}
   characterImage: {fileID: 8418470696962446567, guid: 57988b35041a96e44a9775725ec898e4, type: 3}
+  damageNumber: {fileID: 5875083682632670730}
   test: 101
   maxHealth: 100
   currentHealth: 0
@@ -222,7 +223,6 @@ MonoBehaviour:
   outline: {fileID: -1471927178564525681}
   healthbarHandler: {fileID: 2627603546658982722}
   demonAnimationScript: {fileID: 6167550409837684120}
-  damageNumber: {fileID: 5875083682632670730}
   spellCost: 0
   ableToAttack: 0
 --- !u!114 &-1471927178564525681
@@ -260,6 +260,7 @@ MonoBehaviour:
   LargeHitFeedback: {fileID: 0}
   healthbar: {fileID: 0}
   characterImage: {fileID: 0}
+  damageNumber: {fileID: 0}
   test: 101
   maxHealth: 100
   currentHealth: 0
@@ -1804,6 +1805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cca6b096d1cfc409b7f2ca79380c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbarHandler: {fileID: 2627603546658982722}
+  healthHealed: 0
 --- !u!95 &7655158494257814087 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8272482737430902359, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}

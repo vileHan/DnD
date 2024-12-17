@@ -3306,6 +3306,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8978108775178408208, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4001340546162943824}
+    - targetCorrespondingSourceObject: {fileID: 8978108775178408208, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7577594136698138535}
   m_SourcePrefab: {fileID: 100100000, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}
 --- !u!4 &5578993243263627080 stripped
 Transform:
@@ -3447,6 +3450,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7577594136698138535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578993243264119656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adad341f9851f8c4ebc1a2fe0bf80d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwordFeel: {fileID: 0}
 --- !u!95 &5578993243273462068 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8978108775185703756, guid: e36d341b36f9ce44f8b2b0381d855d89, type: 3}

@@ -3318,6 +3318,7 @@ MonoBehaviour:
   effects:
   - {fileID: 8593464584776411535, guid: 04283c2de3bce1441a2c720d05c4726d, type: 3}
   - {fileID: 7314526620251459061, guid: 0bc779cbb76137241a27191131d835ba, type: 3}
+  - {fileID: 9080140021571130472, guid: af212e4c76a867a44b5c08b8de7ab244, type: 3}
   effectsObject: {fileID: 5974205448621401209}
 --- !u!82 &7341342093316278403
 AudioSource:

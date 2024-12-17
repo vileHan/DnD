@@ -36,6 +36,8 @@ public class KnightAnimationEvents : MonoBehaviour
 
             targetStats.TakeDamage((targetableUnit.damage/2));            
         }
+        GameObject effect = Instantiate(effects[2], new Vector3(-89f, 0f, -97.5f), Quaternion.identity);
+        Destroy(effect, 1.5f);
     }
     public void HealAnimationEvent()
     {

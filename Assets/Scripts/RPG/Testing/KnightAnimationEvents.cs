@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class KnightAnimationEvents : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class KnightAnimationEvents : MonoBehaviour
     [SerializeField]private HealthbarHandler healthbarHandler;
     public GameObject[] effects;
     public GameObject effectsObject;
+    public MMFeedbacks screenFlash;
 
     void Awake()
     {
@@ -91,6 +93,10 @@ public class KnightAnimationEvents : MonoBehaviour
     {
         GameObject effect = Instantiate(effects[1], effectsObject.transform.position, Quaternion.identity);
         Destroy(effect, 1f);
+    }
+    public void AnimationFlashEvent()
+    {
+        screenFlash?.PlayFeedbacks();
     }
     public void AnimationStarted()
     {

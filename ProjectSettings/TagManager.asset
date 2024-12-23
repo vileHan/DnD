@@ -9,6 +9,7 @@ TagManager:
   - HealthbarHandler
   - HeroHandler
   - EnemyHandler
+  - FogCollider
   layers:
   - Default
   - TransparentFX

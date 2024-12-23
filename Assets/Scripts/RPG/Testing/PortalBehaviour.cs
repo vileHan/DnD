@@ -18,11 +18,20 @@ public class PortalBehaviour : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Player")
         {
-            GameManager.Instance.difficulty = difficulty;
-            LoadFightScene();
-            gameObject.SetActive(false);  
+            if (gameObject.tag == "FogCollider")
+            {
+                
+            }
+            else 
+            {
+                GameManager.Instance.difficulty = difficulty;
+                LoadFightScene();
+                gameObject.SetActive(false); 
+            }
+             
         }
     } 
 

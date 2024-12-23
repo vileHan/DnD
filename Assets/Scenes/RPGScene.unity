@@ -172,7 +172,7 @@ MonoBehaviour:
   eventSystem: {fileID: 1928292498}
   cameraHolder: {fileID: 917750671}
   player: {fileID: 684511743}
-  HeroStatManager: {fileID: 338409086}
+  HeroStatManager: {fileID: 0}
 --- !u!1 &333265978
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,125 +307,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333265978}
   m_CullTransparentMesh: 1
---- !u!1 &338409086
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 338409087}
-  - component: {fileID: 338409091}
-  - component: {fileID: 338409090}
-  - component: {fileID: 338409089}
-  - component: {fileID: 338409088}
-  m_Layer: 0
-  m_Name: HeroStat Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &338409087
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338409086}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1219485776}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &338409088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338409086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ee8670ab17aba408745ff7623eec09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 80
-  currentHealth: 0
-  damage: 30
-  armor: 0
-  maxSpellSlots: 3
-  currentSpellSlots: 0
-  healModifier: 20
-  isAlive: 1
-  panelIndex: 3
---- !u!114 &338409089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338409086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ddd3a00f80c124497c9ceb1333aa57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 70
-  currentHealth: 0
-  damage: 40
-  armor: 0
-  maxSpellSlots: 2
-  currentSpellSlots: 0
-  healModifier: 20
-  isAlive: 1
-  panelIndex: 2
---- !u!114 &338409090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338409086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b70e5ad6895e34691df1e619d2af67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  damage: 10
-  armor: 5
-  maxSpellSlots: 3
-  currentSpellSlots: 0
-  healModifier: 40
-  isAlive: 1
-  panelIndex: 1
---- !u!114 &338409091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338409086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a764cf3f3f398e54d99042f446e414a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 90
-  currentHealth: 0
-  damage: 20
-  armor: 5
-  maxSpellSlots: 2
-  currentSpellSlots: 0
-  healModifier: 30
-  isAlive: 1
-  panelIndex: 0
 --- !u!1 &341900476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2787,6 @@ Transform:
   m_Children:
   - {fileID: 1698450552}
   - {fileID: 69926443}
-  - {fileID: 338409087}
   - {fileID: 1752572622}
   - {fileID: 2021530195}
   m_Father: {fileID: 0}
@@ -5178,7 +5058,7 @@ MonoBehaviour:
   fightOrNotPanel: {fileID: 1133600531}
   chanceOrNotPanel: {fileID: 821112922}
   trigger: []
-  HeroStatManager: {fileID: 338409086}
+  HeroStatManager: {fileID: 0}
 --- !u!1 &1780615358
 GameObject:
   m_ObjectHideFlags: 3

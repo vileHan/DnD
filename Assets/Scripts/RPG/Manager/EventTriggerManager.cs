@@ -16,7 +16,7 @@ public class EventTriggerManager : MonoBehaviour
     public List<GameObject> trigger;
     private float spawnZ = -30;
 
-    public GameObject HeroStatManager;
+    //public GameObject HeroStatManager;
     private MonkStats monkStats;
     private PaladinStats paladinStats;
     private RogueStats rogueStats;
@@ -31,10 +31,10 @@ public class EventTriggerManager : MonoBehaviour
     }
     void Start()
     {
-        monkStats = HeroStatManager.GetComponent<MonkStats>();
-        paladinStats = HeroStatManager.GetComponent<PaladinStats>();
-        rogueStats = HeroStatManager.GetComponent<RogueStats>();
-        wizardStats = HeroStatManager.GetComponent<WizardStats>();
+        // monkStats = HeroStatManager.GetComponent<MonkStats>();
+        // paladinStats = HeroStatManager.GetComponent<PaladinStats>();
+        // rogueStats = HeroStatManager.GetComponent<RogueStats>();
+        // wizardStats = HeroStatManager.GetComponent<WizardStats>();
 
         for (int i = 0; i < level; i++)
         {

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int difficulty;
     [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player;
 
-    public GameObject HeroStatManager;
+    //public GameObject HeroStatManager;
     private MonkStats monkStats;
     private PaladinStats paladinStats;
     private RogueStats rogueStats;
@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monkStats = HeroStatManager.GetComponent<MonkStats>();
-        paladinStats = HeroStatManager.GetComponent<PaladinStats>();
-        rogueStats = HeroStatManager.GetComponent<RogueStats>();
-        wizardStats = HeroStatManager.GetComponent<WizardStats>();
+        // monkStats = HeroStatManager.GetComponent<MonkStats>();
+        // paladinStats = HeroStatManager.GetComponent<PaladinStats>();
+        // rogueStats = HeroStatManager.GetComponent<RogueStats>();
+        // wizardStats = HeroStatManager.GetComponent<WizardStats>();
     }
 
     // Update is called once per frame

@@ -23,7 +23,9 @@ public class PortalBehaviour : MonoBehaviour
         {
             if (gameObject.tag == "FogCollider")
             {
-                
+                // GameManager.Instance.difficulty = difficulty;
+                // LoadFightScene();
+                Debug.Log("collide");
             }
             else 
             {

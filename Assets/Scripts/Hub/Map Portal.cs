@@ -20,7 +20,15 @@ public class MapPortal : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            if (gameObject.tag == "Level_1")
+            {
+                SceneManager.LoadScene(3, LoadSceneMode.Single);  
+            }
+            if (gameObject.tag == "Level_Test")
+            {
+                SceneManager.LoadScene(0, LoadSceneMode.Single);  
+            }
+            
         }
     } 
 }

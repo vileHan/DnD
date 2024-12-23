@@ -16,11 +16,6 @@ public class EventTriggerManager : MonoBehaviour
     public List<GameObject> trigger;
     private float spawnZ = -30;
 
-    //public GameObject HeroStatManager;
-    private MonkStats monkStats;
-    private PaladinStats paladinStats;
-    private RogueStats rogueStats;
-    private WizardStats wizardStats;
 
     public static event Action<EventState> OnEventStateChanged;
 
@@ -31,10 +26,7 @@ public class EventTriggerManager : MonoBehaviour
     }
     void Start()
     {
-        // monkStats = HeroStatManager.GetComponent<MonkStats>();
-        // paladinStats = HeroStatManager.GetComponent<PaladinStats>();
-        // rogueStats = HeroStatManager.GetComponent<RogueStats>();
-        // wizardStats = HeroStatManager.GetComponent<WizardStats>();
+
 
         for (int i = 0; i < level; i++)
         {
@@ -118,10 +110,10 @@ public class EventTriggerManager : MonoBehaviour
     }
     public void ReceiveDamageEvent(float damage)
     {
-        monkStats.currentHealth -= damage;
-        paladinStats.currentHealth -= damage;
-        rogueStats.currentHealth -= damage;
-        wizardStats.currentHealth -= damage;
+        MonkStats.Instance.currentHealth -= damage;
+        PaladinStats.Instance.currentHealth -= damage;
+        RogueStats.Instance.currentHealth -= damage;
+        WizardStats.Instance.currentHealth -= damage;
         Debug.Log("Your party received " + damage + " damage");
     }
     public void ReceiveGoldEvent(float min, float max)

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public EventTriggerManager eventTriggerManager;
     public int difficulty;
+    public bool isPosResetNeccessary;
     [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player;
 
     //public GameObject HeroStatManager;
@@ -34,7 +35,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void DisableRPGScene()
-    {
+    {   
+        if (isPosResetNeccessary)
+        {
+            player.transform.position = new Vector3(500f, 0f, 75f);
+        }
         thirdPersonCamera.SetActive(false);
         cameraHolder.SetActive(false);
         player.SetActive(false);
@@ -42,6 +47,7 @@ public class GameManager : MonoBehaviour
     }
     public void EnableRPGScene()
     {
+        GameManager.Instance.isPosResetNeccessary = false;
         thirdPersonCamera.SetActive(true);
         cameraHolder.SetActive(true);
         player.SetActive(true);

@@ -6,8 +6,6 @@ using System;
 public class EventBehaviour : MonoBehaviour
 {
     private int eventIndex;
-
-    public MonkStats monkStats;
     
     void Awake()
     {

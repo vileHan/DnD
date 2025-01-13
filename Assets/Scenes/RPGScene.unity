@@ -166,13 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c71cccc3e16f4a4193c227bf313106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTriggerManager: {fileID: 0}
+  eventTriggerManager: {fileID: 1752572623}
   difficulty: 0
   thirdPersonCamera: {fileID: 583398699}
   eventSystem: {fileID: 1928292498}
   cameraHolder: {fileID: 917750671}
   player: {fileID: 684511743}
-  HeroStatManager: {fileID: 0}
 --- !u!1 &333265978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,7 +5057,6 @@ MonoBehaviour:
   fightOrNotPanel: {fileID: 1133600531}
   chanceOrNotPanel: {fileID: 821112922}
   trigger: []
-  HeroStatManager: {fileID: 0}
 --- !u!1 &1780615358
 GameObject:
   m_ObjectHideFlags: 3

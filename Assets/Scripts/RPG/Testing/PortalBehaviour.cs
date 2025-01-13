@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehaviour : MonoBehaviour
 {
-    [SerializeField] private int difficulty; 
+    [SerializeField] private int difficulty; // ramdom
     void Start()
     {
         
@@ -23,8 +23,9 @@ public class PortalBehaviour : MonoBehaviour
         {
             if (gameObject.tag == "FogCollider")
             {
-                // GameManager.Instance.difficulty = difficulty;
-                // LoadFightScene();
+                GameManager.Instance.isPosResetNeccessary = true;
+                GameManager.Instance.difficulty = 4;
+                LoadFightScene();
                 Debug.Log("collide");
             }
             else 

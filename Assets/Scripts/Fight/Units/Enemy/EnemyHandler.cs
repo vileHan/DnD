@@ -10,7 +10,8 @@ public class EnemyHandler : MonoBehaviour
     //public List<GameObject> enemiesToSpawn = new List<GameObject>();
     public int enemyIndex;
     public bool enemiesSpawned;
-    [SerializeField]private Vector3[] spawnPositions;
+    private List<Vector3> spawnPositions = new List<Vector3>();
+    public GameObject[] spawnPosition;
 
     void Awake()
     {
@@ -18,7 +19,12 @@ public class EnemyHandler : MonoBehaviour
     }
     void Start()
     { 
-        StartCoroutine(Spawn());             
+        for (int i = 0; i < spawnPosition.Length; i++)       
+        {
+            spawnPositions.Add(spawnPosition[i].transform.position);
+        }
+        
+        StartCoroutine(Spawn());     
     }
 
     // Update is called once per frame

@@ -6,7 +6,8 @@ public class HeroHandler : MonoBehaviour
 {
     private int heroAmount = 4;
     public GameObject[] heroPrefabs;
-    [SerializeField]private Vector3[] spawnPositions;
+    private List<Vector3> spawnPositions = new List<Vector3>();
+    public GameObject[] spawnPosition;
     public bool heroesSpawned;
 
     void Awake()
@@ -17,6 +18,11 @@ public class HeroHandler : MonoBehaviour
     
     void Start()
     {
+        for (int i = 0; i < spawnPosition.Length; i++)       
+        {
+            spawnPositions.Add(spawnPosition[i].transform.position);
+        }
+
         for(int i = 0; i < heroAmount; i++)
         {
             GameObject hero = Instantiate(heroPrefabs[i], spawnPositions[i], Quaternion.identity);

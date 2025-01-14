@@ -26,14 +26,12 @@ public class EventTriggerManager : MonoBehaviour
     }
     void Start()
     {
-
-
-        for (int i = 0; i < level; i++)
-        {
-            GameObject temp = Instantiate(portal[UnityEngine.Random.Range(0, portal.Length)], new Vector3(0f, 2.5f, spawnZ + (i * 15)), Quaternion.identity);
-            trigger.Add(temp);
-            trigger[i].transform.SetParent(this.transform, true);
-        }
+        // for (int i = 0; i < level; i++)
+        // {
+        //     GameObject temp = Instantiate(portal[UnityEngine.Random.Range(0, portal.Length)], new Vector3(0f, 2.5f, spawnZ + (i * 15)), Quaternion.identity);
+        //     trigger.Add(temp);
+        //     trigger[i].transform.SetParent(this.transform, true);
+        // }
     }
 
     // Update is called once per frame

@@ -114,6 +114,14 @@ public class EventTriggerManager : MonoBehaviour
         WizardStats.Instance.currentHealth -= damage;
         Debug.Log("Your party received " + damage + " damage");
     }
+    public void UpgradeDamageEvent(float damage)
+    {
+        MonkStats.Instance.damage += damage;
+        PaladinStats.Instance.damage += damage;
+        RogueStats.Instance.damage += damage;
+        WizardStats.Instance.damage += damage;
+        Debug.Log("Your partys damage was upgraded by 5!");
+    }
     public void ReceiveGoldEvent(float min, float max)
     {
         float reward = UnityEngine.Random.Range(min, max);

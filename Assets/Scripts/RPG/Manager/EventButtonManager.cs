@@ -25,6 +25,7 @@ public class EventButtonManager : MonoBehaviour
     public void GetLoot()
     {
         EventTriggerManager.Instance.ReceiveGoldEvent(1, 6);
+        EventTriggerManager.Instance.UpgradeDamageEvent(5);
     }
     public void ChanceFightOrDamageOrLoot()
     {

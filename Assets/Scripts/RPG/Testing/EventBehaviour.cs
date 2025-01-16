@@ -5,7 +5,7 @@ using System;
 
 public class EventBehaviour : MonoBehaviour
 {
-    private int eventIndex;
+    [SerializeField] private int eventIndex;
     
     void Awake()
     {
@@ -35,8 +35,6 @@ public class EventBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            eventIndex = UnityEngine.Random.Range(0, 4);
-
             switch(eventIndex)
             {
                 case 0:

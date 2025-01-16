@@ -106,7 +106,10 @@ public class UnitManager : MonoBehaviour
     {
         for (int i = 0; i < enemiesAlive.Count; i++)
         {
-
+            GameObject enemy = enemiesAlive[i];
+            TargetableUnit targetableUnit = enemy.GetComponent<TargetableUnit>();
+            targetableUnit.Die();
+            Debug.Log("test: " + targetableUnit.currentHealth);
         }
     }
 }

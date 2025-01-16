@@ -553,7 +553,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1475502544}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DisplayDicionary
+        m_MethodName: WinFight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -686,7 +686,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1475502544}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DisplayDicionary
+        m_MethodName: WinFight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6953,6 +6953,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
+  player: {fileID: 0}
+  levelFinishedPanel: {fileID: 0}
 --- !u!65 &572583872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19609,6 +19611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
+  player: {fileID: 0}
+  levelFinishedPanel: {fileID: 0}
 --- !u!65 &1860860253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20683,7 +20687,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1475502544}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DisplayDicionary
+        m_MethodName: WinFight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21666,7 +21670,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1475502544}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: DisplayDicionary
+        m_MethodName: WinFight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

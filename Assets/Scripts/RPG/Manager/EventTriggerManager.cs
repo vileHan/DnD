@@ -135,5 +135,5 @@ public enum EventState
         Loot,
         LootOrNot,
         FightOrNot,
-        ChanceOrNot
+        ChanceOrNot        
     }

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PortalBehaviour : MonoBehaviour
 {
     [SerializeField] private int difficulty; // ramdom
+    [SerializeField] private GameObject player;
+    public GameObject levelFinishedPanel;
     void Start()
     {
         
@@ -27,6 +29,22 @@ public class PortalBehaviour : MonoBehaviour
                 GameManager.Instance.difficulty = 4;
                 LoadFightScene();
                 Debug.Log("collide");
+            }
+            else if (gameObject.tag == "PortalEventCollider")
+            {
+                //cameraEvent
+                CharacterController controller = player.GetComponent<CharacterController>();
+                controller.enabled = false;
+
+                player.transform.position = new Vector3(544f, 9f, 755.3f);
+
+                controller.enabled = true;
+                gameObject.SetActive(false); 
+            }
+            else if (gameObject.tag == "LevelFinishedCollider")
+            {
+                levelFinishedPanel.gameObject.SetActive(true);
+                Time.timeScale = 0;
             }
             else 
             {

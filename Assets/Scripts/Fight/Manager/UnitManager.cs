@@ -101,4 +101,12 @@ public class UnitManager : MonoBehaviour
             Debug.Log("Dictionary: " + sortedUnit.Value + " " + sortedUnit.Key.name);            
         }
     }
+
+    public void WinFight()
+    {
+        for (int i = 0; i < enemiesAlive.Count; i++)
+        {
+
+        }
+    }
 }

@@ -7,7 +7,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     public AudioSource audioSource;
+    public AudioSource ambientSource;
     public AudioClip[] playlist;
+    public AudioClip wind;
     public int currentTrackIndex = 0;  
     public float crossfadeDuration = 1.0f;
 
@@ -23,6 +25,8 @@ public class AudioManager : MonoBehaviour
         {
             PlayTrack(currentTrackIndex);
         }
+        ambientSource.clip = wind;
+        ambientSource.Play();
     }
 
     // Update is called once per frame

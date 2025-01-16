@@ -257,10 +257,12 @@ public class HeroStats: TargetableUnit
     {
         SetStatsToDisplay();
         FightUIManager.Instance.EnableUnitStatsDisplay();
+        outline.enabled = true;
     }
     public override void MouseExitUnit()
     {
         FightUIManager.Instance.DisableUnitStatsDisplay();
+        outline.enabled = false;
     }
     public override void SetStatsToDisplay()
     {

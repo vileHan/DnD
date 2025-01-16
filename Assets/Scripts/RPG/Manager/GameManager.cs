@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = new Vector3(500f, 0f, 75f);
         }
+        AudioManager.Instance.StopTrack(AudioManager.Instance.currentTrackIndex);
         thirdPersonCamera.SetActive(false);
         cameraHolder.SetActive(false);
         player.SetActive(false);
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     }
     public void EnableRPGScene()
     {
+        AudioManager.Instance.PlayTrack(AudioManager.Instance.currentTrackIndex);
         GameManager.Instance.isPosResetNeccessary = false;
         thirdPersonCamera.SetActive(true);
         cameraHolder.SetActive(true);

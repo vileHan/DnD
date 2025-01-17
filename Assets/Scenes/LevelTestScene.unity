@@ -2218,6 +2218,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -2560,13 +2561,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702400613486367555, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 152318241}
     - target: {fileID: 6914694874347225780, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
       propertyPath: m_Name
       value: Crossfade
       objectReference: {fileID: 0}
     - target: {fileID: 6914694874347225780, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2576,6 +2581,27 @@ PrefabInstance:
 --- !u!224 &152318238 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 785828888596241829, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
+  m_PrefabInstance: {fileID: 152318237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &152318239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6914694874347225780, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
+  m_PrefabInstance: {fileID: 152318237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &152318240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4702400613486367555, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
+  m_PrefabInstance: {fileID: 152318237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152318239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50eaed884871bc54b830ac2ae615dfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &152318241 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6317966628469336491, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
   m_PrefabInstance: {fileID: 152318237}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &153582112 stripped
@@ -10407,6 +10433,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -13467,6 +13494,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -15211,6 +15239,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 1288484262}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -15515,6 +15544,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -17539,6 +17569,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -21866,6 +21897,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -23695,6 +23727,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -24313,6 +24346,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -27871,6 +27905,7 @@ MonoBehaviour:
   difficulty: 3
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 1984983610}
   openingTrigger: 0
   closingTrigger: 1
@@ -28450,6 +28485,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -30679,6 +30715,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -32548,6 +32585,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -32693,12 +32731,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 3
   player: {fileID: 1575653361}
-  levelFinishedPanel: {fileID: 0}
+  levelFinishedPanel: {fileID: 152318239}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 1692774883}
-  initiateFight: {fileID: 8300000, guid: 06048b5b801c15b4896a340fd3a64f3e, type: 3}
+  initiateFight: {fileID: 8300000, guid: 702d7adfbdaa2714e8fc463929ef2af0, type: 3}
 --- !u!65 &1692774880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32782,7 +32821,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -34176,12 +34215,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 4
   player: {fileID: 1575653361}
-  levelFinishedPanel: {fileID: 0}
+  levelFinishedPanel: {fileID: 152318239}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 1756447432}
-  initiateFight: {fileID: 8300000, guid: 06048b5b801c15b4896a340fd3a64f3e, type: 3}
+  initiateFight: {fileID: 8300000, guid: 702d7adfbdaa2714e8fc463929ef2af0, type: 3}
 --- !u!82 &1756447432
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34194,7 +34234,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -34392,6 +34432,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -34664,6 +34705,7 @@ MonoBehaviour:
   difficulty: 3
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 1984983610}
   openingTrigger: 1
   closingTrigger: 0
@@ -37702,11 +37744,12 @@ MonoBehaviour:
   difficulty: 2
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 152318240}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 1905086986}
-  initiateFight: {fileID: 8300000, guid: 06048b5b801c15b4896a340fd3a64f3e, type: 3}
+  initiateFight: {fileID: 8300000, guid: 702d7adfbdaa2714e8fc463929ef2af0, type: 3}
 --- !u!65 &1905086982
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37805,7 +37848,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -38141,6 +38184,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -39579,6 +39623,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -39946,6 +39991,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -41128,6 +41174,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0

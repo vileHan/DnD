@@ -7382,6 +7382,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -8298,6 +8299,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -10269,6 +10271,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
@@ -10533,6 +10536,7 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  transitionLoader: {fileID: 0}
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0

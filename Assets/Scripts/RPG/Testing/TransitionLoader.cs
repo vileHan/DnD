@@ -26,4 +26,9 @@ public class TransitionLoader : MonoBehaviour
 
         GameManager.Instance.StartGame();
     }
+
+    public void LoadFightTransition()
+    {
+        anim.SetTrigger("Start");
+    }
 }

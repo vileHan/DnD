@@ -8,6 +8,9 @@ public class PortalBehaviour : MonoBehaviour
     [SerializeField] private int difficulty; // ramdom
     [SerializeField] private GameObject player;
     public GameObject levelFinishedPanel;
+    
+    [SerializeField] private TransitionLoader transitionLoader;
+    private ThirdPersonController thirdPersonController;
 
     [SerializeField] private Animator hugeDoor = null;
     [SerializeField] private bool openingTrigger = false;
@@ -71,10 +74,10 @@ public class PortalBehaviour : MonoBehaviour
             }
             else 
             {
-                //StartCoroutine(PlayFightSound());
+                // thirdPersonController = other.GetComponent<ThirdPersonController>();
+                // thirdPersonController.enabled = false;
+                StartCoroutine(PlayFightSound());
                 GameManager.Instance.difficulty = difficulty;
-                LoadFightScene();
-                gameObject.SetActive(false); 
             }
              
         }
@@ -91,10 +94,12 @@ public class PortalBehaviour : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    // IEnumerator PlayFightSound()
-    // {
-    //     audio.clip = initiateFight;
-    //     audio.Play();
-    //     //while ()
-    // }
+    IEnumerator PlayFightSound()
+    {
+        audio.clip = initiateFight;
+        audio.Play();
+        yield return new WaitForSeconds(1f);
+        LoadFightScene();
+        gameObject.SetActive(false); 
+    }
 }

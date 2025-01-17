@@ -6955,6 +6955,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &572583872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14455,7 +14458,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.005
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -19860,6 +19863,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &1860860253
 BoxCollider:
   m_ObjectHideFlags: 0

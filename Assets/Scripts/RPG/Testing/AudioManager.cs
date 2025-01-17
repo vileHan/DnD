@@ -49,8 +49,11 @@ public class AudioManager : MonoBehaviour
 
     public void StopTrack(int index)
     {
-        audioSource.clip = playlist[index];
-        audioSource.Stop();
+        if (index >= 0 && index < playlist.Length)
+        {
+            audioSource.clip = playlist[index];
+            audioSource.Stop();
+        }
     }
 
     IEnumerator CrossfadeToNextTrack()

@@ -18,13 +18,14 @@ public class HugeDoorSounds : MonoBehaviour
     }
     public void ShutSound()
     {
+        audio.volume = 0.3f;
         audio.pitch = 0.5f;
         audio.clip = shut;
         audio.Play();
     }
     public void CreakSound()
     {
-        audio.volume = 0.05f;
+        audio.volume = 0.03f;
         audio.clip = creaking;
         audio.Play();
     }

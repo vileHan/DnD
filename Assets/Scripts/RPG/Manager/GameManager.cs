@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = new Vector3(500f, 0f, 75f);
         }
-        AudioManager.Instance.StopTrack(AudioManager.Instance.currentTrackIndex);
+        //AudioManager.Instance.StopTrack(AudioManager.Instance.currentTrackIndex);
         thirdPersonCamera.SetActive(false);
         cameraHolder.SetActive(false);
         player.SetActive(false);

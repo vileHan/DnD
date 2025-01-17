@@ -1584,6 +1584,8 @@ MonoBehaviour:
   fightOrNotPanel: {fileID: 0}
   chanceOrNotPanel: {fileID: 0}
   trigger: []
+  eventLogIndex: 0
+  reward: 0
 --- !u!1001 &316639913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7380,6 +7382,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &1491039150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -8291,6 +8296,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &1600120905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013110084410, guid: 9912c154908c1874d965486b8b9bebc1, type: 3}
@@ -8990,7 +8998,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10257,6 +10265,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &2009358970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10516,6 +10527,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &2068281842
 PrefabInstance:
   m_ObjectHideFlags: 0

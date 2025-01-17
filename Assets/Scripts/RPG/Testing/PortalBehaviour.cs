@@ -34,6 +34,7 @@ public class PortalBehaviour : MonoBehaviour
             {
                 //cameraEvent
                 CharacterController controller = player.GetComponent<CharacterController>();
+
                 controller.enabled = false;
 
                 player.transform.position = new Vector3(544f, 9f, 755.3f);

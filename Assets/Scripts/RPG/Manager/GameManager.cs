@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
     }
     public void EnableRPGScene()
     {
-        AudioManager.Instance.PlayTrack(AudioManager.Instance.currentTrackIndex);
         GameManager.Instance.isPosResetNeccessary = false;
         thirdPersonCamera.SetActive(true);
         cameraHolder.SetActive(true);
         player.SetActive(true);
         eventSystem.SetActive(true);
+        AudioManager.Instance.PlayTrack(AudioManager.Instance.currentTrackIndex);
     }
     public void ResetRPGScene()
     {

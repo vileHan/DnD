@@ -23,7 +23,7 @@ public class FightManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -143,8 +143,7 @@ public class FightManager : MonoBehaviour
 
         unitToAct = UnitManager.Instance.unitDictionary.ElementAt(dictionaryIndex).Key;
 
-        unitStats = unitToAct.GetComponent<TargetableUnit>();
-        Debug.Log("turn: " + unitStats.name);  
+        unitStats = unitToAct.GetComponent<TargetableUnit>(); 
         unitStats.isTurn = true;
 
 
@@ -162,11 +161,12 @@ public class FightManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
 
+        
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
-        while (!unloadOperation.isDone)
-        {
-            yield return null;
-        }
+        // while (!unloadOperation.isDone)
+        // {
+        //     yield return null;
+        // }
 
         GameManager.Instance.EnableRPGScene();
         Debug.Log("Player Gold: " + PlayerStats.Instance.gold + "g");

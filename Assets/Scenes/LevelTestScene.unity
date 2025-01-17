@@ -1340,7 +1340,7 @@ Transform:
   m_GameObject: {fileID: 82772160}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13870122, y: 0, z: 0, w: 0.99033433}
-  m_LocalPosition: {x: -777.27704, y: 5.9756627, z: 2480.7334}
+  m_LocalPosition: {x: -952.99506, y: 5.9756627, z: 2298.2114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2218,6 +2218,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &142670135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7966,7 +7969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 712.81
+      value: 537.092
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7974,7 +7977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 243.78
+      value: 61.258
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10328,6 +10331,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &529410424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10494,7 +10500,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1000013696037104, guid: bfbd8656ed7d1204288f1a44908ca32a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984983610}
+    - targetCorrespondingSourceObject: {fileID: 1000013696037104, guid: bfbd8656ed7d1204288f1a44908ca32a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984983613}
+    - targetCorrespondingSourceObject: {fileID: 1000013696037104, guid: bfbd8656ed7d1204288f1a44908ca32a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984983612}
   m_SourcePrefab: {fileID: 100100000, guid: bfbd8656ed7d1204288f1a44908ca32a, type: 3}
 --- !u!4 &541330219 stripped
 Transform:
@@ -13374,6 +13389,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &716484214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15005,7 +15023,7 @@ GameObject:
   - component: {fileID: 793787479}
   - component: {fileID: 793787482}
   m_Layer: 0
-  m_Name: "Porta\xF6 Trigger(1)"
+  m_Name: Portal Trigger (2)
   m_TagString: LevelFinishedCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15112,6 +15130,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 1288484262}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &806165427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -15315,6 +15336,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &826720719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -16933,7 +16957,7 @@ Transform:
   m_GameObject: {fileID: 914641638}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000014901159, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 712.69196, y: 6.4160004, z: 236.92114}
+  m_LocalPosition: {x: 536.97394, y: 6.4160004, z: 54.399136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17332,6 +17356,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &933769056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21140,6 +21167,7 @@ Transform:
   - {fileID: 1692774878}
   - {fileID: 1756447426}
   - {fileID: 1772719095}
+  - {fileID: 1455678289}
   - {fileID: 793787477}
   - {fileID: 21561483}
   - {fileID: 1340870873}
@@ -21653,6 +21681,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &1195301670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23477,6 +23508,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &1266823396
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23770,6 +23804,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1 &1284046524
 GameObject:
   m_ObjectHideFlags: 0
@@ -27271,6 +27308,130 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
   m_PrefabInstance: {fileID: 786127605}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1455678288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1455678289}
+  - component: {fileID: 1455678293}
+  - component: {fileID: 1455678292}
+  - component: {fileID: 1455678291}
+  - component: {fileID: 1455678290}
+  m_Layer: 0
+  m_Name: Portal Trigger  (1)
+  m_TagString: PortalEventCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1455678289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455678288}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 168.8, y: -179.5, z: 270.9}
+  m_LocalScale: {x: 119.91543, y: 38.35674, z: 68.33471}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1179041090}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1455678290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455678288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952defadf5f093349a528c5cb6d671dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 3
+  player: {fileID: 1575653361}
+  levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 1984983610}
+  openingTrigger: 0
+  closingTrigger: 1
+--- !u!65 &1455678291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455678288}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1455678292
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455678288}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 323f402f3db10d04686482d5febc26a2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1455678293
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455678288}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1463432168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27604,6 +27765,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &1491039150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -29828,6 +29992,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &1597022981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31558,6 +31725,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &1691581630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31698,6 +31868,9 @@ MonoBehaviour:
   difficulty: 3
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &1692774880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33079,6 +33252,9 @@ MonoBehaviour:
   difficulty: 4
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &1756669559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33193,6 +33369,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &1759295531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -33438,8 +33617,8 @@ Transform:
   m_GameObject: {fileID: 1772719094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 168.8, y: -149.8, z: 214.5}
-  m_LocalScale: {x: 65.92711, y: 77.98463, z: 10.0751505}
+  m_LocalPosition: {x: 168.8, y: -179.5, z: 153.5}
+  m_LocalScale: {x: 119.91543, y: 38.35674, z: 111.33091}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1179041090}
@@ -33459,6 +33638,9 @@ MonoBehaviour:
   difficulty: 3
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 1984983610}
+  openingTrigger: 1
+  closingTrigger: 0
 --- !u!65 &1772719097
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36395,6 +36577,9 @@ MonoBehaviour:
   difficulty: 2
   player: {fileID: 1575653361}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!65 &1905086982
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36733,6 +36918,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &1911564265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38166,11 +38354,151 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!4 &1983827217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
   m_PrefabInstance: {fileID: 84116749}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1984983609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013696037104, guid: bfbd8656ed7d1204288f1a44908ca32a, type: 3}
+  m_PrefabInstance: {fileID: 539518154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1984983610
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984983609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89c21754e33198946a9e673c77fdb414, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1984983612
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984983609}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1984983613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984983609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d9c96268085624e94ccffa98b6e040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 1984983612}
+  shut: {fileID: 8300000, guid: ec8b33873b27d89459aeeb7b569f7b91, type: 3}
+  creaking: {fileID: 8300000, guid: 20bb1c1b4ef961c42afd6f9d27047859, type: 3}
 --- !u!4 &1987270380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -38391,6 +38719,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &2003448849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39568,6 +39899,9 @@ MonoBehaviour:
   difficulty: 0
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
+  hugeDoor: {fileID: 0}
+  openingTrigger: 0
+  closingTrigger: 0
 --- !u!1001 &2068281842
 PrefabInstance:
   m_ObjectHideFlags: 0

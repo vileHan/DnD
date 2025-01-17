@@ -8,6 +8,11 @@ public class PortalBehaviour : MonoBehaviour
     [SerializeField] private int difficulty; // ramdom
     [SerializeField] private GameObject player;
     public GameObject levelFinishedPanel;
+
+    [SerializeField] private Animator hugeDoor = null;
+    [SerializeField] private bool openingTrigger = false;
+    [SerializeField] private bool closingTrigger = false;
+
     void Start()
     {
         
@@ -33,14 +38,26 @@ public class PortalBehaviour : MonoBehaviour
             else if (gameObject.tag == "PortalEventCollider")
             {
                 //cameraEvent
-                CharacterController controller = player.GetComponent<CharacterController>();
+                // CharacterController controller = player.GetComponent<CharacterController>();
 
-                controller.enabled = false;
+                // controller.enabled = false;
 
-                player.transform.position = new Vector3(544f, 9f, 755.3f);
+                // player.transform.position = new Vector3(544f, 9f, 755.3f);
 
-                controller.enabled = true;
-                gameObject.SetActive(false); 
+                // controller.enabled = true;
+                // gameObject.SetActive(false); 
+
+                if (openingTrigger)
+                {
+                    hugeDoor.Play("Opening", 0, 0.0f);
+                    gameObject.SetActive(false); 
+                }
+                else if (closingTrigger)
+                {
+                    hugeDoor.Play("Closing", 0, 0.0f);
+                    gameObject.SetActive(false); 
+                }
+
             }
             else if (gameObject.tag == "LevelFinishedCollider")
             {

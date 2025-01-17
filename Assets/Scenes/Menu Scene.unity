@@ -7385,6 +7385,8 @@ MonoBehaviour:
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
+  audio: {fileID: 0}
+  initiateFight: {fileID: 0}
 --- !u!4 &1491039150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -8299,6 +8301,8 @@ MonoBehaviour:
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
+  audio: {fileID: 0}
+  initiateFight: {fileID: 0}
 --- !u!4 &1600120905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013110084410, guid: 9912c154908c1874d965486b8b9bebc1, type: 3}
@@ -10268,6 +10272,8 @@ MonoBehaviour:
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
+  audio: {fileID: 0}
+  initiateFight: {fileID: 0}
 --- !u!1001 &2009358970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10530,6 +10536,8 @@ MonoBehaviour:
   hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
+  audio: {fileID: 0}
+  initiateFight: {fileID: 0}
 --- !u!1001 &2068281842
 PrefabInstance:
   m_ObjectHideFlags: 0

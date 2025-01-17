@@ -15,6 +15,8 @@ public class EventTriggerManager : MonoBehaviour
     public GameObject lootPanel, lootOrNotPanel, fightOrNotPanel, chanceOrNotPanel;
     public List<GameObject> trigger;
     private float spawnZ = -30;
+    public int eventLogIndex;
+    public float reward;
 
 
     public static event Action<EventState> OnEventStateChanged;
@@ -104,7 +106,7 @@ public class EventTriggerManager : MonoBehaviour
         GameManager.Instance.DisableRPGScene();
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
         GameManager.Instance.difficulty = difficulty;
-        Debug.Log("Fight " + difficulty + " ememies");
+        eventLogIndex = 0;
     }
     public void ReceiveDamageEvent(float damage)
     {
@@ -112,7 +114,8 @@ public class EventTriggerManager : MonoBehaviour
         PaladinStats.Instance.currentHealth -= damage;
         RogueStats.Instance.currentHealth -= damage;
         WizardStats.Instance.currentHealth -= damage;
-        Debug.Log("Your party received " + damage + " damage");
+        Debug.Log("Your party received 10 damage!");
+        eventLogIndex = 3;
     }
     public void UpgradeDamageEvent(float damage)
     {
@@ -121,12 +124,14 @@ public class EventTriggerManager : MonoBehaviour
         RogueStats.Instance.damage += damage;
         WizardStats.Instance.damage += damage;
         Debug.Log("Your partys damage was upgraded by 5!");
+        eventLogIndex = 1;
     }
     public void ReceiveGoldEvent(float min, float max)
     {
-        float reward = UnityEngine.Random.Range(min, max);
+        reward = UnityEngine.Random.Range(min, max);
         PlayerStats.Instance.gold += (int)reward;
         Debug.Log("You found " + reward + "g");
+        eventLogIndex = 2;
     }
 }
 

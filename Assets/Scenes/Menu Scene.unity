@@ -316,10 +316,10 @@ RectTransform:
   - {fileID: 2047462585}
   m_Father: {fileID: 1288484263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -470, y: -301}
-  m_SizeDelta: {x: -1331.8196, y: -936.0788}
+  m_SizeDelta: {x: 588.1804, y: 143.9212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &73288291
 AudioSource:
@@ -741,10 +741,10 @@ RectTransform:
   - {fileID: 1016876877}
   m_Father: {fileID: 1288484263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -470, y: -109}
-  m_SizeDelta: {x: -1331.8196, y: -936.0788}
+  m_SizeDelta: {x: 588.1804, y: 143.9212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &93506724
 AudioSource:
@@ -5630,10 +5630,10 @@ RectTransform:
   - {fileID: 316981886}
   m_Father: {fileID: 1288484263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -470, y: 95}
-  m_SizeDelta: {x: -1331.8196, y: -936.0788}
+  m_SizeDelta: {x: 588.1804, y: 143.9212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078232773
 MonoBehaviour:
@@ -7773,6 +7773,7 @@ MonoBehaviour:
   eventSystem: {fileID: 454715864}
   cameraHolder: {fileID: 2080156788}
   player: {fileID: 0}
+  settingsPanel: {fileID: 0}
 --- !u!4 &1497571335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}

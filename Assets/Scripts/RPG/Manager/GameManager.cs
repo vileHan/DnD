@@ -10,13 +10,15 @@ public class GameManager : MonoBehaviour
     public EventTriggerManager eventTriggerManager;
     public int difficulty;
     public bool isPosResetNeccessary;
-    [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player;
+    [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player, settingsPanel;
 
     //public GameObject HeroStatManager;
     private MonkStats monkStats;
     private PaladinStats paladinStats;
     private RogueStats rogueStats;
     private WizardStats wizardStats;
+
+    private bool isGamePaused;
     void Awake()
     {
         Instance = this;
@@ -33,7 +35,34 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isGamePaused)
+            {
+                PauseGame();
+            }
+            else 
+            {
+                ResumeGame();
+            }
+        }
+    }
+
+    void PauseGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        settingsPanel.SetActive(true);
+        Time.timeScale = 0;
+        isGamePaused = true;
+    }
+    public void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        settingsPanel.SetActive(false);
+        Time.timeScale = 1;
+        isGamePaused = false;
     }
 
     public void DisableRPGScene()

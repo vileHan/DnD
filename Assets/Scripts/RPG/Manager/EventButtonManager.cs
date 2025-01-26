@@ -29,7 +29,7 @@ public class EventButtonManager : MonoBehaviour
     }
     public void ChanceFightOrDamageOrLoot()
     {
-        int chance = Random.Range(0,3);
+        int chance = 1; //Random.Range(0,3);
         if (chance == 0)
         {
             EventTriggerManager.Instance.ReceiveDamageEvent(10f);

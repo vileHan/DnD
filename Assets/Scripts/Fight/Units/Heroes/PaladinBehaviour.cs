@@ -114,19 +114,25 @@ public class PaladinBehaviour : BaseHeroBehaviour
 
     void SetStats() // make this a list or something
     {
-        targetableUnit.maxHealth = PaladinStats.Instance.maxHealth;
-        targetableUnit.currentHealth = PaladinStats.Instance.currentHealth;
-        targetableUnit.damage = PaladinStats.Instance.damage;
-        targetableUnit.maxSpellSlots = PaladinStats.Instance.maxSpellSlots;
-        targetableUnit.currentSpellSlots = PaladinStats.Instance.currentSpellSlots;
-        targetableUnit.healModifier = PaladinStats.Instance.healModifier;
-        targetableUnit.isAlive = PaladinStats.Instance.isAlive;
-        targetableUnit.panelIndex = PaladinStats.Instance.panelIndex;
-        targetableUnit.armor = PaladinStats.Instance.armor;
+        if (PaladinStats.Instance != null)
+        {
+            targetableUnit.maxHealth = PaladinStats.Instance.maxHealth;
+            targetableUnit.currentHealth = PaladinStats.Instance.currentHealth;
+            targetableUnit.damage = PaladinStats.Instance.damage;
+            targetableUnit.maxSpellSlots = PaladinStats.Instance.maxSpellSlots;
+            targetableUnit.currentSpellSlots = PaladinStats.Instance.currentSpellSlots;
+            targetableUnit.healModifier = PaladinStats.Instance.healModifier;
+            targetableUnit.isAlive = PaladinStats.Instance.isAlive;
+            targetableUnit.panelIndex = PaladinStats.Instance.panelIndex;
+            targetableUnit.armor = PaladinStats.Instance.armor;
+        }
     }
     public void SaveStats() // make this a list or something
     {
-        PaladinStats.Instance.currentHealth = targetableUnit.currentHealth;    
-        PaladinStats.Instance.isAlive = targetableUnit.isAlive;
+        if (PaladinStats.Instance != null)
+        {
+            PaladinStats.Instance.currentHealth = targetableUnit.currentHealth;    
+            PaladinStats.Instance.isAlive = targetableUnit.isAlive;
+        }
     }
 }

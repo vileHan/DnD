@@ -110,27 +110,34 @@ public class EventTriggerManager : MonoBehaviour
     }
     public void ReceiveDamageEvent(float damage)
     {
-        MonkStats.Instance.currentHealth -= damage;
-        PaladinStats.Instance.currentHealth -= damage;
-        RogueStats.Instance.currentHealth -= damage;
-        WizardStats.Instance.currentHealth -= damage;
-        Debug.Log("Your party received 10 damage!");
+        if (MonkStats.Instance != null) // should check all but im too lazy right now and i should make a script that connects all stats(which would then make this task easier)
+        {
+            MonkStats.Instance.currentHealth -= damage;
+            PaladinStats.Instance.currentHealth -= damage;
+            RogueStats.Instance.currentHealth -= damage;
+            WizardStats.Instance.currentHealth -= damage;
+        }
         eventLogIndex = 3;
+        
     }
     public void UpgradeDamageEvent(float damage)
     {
-        MonkStats.Instance.damage += damage;
-        PaladinStats.Instance.damage += damage;
-        RogueStats.Instance.damage += damage;
-        WizardStats.Instance.damage += damage;
-        Debug.Log("Your partys damage was upgraded by 5!");
+        if (MonkStats.Instance != null) // should check all but im too lazy right now and i should make a script that connects all stats(which would then make this task easier)
+        {
+            MonkStats.Instance.damage += damage;
+            PaladinStats.Instance.damage += damage;
+            RogueStats.Instance.damage += damage;
+            WizardStats.Instance.damage += damage;
+        }
         eventLogIndex = 1;
     }
     public void ReceiveGoldEvent(float min, float max)
     {
-        reward = UnityEngine.Random.Range(min, max);
-        PlayerStats.Instance.gold += (int)reward;
-        Debug.Log("You found " + reward + "g");
+        if (PlayerStats.Instance != null) // should check all but im too lazy right now and i should make a script that connects all stats(which would then make this task easier)
+        {
+            reward = UnityEngine.Random.Range(min, max);
+            PlayerStats.Instance.gold += (int)reward;   
+        }
         eventLogIndex = 2;
     }
 }

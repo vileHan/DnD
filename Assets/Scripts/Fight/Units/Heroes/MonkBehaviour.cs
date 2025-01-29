@@ -72,10 +72,8 @@ public class MonkBehaviour : BaseHeroBehaviour
         this.target = target;
 
         int attackPerTurn = 2;
-        Debug.Log("times attacked: " + timesAttacked);
         if (timesAttacked == attackPerTurn)
         {
-            Debug.Log("Attack end");
             targetableUnit.currentSpellSlots -= 1;
             spellslotHandler.UpdateSpellslots();
             knightAnimationScript.Attack1Animation();
@@ -83,7 +81,6 @@ public class MonkBehaviour : BaseHeroBehaviour
         }
         else 
         {
-            Debug.Log("halfAttack");
             knightAnimationScript.HalfAttackAnimation();
             timesAttacked++;
         }
@@ -127,20 +124,26 @@ public class MonkBehaviour : BaseHeroBehaviour
 
     void SetStats() // make this a list or something
     {
-        targetableUnit.maxHealth = MonkStats.Instance.maxHealth;
-        targetableUnit.currentHealth = MonkStats.Instance.currentHealth;
-        targetableUnit.damage = MonkStats.Instance.damage;
-        targetableUnit.maxSpellSlots = MonkStats.Instance.maxSpellSlots;
-        targetableUnit.currentSpellSlots = MonkStats.Instance.currentSpellSlots;
-        targetableUnit.healModifier = MonkStats.Instance.healModifier;
-        targetableUnit.isAlive = MonkStats.Instance.isAlive;
-        targetableUnit.panelIndex = MonkStats.Instance.panelIndex;
-        targetableUnit.armor = MonkStats.Instance.armor;
-        targetableUnit.test = MonkStats.Instance.armor;
+        if (MonkStats.Instance != null)
+        {
+            targetableUnit.maxHealth = MonkStats.Instance.maxHealth;
+            targetableUnit.currentHealth = MonkStats.Instance.currentHealth;
+            targetableUnit.damage = MonkStats.Instance.damage;
+            targetableUnit.maxSpellSlots = MonkStats.Instance.maxSpellSlots;
+            targetableUnit.currentSpellSlots = MonkStats.Instance.currentSpellSlots;
+            targetableUnit.healModifier = MonkStats.Instance.healModifier;
+            targetableUnit.isAlive = MonkStats.Instance.isAlive;
+            targetableUnit.panelIndex = MonkStats.Instance.panelIndex;
+            targetableUnit.armor = MonkStats.Instance.armor;
+        }
+        
     }
     public void SaveStats() // make this a list or something
     {
-        MonkStats.Instance.currentHealth = targetableUnit.currentHealth;     
-        MonkStats.Instance.isAlive = targetableUnit.isAlive;
+        if (MonkStats.Instance != null)
+        {
+            MonkStats.Instance.currentHealth = targetableUnit.currentHealth;     
+            MonkStats.Instance.isAlive = targetableUnit.isAlive;
+        }
     }
 }

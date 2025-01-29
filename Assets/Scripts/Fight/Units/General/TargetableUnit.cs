@@ -12,7 +12,6 @@ public class TargetableUnit : MonoBehaviour
     [SerializeField] private GameObject healthbar;
     [SerializeField] public GameObject characterImage;
     public Transform damageNumber;
-    public float test = 101;
 
     public float maxHealth;
     public float currentHealth;

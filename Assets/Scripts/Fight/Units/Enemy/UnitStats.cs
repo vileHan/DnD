@@ -74,17 +74,14 @@ public class UnitStats: TargetableUnit
         }
         else if (actualDamage < 40)
         {
-            Debug.Log("smalldamage");
             SmallHitFeedback?.PlayFeedbacks();
         }
         else if (actualDamage < 80)
         {
-            Debug.Log("meddamage");
             MediumHitFeedback?.PlayFeedbacks();
         }
         else 
         {
-            Debug.Log("largedamage");
             LargeHitFeedback?.PlayFeedbacks();
         }
         currentHealth -= actualDamage;

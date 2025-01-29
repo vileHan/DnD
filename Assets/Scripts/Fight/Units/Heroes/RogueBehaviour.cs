@@ -116,19 +116,26 @@ public class RogueBehaviour : BaseHeroBehaviour
 
     void SetStats() // make this a list or something
     {
-        targetableUnit.maxHealth = RogueStats.Instance.maxHealth;
-        targetableUnit.currentHealth = RogueStats.Instance.currentHealth;
-        targetableUnit.damage = RogueStats.Instance.damage;
-        targetableUnit.maxSpellSlots = RogueStats.Instance.maxSpellSlots;
-        targetableUnit.currentSpellSlots = RogueStats.Instance.currentSpellSlots;
-        targetableUnit.healModifier = RogueStats.Instance.healModifier;
-        targetableUnit.isAlive = RogueStats.Instance.isAlive;
-        targetableUnit.panelIndex = RogueStats.Instance.panelIndex;
-        targetableUnit.armor = RogueStats.Instance.armor;
+        if (RogueStats.Instance != null)
+        {
+            targetableUnit.maxHealth = RogueStats.Instance.maxHealth;
+            targetableUnit.currentHealth = RogueStats.Instance.currentHealth;
+            targetableUnit.damage = RogueStats.Instance.damage;
+            targetableUnit.maxSpellSlots = RogueStats.Instance.maxSpellSlots;
+            targetableUnit.currentSpellSlots = RogueStats.Instance.currentSpellSlots;
+            targetableUnit.healModifier = RogueStats.Instance.healModifier;
+            targetableUnit.isAlive = RogueStats.Instance.isAlive;
+            targetableUnit.panelIndex = RogueStats.Instance.panelIndex;
+            targetableUnit.armor = RogueStats.Instance.armor;
+        }
+        
     }
     public void SaveStats() // make this a list or something
     {
-        RogueStats.Instance.currentHealth = targetableUnit.currentHealth;    
-        RogueStats.Instance.isAlive = targetableUnit.isAlive; 
+        if (RogueStats.Instance != null)
+        {
+            RogueStats.Instance.currentHealth = targetableUnit.currentHealth;    
+            RogueStats.Instance.isAlive = targetableUnit.isAlive; 
+        }
     }
 }

@@ -61,7 +61,6 @@ public class FightUIManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !baseHeroBehaviour.isInAnimation) // needs conditioning
         {
-            Debug.Log("rightclick!");
             chooseActionPanel.SetActive(false);
             UpdateAction(ActionState.NoAttack);
         }          

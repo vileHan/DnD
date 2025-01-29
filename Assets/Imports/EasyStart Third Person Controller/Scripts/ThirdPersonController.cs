@@ -32,6 +32,7 @@ public class ThirdPersonController : MonoBehaviour
 
     // Player states
     bool isJumping = false;
+    bool isFalling = false;
     bool isSprinting = false;
     bool isCrouching = false;
 
@@ -67,7 +68,11 @@ public class ThirdPersonController : MonoBehaviour
         inputJump = Input.GetAxis("Jump") == 1f;
         inputSprint = Input.GetAxis("Fire3") == 1f;
         // Unfortunately GetAxis does not work with GetKeyDown, so inputs must be taken individually
-        inputCrouch = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.JoystickButton1);
+
+
+        // ------------ crouch disabled because animations are shit :( ----------------
+
+        //inputCrouch = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.JoystickButton1);
 
         // Check if you pressed the crouch input key and change the player's state
         if ( inputCrouch )
@@ -92,18 +97,38 @@ public class ThirdPersonController : MonoBehaviour
 
         }
 
+        // Handle Jumping and Falling Animations
+        float verticalVelocity = cc.velocity.y;
+
         // Jump animation
-        if( animator != null )
-            animator.SetBool("air", cc.isGrounded == false );
-
-        // Handle can jump or not
-        if ( inputJump && cc.isGrounded )
+        if (animator != null)
         {
-            isJumping = true;
-            // Disable crounching when jumping
-            //isCrouching = false; 
-        }
+            // Jump Start
+            if (inputJump && cc.isGrounded)
+            {
+                isJumping = true;
+                animator.SetTrigger("jump");  // Trigger jump animation
+            }
 
+            // Falling
+            if (!cc.isGrounded && verticalVelocity < 0)
+            {
+                animator.SetBool("fall", true);  // Set falling animation
+                isFalling = true;
+            }
+            else
+            {
+                animator.SetBool("fall", false);
+            }
+
+            // Landing
+            if (cc.isGrounded && isJumping && isFalling)
+            {
+                //animator.SetTrigger("land");  // Trigger landing animation
+                isJumping = false;
+                isFalling = false;
+            }
+        }
         HeadHittingDetect();
 
     }

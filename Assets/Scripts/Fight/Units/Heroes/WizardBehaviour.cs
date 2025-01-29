@@ -109,19 +109,25 @@ public class WizardBehaviour : BaseHeroBehaviour
 
     void SetStats() // make this a list or something
     {
-        targetableUnit.maxHealth = WizardStats.Instance.maxHealth;
-        targetableUnit.currentHealth = WizardStats.Instance.currentHealth;
-        targetableUnit.damage = WizardStats.Instance.damage;
-        targetableUnit.maxSpellSlots = WizardStats.Instance.maxSpellSlots;
-        targetableUnit.currentSpellSlots = WizardStats.Instance.currentSpellSlots;
-        targetableUnit.healModifier = WizardStats.Instance.healModifier;
-        targetableUnit.isAlive = WizardStats.Instance.isAlive;
-        targetableUnit.panelIndex = WizardStats.Instance.panelIndex;
-        targetableUnit.armor = WizardStats.Instance.armor;
+        if (WizardStats.Instance != null)
+        {
+            targetableUnit.maxHealth = WizardStats.Instance.maxHealth;
+            targetableUnit.currentHealth = WizardStats.Instance.currentHealth;
+            targetableUnit.damage = WizardStats.Instance.damage;
+            targetableUnit.maxSpellSlots = WizardStats.Instance.maxSpellSlots;
+            targetableUnit.currentSpellSlots = WizardStats.Instance.currentSpellSlots;
+            targetableUnit.healModifier = WizardStats.Instance.healModifier;
+            targetableUnit.isAlive = WizardStats.Instance.isAlive;
+            targetableUnit.panelIndex = WizardStats.Instance.panelIndex;
+            targetableUnit.armor = WizardStats.Instance.armor;
+        }
     }
     public void SaveStats() // make this a list or something
     {
-        WizardStats.Instance.currentHealth = targetableUnit.currentHealth;     
-        WizardStats.Instance.isAlive = targetableUnit.isAlive;
+        if (WizardStats.Instance != null)
+        {
+            WizardStats.Instance.currentHealth = targetableUnit.currentHealth;     
+            WizardStats.Instance.isAlive = targetableUnit.isAlive;
+        }
     }
 }

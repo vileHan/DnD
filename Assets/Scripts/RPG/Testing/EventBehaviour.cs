@@ -6,6 +6,7 @@ using System;
 public class EventBehaviour : MonoBehaviour
 {
     [SerializeField] private int eventIndex;
+    public GameObject lootableObject;
     
     void Awake()
     {
@@ -39,6 +40,10 @@ public class EventBehaviour : MonoBehaviour
             {
                 case 0:
                     EventTriggerManager.Instance.UpdateEvent(EventState.Loot);
+                    if (lootableObject != null)
+                    {
+                        lootableObject.SetActive(false);
+                    }
                     break;
                 case 1:
                     EventTriggerManager.Instance.UpdateEvent(EventState.LootOrNot);

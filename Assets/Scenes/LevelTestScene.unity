@@ -4352,7 +4352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &239101189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5427,6 +5427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc276b01eb4ebb479661664734601ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 2030036462}
   portal:
   - {fileID: 4394007695699287678, guid: caf1faf6d80a53f4db7849cc0d7f47f7, type: 3}
   - {fileID: 4394007695699287678, guid: caf1faf6d80a53f4db7849cc0d7f47f7, type: 3}
@@ -40751,6 +40752,11 @@ AudioSource:
 --- !u!4 &2030036459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4952467050408558629, guid: 268bbd229edfdba45a4d45903e472716, type: 3}
+  m_PrefabInstance: {fileID: 102472010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2030036462 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2593653635507999306, guid: 268bbd229edfdba45a4d45903e472716, type: 3}
   m_PrefabInstance: {fileID: 102472010}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2030442116

@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class EventTriggerManager : MonoBehaviour
 {
     public static EventTriggerManager Instance;
+    public Animator playerAnimator;
     int level = 6;
     public GameObject[] portal; 
     public GameObject lootPanel, lootOrNotPanel, fightOrNotPanel, chanceOrNotPanel;
@@ -74,10 +75,12 @@ public class EventTriggerManager : MonoBehaviour
     
     void HandleLootEvent()
     {
-        lootPanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Debug.Log("handlelootevent");
+        playerAnimator.SetTrigger("grabbing item");
+        // lootPanel.SetActive(true);
+        // Time.timeScale = 0;
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
     }
     void HandleLootOrNotEvent()
     {

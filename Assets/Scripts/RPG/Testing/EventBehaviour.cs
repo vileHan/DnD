@@ -7,6 +7,8 @@ public class EventBehaviour : MonoBehaviour
 {
     [SerializeField] private int eventIndex;
     public GameObject lootableObject;
+    public GameObject interactPanel;
+    bool isAbleToInteract;
     
     void Awake()
     {
@@ -29,21 +31,35 @@ public class EventBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isAbleToInteract && Input.GetKeyDown(KeyCode.F))
+        {
+            interactPanel.SetActive(false);
+            if (eventIndex == 0)
+            {
+                EventTriggerManager.Instance.UpdateEvent(EventState.Loot);
+                if (lootableObject != null)
+                {
+                    lootableObject.SetActive(false);
+                }
+                gameObject.SetActive(false);
+            }
+        }
     }
 
-     public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             switch(eventIndex)
             {
                 case 0:
-                    EventTriggerManager.Instance.UpdateEvent(EventState.Loot);
-                    if (lootableObject != null)
-                    {
-                        lootableObject.SetActive(false);
-                    }
+                    interactPanel.SetActive(true);
+                    isAbleToInteract = true;
+                    // EventTriggerManager.Instance.UpdateEvent(EventState.Loot);
+                    // if (lootableObject != null)
+                    // {
+                    //     lootableObject.SetActive(false);
+                    // }
                     break;
                 case 1:
                     EventTriggerManager.Instance.UpdateEvent(EventState.LootOrNot);
@@ -58,7 +74,15 @@ public class EventBehaviour : MonoBehaviour
                     throw new ArgumentOutOfRangeException(nameof(eventIndex), eventIndex, null);
             }
         }
-        gameObject.SetActive(false);  
+        //gameObject.SetActive(false);  
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            interactPanel.SetActive(false);
+            isAbleToInteract = false;
+        } 
     } 
 }
 

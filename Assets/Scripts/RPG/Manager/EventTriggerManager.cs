@@ -13,11 +13,14 @@ public class EventTriggerManager : MonoBehaviour
     public Animator playerAnimator;
     int level = 6;
     public GameObject[] portal; 
-    public GameObject lootPanel, lootOrNotPanel, fightOrNotPanel, chanceOrNotPanel;
+    public GameObject lootPanel, lootOrNotPanel, fightOrNotPanel, chanceOrNotPanel, eventLogPanel;
     public List<GameObject> trigger;
     private float spawnZ = -30;
     public int eventLogIndex;
     public float reward;
+
+    public AudioSource audio;
+    public AudioClip money, buff, damage;
 
 
     public static event Action<EventState> OnEventStateChanged;
@@ -75,12 +78,7 @@ public class EventTriggerManager : MonoBehaviour
     
     void HandleLootEvent()
     {
-        Debug.Log("handlelootevent");
-        playerAnimator.SetTrigger("grabbing item");
-        // lootPanel.SetActive(true);
-        // Time.timeScale = 0;
-        // Cursor.lockState = CursorLockMode.None;
-        // Cursor.visible = true;
+        playerAnimator.SetTrigger("grabbing item");      // --> check button events
     }
     void HandleLootOrNotEvent()
     {
@@ -98,10 +96,7 @@ public class EventTriggerManager : MonoBehaviour
     }
     void HandleChanceOrNotEvent()
     {
-        chanceOrNotPanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        playerAnimator.SetTrigger("interacting");
     }
 
     public void TriggerFightEvent(int difficulty)
@@ -120,6 +115,8 @@ public class EventTriggerManager : MonoBehaviour
             RogueStats.Instance.currentHealth -= damage;
             WizardStats.Instance.currentHealth -= damage;
         }
+        PlayDamageSound();
+        eventLogPanel.SetActive(true);
         eventLogIndex = 3;
         
     }
@@ -132,7 +129,10 @@ public class EventTriggerManager : MonoBehaviour
             RogueStats.Instance.damage += damage;
             WizardStats.Instance.damage += damage;
         }
+        PlayBuffSound();
+        eventLogPanel.SetActive(true);
         eventLogIndex = 1;
+
     }
     public void ReceiveGoldEvent(float min, float max)
     {
@@ -141,7 +141,25 @@ public class EventTriggerManager : MonoBehaviour
             reward = UnityEngine.Random.Range(min, max);
             PlayerStats.Instance.gold += (int)reward;   
         }
+        PlayMoneySound();
+        eventLogPanel.SetActive(true);
         eventLogIndex = 2;
+    }
+
+    void PlayMoneySound()
+    {
+        audio.clip = money;
+        audio.Play();
+    }
+    void PlayBuffSound()
+    {
+        audio.clip = buff;
+        audio.Play();
+    }
+    void PlayDamageSound()
+    {
+        audio.clip = damage;
+        audio.Play();
     }
 }
 

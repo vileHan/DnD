@@ -8,8 +8,6 @@ public class EventLog : MonoBehaviour
 {
     public TMP_Text eventLogText;
     public Animator animator;
-    public AudioSource audio;
-    public AudioClip money, buff, damage;
     void Awake()
     {
 
@@ -24,20 +22,17 @@ public class EventLog : MonoBehaviour
                 DisablePanel();
                 break;
             case 1:
-                eventLogText.color = Color.green;
-                audio.clip = buff;
+                eventLogText.color = Color.green;      
                 eventLogText.text = "Each party member gains 5 damage!";
                 animator.SetTrigger("Fadeaway");
                 break;
             case 2:
                 eventLogText.color = Color.green;
-                audio.clip = money;
                 eventLogText.text = "You receive " + (int)EventTriggerManager.Instance.reward + " gold.";
                 animator.SetTrigger("Fadeaway");
                 break;
             case 3:
                 eventLogText.color = Color.red;
-                audio.clip = damage;
                 eventLogText.text = "Your party took 10 damage";
                 animator.SetTrigger("Fadeaway");
                 break;
@@ -49,14 +44,5 @@ public class EventLog : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
-    }
-
-    public void PlayEventLogSound()
-    {
-        if (audio.clip == money)
-        {
-            audio.volume = 0.3f;
-        }
-        audio.Play();
     }
 }

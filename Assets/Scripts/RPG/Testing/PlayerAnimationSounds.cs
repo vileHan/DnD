@@ -8,7 +8,7 @@ public class PlayerAnimationSounds : MonoBehaviour
     public AudioClip footstepsSlow_1, footstepsSlow_2, footstepsFast_1, footstepsFast_2;
 
     [HideInInspector] public GameObject interactableObject;
-    [SerializeField] private Animator interactableObjectAnim;
+    private Animator interactableObjectAnim;
 
     public void FootstepSlow_1Sound()
     {
@@ -38,11 +38,10 @@ public class PlayerAnimationSounds : MonoBehaviour
 
     public void PlayUpgradeDamageEvent()
     {
-        EventTriggerManager.Instance.UpgradeDamageEvent(5);
-
         if (interactableObject != null)
         {
-            interactableObject.SetActive(false);
+            interactableObjectAnim = interactableObject.GetComponent<Animator>();
+            interactableObjectAnim.Play("Pick-Up", 0, 0.0f);
         }
     }
     public void PlayChanceFightOrDamageOrLootEvent()
@@ -52,19 +51,13 @@ public class PlayerAnimationSounds : MonoBehaviour
             interactableObjectAnim = interactableObject.GetComponent<Animator>();
             interactableObjectAnim.Play("Sarcophagus opening", 0, 0.0f);
         }
-        int chance = Random.Range(0,3); // actually bis 3
-        if (chance == 0)
+    }
+    public void PlayDoorOpenEvent()
+    {
+        if (interactableObject != null)
         {
-            EventTriggerManager.Instance.ReceiveDamageEvent(10f);
-        }
-        if (chance == 1)
-        {
-            EventTriggerManager.Instance.ReceiveGoldEvent(2f, 10f);
-        } 
-        if (chance == 2)       
-        {
-            int enemyAmount = Random.Range(2,5);
-            EventTriggerManager.Instance.TriggerFightEvent(enemyAmount);
+            interactableObjectAnim = interactableObject.GetComponent<Animator>();
+            interactableObjectAnim.Play("Opening", 0, 0.0f);
         }
     }
 }

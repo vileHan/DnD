@@ -33,7 +33,12 @@ public class EventLog : MonoBehaviour
                 break;
             case 3:
                 eventLogText.color = Color.red;
-                eventLogText.text = "Your party took 10 damage";
+                eventLogText.text = "Your party took 10 damage.";
+                animator.SetTrigger("Fadeaway");
+                break;
+            case 4:
+                eventLogText.color = Color.white;
+                eventLogText.text = "The door does not open yet.";
                 animator.SetTrigger("Fadeaway");
                 break;
             default:

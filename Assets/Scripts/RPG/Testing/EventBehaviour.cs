@@ -5,10 +5,13 @@ using System;
 
 public class EventBehaviour : MonoBehaviour
 {
+    public AudioSource audio;
+    public AudioClip notPossible;
     [SerializeField] private int eventIndex;
     public GameObject interactableObject;
     public GameObject interactPanel;
     bool isAbleToInteract;
+    bool isAllowedToOpen = true;
 
     private PlayerAnimationSounds playerAnimationSounds;
     
@@ -55,11 +58,27 @@ public class EventBehaviour : MonoBehaviour
             }
             if (eventIndex == 3)
             {
-                Debug.Log("interact3");
                 playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
                 playerAnimationSounds.interactableObject = interactableObject;
                 EventTriggerManager.Instance.UpdateEvent(EventState.ChanceOrNot);
                 gameObject.SetActive(false);
+            }
+            if (eventIndex == 4)
+            {
+                if (isAllowedToOpen)
+                {
+                    playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
+                    playerAnimationSounds.interactableObject = interactableObject;
+                    EventTriggerManager.Instance.UpdateEvent(EventState.OpenDoor);
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    PlayNotPossibleSound();
+                    EventTriggerManager.Instance.eventLogPanel.SetActive(true);
+                    EventTriggerManager.Instance.eventLogIndex = 4;
+                }
+                
             }
         }
     }
@@ -70,24 +89,6 @@ public class EventBehaviour : MonoBehaviour
         {
             interactPanel.SetActive(true);
             isAbleToInteract = true;
-            // switch(eventIndex)
-            // {
-            //     case 0:
-            //         interactPanel.SetActive(true);
-            //         isAbleToInteract = true;
-            //         break;
-            //     case 1:
-            //         EventTriggerManager.Instance.UpdateEvent(EventState.LootOrNot);
-            //         break;
-            //     case 2:
-            //         EventTriggerManager.Instance.UpdateEvent(EventState.FightOrNot);
-            //         break;
-            //     case 3:
-            //         EventTriggerManager.Instance.UpdateEvent(EventState.ChanceOrNot);
-            //         break;
-            //     default:
-            //         throw new ArgumentOutOfRangeException(nameof(eventIndex), eventIndex, null);
-            // }
         }
         //gameObject.SetActive(false);  
     }
@@ -99,6 +100,12 @@ public class EventBehaviour : MonoBehaviour
             isAbleToInteract = false;
         } 
     } 
+
+    public void PlayNotPossibleSound()
+    {
+        //audio.clip = notPossible;
+        GetComponent<AudioSource>().PlayOneShot(notPossible);
+    }
 }
 
 

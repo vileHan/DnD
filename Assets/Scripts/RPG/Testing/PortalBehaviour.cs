@@ -39,26 +39,10 @@ public class PortalBehaviour : MonoBehaviour
                 GameManager.Instance.isPosResetNeccessary = true;
                 GameManager.Instance.difficulty = 4;
                 LoadFightScene();
-                Debug.Log("collide");
             }
             else if (gameObject.tag == "PortalEventCollider")
             {
-                //cameraEvent
-                // CharacterController controller = player.GetComponent<CharacterController>();
-
-                // controller.enabled = false;
-
-                // player.transform.position = new Vector3(544f, 9f, 755.3f);
-
-                // controller.enabled = true;
-                // gameObject.SetActive(false); 
-
-                if (openingTrigger)
-                {
-                    hugeDoor.Play("Opening", 0, 0.0f);
-                    gameObject.SetActive(false); 
-                }
-                else if (closingTrigger)
+                if (closingTrigger)
                 {
                     hugeDoor.Play("Closing", 0, 0.0f);
                     gameObject.SetActive(false); 
@@ -74,8 +58,7 @@ public class PortalBehaviour : MonoBehaviour
             }
             else 
             {
-                // thirdPersonController = other.GetComponent<ThirdPersonController>();
-                // thirdPersonController.enabled = false;
+                GameManager.Instance.DisableCharacterController();
                 StartCoroutine(PlayFightSound());
                 GameManager.Instance.difficulty = difficulty;
             }

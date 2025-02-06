@@ -169,6 +169,7 @@ public class FightManager : MonoBehaviour
         // }
 
         GameManager.Instance.EnableRPGScene();
+        GameManager.Instance.EnableCharacterController();
         Debug.Log("Player Gold: " + PlayerStats.Instance.gold + "g");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

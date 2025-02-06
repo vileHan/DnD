@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+    public CharacterController characterController;
+    public ThirdPersonController thirdPersonController;
+    public Animator playerAnimator;
     public static GameManager Instance;
     public EventTriggerManager eventTriggerManager;
     public int difficulty;
@@ -101,6 +103,31 @@ public class GameManager : MonoBehaviour
 
         eventTriggerManager.ResetPortals();
     }
+    public void EnableCharacterController()
+    {
+        characterController = player.GetComponent<CharacterController>();
+        thirdPersonController = player.GetComponent<ThirdPersonController>();
+        playerAnimator = player.GetComponent<Animator>();
+        
+        characterController.enabled = true;
+
+        thirdPersonController.enabled = true;
+
+        playerAnimator.SetBool("idle", false);
+    }
+    public void DisableCharacterController()
+    {
+        characterController = player.GetComponent<CharacterController>();
+        thirdPersonController = player.GetComponent<ThirdPersonController>();
+        playerAnimator = player.GetComponent<Animator>();
+        
+        characterController.enabled = false;
+
+        thirdPersonController.enabled = false;
+
+        playerAnimator.SetBool("idle", true);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(2, LoadSceneMode.Single);

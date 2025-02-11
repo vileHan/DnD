@@ -12,7 +12,7 @@ public class PortalBehaviour : MonoBehaviour
     [SerializeField] private TransitionLoader transitionLoader;
     private ThirdPersonController thirdPersonController;
 
-    [SerializeField] private Animator hugeDoor = null;
+    private Animator hugeDoor = null;
     [SerializeField] private bool openingTrigger = false;
     [SerializeField] private bool closingTrigger = false;
     public AudioSource audio;
@@ -58,8 +58,8 @@ public class PortalBehaviour : MonoBehaviour
             }
             else 
             {
-                GameManager.Instance.DisableCharacterController();
-                StartCoroutine(PlayFightSound());
+                GameManager.Instance.DisableCharacterController(); 
+                StartCoroutine(PlayFightStart());
                 GameManager.Instance.difficulty = difficulty;
             }
              
@@ -77,7 +77,7 @@ public class PortalBehaviour : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    IEnumerator PlayFightSound()
+    IEnumerator PlayFightStart()
     {
         audio.clip = initiateFight;
         audio.Play();

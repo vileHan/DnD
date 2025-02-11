@@ -6,7 +6,8 @@ public class PlayerAnimationSounds : MonoBehaviour
 {
     public AudioSource audio;
     public AudioClip footstepsSlow_1, footstepsSlow_2, footstepsFast_1, footstepsFast_2;
-
+    private CharacterController characterController;
+    private ThirdPersonController thirdPersonController;
     [HideInInspector] public GameObject interactableObject;
     private Animator interactableObjectAnim;
 
@@ -59,5 +60,21 @@ public class PlayerAnimationSounds : MonoBehaviour
             interactableObjectAnim = interactableObject.GetComponent<Animator>();
             interactableObjectAnim.Play("Opening", 0, 0.0f);
         }
+    }
+    public void DisableMovement()
+    {
+        characterController = GetComponent<CharacterController>();
+        thirdPersonController = GetComponent<ThirdPersonController>();
+
+        characterController.enabled = false;
+        thirdPersonController.enabled = false;
+    }
+    public void EnableMovement()
+    {
+        characterController = GetComponent<CharacterController>();
+        thirdPersonController = GetComponent<ThirdPersonController>();
+
+        characterController.enabled = true;
+        thirdPersonController.enabled = true;
     }
 }

@@ -2270,10 +2270,10 @@ MonoBehaviour:
   damageNumber: {fileID: 1235231043331081285}
   maxHealth: 100
   currentHealth: 100
-  damage: 10
+  damage: 140
   armor: 0
-  maxSpellSlots: 0
-  currentSpellSlots: 0
+  maxSpellSlots: 2
+  currentSpellSlots: 2
   healModifier: 0
   isTurn: 0
   isAlive: 1

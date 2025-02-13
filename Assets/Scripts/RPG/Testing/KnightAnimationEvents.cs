@@ -12,6 +12,8 @@ public class KnightAnimationEvents : MonoBehaviour
     public GameObject effectsObject;
     public MMFeedbacks screenFlash;
 
+    private int initialEnemyCount;
+
     void Awake()
     {
         baseHeroBehaviour = GetComponentInParent<BaseHeroBehaviour>();
@@ -27,17 +29,16 @@ public class KnightAnimationEvents : MonoBehaviour
     }
     public void AoEAttackAnimationEvent()
     {
-        int initialEnemyCount = UnitManager.Instance.enemiesAlive.Count;
-        for (int i = 0; i < initialEnemyCount; i++)
+        initialEnemyCount = UnitManager.Instance.enemiesAlive.Count;
+
+        //for (int i = 0; i < initialEnemyCount; i++)
+        for (int i = UnitManager.Instance.enemiesAlive.Count - 1; i >= 0; i--)
         {
-            if (i >= UnitManager.Instance.enemiesAlive.Count)
-            {
-                break;
-            }
             TargetableUnit targetStats = UnitManager.Instance.enemiesAlive[i].GetComponent<TargetableUnit>();
 
-            targetStats.TakeDamage((targetableUnit.damage/2));            
+            targetStats.TakeDamage((targetableUnit.damage/2));             
         }
+
         GameObject effect = Instantiate(effects[2], new Vector3(-89f, 0f, -97.5f), Quaternion.identity);
         Destroy(effect, 1.5f);
     }

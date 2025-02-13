@@ -104,7 +104,7 @@ public class UnitManager : MonoBehaviour
 
     public void WinFight()
     {
-        for (int i = 0; i < enemiesAlive.Count; i++)
+        for (int i = enemiesAlive.Count - 1; i >= 0; i--)
         {
             GameObject enemy = enemiesAlive[i];
             TargetableUnit targetableUnit = enemy.GetComponent<TargetableUnit>();

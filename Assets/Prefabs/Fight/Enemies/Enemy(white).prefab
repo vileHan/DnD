@@ -174,7 +174,6 @@ MonoBehaviour:
   healthbar: {fileID: 4228959010081802294}
   characterImage: {fileID: 8418470696962446567, guid: 9aea14ae2764a334ea34a529f8ff61e2, type: 3}
   damageNumber: {fileID: 5684510391089789081}
-  test: 101
   maxHealth: 90
   currentHealth: 0
   damage: 20
@@ -227,7 +226,6 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   characterImage: {fileID: 0}
   damageNumber: {fileID: 0}
-  test: 101
   maxHealth: 90
   currentHealth: 0
   damage: 20
@@ -3604,7 +3602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalPosition.z

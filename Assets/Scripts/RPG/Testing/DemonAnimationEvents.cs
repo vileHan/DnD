@@ -7,10 +7,19 @@ public class DemonAnimationEvents : MonoBehaviour
     private TargetableUnit targetableUnit;
     [SerializeField]private HealthbarHandler healthbarHandler;
 
+    private Vector3 originalPosition;
+
     void Awake()
     {
         targetableUnit = GetComponentInParent<TargetableUnit>();
+        originalPosition = transform.position;
     }
+
+    void Update()
+    {
+        transform.position = originalPosition;
+    }
+
     public void DemonAttackAnimationEvent()
     {
         GameObject targetedHero = UnitManager.Instance.heroesAlive[Random.Range(0, UnitManager.Instance.heroesAlive.Count)]; // random right now -> later maybe look for target with lowest health

@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 1630687460934488006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.16, y: 0.5, z: 3.42}
+  m_LocalPosition: {x: 9.16, y: -0.5, z: 3.42}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -170,8 +170,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.6591321, z: 1}
-  m_Center: {x: 0, y: 0.32956606, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8007012558261916210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,6 @@ MonoBehaviour:
   healthbar: {fileID: 4228959010081802294}
   characterImage: {fileID: 8418470696962446567, guid: 57988b35041a96e44a9775725ec898e4, type: 3}
   damageNumber: {fileID: 5875083682632670730}
-  test: 101
   maxHealth: 100
   currentHealth: 0
   damage: 10
@@ -261,7 +260,6 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   characterImage: {fileID: 0}
   damageNumber: {fileID: 0}
-  test: 101
   maxHealth: 100
   currentHealth: 0
   damage: 10
@@ -1720,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalPosition.z

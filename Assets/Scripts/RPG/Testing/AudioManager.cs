@@ -56,6 +56,19 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public IEnumerator ResumeAudio(int index)
+    {
+        if (index >= 0 && index < playlist.Length)
+        {
+            Debug.Log("testresumeaudio");
+            yield return new WaitForSeconds(1);
+            Debug.Log("testresumeaudio1");
+            audioSource.clip = playlist[index];
+            Debug.Log(audioSource.clip);
+            audioSource.Play();
+        }
+    }
+
     IEnumerator CrossfadeToNextTrack()
     {
         float startVolume = audioSource.volume;

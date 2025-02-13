@@ -33,12 +33,13 @@ public class PortalBehaviour : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
+            GameManager.Instance.initiateFightCollider = this.gameObject;
             if (gameObject.tag == "FogCollider")
             {
                 //PlayFightSound();
                 GameManager.Instance.isPosResetNeccessary = true;
                 GameManager.Instance.difficulty = 4;
-                LoadFightScene();
+                GameManager.Instance.StartCoroutine(GameManager.Instance.PlayInitiateFight());
             }
             else if (gameObject.tag == "PortalEventCollider")
             {
@@ -58,9 +59,8 @@ public class PortalBehaviour : MonoBehaviour
             }
             else 
             {
-                GameManager.Instance.DisableCharacterController(); 
-                StartCoroutine(PlayFightStart());
                 GameManager.Instance.difficulty = difficulty;
+                GameManager.Instance.StartCoroutine(GameManager.Instance.PlayInitiateFight());
             }
              
         }
@@ -79,9 +79,12 @@ public class PortalBehaviour : MonoBehaviour
 
     IEnumerator PlayFightStart()
     {
+        Debug.Log("test");
         audio.clip = initiateFight;
         audio.Play();
+        Debug.Log("test1");
         yield return new WaitForSeconds(1f);
+        Debug.Log("test2");
         LoadFightScene();
         gameObject.SetActive(false); 
     }

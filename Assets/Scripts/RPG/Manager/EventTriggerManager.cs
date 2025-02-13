@@ -108,9 +108,8 @@ public class EventTriggerManager : MonoBehaviour
 
     public void TriggerFightEvent(int difficulty)
     {
-        GameManager.Instance.DisableRPGScene();
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
         GameManager.Instance.difficulty = difficulty;
+        GameManager.Instance.StartCoroutine(GameManager.Instance.PlayInitiateFight());
         eventLogIndex = 0;
     }
     public void ReceiveDamageEvent(float damage)

@@ -1573,6 +1573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc276b01eb4ebb479661664734601ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
   portal:
   - {fileID: 4394007695699287678, guid: caf1faf6d80a53f4db7849cc0d7f47f7, type: 3}
   - {fileID: 4394007695699287678, guid: caf1faf6d80a53f4db7849cc0d7f47f7, type: 3}
@@ -1583,9 +1584,14 @@ MonoBehaviour:
   lootOrNotPanel: {fileID: 0}
   fightOrNotPanel: {fileID: 0}
   chanceOrNotPanel: {fileID: 0}
+  eventLogPanel: {fileID: 0}
   trigger: []
   eventLogIndex: 0
   reward: 0
+  audio: {fileID: 0}
+  money: {fileID: 0}
+  buff: {fileID: 0}
+  damage: {fileID: 0}
 --- !u!1001 &316639913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7383,7 +7389,6 @@ MonoBehaviour:
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
   transitionLoader: {fileID: 0}
-  hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 0}
@@ -7774,14 +7779,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c71cccc3e16f4a4193c227bf313106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+  thirdPersonController: {fileID: 0}
+  playerAnimator: {fileID: 0}
   eventTriggerManager: {fileID: 296830699}
   difficulty: 0
   isPosResetNeccessary: 0
   thirdPersonCamera: {fileID: 0}
   eventSystem: {fileID: 454715864}
-  cameraHolder: {fileID: 2080156788}
+  mainCamera: {fileID: 82772160}
   player: {fileID: 0}
   settingsPanel: {fileID: 0}
+  initiateFightCollider: {fileID: 0}
+  audio: {fileID: 0}
+  initiateFight: {fileID: 0}
 --- !u!4 &1497571335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445432, guid: 5d501c5a472d78043bbf3ddfa9626738, type: 3}
@@ -8300,7 +8311,6 @@ MonoBehaviour:
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
   transitionLoader: {fileID: 0}
-  hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 0}
@@ -10272,7 +10282,6 @@ MonoBehaviour:
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
   transitionLoader: {fileID: 0}
-  hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 0}
@@ -10537,7 +10546,6 @@ MonoBehaviour:
   player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
   transitionLoader: {fileID: 0}
-  hugeDoor: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 0}

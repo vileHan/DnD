@@ -12,7 +12,12 @@ public class GameManager : MonoBehaviour
     public EventTriggerManager eventTriggerManager;
     public int difficulty;
     public bool isPosResetNeccessary;
-    [SerializeField] private GameObject thirdPersonCamera, eventSystem, cameraHolder, player, settingsPanel;
+    [SerializeField] private GameObject thirdPersonCamera, eventSystem, mainCamera, player, settingsPanel;
+    private Camera cam;
+
+    [HideInInspector] public GameObject initiateFightCollider;
+    public AudioSource audio;
+    public AudioClip initiateFight;
 
     //public GameObject HeroStatManager;
     private MonkStats monkStats;
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = mainCamera.GetComponent<Camera>();
         // monkStats = HeroStatManager.GetComponent<MonkStats>();
         // paladinStats = HeroStatManager.GetComponent<PaladinStats>();
         // rogueStats = HeroStatManager.GetComponent<RogueStats>();
@@ -73,9 +79,8 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = new Vector3(500f, 0f, 75f);
         }
-        //AudioManager.Instance.StopTrack(AudioManager.Instance.currentTrackIndex);
         thirdPersonCamera.SetActive(false);
-        cameraHolder.SetActive(false);
+        cam.enabled = false;
         player.SetActive(false);
         eventSystem.SetActive(false);
     }
@@ -83,16 +88,16 @@ public class GameManager : MonoBehaviour
     {
         GameManager.Instance.isPosResetNeccessary = false;
         thirdPersonCamera.SetActive(true);
-        cameraHolder.SetActive(true);
+        cam.enabled = true;
         player.SetActive(true);
         eventSystem.SetActive(true);
-        AudioManager.Instance.PlayTrack(AudioManager.Instance.currentTrackIndex);
+        AudioManager.Instance.PlayTrack(0);
     }
     public void ResetRPGScene()
     {
         player.transform.position = new Vector3(0f, 0f, -45f);
         thirdPersonCamera.SetActive(true);
-        cameraHolder.SetActive(true);
+        mainCamera.SetActive(true);
         player.SetActive(true);
         eventSystem.SetActive(true);
 
@@ -126,6 +131,29 @@ public class GameManager : MonoBehaviour
         thirdPersonController.enabled = false;
 
         playerAnimator.SetBool("idle", true);
+    }
+
+    public void LoadFightScene()
+    {
+        
+        DisableRPGScene();
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    }
+    public IEnumerator PlayInitiateFight()
+    {
+        DisableCharacterController(); 
+        audio.clip = initiateFight;
+        audio.Play();
+        AudioManager.Instance.StopTrack(0);
+        yield return new WaitForSeconds(1f);
+        AudioManager.Instance.PlayTrack(4);
+        audio.Stop();
+        LoadFightScene();
+        if (initiateFightCollider != null)
+        {
+            initiateFightCollider.SetActive(false);
+        }
+        
     }
 
     public void StartGame()

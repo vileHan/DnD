@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TransitionLoader : MonoBehaviour
 {
-
+    public static TransitionLoader Instance;
     public Animator anim;
+    private Image panelImage;
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        Instance = this;
+        panelImage = gameObject.GetComponent<Image>();
     }
 
     public void LoadTransition()
@@ -27,8 +30,20 @@ public class TransitionLoader : MonoBehaviour
         GameManager.Instance.StartGame();
     }
 
-    public void LoadFightTransition()
+    public void StartTransition()
     {
-        anim.SetTrigger("Start");
+        anim.enabled = true;
+        anim.Play("Fadein_Solo");
+    }
+    public void EndTransition()
+    {
+        anim.enabled = true;
+        Debug.Log("testfadeout");
+        anim.Play("Fadeout_Solo");
+    }
+    public void StopTransition()
+    {
+        //anim.enabled = false;
+        Debug.Log("test"); // not working without for some reason
     }
 }

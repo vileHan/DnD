@@ -158,16 +158,12 @@ public class FightManager : MonoBehaviour
 
     IEnumerator WinScreenTransition()
     {
+        TransitionLoader.Instance.StartTransition();
         yield return new WaitForSecondsRealtime(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
 
-        
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
-        // while (!unloadOperation.isDone)
-        // {
-        //     yield return null;
-        // }
-
+        
         GameManager.Instance.EnableRPGScene();
         GameManager.Instance.EnableCharacterController();
         Debug.Log("Player Gold: " + PlayerStats.Instance.gold + "g");

@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         cam.enabled = true;
         player.SetActive(true);
         eventSystem.SetActive(true);
+        TransitionLoader.Instance.EndTransition();
         AudioManager.Instance.PlayTrack(0);
     }
     public void ResetRPGScene()
@@ -135,12 +136,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadFightScene()
     {
-        
         DisableRPGScene();
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
     public IEnumerator PlayInitiateFight()
     {
+        TransitionLoader.Instance.StartTransition();
         DisableCharacterController(); 
         audio.clip = initiateFight;
         audio.Play();
@@ -149,6 +150,7 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlayTrack(4);
         audio.Stop();
         LoadFightScene();
+        TransitionLoader.Instance.EndTransition();
         if (initiateFightCollider != null)
         {
             initiateFightCollider.SetActive(false);

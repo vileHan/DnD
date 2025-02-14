@@ -70,6 +70,7 @@ public class EventBehaviour : MonoBehaviour
                     playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
                     playerAnimationSounds.interactableObject = interactableObject;
                     EventTriggerManager.Instance.UpdateEvent(EventState.OpenDoor);
+                    CutsceneManager.Instance.PlayCutsceneDoor();
                     gameObject.SetActive(false);
                 }
                 else

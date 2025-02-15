@@ -6,12 +6,13 @@ using System;
 public class EventBehaviour : MonoBehaviour
 {
     public AudioSource audio;
-    public AudioClip notPossible;
+    public AudioClip notPossible, extinguishFire;
     [SerializeField] private int eventIndex;
     public GameObject interactableObject;
     public GameObject interactPanel;
+    public BoxCollider collider;
     bool isAbleToInteract;
-    bool isAllowedToOpen = true;
+    bool isAllowedToOpen = true; // make false for actual game
 
     private PlayerAnimationSounds playerAnimationSounds;
     
@@ -65,7 +66,7 @@ public class EventBehaviour : MonoBehaviour
             }
             if (eventIndex == 4)
             {
-                if (isAllowedToOpen)
+                if (PlayerStats.Instance.firesExtinguished == 4)
                 {
                     playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
                     playerAnimationSounds.interactableObject = interactableObject;
@@ -80,6 +81,15 @@ public class EventBehaviour : MonoBehaviour
                     EventTriggerManager.Instance.eventLogIndex = 4;
                 }
                 
+            }
+            if (eventIndex == 5)
+            {
+                playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
+                playerAnimationSounds.interactableObject = interactableObject;
+                EventTriggerManager.Instance.UpdateEvent(EventState.ExtinguishFire);
+                PlayerStats.Instance.firesExtinguished++;
+                collider.enabled = false;
+                eventIndex = 100;
             }
         }
     }
@@ -106,6 +116,10 @@ public class EventBehaviour : MonoBehaviour
     {
         //audio.clip = notPossible;
         GetComponent<AudioSource>().PlayOneShot(notPossible);
+    }
+    public void PlayExtinguishFireSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(extinguishFire);
     }
 }
 

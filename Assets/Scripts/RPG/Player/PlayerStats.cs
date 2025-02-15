@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
     public int gold;
+    public int firesExtinguished;
 
     void Awake()
     {

@@ -172,10 +172,15 @@ public class FightManager : MonoBehaviour
     }
     IEnumerator LoseScreenTransition()
     {
+        PlayerStats.Instance.gold = 0;
+        PlayerStats.Instance.firesExtinguished = 0;
+
         yield return new WaitForSecondsRealtime(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
 
-        SceneManager.LoadScene(2,  LoadSceneMode.Single);
+
+
+        SceneManager.LoadScene(0,  LoadSceneMode.Single);
         // AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
         // while (!unloadOperation.isDone)
         // {

@@ -61,6 +61,16 @@ public class PlayerAnimationSounds : MonoBehaviour
             interactableObjectAnim.Play("Opening", 0, 0.0f);
         }
     }
+    public void PlayExtinguishFireEvent()
+    {
+        if (interactableObject != null)
+        {
+            interactableObject.SetActive(false);
+            GameObject fireGoblet = interactableObject.transform.parent.gameObject;
+            EventBehaviour eventBehaviour = fireGoblet.GetComponent<EventBehaviour>();
+            eventBehaviour.PlayExtinguishFireSound();
+        }
+    }
     public void DisableMovement()
     {
         characterController = GetComponent<CharacterController>();

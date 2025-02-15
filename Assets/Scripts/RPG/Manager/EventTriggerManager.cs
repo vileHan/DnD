@@ -72,7 +72,10 @@ public class EventTriggerManager : MonoBehaviour
                 HandleChanceOrNotEvent();
                 break;
             case EventState.OpenDoor:
-                OpenDoorEvent();
+                HandleOpenDoorEvent();
+                break;
+            case EventState.ExtinguishFire:
+                HandleExtinguishFireEvent();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newEvent), newEvent, null);
@@ -101,9 +104,13 @@ public class EventTriggerManager : MonoBehaviour
     {
         playerAnimator.SetTrigger("interacting");
     }
-    void OpenDoorEvent()
+    void HandleOpenDoorEvent()
     {
         playerAnimator.SetTrigger("open door");
+    }
+    void HandleExtinguishFireEvent()
+    {
+        playerAnimator.SetTrigger("extinguish fire");
     }
 
     public void TriggerFightEvent(int difficulty)
@@ -175,5 +182,6 @@ public enum EventState
         LootOrNot,
         FightOrNot,
         ChanceOrNot,
-        OpenDoor      
+        OpenDoor,
+        ExtinguishFire    
     }

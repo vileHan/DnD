@@ -22,4 +22,10 @@ public class PlayerStats : MonoBehaviour
     {
         
     }
+
+    public void ResetStats()
+    {
+        firesExtinguished = 0;
+        gold = 0;
+    }
 }

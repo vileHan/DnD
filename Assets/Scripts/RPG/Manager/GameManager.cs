@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {   
         if (isPosResetNeccessary)
         {
-            player.transform.position = new Vector3(500f, 0f, 75f);
+            player.transform.position = new Vector3(536.0154f, 1.5025f, 62.3652f);
         }
         thirdPersonCamera.SetActive(false);
         cam.enabled = false;

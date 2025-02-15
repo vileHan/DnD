@@ -35,7 +35,6 @@ public class PortalBehaviour : MonoBehaviour
             GameManager.Instance.initiateFightCollider = this.gameObject;
             if (gameObject.tag == "FogCollider")
             {
-                //PlayFightSound();
                 GameManager.Instance.isPosResetNeccessary = true;
                 GameManager.Instance.difficulty = 4;
                 GameManager.Instance.StartCoroutine(GameManager.Instance.PlayInitiateFight());

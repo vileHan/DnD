@@ -13,7 +13,11 @@ public class TransitionLoader : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        panelImage = gameObject.GetComponent<Image>();
+        if (panelImage != null)
+        {   
+            panelImage = gameObject.GetComponent<Image>();
+        }
+        
     }
 
     public void LoadTransition()
@@ -32,14 +36,21 @@ public class TransitionLoader : MonoBehaviour
 
     public void StartTransition()
     {
-        anim.enabled = true;
-        anim.Play("Fadein_Solo");
+        if (anim != null)
+        {
+            anim.enabled = true;
+            anim.Play("Fadein_Solo");
+        }
+        
     }
     public void EndTransition()
     {
-        anim.enabled = true;
-        Debug.Log("testfadeout");
-        anim.Play("Fadeout_Solo");
+        if (anim != null)
+        {
+            anim.enabled = true;
+            Debug.Log("testfadeout");
+            anim.Play("Fadeout_Solo");
+        }
     }
     public void StopTransition()
     {

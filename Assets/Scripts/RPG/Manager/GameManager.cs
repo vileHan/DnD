@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public CharacterController characterController;
     public ThirdPersonController thirdPersonController;
-    public Animator playerAnimator;
+    private Animator playerAnimator;
     public static GameManager Instance;
     public EventTriggerManager eventTriggerManager;
     public int difficulty;
@@ -141,7 +141,10 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator PlayInitiateFight()
     {
-        TransitionLoader.Instance.StartTransition();
+        if (TransitionLoader.Instance != null)
+        {
+            TransitionLoader.Instance.StartTransition();
+        }
         DisableCharacterController(); 
         audio.clip = initiateFight;
         audio.Play();
@@ -150,7 +153,10 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlayTrack(4);
         audio.Stop();
         LoadFightScene();
-        TransitionLoader.Instance.EndTransition();
+        if (TransitionLoader.Instance != null)
+        {
+            TransitionLoader.Instance.EndTransition();
+        }
         if (initiateFightCollider != null)
         {
             initiateFightCollider.SetActive(false);

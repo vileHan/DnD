@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehaviour : MonoBehaviour
 {
-    [SerializeField] private int difficulty; // ramdom
-    [SerializeField] private GameObject player;
+    [SerializeField] private int difficulty; // random
+    
     public GameObject levelFinishedPanel;
     
-    [SerializeField] private TransitionLoader transitionLoader;
     private ThirdPersonController thirdPersonController;
 
     private Animator hugeDoor = null;

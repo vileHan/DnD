@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -15,10 +16,24 @@ namespace InfinityPBR
     public static class InfinityStatic
     {
         
-        public static Vector3 WorldPositionOf(Transform transform, Vector3 positionOffset) => transform.TransformPoint(positionOffset);
+        public static Vector3 WorldPositionOf(Transform transform, Vector3 positionOffset) 
+            => transform.TransformPoint(positionOffset);
         
+        public static bool ContainsTheSameAs<T>(this IEnumerable<T> first, IEnumerable<T> second) 
+            => first.ContainsTheSameAs(second, EqualityComparer<T>.Default);
+
+        public static bool ContainsTheSameAs<T>(this IEnumerable<T> first, IEnumerable<T> second, IEqualityComparer<T> comparer)
+        {
+            if (first == null || second == null) return false;
+
+            var firstAsHashSet = new HashSet<T>(first, comparer);
+            var secondAsHashSet = new HashSet<T>(second, comparer);
+
+            return firstAsHashSet.SetEquals(secondAsHashSet);
+        }
         
 #if UNITY_EDITOR
+        
         public static string[] AllPrefabGuids => AssetDatabase.FindAssets("t:Prefab");
         public static string[] AllPrefabPaths => AllPrefabGuids.Select(AssetDatabase.GUIDToAssetPath).ToArray();
 
@@ -36,43 +51,59 @@ namespace InfinityPBR
         }
         
         private static List<string> _cachedLabels;
-        
-        public static List<string> GetAllLabels(bool cache = false, string folderLimitation = "")
+        private static Dictionary<string, Object> _assetCache = null;
+        private static Dictionary<string, string[]> _labelCache = null;
+
+        /// <summary>
+        /// Returns the list of all labels in the project. If resetCache is true, it will refresh the cache first.
+        /// </summary>
+        /// <param name="resetCache"></param>
+        /// <param name="folderLimitation"></param>
+        /// <returns></returns>
+        public static List<string> GetAllLabels(bool resetCache = false, string folderLimitation = "")
         {
-            if (_cachedLabels != null && !cache) return _cachedLabels;
+            if (_cachedLabels != null && !resetCache) return _cachedLabels;
 
-            string[] guids;
-            if (string.IsNullOrWhiteSpace(folderLimitation))
-                guids = AssetDatabase.FindAssets("l:Infinity");
-            else
-                guids = AssetDatabase.FindAssets("l:Infinity", new [] {folderLimitation});
+            CacheLabels(folderLimitation);
+            return _cachedLabels;
+        }
 
-            // Extract labels from guids
-            var allLabels = new List<string>();
+        // This will cache all the labels on any object that has the label "Infinity" -- we need to narrow
+        // down the list to only those, since we're focusing on Infinity compatible assets.
+        private static void CacheLabels(string folderLimitation = "")
+        {
+            var guids = string.IsNullOrWhiteSpace(folderLimitation) 
+                ? AssetDatabase.FindAssets("l:Infinity") 
+                : AssetDatabase.FindAssets("l:Infinity", new[] { folderLimitation });
+
+            // Use HashSet to automatically ensure uniqueness of labels
+            var allLabels = new HashSet<string>();
             foreach (var guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                var labels = AssetDatabase.GetLabels(AssetDatabase.LoadAssetAtPath<Object>(path));
-                allLabels.AddRange(labels);
+                var asset = AssetDatabase.LoadAssetAtPath<Object>(path);
+                var labels = AssetDatabase.GetLabels(asset);
+                foreach (var label in labels)
+                    allLabels.Add(label);
             }
-
-            // Remove duplicate labels
-            allLabels = allLabels.Distinct().ToList();
-
-            // Ensure "Infinity" is in the label list
-            if (!allLabels.Contains("Infinity"))
-                allLabels.Insert(0, "Infinity");
-
-            _cachedLabels = allLabels.ToList(); //Cache the labels, ensuring a clean copy, not allLabels which is on the stack.
-            return _cachedLabels;
+            
+            _cachedLabels = allLabels.OrderBy(l => l).ToList(); // Alphabetize
+            _cachedLabels.Remove("Infinity"); // Remove "Infinity" from the list
+            _cachedLabels.Insert(0, "Infinity"); // Add "Infinity" to the beginning
         }
 
         public static Object[] FindAssetsByLabel(int labelMask, string searchString = "", bool requireAll = true, bool sortAlpha = true)
         {
-            var allLabels = GetAllLabels(); // Implement this function as per your needs
+            // Populate caches if not done already
+            if (_assetCache == null || _labelCache == null)
+            {
+                PopulateCaches();
+            }
 
+            // Implement this function as per your needs
+            var allLabels = GetAllLabels(); 
             // Convert the mask to a list of selected labels
-            var selectedLabels = new List<string>();
+            var selectedLabels = new HashSet<string>();
             for (int i = 0; i < allLabels.Count; i++)
             {
                 if ((labelMask & (1 << i)) != 0)
@@ -81,53 +112,84 @@ namespace InfinityPBR
                 }
             }
 
-            var objects = new List<Object>();
-            
-            foreach (var label in selectedLabels)
+            // Compiled regex for quick usage
+            Regex searchStringRegex = !string.IsNullOrWhiteSpace(searchString) 
+                ? new Regex(searchString) 
+                : null;
+
+            var objects = new HashSet<Object>();
+
+            // Iterate over each asset in the cache
+            foreach (var kvp in _assetCache)
             {
-                var searchFilter = "l:" + label;
+                var guid = kvp.Key;
+                var asset = kvp.Value;
+                var assetLabels = _labelCache.ContainsKey(guid) ? new HashSet<string>(_labelCache[guid]) : new HashSet<string>();
+        
+                if (asset == null || (searchStringRegex != null && !searchStringRegex.IsMatch(asset.name)))
+                    continue;
 
-                var guids = AssetDatabase.FindAssets(searchFilter);
-                foreach (var guid in guids)
+                // Check if the asset has all the selected labels
+                if (selectedLabels.All(label => assetLabels.Contains(label)))
                 {
-                    var assetPath = AssetDatabase.GUIDToAssetPath(guid);
-                    var asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
-                    if (asset == null || (string.IsNullOrWhiteSpace(searchString) == false && asset.name.Contains(searchString) == false))
-                        continue;
-
-                    // Check if the asset has all the selected labels
-                    var assetLabels = AssetDatabase.GetLabels(asset);
-                    if (selectedLabels.All(label => assetLabels.Contains(label)))
-                    {
-                        objects.Add(asset);
-                    }
+                    objects.Add(asset);
                 }
             }
-
-            // Remove duplicates
-            objects = objects.Distinct().ToList();
-
+            // Distinct is already handled by HashSet
             return sortAlpha ? objects.OrderBy(o => o.name).ToArray() : objects.ToArray();
         }
-        
-        public static Object[] FindAssetsByLabel(string[] labels, string searchString = "", bool requireAll = true, bool sortAlpha = true)
+
+        private static void PopulateCaches()
         {
-            var objects = new List<Object>();
-            var searchFilter = requireAll ? "l:" + string.Join(" l:", labels) : "l:" + string.Join(" ", labels);
-        
-            var guids = AssetDatabase.FindAssets(searchFilter);
-            foreach (var guid in guids)
+            _assetCache = new Dictionary<string, Object>();
+            _labelCache = new Dictionary<string, string[]>();
+
+            var allGuids = AssetDatabase.FindAssets("");
+            foreach(var guid in allGuids)
             {
                 var assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 var asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
-                if (asset == null || (string.IsNullOrWhiteSpace(searchString) == false && asset.name.Contains(searchString) == false))
+                var assetLabels = AssetDatabase.GetLabels(asset);
+
+                _assetCache.Add(guid, asset);
+                _labelCache.Add(guid, assetLabels);
+            }
+        }
+        
+        
+        public static Object[] FindAssetsByLabel(string[] labels, string searchString = "", bool requireAll = true, bool sortAlpha = true)
+        {
+            List<Object> objects = new List<Object>();  // Use List to append items
+            string searchFilter = "l:" + string.Join(" l:", labels);
+            Debug.Log($"Search filter: {searchFilter}");
+            string[] guids = AssetDatabase.FindAssets(searchFilter);
+            Regex searchStringRegex = !string.IsNullOrWhiteSpace(searchString) 
+                ? new Regex(searchString) 
+                : null;
+            foreach(string guid in guids)
+            {
+                string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                Object asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
+        
+                if(asset == null || (searchStringRegex != null && !searchStringRegex.IsMatch(asset.name)))
                     continue;
-                
+        
+                if(requireAll)
+                {
+                    // Get all labels for this asset
+                    string[] assetLabels = AssetDatabase.GetLabels(asset);
+                    // Check if all labels are contained in the assetLabels
+                    if(!labels.All(label => assetLabels.Contains(label)))
+                        continue;
+                }
+        
                 objects.Add(asset);
             }
-
-            return sortAlpha ? objects.OrderBy(o => o.name).ToArray() : objects.ToArray();
+            return sortAlpha 
+                ? objects.OrderBy(o => o.name).ToArray() 
+                : objects.ToArray();
         }
+        
 
         public static void AddLabel(this Object obj, string label)
         {

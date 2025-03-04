@@ -48,7 +48,7 @@ namespace InfinityPBR
             // If skinnedMeshRenderer is null, then we must abort.
             if (targetSkinnedMeshRenderer == null)
             {
-                Debug.LogError($"Error: No SkinnedMeshRenderer was assigned, and one could not be found.");
+                Debug.LogWarning($"[Warning] No SkinnedMeshRenderer was assigned, and one could not be found. targetGameObject {targetGameObject.name}");
                 return;
             }
             

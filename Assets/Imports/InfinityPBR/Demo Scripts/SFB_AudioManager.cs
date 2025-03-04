@@ -57,9 +57,9 @@ public class SFB_AudioManager : MonoBehaviour {
 	// Updates the pitch during runtime
 	void UpdatePitch(){
 		if (pitchBySpeed) {																						// If we are adjusting pitchBySpeed
-			var pitchRangeNegative = 1.0f - pitchMin;															// Compute negative range
-			var pitchRangePositive = pitchMax - 1.0f;															// compute positive range
-			var locomotion = animator.GetFloat ("locomotion");												// Get the speed value
+			float pitchRangeNegative = 1.0f - pitchMin;															// Compute negative range
+			float pitchRangePositive = pitchMax - 1.0f;															// compute positive range
+			float locomotion = animator.GetFloat ("locomotion");												// Get the speed value
 			if (locomotion > 0.0f) {																			// If we are moving forward
 				desiredPitch = 1.0f + (pitchRangePositive * locomotion);										// set pitch
 			} else if (locomotion < 0.0f) {																		// If we are moving backward
@@ -70,15 +70,9 @@ public class SFB_AudioManager : MonoBehaviour {
 		} else {																								// otherwise
 			desiredPitch = 1.0f;																				// Default pitch
 		}
-
-		if (audioSource == null) return;
-		
-		audioSource.pitch =
-			Mathf.MoveTowards(audioSource.pitch, desiredPitch, Time.deltaTime); // Adjust pitch over time
-		if (pitchByTimescale)
-		{
-			// If we are adjusting by time
-			audioSource.pitch = audioSource.pitch * Time.timeScale; // Adjust pitch by timescale
+		audioSource.pitch = Mathf.MoveTowards (audioSource.pitch, desiredPitch, Time.deltaTime);				// Adjust pitch over time
+		if (pitchByTimescale) {																					// If we are adjusting by time
+			audioSource.pitch = audioSource.pitch * Time.timeScale;												// Adjust pitch by timescale
 		}
 	}
 
@@ -102,7 +96,7 @@ public class SFB_AudioManager : MonoBehaviour {
 	}
 
 	// Will play an audioClip once
-	void PlayAudio(string name){
+	public void PlayAudio(string name){
 		int index = AudioClipIndex (name);																		// Get the index of the named group
 		if (Random.Range (0, 100) >= (100 - audioClips [index].chanceOfPlaying)) {								// Only if a random chance is positive
 			float volume = audioClips [index].volume;															// grab the volume

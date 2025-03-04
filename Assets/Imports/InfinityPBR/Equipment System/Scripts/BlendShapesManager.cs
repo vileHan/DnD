@@ -91,7 +91,7 @@ namespace InfinityPBR
                 TriggerUserMatches(obj, value);
         }
 
-        private float GlobalModifiedValue(float value) => value * globalModifier;
+        private float GlobalModifiedValue(float value) => Mathf.Clamp(value * globalModifier, 0,value * globalModifier);
 
         public void TriggerAutoMatches(string triggerName, float value)
         {

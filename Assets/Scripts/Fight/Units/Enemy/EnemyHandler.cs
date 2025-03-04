@@ -15,7 +15,15 @@ public class EnemyHandler : MonoBehaviour
 
     void Awake()
     {
-        enemyAmount = GameManager.Instance.difficulty;
+        if (GameManager.Instance != null)
+        {
+            enemyAmount = GameManager.Instance.difficulty;
+        }
+        else 
+        {
+            enemyAmount = 4;
+        }
+        
     }
     void Start()
     { 

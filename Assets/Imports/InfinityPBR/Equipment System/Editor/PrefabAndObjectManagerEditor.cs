@@ -561,7 +561,7 @@ namespace InfinityPBR
             
             
             StartRow();
-            ColorsIf(GetBool(prefsString), Color.green, Color.black, Color.white, Color.white);
+            ColorsIf(GetBool(prefsString), Color.green, Color.grey, Color.white, Color.white);
             if (Button($"{(GetBool(prefsString) ? symbolCircleOpen : symbolDash)}", 25))
             {
                 CollapseAllTypes();
@@ -575,7 +575,7 @@ namespace InfinityPBR
                 Manager.ActivateRandomGroup(typeName);
             }
             EndRow();
-            ColorsIf(GetBool(prefsString), Color.green, Color.black, Color.white, Color.white);
+            ColorsIf(GetBool(prefsString), Color.green, Color.grey, Color.white, Color.white);
             ContentColor(Color.white);
             
             if (!GetBool(prefsString)) return;
@@ -1103,15 +1103,15 @@ namespace InfinityPBR
             {
                 // Include "Infinity" in the labelMask
                 labelMask |= (1 << infinityIndex);
-                labelMask = labelMask;
+                Manager.labelMask = labelMask;
             }
             
             labelMask = MaskField(labelMask, allLabels.ToArray(), 150);
             
             // Update the Manager object's labelMask
-            if (labelMask != labelMask)
+            if (labelMask != Manager.labelMask)
             {
-                labelMask = labelMask;
+                Manager.labelMask = labelMask;
                 EditorUtility.SetDirty(Manager);
             }
             ResetColor();
@@ -1379,7 +1379,7 @@ namespace InfinityPBR
 
         private void ShowObjectRender(PrefabGroup group, GroupObject groupObject)
         {
-            ColorsIf(groupObject.render, Color.grey, Color.black, Color.white, Color.grey);
+            ColorsIf(groupObject.render, Color.grey, Color.grey, Color.white, Color.grey);
             if (Button(symbolCheck, 25))
             {
                 groupObject.render = !groupObject.render;
@@ -1479,7 +1479,7 @@ namespace InfinityPBR
                 return;
             }
             
-            ColorsIf(prefabGroup.showPrefabs, Color.green, Color.black, Color.white, Color.white);
+            ColorsIf(prefabGroup.showPrefabs, Color.green, Color.grey, Color.white, Color.white);
             bool tempShowPrefabs = prefabGroup.showPrefabs;
             if (Button($"Objects", fieldWidth))
             {
@@ -1523,7 +1523,7 @@ namespace InfinityPBR
                 return;
             }
 
-            ColorsIf(prefabGroup.showShapes, Color.green, Color.black, Color.white, Color.white);
+            ColorsIf(prefabGroup.showShapes, Color.green, Color.grey, Color.white, Color.white);
             if (Button($"Shapes", fieldWidth))
             {
                 // If we are turning this one on, turn others off
@@ -1546,7 +1546,7 @@ namespace InfinityPBR
             }
 
             var groupIsActive = Manager.GroupIsActive(group) == 2;
-            BackgroundColor(groupIsActive ? Color.green : Color.black);
+            BackgroundColor(groupIsActive ? Color.green : Color.grey);
             if (group.isDefault && groupIsActive)
                 ContentColor(Color.grey);
             if (Button($"Turn {(groupIsActive ? "off" : "on")}", 60))
@@ -1568,7 +1568,7 @@ namespace InfinityPBR
                 return;
             }
 
-            ColorsIf(group.canRandomize, Color.grey, Color.black, Color.white, Color.grey);
+            ColorsIf(group.canRandomize, Color.grey, Color.grey, Color.white, Color.grey);
             if (String.IsNullOrWhiteSpace(group.groupType))
             {
                 group.isDefault = false;
@@ -1606,7 +1606,7 @@ namespace InfinityPBR
 
             var cacheToggle = group.isDefault;
 
-            ColorsIf(group.isDefault, Color.green, Color.black, Color.white, Color.grey);
+            ColorsIf(group.isDefault, Color.green, Color.grey, Color.white, Color.grey);
             group.isDefault = ButtonToggle(group.isDefault, $"{symbolStarClosed}", fieldWidth);
             //group.isDefault = EditorGUILayout.Toggle(group.isDefault, GUILayout.Width(fieldWidth));
 
@@ -1701,7 +1701,8 @@ namespace InfinityPBR
 
         private void SectionButton(string button, string prefs, int width = -1)
         {
-            BackgroundColor(GetBool(prefs) ? Color.green : Color.black);
+            Color offColor = new Color(0.2f, 0.2f, 0.2f,1f);
+            BackgroundColor(GetBool(prefs) ? Color.green : Color.grey);
             if (Button(button))
                 SetBool(prefs, !GetBool(prefs));
             ResetColor();

@@ -53,15 +53,21 @@ namespace InfinityPBR.Demo
         protected Quaternion _startRotation;
         protected Transform _transform;
         
+        private BlendShapesPresetManager _blendShapesPresetManager;
+        public BlendShapesPresetManager BlendShapesPresetManager => _blendShapesPresetManager;
+        
         // Start is called before the first frame update
         public virtual void Start()
         {
+            _blendShapesPresetManager = GetComponent<BlendShapesPresetManager>();
             _transform = GetComponent<Transform>();
             _startPosition = _transform.localPosition;
             _startRotation = _transform.localRotation;
             
             if (automateStyles) CreateStyleToggle();
             PopulateAnimationButtons();
+            
+            
             
             if (automateStyles) StartCoroutine(nameof(Randomize));
         }
@@ -71,11 +77,27 @@ namespace InfinityPBR.Demo
             if (Input.GetKeyDown(KeyCode.RightArrow)) SetAnimation(_animationTriggerIndex += 1);
             if (Input.GetKeyDown(KeyCode.LeftArrow)) SetAnimation(_animationTriggerIndex -= 1);
             if (Input.GetKeyDown(KeyCode.Space)) TriggerAnimation();
-            if (Input.GetKeyDown(superRandomKey) && !ShiftIsDown()) superRandomButton.onClick.Invoke();
-            if (Input.GetKeyDown(superRandomKey) && ShiftIsDown()) resetButton.onClick.Invoke();
+            if (Input.GetKeyDown(superRandomKey) && !ShiftIsDown())
+            {
+                if (superRandomButton != null)
+                    superRandomButton.onClick.Invoke();
+                else
+                    ManualSuperRandom();
+            }
+            if (Input.GetKeyDown(superRandomKey) && ShiftIsDown())
+            {
+                if (resetButton != null)
+                    resetButton.onClick.Invoke();
+                else
+                    ManualReset();
+            }
 
             CheckPlayArea();
         }
+
+        protected virtual void ManualSuperRandom() => BlendShapesPresetManager.StartTransitionToPreset("Random");
+
+        protected virtual void ManualReset() => BlendShapesPresetManager.StartTransitionToPreset("Reset");
 
         protected virtual void CheckPlayArea()
         {
@@ -172,6 +194,7 @@ namespace InfinityPBR.Demo
         private void CreateStyleToggle()
         {
             if (automateStyleToggle == null) return;
+            if (animationButtonContainer == null) return;
             var newToggle = Instantiate(automateStyleToggle, animationButtonContainer.transform);
             newToggle.GetComponent<InfinityDemoAutomateStyles>().Setup(this);
         }
@@ -181,6 +204,7 @@ namespace InfinityPBR.Demo
         private void CreateTriggerButton(string trigger)
         {
             if (animationButtonPrefab == null) return;
+            if (animationButtonContainer == null) return;
             var newTrigger = Instantiate(animationButtonPrefab, animationButtonContainer.transform);
             newTrigger.name = trigger;
             newTrigger.GetComponent<InfinityDemoAnimationButton>().Setup(trigger, animator);
@@ -190,6 +214,7 @@ namespace InfinityPBR.Demo
         private void CreateFloatSlider(string key)
         {
             if (animationFloatPrefab == null) return;
+            if (animationButtonContainer == null) return;
             var newSlider = Instantiate(animationFloatPrefab, animationButtonContainer.transform);
             newSlider.name = key;
             newSlider.GetComponent<InfinityDemoFloatSlider>().Setup(key, animator);

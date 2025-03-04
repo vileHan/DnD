@@ -52,6 +52,9 @@ namespace InfinityPBR.Demo
 
 		private void FixedUpdate()
 		{
+			if (heightBar == null)
+				return;
+			
 			if (Input.GetMouseButtonDown(1))
 			{
 				lastMousePosition = Input.mousePosition;

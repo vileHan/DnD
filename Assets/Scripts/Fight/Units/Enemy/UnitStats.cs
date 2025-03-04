@@ -142,7 +142,7 @@ public class UnitStats: TargetableUnit
     public override void SetStatsToDisplay()
     {
         FightUIManager.Instance.unitHealthText.text = currentHealth+ "/" + maxHealth;
-        FightUIManager.Instance.testText_1.text = "???";
-        FightUIManager.Instance.testText_2.text = "??";
+        FightUIManager.Instance.testStatText_1.text = "???";
+        FightUIManager.Instance.testStatText_2.text = "??";
     }
 }

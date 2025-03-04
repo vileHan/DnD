@@ -15,9 +15,9 @@ public class FightUIManager : MonoBehaviour
     [HideInInspector] public GameObject chooseActionPanel;
     //[SerializeField] private Button primaryAttackButton, healButton, useItemButton, Spell_2Button;
 
-    public TMP_Text unitHealthText, testText_1, testText_2, roundCounterText;
+    public TMP_Text unitHealthText, testStatText_1, testStatText_2, roundCounterText;
 
-    public TargetableUnit heroToAct;
+    [HideInInspector]public TargetableUnit heroToAct;
     private BaseHeroBehaviour baseHeroBehaviour;
     
 //    public ActionChosen ActionChosen;

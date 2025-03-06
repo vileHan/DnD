@@ -8,7 +8,7 @@ public class EnemyHandler : MonoBehaviour
     private float spawnDelay = 0.1f;
     public GameObject[] enemyPrefabs;
     //public List<GameObject> enemiesToSpawn = new List<GameObject>();
-    public int enemyIndex;
+    private int enemyIndex;
     public bool enemiesSpawned;
     private List<Vector3> spawnPositions = new List<Vector3>();
     public GameObject[] spawnPosition;

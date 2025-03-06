@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 7500590939087225329}
   - component: {fileID: -7635080019262761181}
   - component: {fileID: -5233213771031905930}
-  - component: {fileID: -4623136765080939101}
   m_Layer: 0
   m_Name: Enemy(white)
   m_TagString: Enemy
@@ -155,7 +154,7 @@ MonoBehaviour:
   isInAnimation: 0
   unitStats: {fileID: 7500590939087225329}
   healthbarHandler: {fileID: 2627603546658982722}
-  demonAnimationScript: {fileID: -4623136765080939101}
+  demonAnimationScript: {fileID: 3527755659374695891}
 --- !u!114 &7500590939087225329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +186,7 @@ MonoBehaviour:
   panelIndex: 0
   outline: {fileID: -7635080019262761181}
   healthbarHandler: {fileID: 2627603546658982722}
-  demonAnimationScript: {fileID: -4623136765080939101}
+  demonAnimationScript: {fileID: 3527755659374695891}
   spellCost: 0
   ableToAttack: 0
 --- !u!114 &-7635080019262761181
@@ -237,19 +236,6 @@ MonoBehaviour:
   isAlive: 1
   initiative: 0
   panelIndex: 0
---- !u!114 &-4623136765080939101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630687460934488006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74f5d980cb668f345850cdfe4f075550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7738119403774334472}
 --- !u!1 &2575233706437041799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,15 +3572,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8272482737438009287, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3660,6 +3646,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8272482737438228721, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8655095478982658942}
+    - targetCorrespondingSourceObject: {fileID: 8272482737438228721, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3527755659374695891}
   m_SourcePrefab: {fileID: 100100000, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}
 --- !u!4 &7738119403766761368 stripped
 Transform:
@@ -3684,6 +3673,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarHandler: {fileID: 2627603546658982722}
+--- !u!114 &3527755659374695891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7738119403766997166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f5d980cb668f345850cdfe4f075550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7738119403774334472}
 --- !u!95 &7738119403774334472 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8272482737430902359, guid: 0998d7bf1e03e1d4086ed7c447e1bd3f, type: 3}

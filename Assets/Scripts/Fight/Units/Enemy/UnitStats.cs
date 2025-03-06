@@ -108,23 +108,7 @@ public class UnitStats: TargetableUnit
     }
     public override void Heal(float healModifier)
     {
-        // float healthHealed = currentHealth + healModifier;
-        // if (healthHealed > maxHealth)
-        // {
-        //     healthHealed -= maxHealth;
-        //     healthHealed = healModifier - healthHealed;
-        // }
-        // else 
-        // {
-        //     healthHealed = healModifier;
-        // }
-        // currentHealth += healModifier;
-        // if (currentHealth > maxHealth)
-        // {
-        //     currentHealth = maxHealth;
-        // }
         demonAnimationScript.TauntAnimation();
-        
     }
 
     public override void MouseEnterUnit()

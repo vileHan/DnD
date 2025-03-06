@@ -7,10 +7,8 @@ public class EnemyBehaviour : BaseHeroBehaviour
     public TargetableUnit unitStats;
     [SerializeField] private HealthbarHandler healthbarHandler;
     public DemonAnimationScript demonAnimationScript;
-
-    private Color baseColor = new Color(1f, 1f, 1f, 1f);
     
-    void Start()
+    void Awake()
     {
         unitStats.currentHealth = unitStats.maxHealth;
         unitStats.currentSpellSlots = unitStats.maxSpellSlots;

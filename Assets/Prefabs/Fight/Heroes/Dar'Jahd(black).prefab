@@ -2277,7 +2277,7 @@ MonoBehaviour:
   isTurn: 0
   isAlive: 1
   initiative: 0
-  panelIndex: 0
+  panelIndex: 2
   healthbarHandler: {fileID: 4088872561836032422}
   behaviour: {fileID: -4979554075088316759}
   knightAnimationScript: {fileID: 2627157530036770802}

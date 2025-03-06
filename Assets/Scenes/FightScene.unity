@@ -5635,7 +5635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &388156272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6963,9 +6963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
-  player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
-  transitionLoader: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 0}
@@ -7167,7 +7165,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574664730}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &574664734
 Camera:
   m_ObjectHideFlags: 0
@@ -18163,7 +18161,7 @@ GameObject:
   - component: {fileID: 1753572153}
   - component: {fileID: 1753572152}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Fight Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18940,7 +18938,6 @@ MonoBehaviour:
   - {fileID: 1630687460934488006, guid: a0e16409e3c0f6d47a411b268e2fef3c, type: 3}
   - {fileID: 1630687460934488006, guid: 27004f423d3b56c4a9a20cfe511e9742, type: 3}
   - {fileID: 1630687460934488006, guid: e3f43d6197b82274a9315400ea37bf86, type: 3}
-  enemyIndex: 0
   enemiesSpawned: 0
   spawnPosition:
   - {fileID: 706425788}
@@ -19733,9 +19730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
-  player: {fileID: 0}
   levelFinishedPanel: {fileID: 0}
-  transitionLoader: {fileID: 0}
   openingTrigger: 0
   closingTrigger: 0
   audio: {fileID: 0}
@@ -21857,7 +21852,7 @@ GameObject:
   - component: {fileID: 2088052280}
   - component: {fileID: 2088052282}
   m_Layer: 0
-  m_Name: UI Manager
+  m_Name: Fight UI Manager
   m_TagString: FightUIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21885,8 +21880,8 @@ MonoBehaviour:
   - {fileID: 312473724}
   chooseActionPanel: {fileID: 0}
   unitHealthText: {fileID: 1834383940}
-  testText_1: {fileID: 158926752}
-  testText_2: {fileID: 492261905}
+  testStatText_1: {fileID: 158926752}
+  testStatText_2: {fileID: 492261905}
   roundCounterText: {fileID: 766468788}
   heroToAct: {fileID: 0}
   heroAttacking: 0

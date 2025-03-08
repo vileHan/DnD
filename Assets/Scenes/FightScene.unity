@@ -10274,7 +10274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914694874347225780, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18938,6 +18938,8 @@ MonoBehaviour:
   - {fileID: 1630687460934488006, guid: a0e16409e3c0f6d47a411b268e2fef3c, type: 3}
   - {fileID: 1630687460934488006, guid: 27004f423d3b56c4a9a20cfe511e9742, type: 3}
   - {fileID: 1630687460934488006, guid: e3f43d6197b82274a9315400ea37bf86, type: 3}
+  - {fileID: 4805863144969219766, guid: c2fee30adff55ad4ba04484488bc23eb, type: 3}
+  - {fileID: 1372989847717027377, guid: a13cce758edb81e41888cc845b3149d4, type: 3}
   enemiesSpawned: 0
   spawnPosition:
   - {fileID: 706425788}
@@ -21109,6 +21111,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa46c772e626144d9c3b02f3db1d241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2018885227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018885228}
+  m_Layer: 0
+  m_Name: GOLEM ANIMATION AND BEHAVIOUR SCRIPTS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018885228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018885227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -94.08019, y: 1.8663806, z: -96.50851}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2030150506
 GameObject:
   m_ObjectHideFlags: 0
@@ -22923,3 +22956,4 @@ SceneRoots:
   - {fileID: 1884901195}
   - {fileID: 1689936042}
   - {fileID: 1601199548}
+  - {fileID: 2018885228}

@@ -550,7 +550,7 @@ MonoBehaviour:
   panelIndex: 0
   outline: {fileID: -6374287108664459971}
   healthbarHandler: {fileID: 2627603546658982722}
-  demonAnimationScript: {fileID: 2826084557453498549}
+  baseEnemyBehaviour: {fileID: 5707977714288623503}
   spellCost: 0
   ableToAttack: 0
 --- !u!114 &-6374287108664459971
@@ -612,8 +612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c359d30191c78a4b8a76a34cfb45db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  heroAttackingIndex: 0
   isInAnimation: 0
   unitStats: {fileID: 7500590939087225329}
   healthbarHandler: {fileID: 2627603546658982722}

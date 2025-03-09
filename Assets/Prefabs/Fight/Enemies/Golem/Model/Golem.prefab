@@ -4008,6 +4008,8 @@ GameObject:
   - component: {fileID: 95042204947593616}
   - component: {fileID: -7755459449260317759}
   - component: {fileID: 577643621717633181}
+  - component: {fileID: 1576664400624560266}
+  - component: {fileID: 5615929884335013814}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -4114,6 +4116,32 @@ MonoBehaviour:
   animator: {fileID: 0}
   materials: []
   meshes: []
+--- !u!114 &1576664400624560266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992166063615290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d21f1da9ae847b42bf2b231e634161f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbarHandler: {fileID: 0}
+--- !u!114 &5615929884335013814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992166063615290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fab8a507b015614e97b4fdbdd44d82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95042204947593616}
 --- !u!1 &1994861720898946
 GameObject:
   m_ObjectHideFlags: 0

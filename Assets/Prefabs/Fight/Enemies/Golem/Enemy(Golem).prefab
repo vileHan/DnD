@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8532298495116300869}
   - component: {fileID: 740376385252117129}
-  - component: {fileID: 7156301509355519899}
   - component: {fileID: 2488170358714702105}
   - component: {fileID: 4808618541218925629}
   - component: {fileID: 1523154664622921460}
+  - component: {fileID: 6856424337818256416}
   m_Layer: 0
   m_Name: Enemy(Golem)
   m_TagString: Enemy
@@ -37,6 +37,7 @@ Transform:
   - {fileID: 6571513631211748080}
   - {fileID: 6912123584201026041}
   - {fileID: 5565708113249361781}
+  - {fileID: 6916107166515373919}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &740376385252117129
@@ -58,26 +59,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7156301509355519899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372989847717027377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c359d30191c78a4b8a76a34cfb45db6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  heroAttackingIndex: 0
-  isInAnimation: 0
-  unitStats: {fileID: 2488170358714702105}
-  healthbarHandler: {fileID: 2222465452537269961}
-  demonAnimationScript: {fileID: 0}
+  m_Size: {x: 1, y: 3.3360662, z: 1}
+  m_Center: {x: 0, y: 0.6952542, z: 0}
 --- !u!114 &2488170358714702105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +92,7 @@ MonoBehaviour:
   panelIndex: 0
   outline: {fileID: 4808618541218925629}
   healthbarHandler: {fileID: 2222465452537269961}
-  demonAnimationScript: {fileID: 0}
+  baseEnemyBehaviour: {fileID: 6856424337818256416}
   spellCost: 0
   ableToAttack: 0
 --- !u!114 &4808618541218925629
@@ -125,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0, a: 0.078431375}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -159,6 +142,22 @@ MonoBehaviour:
   isAlive: 1
   initiative: 0
   panelIndex: 0
+--- !u!114 &6856424337818256416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372989847717027377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a1db6929469c24eb229fa8e9eb34cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInAnimation: 0
+  unitStats: {fileID: 2488170358714702105}
+  healthbarHandler: {fileID: 2222465452537269961}
+  golemAnimationScript: {fileID: 1304525831164599961}
 --- !u!1 &1415827789680440223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.5, y: 1.8}
+  m_AnchoredPosition: {x: -0.8, y: 3.19}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2307849185238899868
@@ -1637,3 +1636,92 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 4998494262150787888}
+--- !u!1001 &6914522057714360623
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8532298495116300869}
+    m_Modifications:
+    - target: {fileID: 1992166063615290, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_Name
+      value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.64278764
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7660445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576664400624560266, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+      propertyPath: healthbarHandler
+      value: 
+      objectReference: {fileID: 2222465452537269961}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+--- !u!114 &1304525831164599961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5615929884335013814, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+  m_PrefabInstance: {fileID: 6914522057714360623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fab8a507b015614e97b4fdbdd44d82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &6916107166515373919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4402437729568368, guid: 0410c5d09166e444c9a3171abda1ebbc, type: 3}
+  m_PrefabInstance: {fileID: 6914522057714360623}
+  m_PrefabAsset: {fileID: 0}

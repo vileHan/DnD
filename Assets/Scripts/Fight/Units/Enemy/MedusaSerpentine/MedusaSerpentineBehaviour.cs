@@ -45,7 +45,6 @@ public class MedusaSerpentineBehaviour : BaseEnemyBehaviour
         if (chance == 1)
         {
             medusaSerpentineAnimationScript.Attack1Animation();
-
         }
         if (chance == 2)
         {
@@ -59,14 +58,33 @@ public class MedusaSerpentineBehaviour : BaseEnemyBehaviour
 
     public override void DecideAction() // later stages make th switch case for differnt actions? or make enemy look if hp is low etc.
     {
-        int actionIndex = Random.Range(0,6);
-        if (actionIndex == 0)
+        if (unitStats.currentHealth < unitStats.maxHealth/2)
         {
-            unitStats.Heal(unitStats.healModifier);
+            int actionIndex = Random.Range(0,3);
+            if (actionIndex == 0)
+            {
+                unitStats.Heal(unitStats.healModifier);
+            }
+            else
+            {
+                Attack();
+            }
         }
-        else
+        else if (unitStats.currentHealth == unitStats.maxHealth)
         {
             Attack();
+        }
+        else 
+        {
+            int actionIndex = Random.Range(0,6);
+            if (actionIndex == 0)
+            {
+                unitStats.Heal(unitStats.healModifier);
+            }
+            else
+            {
+                Attack();
+            }
         }
     }
 

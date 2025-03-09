@@ -59,8 +59,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.323629, z: 1}
+  m_Center: {x: 0, y: 0.2881679, z: 0}
 --- !u!114 &2488170358714702105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0, a: 0.078431375}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
@@ -1678,7 +1678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456389541530020, guid: faf2054a5fdaea146b7fee9285c979cd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.53729963
+      value: 0.46174863
       objectReference: {fileID: 0}
     - target: {fileID: 4456389541530020, guid: faf2054a5fdaea146b7fee9285c979cd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1686,7 +1686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456389541530020, guid: faf2054a5fdaea146b7fee9285c979cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8433915
+      value: -0.8870109
       objectReference: {fileID: 0}
     - target: {fileID: 4456389541530020, guid: faf2054a5fdaea146b7fee9285c979cd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1698,7 +1698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4456389541530020, guid: faf2054a5fdaea146b7fee9285c979cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -115
+      value: -125
       objectReference: {fileID: 0}
     - target: {fileID: 4456389541530020, guid: faf2054a5fdaea146b7fee9285c979cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

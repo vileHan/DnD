@@ -9,11 +9,11 @@ public class MedusaHumanoidAnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack1Animation();
-            Debug.Log("space");
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     Attack1Animation();
+        //     Debug.Log("space");
+        // }
     }
 
     public void Attack1Animation()
@@ -27,6 +27,10 @@ public class MedusaHumanoidAnimationScript : MonoBehaviour
     public void Attack3Animation()
     {
         animator.SetTrigger("attack3");
+    }
+    public void Attack4Animation()
+    {
+        animator.SetTrigger("attack4");
     }
     public void DeathAnimation()
     {

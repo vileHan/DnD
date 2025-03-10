@@ -11,6 +11,7 @@ public class KnightAnimationEvents : MonoBehaviour
     public GameObject[] effects;
     public GameObject effectsObject;
     public MMFeedbacks screenFlash;
+    private TargetableUnit heroToAct;
 
     private int initialEnemyCount;
 
@@ -68,24 +69,24 @@ public class KnightAnimationEvents : MonoBehaviour
     }
     public void GetHealAnimationEvent()
     {
+        heroToAct = FightManager.Instance.unitToAct.GetComponent<TargetableUnit>();
         GameObject effect = Instantiate(effects[0], effectsObject.transform.position, Quaternion.identity);
         Destroy(effect, 5f);
 
-        float healthHealed = targetableUnit.currentHealth + targetableUnit.healModifier;
+        float healthHealed = targetableUnit.currentHealth + heroToAct.healModifier;
+        Debug.Log(healthHealed);
+
         if (healthHealed > targetableUnit.maxHealth)
         {
             healthHealed -= targetableUnit.maxHealth;
-            healthHealed = targetableUnit.healModifier - healthHealed;
+            healthHealed = heroToAct.healModifier - healthHealed;
+            targetableUnit.currentHealth = targetableUnit.maxHealth;
         }
         else 
         {
-            healthHealed = targetableUnit.healModifier;
+            healthHealed = heroToAct.healModifier;
+            targetableUnit.currentHealth += heroToAct.healModifier;
         }
-        targetableUnit.currentHealth += targetableUnit.healModifier;
-        if (targetableUnit.currentHealth > targetableUnit.maxHealth)
-        {
-            targetableUnit.currentHealth = targetableUnit.maxHealth;
-        }   
 
         healthbarHandler.UpdateHealthbar(targetableUnit.maxHealth, targetableUnit.currentHealth);      
         FightUIManager.Instance.ShowHealingNumber(targetableUnit.damageNumber.position, healthHealed);

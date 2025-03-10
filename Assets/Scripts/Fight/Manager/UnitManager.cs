@@ -102,7 +102,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void WinFight()
+    public void WinFight() //kills all enemies -> playtesting
     {
         for (int i = enemiesAlive.Count - 1; i >= 0; i--)
         {

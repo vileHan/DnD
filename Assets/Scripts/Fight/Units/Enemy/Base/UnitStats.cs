@@ -13,6 +13,10 @@ public class UnitStats: TargetableUnit
     public int spellCost;
     public bool ableToAttack;
 
+    public int minGoldReward;
+    public int maxGoldReward;
+    public int expReward;
+
     void Start()
     {        
         outline = gameObject.GetComponent<Outline>();
@@ -76,6 +80,15 @@ public class UnitStats: TargetableUnit
         TurnOrderUIHandler.Instance.DeleteTurnImage();
         UnitManager.Instance.RemoveUnit(gameObject);
         UnitManager.Instance.RemoveUnitDictionary(gameObject);
+
+        FightManager.Instance.fightGoldReward += UnityEngine.Random.Range(minGoldReward, maxGoldReward);
+        FightManager.Instance.fightExpReward += expReward;
+
+        int randomRoll = UnityEngine.Random.Range(0,10); // later item assigned to enemy that can drop or something to that extend
+            if (randomRoll < 1)
+            {
+                Debug.Log("Rare Loot!");
+            }
     }
     public override void Heal(float healModifier)
     {

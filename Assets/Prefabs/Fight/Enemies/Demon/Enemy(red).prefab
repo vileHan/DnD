@@ -222,6 +222,9 @@ MonoBehaviour:
   baseEnemyBehaviour: {fileID: 8007012558261916210}
   spellCost: 0
   ableToAttack: 0
+  minGoldReward: 0
+  maxGoldReward: 3
+  expReward: 50
 --- !u!114 &-1471927178564525681
 MonoBehaviour:
   m_ObjectHideFlags: 0

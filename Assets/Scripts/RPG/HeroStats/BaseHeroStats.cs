@@ -13,6 +13,7 @@ public abstract class BaseHeroStats : MonoBehaviour
     public int currentSpellSlots;
     public float healModifier;
     public bool isAlive;
+
     // Start is called before the first frame update
     void Awake()
     {

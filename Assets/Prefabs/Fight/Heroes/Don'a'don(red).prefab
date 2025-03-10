@@ -2800,8 +2800,8 @@ MonoBehaviour:
   currentHealth: 100
   damage: 10
   armor: 0
-  maxSpellSlots: 2
-  currentSpellSlots: 2
+  maxSpellSlots: 3
+  currentSpellSlots: 3
   healModifier: 40
   isTurn: 0
   isAlive: 1

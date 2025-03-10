@@ -41,6 +41,11 @@ public class EventLog : MonoBehaviour
                 eventLogText.text = "The door does not open yet.";
                 animator.SetTrigger("Fadeaway");
                 break;
+            case 5:
+                eventLogText.color = Color.green;      
+                eventLogText.text = "Each party member gains 5 damage!";
+                animator.SetTrigger("Fadeaway");
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(EventTriggerManager.Instance.eventLogIndex), EventTriggerManager.Instance.eventLogIndex, null);
         }

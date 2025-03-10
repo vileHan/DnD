@@ -12,6 +12,8 @@ public class FightManager : MonoBehaviour
     public GameState State;
 
     private int dictionaryIndex = 0;
+    [HideInInspector] public int fightGoldReward;
+    [HideInInspector] public int fightExpReward;
 
     public static event Action<GameState> OnGameStateChanged;
 
@@ -97,17 +99,9 @@ public class FightManager : MonoBehaviour
         }
         else if (UnitManager.Instance.enemiesAlive.Count == 0)
         {
-            for (int i = 0; i < GameManager.Instance.difficulty; i ++)
-            {
-                int reward = UnityEngine.Random.Range(2,6);
-                Debug.Log("Enemy " + (i+1) + " dropped " + reward + " gold!");
-                PlayerStats.Instance.gold += reward;
-                int randomRoll = UnityEngine.Random.Range(0,10);
-                if (randomRoll < 1)
-                {
-                    Debug.Log("Rare Loot!");
-                }
-            }
+            PlayerStats.Instance.gold += fightGoldReward;
+            PlayerStats.Instance.exp += fightExpReward;
+            
             UpdateGameState(GameState.FightWon);
         }
         else

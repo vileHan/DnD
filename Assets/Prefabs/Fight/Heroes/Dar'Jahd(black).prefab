@@ -2267,9 +2267,9 @@ MonoBehaviour:
   healthbar: {fileID: 1808911703709032229}
   characterImage: {fileID: 6947747645686348647, guid: ff097286a09cd014c926ed923bd720a5, type: 3}
   damageNumber: {fileID: 1210785580219563149}
-  maxHealth: 100
-  currentHealth: 100
-  damage: 10
+  maxHealth: 70
+  currentHealth: 70
+  damage: 40
   armor: 0
   maxSpellSlots: 2
   currentSpellSlots: 2

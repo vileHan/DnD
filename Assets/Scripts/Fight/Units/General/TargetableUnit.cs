@@ -23,6 +23,7 @@ public class TargetableUnit : MonoBehaviour
 
     public bool isTurn;
     public bool isAlive;
+    public int attackCooldown;
 
     public int initiative;
     public int panelIndex;

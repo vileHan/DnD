@@ -68,7 +68,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
         this.target = target;
 
         target.Heal((targetableUnit.healModifier));
-        targetableUnit.Heal(targetableUnit.healModifier);
+        
         knightAnimationScript.BlockAnimation();
 
         targetableUnit.currentSpellSlots -= 1;

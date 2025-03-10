@@ -2342,11 +2342,12 @@ MonoBehaviour:
   currentHealth: 100
   damage: 10
   armor: 0
-  maxSpellSlots: 0
-  currentSpellSlots: 0
-  healModifier: 0
+  maxSpellSlots: 2
+  currentSpellSlots: 2
+  healModifier: 20
   isTurn: 0
   isAlive: 1
+  attackCooldown: 0
   initiative: 0
   panelIndex: 0
   healthbarHandler: {fileID: 6124859309311616676}
@@ -2382,6 +2383,7 @@ MonoBehaviour:
   healModifier: 0
   isTurn: 0
   isAlive: 0
+  attackCooldown: 0
   initiative: 0
   panelIndex: 0
 --- !u!136 &2348685404350116857

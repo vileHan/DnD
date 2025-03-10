@@ -982,17 +982,18 @@ MonoBehaviour:
   MediumHitFeedback: {fileID: 7911829263161944368}
   LargeHitFeedback: {fileID: 1131084915064363056}
   healthbar: {fileID: 7174837024099212435}
-  characterImage: {fileID: 8418470696962446567, guid: 903b9e40029b90a4b88027cb855b8295, type: 3}
+  characterImage: {fileID: 8418470696962446567, guid: e71b7cad803ccf84eb06f6f0d66e7053, type: 3}
   damageNumber: {fileID: 6611962349269330265}
-  maxHealth: 70
+  maxHealth: 60
   currentHealth: 0
-  damage: 40
-  armor: 0
+  damage: 30
+  armor: 5
   maxSpellSlots: 0
   currentSpellSlots: 0
   healModifier: 20
   isTurn: 0
   isAlive: 1
+  attackCooldown: 0
   initiative: 0
   panelIndex: 0
   outline: {fileID: 1576435846861032520}
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   healModifier: 20
   isTurn: 0
   isAlive: 1
+  attackCooldown: 0
   initiative: 0
   panelIndex: 0
 --- !u!114 &-2611412345660186513

@@ -35,7 +35,7 @@ public class GolemBehaviour : BaseEnemyBehaviour
     public override IEnumerator Action()
     {
         yield return new WaitForSeconds(0.5f);
-
+        unitStats.attackCooldown--;
         DecideAction();
     }
 
@@ -58,38 +58,48 @@ public class GolemBehaviour : BaseEnemyBehaviour
         {
             golemAnimationScript.Attack4Animation();
         }
+        unitStats.attackCooldown = 2;
     }
 
     public override void DecideAction() // later stages make th switch case for differnt actions? or make enemy look if hp is low etc.
     {
-        if (unitStats.currentHealth < unitStats.maxHealth/2)
+        Debug.Log("golem acd: " + unitStats.attackCooldown);
+        if (unitStats.attackCooldown == 0)
         {
-            int actionIndex = Random.Range(0,3);
-            if (actionIndex == 0)
+            if (unitStats.currentHealth < unitStats.maxHealth/2)
             {
-                unitStats.Heal(unitStats.healModifier);
+                int actionIndex = Random.Range(0,3);
+                if (actionIndex == 0)
+                {
+                    unitStats.Heal(unitStats.healModifier);
+                }
+                else
+                {
+                    Attack();
+                }
             }
-            else
+            else if (unitStats.currentHealth == unitStats.maxHealth)
             {
                 Attack();
             }
-        }
-        else if (unitStats.currentHealth == unitStats.maxHealth)
-        {
-            Attack();
+            else 
+            {
+                int actionIndex = Random.Range(0,6);
+                if (actionIndex == 0)
+                {
+                    unitStats.Heal(unitStats.healModifier);
+                }
+                else
+                {
+                    Attack();
+                }
+            }
         }
         else 
         {
-            int actionIndex = Random.Range(0,6);
-            if (actionIndex == 0)
-            {
-                unitStats.Heal(unitStats.healModifier);
-            }
-            else
-            {
-                Attack();
-            }
+            FightManager.Instance.UpdateGameState(GameState.SelectUnitTurn);
         }
+        
     }
 
     public override void GotHitAnimation()

@@ -77,13 +77,13 @@ public class PortalBehaviour : MonoBehaviour
 
     IEnumerator PlayFightStart()
     {
-        Debug.Log("test");
         audio.clip = initiateFight;
         audio.Play();
-        Debug.Log("test1");
+        
         yield return new WaitForSeconds(1f);
-        Debug.Log("test2");
+
         LoadFightScene();
+        
         gameObject.SetActive(false); 
     }
 }

@@ -47,16 +47,16 @@ public class EventBehaviour : MonoBehaviour
                 EventTriggerManager.Instance.UpdateEvent(EventState.Loot);
                 gameObject.SetActive(false);
             }
-            if (eventIndex == 1)
-            {
-                EventTriggerManager.Instance.UpdateEvent(EventState.LootOrNot);
-                gameObject.SetActive(false);
-            }
-            if (eventIndex == 2)
-            {
-                EventTriggerManager.Instance.UpdateEvent(EventState.FightOrNot);
-                gameObject.SetActive(false);
-            }
+            // if (eventIndex == 1)
+            // {
+            //     EventTriggerManager.Instance.UpdateEvent(EventState.LootOrNot);
+            //     gameObject.SetActive(false);
+            // }
+            // if (eventIndex == 2)
+            // {
+            //     EventTriggerManager.Instance.UpdateEvent(EventState.FightOrNot);
+            //     gameObject.SetActive(false);
+            // }
             if (eventIndex == 3)
             {
                 playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();

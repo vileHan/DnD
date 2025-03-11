@@ -13,10 +13,10 @@ public class EventTriggerManager : MonoBehaviour
     public Animator playerAnimator;
     int level = 6;
     public GameObject[] portal; 
-    public GameObject lootPanel, lootOrNotPanel, fightOrNotPanel, chanceOrNotPanel, eventLogPanel;
+    public GameObject eventLogPanel;
     public List<GameObject> trigger;
     private float spawnZ = -30;
-    public int eventLogIndex;
+    public int eventLogIndex = -1;
     public float reward;
 
     public AudioSource audio;
@@ -62,12 +62,12 @@ public class EventTriggerManager : MonoBehaviour
             case EventState.Loot:
                 HandleLootEvent();
                 break;
-            case EventState.LootOrNot:
-                HandleLootOrNotEvent();
-                break;
-            case EventState.FightOrNot:
-                HandleFightOrNotEvent();
-                break;
+            // case EventState.LootOrNot:
+            //     HandleLootOrNotEvent();
+            //     break;
+            // case EventState.FightOrNot:
+            //     HandleFightOrNotEvent();
+            //     break;
             case EventState.ChanceOrNot:
                 HandleChanceOrNotEvent();
                 break;
@@ -86,20 +86,20 @@ public class EventTriggerManager : MonoBehaviour
     {
         playerAnimator.SetTrigger("grabbing item");      // --> check button events
     }
-    void HandleLootOrNotEvent()
-    {
-        lootOrNotPanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-    void HandleFightOrNotEvent()
-    {
-        fightOrNotPanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
+    // void HandleLootOrNotEvent()
+    // {
+    //     lootOrNotPanel.SetActive(true);
+    //     Time.timeScale = 0;
+    //     Cursor.lockState = CursorLockMode.None;
+    //     Cursor.visible = true;
+    // }
+    // void HandleFightOrNotEvent()
+    // {
+    //     fightOrNotPanel.SetActive(true);
+    //     Time.timeScale = 0;
+    //     Cursor.lockState = CursorLockMode.None;
+    //     Cursor.visible = true;
+    // }
     void HandleChanceOrNotEvent()
     {
         playerAnimator.SetTrigger("interacting");
@@ -157,6 +157,11 @@ public class EventTriggerManager : MonoBehaviour
         PlayMoneySound();
         eventLogPanel.SetActive(true);
         eventLogIndex = 2;
+    }
+    public void LogRewardsForFight()
+    {
+        eventLogPanel.SetActive(true);
+        eventLogIndex = 0;
     }
 
     void PlayMoneySound()

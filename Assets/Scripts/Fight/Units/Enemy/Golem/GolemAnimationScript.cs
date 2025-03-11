@@ -14,11 +14,11 @@ public class GolemAnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack1Animation();
-            Debug.Log("space");
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     Attack1Animation();
+        //     Debug.Log("space");
+        // }
     }
 
     public void Attack1Animation()

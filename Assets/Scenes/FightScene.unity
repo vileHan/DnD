@@ -8882,7 +8882,7 @@ GameObject:
   - component: {fileID: 766468787}
   - component: {fileID: 766468789}
   - component: {fileID: 766468788}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Round Counter Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8928,7 +8928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8955,7 +8955,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.55
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10274,7 +10274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914694874347225780, guid: 0056d46d610b6a44ea885d92c46fe5c7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10487,7 +10487,7 @@ GameObject:
   - component: {fileID: 919026608}
   - component: {fileID: 919026610}
   - component: {fileID: 919026609}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Round Counter Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18941,6 +18941,7 @@ MonoBehaviour:
   - {fileID: 4805863144969219766, guid: c2fee30adff55ad4ba04484488bc23eb, type: 3}
   - {fileID: 1372989847717027377, guid: a13cce758edb81e41888cc845b3149d4, type: 3}
   - {fileID: 1372989847717027377, guid: 36f5b7fe90e7f1745b58836946bac0c3, type: 3}
+  - {fileID: 1372989847717027377, guid: 6a7f256a602ecf34f9fae7501d7b9e7f, type: 3}
   enemiesSpawned: 0
   spawnPosition:
   - {fileID: 706425788}

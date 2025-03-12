@@ -36,7 +36,10 @@ public class EventLog : MonoBehaviour
             case 1:
                 eventLogText.color = Color.green;      
                 eventLogText.text = "+5 ad";
+
+
                 TextPositionRight();
+
                 animator.SetTrigger("Fadeaway");
                 break;
             case 2:
@@ -78,6 +81,13 @@ public class EventLog : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
+    }
+    public void EmptyText()
+    {
+        eventLogText.text = "";
+        eventLogText_2.text = "";
+
+        EventTriggerManager.Instance.eventLogIndex = -1;
     }
     
     public void TextPositionMiddle()

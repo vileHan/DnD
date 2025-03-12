@@ -11,7 +11,7 @@ public class PortalBehaviour : MonoBehaviour
     
     private ThirdPersonController thirdPersonController;
 
-    private Animator hugeDoor = null;
+    public Animator hugeDoor;
     [SerializeField] private bool openingTrigger = false;
     [SerializeField] private bool closingTrigger = false;
     public AudioSource audio;

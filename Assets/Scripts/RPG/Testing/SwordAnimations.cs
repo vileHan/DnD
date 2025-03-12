@@ -16,9 +16,9 @@ public class SwordAnimations : MonoBehaviour
     {
         EventTriggerManager.Instance.UpgradeDamageEvent(5);
     }
-    public void EventSound()
-    {
-        audio.clip = itemPickup;
-        audio.Play();
-    }
+    // public void EventSound()
+    // {
+    //     audio.clip = itemPickup;
+    //     audio.Play();
+    // }
 }

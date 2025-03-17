@@ -9,10 +9,10 @@ public class EventBehaviour : MonoBehaviour
     public AudioClip notPossible, extinguishFire;
     [SerializeField] private int eventIndex;
     public GameObject interactableObject;
+    public GameObject fogSpawn;
     public GameObject interactPanel;
-    public BoxCollider collider;
+    //public BoxCollider collider;
     bool isAbleToInteract;
-    bool isAllowedToOpen = true; // make false for actual game
 
     private PlayerAnimationSounds playerAnimationSounds;
     
@@ -84,11 +84,15 @@ public class EventBehaviour : MonoBehaviour
             }
             if (eventIndex == 5)
             {
+                if (gameObject.tag == "SpawnGoblet")
+                {
+                    fogSpawn.SetActive(false); // make them fade out gradually
+                }
                 playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
                 playerAnimationSounds.interactableObject = interactableObject;
                 EventTriggerManager.Instance.UpdateEvent(EventState.ExtinguishFire);
                 PlayerStats.Instance.firesExtinguished++;
-                collider.enabled = false;
+                GetComponent<Collider>().enabled = false;
                 eventIndex = 100;
             }
         }

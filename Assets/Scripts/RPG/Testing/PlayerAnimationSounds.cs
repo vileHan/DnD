@@ -50,7 +50,7 @@ public class PlayerAnimationSounds : MonoBehaviour
         if (interactableObject != null)
         {
             interactableObjectAnim = interactableObject.GetComponent<Animator>();
-            interactableObjectAnim.Play("Sarcophagus opening", 0, 0.0f);
+            interactableObjectAnim.Play("opening", 0, 0.0f);
         }
     }
     public void PlayDoorOpenEvent()

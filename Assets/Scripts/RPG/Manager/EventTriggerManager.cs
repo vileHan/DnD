@@ -95,10 +95,7 @@ public class EventTriggerManager : MonoBehaviour
     // }
     // void HandleFightOrNotEvent()
     // {
-    //     fightOrNotPanel.SetActive(true);
-    //     Time.timeScale = 0;
-    //     Cursor.lockState = CursorLockMode.None;
-    //     Cursor.visible = true;
+    //     playerAnimator.SetTrigger("interacting");
     // }
     void HandleChanceOrNotEvent()
     {

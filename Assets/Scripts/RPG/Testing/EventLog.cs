@@ -22,7 +22,6 @@ public class EventLog : MonoBehaviour
         switch(EventTriggerManager.Instance.eventLogIndex)
         {
             case 0:
-                //DisablePanel();
                 eventLogText.color = Color.green;      
                 eventLogText.text = "+" + FightManager.Instance.fightGoldReward +"g";
 

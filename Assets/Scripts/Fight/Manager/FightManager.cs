@@ -37,20 +37,16 @@ public class FightManager : MonoBehaviour
 
     void Update()
     {
-        // while (!heroHandler.heroesSpawned || !enemyHandler.enemiesSpawned)
-        // {
-        //     yield return null;
-        // }
-        if (UnitManager.Instance.heroesAlive.Count == 0)
+        if (heroHandler.heroesSpawned && enemyHandler.enemiesSpawned)
         {
-            UpdateGameState(GameState.FightLost);
-        }
-        else if (UnitManager.Instance.enemiesAlive.Count == 0)
-        {
-            PlayerStats.Instance.gold += fightGoldReward;
-            PlayerStats.Instance.exp += fightExpReward;
-            
-            UpdateGameState(GameState.FightWon);
+            if (UnitManager.Instance.heroesAlive.Count == 0)
+            {
+                UpdateGameState(GameState.FightLost);
+            }
+            else if (UnitManager.Instance.enemiesAlive.Count == 0)
+            {                
+                UpdateGameState(GameState.FightWon);
+            }
         }
     }
 
@@ -112,22 +108,8 @@ public class FightManager : MonoBehaviour
     }
     void HandleSelectUnitTurn()
     {       
-        // if (UnitManager.Instance.heroesAlive.Count == 0)
-        // {
-        //     UpdateGameState(GameState.FightLost);
-        // }
-        // else if (UnitManager.Instance.enemiesAlive.Count == 0)
-        // {
-        //     PlayerStats.Instance.gold += fightGoldReward;
-        //     PlayerStats.Instance.exp += fightExpReward;
-            
-        //     UpdateGameState(GameState.FightWon);
-        // }
-        // else
-        // {
         SelectUnitTurn(); 
-        UpdateGameState(GameState.ExecuteHeroTurn);   
-        // }    
+        UpdateGameState(GameState.ExecuteHeroTurn);      
     }
     void HandleExecuteHeroTurn()
     {
@@ -174,6 +156,9 @@ public class FightManager : MonoBehaviour
         TransitionLoader.Instance.StartTransition();
         yield return new WaitForSecondsRealtime(1);
         UnitManager.Instance.DeleteAllUnitsLeft();
+
+        PlayerStats.Instance.gold += fightGoldReward;
+        PlayerStats.Instance.exp += fightExpReward;
 
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(1);
         

@@ -2321,6 +2321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1233374957}
   - {fileID: 49338326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4059,6 +4060,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203743777}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1233374955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233374957}
+  - component: {fileID: 1233374956}
+  m_Layer: 0
+  m_Name: PlayerStat Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1233374956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233374955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4fae6cf25aa954ba2801a20f7a4757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  exp: 0
+  level: 1
+  firesExtinguished: 0
+--- !u!4 &1233374957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233374955}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.0374146, y: 4.3674793, z: -173.26137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1240160211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8314430610408684262, guid: 2222703f9efe56245b5a6e4acc93e2f2, type: 3}
@@ -5010,6 +5059,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 0
+  exp: 0
+  level: 1
+  firesExtinguished: 0
 --- !u!114 &1608779818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5192,6 +5244,7 @@ MonoBehaviour:
   footstepsSlow_2: {fileID: 8300000, guid: 9b0f3251356d37f43959de10a92590b9, type: 3}
   footstepsFast_1: {fileID: 8300000, guid: fbe5efbcc2349574c9dc2acf88f199c9, type: 3}
   footstepsFast_2: {fileID: 8300000, guid: f339e45954b2ce44ca2e0ed0317cf217, type: 3}
+  interactableObject: {fileID: 0}
 --- !u!1 &1619480489
 GameObject:
   m_ObjectHideFlags: 0

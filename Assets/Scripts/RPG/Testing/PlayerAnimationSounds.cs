@@ -11,6 +11,8 @@ public class PlayerAnimationSounds : MonoBehaviour
     [HideInInspector] public GameObject interactableObject;
     private Animator interactableObjectAnim;
 
+    public ParticleSystem stepParticles;
+
     public void FootstepSlow_1Sound()
     {
         audio.pitch = Random.Range(0.8f, 1.2f);
@@ -71,6 +73,13 @@ public class PlayerAnimationSounds : MonoBehaviour
             eventBehaviour.PlayExtinguishFireSound();
         }
     }
+
+    public void PlayStepParticles()
+    {
+        stepParticles.Simulate(0, true, true);
+        stepParticles.Play();
+    }
+
     public void DisableMovement()
     {
         characterController = GetComponent<CharacterController>();

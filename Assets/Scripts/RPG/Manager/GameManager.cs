@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
+    public CinemachineFreeLook freeLookCamera;
     public CharacterController characterController;
     public ThirdPersonController thirdPersonController;
     private Animator playerAnimator;
@@ -26,9 +28,21 @@ public class GameManager : MonoBehaviour
     private WizardStats wizardStats;
 
     private bool isGamePaused;
+
     void Awake()
     {
         Instance = this;
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (sceneIndex == 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
+        }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -92,7 +106,8 @@ public class GameManager : MonoBehaviour
         player.SetActive(true);
         eventSystem.SetActive(true);
         TransitionLoader.Instance.EndTransition();
-        AudioManager.Instance.PlayTrack(0);
+        AudioManager.Instance.PlayTrack(0, 0.05f);
+        StartCoroutine(SetCamera());
     }
     public void ResetRPGScene()
     {
@@ -150,7 +165,7 @@ public class GameManager : MonoBehaviour
         audio.Play();
         AudioManager.Instance.StopTrack(0);
         yield return new WaitForSeconds(1f);
-        AudioManager.Instance.PlayTrack(4);
+        AudioManager.Instance.PlayTrack(4, 0.01f);
         audio.Stop();
         LoadFightScene();
         if (TransitionLoader.Instance != null)
@@ -164,9 +179,18 @@ public class GameManager : MonoBehaviour
         
     }
 
+    IEnumerator SetCamera()
+    {
+        yield return null; 
+        freeLookCamera.m_XAxis.Value = 0f;
+        freeLookCamera.m_YAxis.Value = 0.5f;
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(2, LoadSceneMode.Single);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void QuitGame()
     {

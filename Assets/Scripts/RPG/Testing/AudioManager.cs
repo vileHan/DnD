@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     {
         if (playlist.Length > 0)
         {
-            PlayTrack(currentTrackIndex);
+            PlayTrack(currentTrackIndex, 0.05f);
         }
         ambientSource.clip = wind;
         ambientSource.Play();
@@ -38,11 +38,12 @@ public class AudioManager : MonoBehaviour
         // }
     }
 
-    public void PlayTrack(int index)
+    public void PlayTrack(int index, float volume)
     {
         if (index >= 0 && index < playlist.Length)
         {
             audioSource.clip = playlist[index];
+            audioSource.volume = volume;
             audioSource.Play();
         }
     }
@@ -60,9 +61,7 @@ public class AudioManager : MonoBehaviour
     {
         if (index >= 0 && index < playlist.Length)
         {
-            Debug.Log("testresumeaudio");
             yield return new WaitForSeconds(1);
-            Debug.Log("testresumeaudio1");
             audioSource.clip = playlist[index];
             Debug.Log(audioSource.clip);
             audioSource.Play();
@@ -83,7 +82,7 @@ public class AudioManager : MonoBehaviour
 
         // Play the next track
         currentTrackIndex = (currentTrackIndex + 1) % playlist.Length; // Loop back to the first track
-        PlayTrack(currentTrackIndex);
+        PlayTrack(currentTrackIndex, 0.1f);
 
         // Fade in the new track
         for (float t = 0; t < crossfadeDuration; t += Time.deltaTime)

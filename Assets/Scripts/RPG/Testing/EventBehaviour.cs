@@ -66,7 +66,7 @@ public class EventBehaviour : MonoBehaviour
             }
             if (eventIndex == 4)
             {
-                if (PlayerStats.Instance.firesExtinguished == 4)
+                if (PlayerStats.Instance.firesExtinguished >= 4)
                 {
                     playerAnimationSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimationSounds>();
                     playerAnimationSounds.interactableObject = interactableObject;

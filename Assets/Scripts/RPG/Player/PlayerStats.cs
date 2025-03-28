@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance;
     public int gold;
     public int exp;
-    private int level = 1;
+    public int level = 1;
     public int firesExtinguished;
 
     void Awake()
@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour
     }
     void Start()
     {
-        
+        LoadStats();
     }
 
     // Update is called once per frame
@@ -51,6 +51,30 @@ public class PlayerStats : MonoBehaviour
             default:
                 Debug.Log("no level assigned");
                 break;
+        }
+    }
+
+    private void LoadStats()
+    {
+        if (PlayerStatsSave.Instance != null)
+        {
+            Debug.Log("load player stats");
+            gold = PlayerStatsSave.Instance.gold;
+            exp = PlayerStatsSave.Instance.exp;
+            level = PlayerStatsSave.Instance.level;
+            firesExtinguished = PlayerStatsSave.Instance.firesExtinguished;
+            
+        }
+        
+    }
+    private void SaveStats() // not implemented -> for second level
+    {
+        if (PlayerStatsSave.Instance != null)
+        {
+            PlayerStatsSave.Instance.gold = gold;
+            PlayerStatsSave.Instance.exp = exp;
+            PlayerStatsSave.Instance.level = level;
+            PlayerStatsSave.Instance.firesExtinguished = firesExtinguished;
         }
     }
 }

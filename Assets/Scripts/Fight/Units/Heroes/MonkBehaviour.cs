@@ -136,6 +136,7 @@ public class MonkBehaviour : BaseHeroBehaviour
             targetableUnit.panelIndex = MonkStats.Instance.panelIndex;
             targetableUnit.armor = MonkStats.Instance.armor;
         }
+        targetableUnit.damage -= PlayerStats.Instance.fogDebuff;
         
     }
     public void SaveStats() // make this a list or something

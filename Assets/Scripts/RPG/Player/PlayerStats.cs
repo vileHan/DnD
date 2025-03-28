@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     public int gold;
     public int exp;
     public int level = 1;
+    public int fogDebuff;
     public int firesExtinguished;
 
     void Awake()

@@ -15,7 +15,7 @@ public class PortalBehaviour : MonoBehaviour
     [SerializeField] private bool openingTrigger = false;
     [SerializeField] private bool closingTrigger = false;
     public AudioSource audio;
-    public AudioClip initiateFight;
+    public AudioClip damage;
 
     void Start()
     {
@@ -35,6 +35,11 @@ public class PortalBehaviour : MonoBehaviour
             GameManager.Instance.initiateFightCollider = this.gameObject;
             if (gameObject.tag == "FogCollider")
             {
+                audio.clip = damage;
+                audio.Play();
+
+                PlayerStats.Instance.fogDebuff += 1;
+
                 GameManager.Instance.isPosResetNeccessary = true;
                 GameManager.Instance.difficulty = 4;
                 GameManager.Instance.StartCoroutine(GameManager.Instance.PlayInitiateFight());
@@ -75,15 +80,15 @@ public class PortalBehaviour : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    IEnumerator PlayFightStart()
-    {
-        audio.clip = initiateFight;
-        audio.Play();
+    // IEnumerator PlayFightStart()
+    // {
+    //     audio.clip = initiateFight;
+    //     audio.Play();
         
-        yield return new WaitForSeconds(1f);
+    //     yield return new WaitForSeconds(1f);
 
-        LoadFightScene();
+    //     LoadFightScene();
         
-        gameObject.SetActive(false); 
-    }
+    //     gameObject.SetActive(false); 
+    // }
 }

@@ -128,6 +128,7 @@ public class RogueBehaviour : BaseHeroBehaviour
             targetableUnit.panelIndex = RogueStats.Instance.panelIndex;
             targetableUnit.armor = RogueStats.Instance.armor;
         }
+        targetableUnit.damage -= PlayerStats.Instance.fogDebuff;
         
     }
     public void SaveStats() // make this a list or something

@@ -7,7 +7,8 @@ public class PlayerStatsSave : MonoBehaviour
     public static PlayerStatsSave Instance;
     public int gold;
     public int exp;
-    public int level = 2;
+    public int level = 1;
+    public int fogDebuff;
     public int firesExtinguished;
 
     void Awake()

@@ -126,6 +126,7 @@ public class PaladinBehaviour : BaseHeroBehaviour
             targetableUnit.panelIndex = PaladinStats.Instance.panelIndex;
             targetableUnit.armor = PaladinStats.Instance.armor;
         }
+        targetableUnit.damage -= PlayerStats.Instance.fogDebuff;
     }
     public void SaveStats() // make this a list or something
     {

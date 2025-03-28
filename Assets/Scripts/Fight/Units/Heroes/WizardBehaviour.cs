@@ -121,6 +121,7 @@ public class WizardBehaviour : BaseHeroBehaviour
             targetableUnit.panelIndex = WizardStats.Instance.panelIndex;
             targetableUnit.armor = WizardStats.Instance.armor;
         }
+        targetableUnit.damage -= PlayerStats.Instance.fogDebuff;
     }
     public void SaveStats() // make this a list or something
     {

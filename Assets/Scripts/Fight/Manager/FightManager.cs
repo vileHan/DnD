@@ -35,6 +35,25 @@ public class FightManager : MonoBehaviour
         UpdateGameState(GameState.BattleSetUp);
     }
 
+    void Update()
+    {
+        // while (!heroHandler.heroesSpawned || !enemyHandler.enemiesSpawned)
+        // {
+        //     yield return null;
+        // }
+        if (UnitManager.Instance.heroesAlive.Count == 0)
+        {
+            UpdateGameState(GameState.FightLost);
+        }
+        else if (UnitManager.Instance.enemiesAlive.Count == 0)
+        {
+            PlayerStats.Instance.gold += fightGoldReward;
+            PlayerStats.Instance.exp += fightExpReward;
+            
+            UpdateGameState(GameState.FightWon);
+        }
+    }
+
     // Update is called once per frame
     public void UpdateGameState(GameState newState)
     {
@@ -93,22 +112,22 @@ public class FightManager : MonoBehaviour
     }
     void HandleSelectUnitTurn()
     {       
-        if (UnitManager.Instance.heroesAlive.Count == 0)
-        {
-            UpdateGameState(GameState.FightLost);
-        }
-        else if (UnitManager.Instance.enemiesAlive.Count == 0)
-        {
-            PlayerStats.Instance.gold += fightGoldReward;
-            PlayerStats.Instance.exp += fightExpReward;
+        // if (UnitManager.Instance.heroesAlive.Count == 0)
+        // {
+        //     UpdateGameState(GameState.FightLost);
+        // }
+        // else if (UnitManager.Instance.enemiesAlive.Count == 0)
+        // {
+        //     PlayerStats.Instance.gold += fightGoldReward;
+        //     PlayerStats.Instance.exp += fightExpReward;
             
-            UpdateGameState(GameState.FightWon);
-        }
-        else
-        {
+        //     UpdateGameState(GameState.FightWon);
+        // }
+        // else
+        // {
         SelectUnitTurn(); 
         UpdateGameState(GameState.ExecuteHeroTurn);   
-        }    
+        // }    
     }
     void HandleExecuteHeroTurn()
     {
